@@ -1,3 +1,9 @@
+---
+type: subject-index
+status: active
+code: "36104"
+name: "36104 Data Visualisation and Narratives"
+---
 # 36104 Data Visualisation and Narratives
 
 Semester: [Sem3 2026 Autumn](../../01-semesters/sem3-2026-autumn.md)

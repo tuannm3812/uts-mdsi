@@ -48,7 +48,10 @@ Required sections in the file body:
 - `# <subject> Assessment Planning` title
 - Canonical AT workflow description line
 - AT links:
-  - `[AT1](at1.md)` / `[AT2](at2.md)` / `[AT3](at3.md)` as applicable
+  - `AT1` (`at1.md`)
+  - `AT2` (`at2.md`)
+  - `AT3` (`at3.md`)
+  - Use only the AT files that are present for the subject.
 
 ## Assessment Dashboard (`.../assignments/README.md`)
 

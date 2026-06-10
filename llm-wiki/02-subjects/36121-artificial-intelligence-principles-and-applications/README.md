@@ -1,3 +1,9 @@
+---
+type: subject-index
+status: active
+code: "36121"
+name: "36121 Artificial Intelligence Principles and Applications"
+---
 # 36121 Artificial Intelligence Principles and Applications
 
 Semester: [Sem3 2026 Autumn](../../01-semesters/sem3-2026-autumn.md)

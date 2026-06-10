@@ -2,6 +2,21 @@
 
 Assessment briefs, rubric checklists, draft-review notes, and copied assignment materials.
 
+
+## Assessment Pages
+
+- [Assessment planning](assessment-planning.md)
+- [AT1](at1.md)
+- [AT2](at2.md)
+- [AT3](at3.md)
+
+## Standard Review Workflow
+
+1. Confirm task requirements and rubric entries.
+2. Draft against checklist sections and rubric criteria.
+3. Run the LLM review prompt and mark gaps.
+4. Verify claims, citations, code, and calculations.
+5. Final integrity and submission checks.
 ## Raw Imports
 
 Raw copied files, when present, live in `raw/`.
@@ -9,6 +24,15 @@ Raw copied files, when present, live in `raw/`.
 Imported or referenced source count for this bucket: 34
 Current filesystem entries under `raw/`: 36
 
+
+## LLM Review Prompt
+
+Act as a strict UTS marker. Compare current draft against the subject rubric, and return:
+- Missing criteria
+- Weak evidence areas
+- Citation and academic integrity risks
+- Concrete revision actions
+- Final readiness checklist
 ## Working Notes
 
 - Add curated notes in this folder, beside `raw/`.

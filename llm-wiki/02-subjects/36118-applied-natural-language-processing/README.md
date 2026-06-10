@@ -1,3 +1,9 @@
+---
+type: subject-index
+status: active
+code: "36118"
+name: "36118 Applied Natural Language Processing"
+---
 # 36118 Applied Natural Language Processing
 
 Semester: [Sem4 2026 Spring](../../01-semesters/sem4-2026-spring.md)

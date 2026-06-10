@@ -1,3 +1,9 @@
+---
+type: subject-index
+status: active
+code: "36106"
+name: "36106 Machine Learning Algorithms and Applications"
+---
 # 36106 Machine Learning Algorithms and Applications
 
 Semester: [Sem1 2025 Autumn](../../01-semesters/sem1-2025-autumn.md)

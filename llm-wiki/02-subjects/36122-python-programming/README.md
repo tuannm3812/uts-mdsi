@@ -1,3 +1,9 @@
+---
+type: subject-index
+status: active
+code: "36122"
+name: "36122 Python Programming"
+---
 # 36122 Python Programming
 
 Semester: [Sem1 2025 Autumn](../../01-semesters/sem1-2025-autumn.md)

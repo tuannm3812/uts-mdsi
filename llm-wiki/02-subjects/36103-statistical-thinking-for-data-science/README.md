@@ -1,3 +1,9 @@
+---
+type: subject-index
+status: active
+code: "36103"
+name: "36103 Statistical Thinking for Data Science"
+---
 # 36103 Statistical Thinking for Data Science
 
 Semester: [Sem2 2025 Spring](../../01-semesters/sem2-2025-spring.md)

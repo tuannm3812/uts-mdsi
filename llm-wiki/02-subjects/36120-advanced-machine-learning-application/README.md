@@ -1,3 +1,9 @@
+---
+type: subject-index
+status: active
+code: "36120"
+name: "36120 Advanced Machine Learning Application"
+---
 # 36120 Advanced Machine Learning Application
 
 Semester: [Sem2 2025 Spring](../../01-semesters/sem2-2025-spring.md)

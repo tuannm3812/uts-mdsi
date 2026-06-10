@@ -1,3 +1,9 @@
+---
+type: subject-index
+status: active
+code: "43008"
+name: "43008 Reinforcement Learning"
+---
 # 43008 Reinforcement Learning
 
 Semester: [Sem4 2026 Spring](../../01-semesters/sem4-2026-spring.md)

@@ -1,3 +1,9 @@
+---
+type: subject-index
+status: active
+code: "94692"
+name: "94692 Data Science Practice"
+---
 # 94692 Data Science Practice
 
 Semester: [Sem3 2026 Autumn](../../01-semesters/sem3-2026-autumn.md)

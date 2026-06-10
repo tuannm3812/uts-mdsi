@@ -1,3 +1,9 @@
+---
+type: subject-index
+status: active
+code: "GENAI"
+name: "GenAI"
+---
 # GenAI
 
 Semester: [Sem4 2026 Spring](../../01-semesters/sem4-2026-spring.md)
@@ -16,6 +22,14 @@ Source folder: `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@
 
 - Generative AI concepts, tools, workflows, and applied systems.
 - Prompting, evaluation, retrieval, agents, ethics, and production patterns.
+
+## Source Subfolders
+
+- `notes`
+- `materials`
+- `assignment`
+
+## Key Concepts
 
 ## Key Concepts
 

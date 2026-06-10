@@ -1,3 +1,9 @@
+---
+type: subject-index
+status: active
+code: "94691"
+name: "94691 Deep Learning"
+---
 # 94691 Deep Learning
 
 Semester: [Sem3 2026 Autumn](../../01-semesters/sem3-2026-autumn.md)

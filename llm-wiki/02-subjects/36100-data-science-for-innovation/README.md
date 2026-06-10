@@ -1,3 +1,9 @@
+---
+type: subject-index
+status: active
+code: "36100"
+name: "36100 Data Science for Innovation"
+---
 # 36100 Data Science for Innovation
 
 Semester: [Sem1 2025 Autumn](../../01-semesters/sem1-2025-autumn.md)

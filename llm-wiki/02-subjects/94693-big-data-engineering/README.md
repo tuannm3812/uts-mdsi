@@ -1,3 +1,9 @@
+---
+type: subject-index
+status: active
+code: "94693"
+name: "94693 Big Data Engineering"
+---
 # 94693 Big Data Engineering
 
 Semester: [Sem2 2025 Spring](../../01-semesters/sem2-2025-spring.md)
