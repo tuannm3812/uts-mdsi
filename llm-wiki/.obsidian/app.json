@@ -1,0 +1,17 @@
+{
+  "attachmentFolderPath": "assets",
+  "alwaysUpdateLinks": true,
+  "newFileLocation": "current",
+  "readableLineLength": true,
+  "showUnsupportedFiles": true,
+  "showInlineTitle": true,
+  "spellcheck": true,
+  "userIgnoreFilters": [
+    "*/raw/**/.git/**",
+    "*/raw/**/__pycache__/**",
+    "*/raw/**/node_modules/**",
+    "*/raw/**/venv*/**",
+    "*/raw/**/.venv/**"
+  ]
+}
+

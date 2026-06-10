@@ -1,0 +1,14 @@
+# Raw course files copied from Google Drive for local LLM indexing.
+# Keep them in the repo working tree, but do not commit large binaries by default.
+llm-wiki/02-subjects/**/lectures/raw/
+llm-wiki/02-subjects/**/assignments/raw/
+llm-wiki/02-subjects/**/notebooks/raw/
+llm-wiki/02-subjects/**/sources/raw/
+
+# Local OS metadata.
+.DS_Store
+__MACOSX/
+
+# Obsidian local UI state; keep vault settings, not per-machine workspace state.
+llm-wiki/.obsidian/workspace*.json
+llm-wiki/.obsidian/cache

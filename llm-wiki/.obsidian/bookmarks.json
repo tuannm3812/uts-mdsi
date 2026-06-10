@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "type": "file",
+      "ctime": 0,
+      "path": "README.md",
+      "title": "Vault Home"
+    },
+    {
+      "type": "file",
+      "ctime": 0,
+      "path": "00-admin/course-map.md",
+      "title": "Course Map"
+    },
+    {
+      "type": "file",
+      "ctime": 0,
+      "path": "00-admin/vault-structure.md",
+      "title": "Vault Structure"
+    },
+    {
+      "type": "file",
+      "ctime": 0,
+      "path": "04-assessments/assessment-calendar.md",
+      "title": "Assessment Calendar"
+    },
+    {
+      "type": "file",
+      "ctime": 0,
+      "path": "02-subjects/README.md",
+      "title": "Subjects"
+    }
+  ]
+}
