@@ -79,7 +79,7 @@ Use this page as the curated entry point for the subject. Raw copied files are u
 
 ## Assessment Links
 
-- [ASSIGNMENT 2](assignments/assignment-2.md)
+- [AT2](assignments/at2.md)
 
 ## LLM Study Prompts
 
