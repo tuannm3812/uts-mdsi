@@ -123,11 +123,23 @@ Subjects:
 - `llm-wiki/00-admin/import-summary.md` (new or updated)
 - `llm-wiki/00-admin/drive-import-manifest` consumers (if any)
 
-- [ ] Add deterministic file ordering and clear duplicate handling for reruns.
-- [ ] Add checksum-based short-circuit when file already exists and unchanged.
-- [ ] Add explicit `dry-run` flag support and summary mode.
-- [ ] Add error log file: `docs/superpowers/audit/import-errors-YYYY-MM-DD.json`.
-- [ ] Validate `REFERENCE_ONLY_EXTENSIONS` policy for all semesters and document any exceptions.
+- [x] Add deterministic file ordering and clear duplicate handling for reruns.
+- [x] Add checksum-based short-circuit when file already exists and unchanged.
+- [x] Add explicit `dry-run` flag support and summary mode.
+- [x] Add error log file: `docs/superpowers/audit/import-errors-YYYY-MM-DD.json`.
+- [x] Validate `REFERENCE_ONLY_EXTENSIONS` policy for all semesters and document any exceptions.
+
+### Task 4 execution notes (completed)
+
+- `scripts/import_drive_subjects.py` now supports:
+  - deterministic traversal and stable row ordering
+  - duplicate destination detection
+  - checksum short-circuit via SHA-256 for existing files
+  - `--dry-run` mode and `--summary` output
+  - per-run JSON error log in `docs/superpowers/audit/import-errors-YYYY-MM-DD.json`
+  - reference-only policy validation and documented status in summary
+- `llm-wiki/00-admin/drive-import-manifest.csv` now includes checksum columns.
+- `llm-wiki/00-admin/import-summary.md` and generated subject inventories are updated by the same run.
 
 ## Task 5: Quality Gates / Linting Script
 

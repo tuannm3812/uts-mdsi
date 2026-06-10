@@ -1,27 +1,16 @@
-# GENAI GenAI - Assignments
+# Genai - Assignments
 
-Assessment briefs, rubric checklists, draft reviews, and copied raw assessment files.
-
-## Assessment Pages
-
-- [AT1](at1.md)
-- [Evidence Map](evidence-map.md)
-- [Assessment Planning (compatibility)](assessment-planning.md)
-
-## Standard Review Workflow
-
-1. Copy the official task and rubric into the assessment page.
-2. Convert the rubric into a checklist.
-3. Draft against the checklist.
-4. Ask the LLM for strict marker-style feedback.
-5. Verify claims, citations, code, calculations, and academic integrity requirements.
+Assessment briefs, rubric checklists, draft-review notes, and copied assignment materials.
 
 ## Raw Imports
 
 Raw copied files, when present, live in `raw/`.
 
 Imported or referenced source count for this bucket: 0
+Current filesystem entries under `raw/`: 0
 
-## LLM Review Prompt
+## Working Notes
 
-Act as a strict UTS marker. Compare my draft against the official task and rubric. Return missing requirements, weak evidence, unclear reasoning, citation issues, and concrete revisions.
+- Add curated notes in this folder, beside `raw/`.
+- Keep source-specific file maps in `sources/`.
+- Link durable concepts to `../../03-shared-concepts/`.

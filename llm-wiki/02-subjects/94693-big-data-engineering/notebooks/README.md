@@ -14,7 +14,3 @@ Current filesystem entries under `raw/`: 44
 - Add curated notes in this folder, beside `raw/`.
 - Keep source-specific file maps in `sources/`.
 - Link durable concepts to `../../03-shared-concepts/`.
-
-## Curated Notebook Notes
-
-- [Lab Notes](lab-notes.md)

@@ -7,7 +7,7 @@ Notebook files, code walkthroughs, experiment notes, and reproducibility notes.
 Raw copied files, when present, live in `raw/`.
 
 Imported or referenced source count for this bucket: 37
-Current filesystem entries under `raw/`: 39
+Current filesystem entries under `raw/`: 38
 
 ## Working Notes
 

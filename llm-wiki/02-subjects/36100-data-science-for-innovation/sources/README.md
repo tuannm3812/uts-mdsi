@@ -7,7 +7,7 @@ Drive source inventories, raw source references, readings, and imported file map
 Raw copied files, when present, live in `raw/`.
 
 Imported or referenced source count for this bucket: 4
-Current filesystem entries under `raw/`: 5
+Current filesystem entries under `raw/`: 4
 
 ## Working Notes
 
