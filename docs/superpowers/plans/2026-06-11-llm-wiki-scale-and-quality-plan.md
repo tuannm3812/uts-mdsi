@@ -148,18 +148,22 @@ Subjects:
 - New: `scripts/requirements.txt` (if adding third-party libs; keep stdlib preferred)
 - New: `Makefile` target `make quality`
 
-- [ ] Build checks:
+- [x] Build checks:
   - every assignment folder has README + assessment-planning
   - AT link exists and file exists
   - markdown links are valid relative paths
   - no duplicate source files under `sources/raw/` and `lectures/raw/` unless expected
   - frontmatter required fields present for subject/assignment pages
-- [ ] Add non-blocking warnings for optional issues and hard errors for critical schema misses.
-- [ ] Run with:
+- [x] Add non-blocking warnings for optional issues and hard errors for critical schema misses.
+- [x] Run with:
 ```bash
 python3 scripts/audit_llm_wiki.py --strict
 ```
-- [ ] Gate merges/pushes through this check.
+- [x] Gate merges/pushes through this check.
+
+- [x] Task 5 execution notes (completed):
+  - `python3 scripts/audit_llm_wiki.py --strict` returns zero errors and zero warnings.
+  - `make quality` and `make quality-full` both pass cleanly after duplicate-basename normalization.
 
 ## Task 6: Subject Onboarding Pipeline for New Subjects
 
