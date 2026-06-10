@@ -4,7 +4,7 @@ Source subject: `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812
 
 | Status | Bucket | Size | Source |
 |---|---|---:|---|
-| copied | sources | 175 | `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem1_2025 Autumn/36122 Python Programming/36122 Python Programming - Autumn 2025.gdoc` |
+| referenced-binary-file | sources | 0 | `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem1_2025 Autumn/36122 Python Programming/36122 Python Programming - Autumn 2025.gdoc` |
 | referenced-binary-file | assignments | 0 | `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem1_2025 Autumn/36122 Python Programming/assignment/demo/Back_end-main.zip` |
 | already-copied | assignments | 0 | `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem1_2025 Autumn/36122 Python Programming/assignment/demo/Back_end-main/.env` |
 | already-copied | assignments | 0 | `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem1_2025 Autumn/36122 Python Programming/assignment/demo/Back_end-main/.gitattributes` |
@@ -47,11 +47,11 @@ Source subject: `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812
 | already-copied | assignments | 0 | `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem1_2025 Autumn/36122 Python Programming/assignment/ManhTuanNguyen_week6_assignment.pdf` |
 | already-copied | assignments | 0 | `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem1_2025 Autumn/36122 Python Programming/assignment/News_Aggregator_README.pdf` |
 | already-copied | assignments | 0 | `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem1_2025 Autumn/36122 Python Programming/assignment/News_Aggregator_Report.pdf` |
-| already-copied | assignments | 0 | `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem1_2025 Autumn/36122 Python Programming/assignment/README.md` |
+| copied | assignments | 2252 | `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem1_2025 Autumn/36122 Python Programming/assignment/README.md` |
 | already-copied | assignments | 0 | `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem1_2025 Autumn/36122 Python Programming/assignment/Untitled0.ipynb` |
-| copied | sources | 175 | `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem1_2025 Autumn/36122 Python Programming/GDG_Python Master Class.gdoc` |
+| referenced-binary-file | sources | 0 | `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem1_2025 Autumn/36122 Python Programming/GDG_Python Master Class.gdoc` |
 | already-copied | notebooks | 0 | `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem1_2025 Autumn/36122 Python Programming/Google Colab shortcuts.png` |
-| copied | sources | 175 | `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem1_2025 Autumn/36122 Python Programming/Intro to TensorFlow for Deep Learning.gdoc` |
+| referenced-binary-file | sources | 0 | `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem1_2025 Autumn/36122 Python Programming/Intro to TensorFlow for Deep Learning.gdoc` |
 | already-copied | lectures | 0 | `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem1_2025 Autumn/36122 Python Programming/materials/01_uts_python_introduction.pdf` |
 | already-copied | lectures | 0 | `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem1_2025 Autumn/36122 Python Programming/materials/02_uts_conditions_list_loops.pdf` |
 | already-copied | lectures | 0 | `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem1_2025 Autumn/36122 Python Programming/materials/03_uts_functions_dictionaries.pdf` |
@@ -84,4 +84,4 @@ Source subject: `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812
 | already-copied | notebooks | 0 | `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem1_2025 Autumn/36122 Python Programming/notebooks/week5.ipynb` |
 | already-copied | notebooks | 0 | `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem1_2025 Autumn/36122 Python Programming/notebooks/week6.ipynb` |
 | already-copied | notebooks | 0 | `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem1_2025 Autumn/36122 Python Programming/notebooks/week8-25611551.html` |
-| already-copied | notebooks | 0 | `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem1_2025 Autumn/36122 Python Programming/notebooks/week8.ipynb` |
+| copied | notebooks | 41392 | `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem1_2025 Autumn/36122 Python Programming/notebooks/week8.ipynb` |

@@ -27,9 +27,12 @@ REFERENCE_ONLY_EXTENSIONS = {
     ".avi",
     ".bin",
     ".dmg",
+    ".gdoc",
     ".gz",
+    ".gslides",
     ".h5",
     ".heic",
+    ".gsheet",
     ".mov",
     ".mp4",
     ".parquet",
@@ -177,25 +180,25 @@ def evaluate_file(
     size = source_file.stat().st_size
 
     if source_file.suffix.lower() in REFERENCE_ONLY_EXTENSIONS:
-        return (STATUS_REFERENCED_BINARY, size, None, None, 0)
+        return (STATUS_REFERENCED_BINARY, size, "N/A", "N/A", 0)
     if size > MAX_COPY_BYTES:
-        return (STATUS_REFERENCED_LARGE, size, None, None, 0)
+        return (STATUS_REFERENCED_LARGE, size, "N/A", "N/A", 0)
 
     source_sha = None
+    source_sha = _checksum(source_file)
     if not dry_run:
         dest_file.parent.mkdir(parents=True, exist_ok=True)
 
     if not dest_file.exists():
         if not dry_run:
             shutil.copy2(source_file, dest_file)
-        return (STATUS_COPIED, size, None, None, size)
+        return (STATUS_COPIED, size, source_sha, source_sha, size)
 
     if not dest_file.is_file():
         raise IsADirectoryError(f"Destination exists and is not a file: {dest_file}")
 
     dest_size = dest_file.stat().st_size
     if dest_size == size:
-        source_sha = _checksum(source_file)
         dest_sha = _checksum(dest_file)
         if source_sha == dest_sha:
             return (
@@ -208,7 +211,10 @@ def evaluate_file(
 
     if not dry_run:
         shutil.copy2(source_file, dest_file)
-    return (STATUS_COPIED, size, None, None, size)
+        dest_sha = _checksum(dest_file)
+        return (STATUS_COPIED, size, source_sha, dest_sha, size)
+
+    return (STATUS_COPIED, size, source_sha, "", size)
 
 
 def validate_reference_policy(results: list[dict[str, str]]) -> tuple[list[dict[str, str]], int]:
@@ -411,8 +417,8 @@ def main() -> None:
                 "repo_file": "",
                 "status": STATUS_MISSING,
                 "bytes_copied": "0",
-                "source_checksum": "",
-                "repo_checksum": "",
+                "source_checksum": "N/A",
+                "repo_checksum": "N/A",
             }
             rows.append(row)
             subject_rows.append(row)
@@ -436,11 +442,11 @@ def main() -> None:
                     "target_bucket": bucket,
                     "source_file": str(source_file),
                     "repo_file": str(destination),
-                    "status": STATUS_DUPLICATE,
-                    "bytes_copied": "0",
-                    "source_checksum": "",
-                    "repo_checksum": "",
-                }
+                "status": STATUS_DUPLICATE,
+                "bytes_copied": "0",
+                "source_checksum": "N/A",
+                "repo_checksum": "N/A",
+            }
                 subject_rows.append(row)
                 rows.append(row)
                 errors.append(
@@ -470,8 +476,8 @@ def main() -> None:
                     "repo_file": str(destination),
                     "status": STATUS_ERROR,
                     "bytes_copied": "0",
-                    "source_checksum": "",
-                    "repo_checksum": "",
+                    "source_checksum": "N/A",
+                    "repo_checksum": "N/A",
                 }
                 rows.append(row)
                 subject_rows.append(row)

@@ -4,7 +4,7 @@ Source subject: `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812
 
 | Status | Bucket | Size | Source |
 |---|---|---:|---|
-| copied | sources | 175 | `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem4_2026 Spring/43008-Reinforcement-Learning/43008 Reinforcement Learning/43008 Reinforcement Learning.gdoc` |
+| referenced-binary-file | sources | 0 | `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem4_2026 Spring/43008-Reinforcement-Learning/43008 Reinforcement Learning/43008 Reinforcement Learning.gdoc` |
 | already-copied | sources | 0 | `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem4_2026 Spring/43008-Reinforcement-Learning/43008 Reinforcement Learning/index.html` |
 | already-copied | sources | 0 | `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem4_2026 Spring/43008-Reinforcement-Learning/43008 Reinforcement Learning/rl_slides/Week1-Introduction-2025.pdf` |
 | already-copied | sources | 0 | `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem4_2026 Spring/43008-Reinforcement-Learning/43008 Reinforcement Learning/rl_slides/Week1-Lecture-New-2025.pdf` |

@@ -5,10 +5,12 @@ import hashlib
 import re
 from pathlib import Path
 from collections import defaultdict
+import csv
 
 
 ROOT = Path(__file__).resolve().parents[1]
 SUBJECTS_ROOT = ROOT / "llm-wiki" / "02-subjects"
+MANIFEST_PATH = ROOT / "llm-wiki" / "00-admin" / "drive-import-manifest.csv"
 RAW_BUCKETS = ("assignments", "lectures", "notebooks", "sources")
 
 
@@ -81,6 +83,46 @@ def _resolve_subjects(selected: list[str], subject_regex: str | None) -> list[Pa
     return [SUBJECTS_ROOT / name for name in subject_names]
 
 
+def _normalize_manifest_renames(renames: list[tuple[Path, Path]], dry_run: bool) -> None:
+    if not renames:
+        return
+    if not MANIFEST_PATH.exists():
+        return
+
+    manifest_rows: list[dict[str, str]] = []
+    with MANIFEST_PATH.open(newline="", encoding="utf-8") as handle:
+        reader = csv.DictReader(handle)
+        manifest_rows = [row for row in reader]
+
+    if not manifest_rows:
+        return
+
+    lookup = {str(old): str(new) for old, new in renames}
+    changed = 0
+    for row in manifest_rows:
+        repo_file = row.get("repo_file")
+        if repo_file in lookup:
+            row["repo_file"] = lookup[repo_file]
+            changed += 1
+
+    if not changed:
+        return
+
+    if dry_run:
+        for old, new in renames:
+            if str(old) in lookup:
+                print(f"[dry-run] manifest: {old} -> {new}")
+        return
+
+    with MANIFEST_PATH.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=manifest_rows[0].keys(),
+        )
+        writer.writeheader()
+        writer.writerows(manifest_rows)
+
+
 def main() -> int:
     args = parse_args()
     subject_dirs = _resolve_subjects(args.subject, args.subject_regex)
@@ -91,6 +133,7 @@ def main() -> int:
 
     total_renames = 0
     total_groups = 0
+    renames: list[tuple[Path, Path]] = []
 
     for subject_dir in subject_dirs:
         for bucket in args.bucket:
@@ -108,12 +151,12 @@ def main() -> int:
                 continue
 
             for name, files in sorted(duplicates.items()):
-                signatures = {_file_signature(item) for item in files}
+                total_groups += 1
+                files_sorted = sorted(files, key=lambda p: p.as_posix().lower())
+                signatures = {_file_signature(file) for file in files_sorted}
                 if len(signatures) == 1:
                     continue
 
-                total_groups += 1
-                files_sorted = sorted(files, key=lambda p: p.as_posix().lower())
                 keep = files_sorted[0]
 
                 for path in files_sorted[1:]:
@@ -124,11 +167,14 @@ def main() -> int:
                         continue
 
                     total_renames += 1
+                    renames.append((path, candidate))
                     if args.dry_run:
                         print(f"[dry-run] {keep.name!r} kept; {path} -> {candidate}")
                     else:
                         path.rename(candidate)
                         print(f"renamed: {path} -> {candidate}")
+
+    _normalize_manifest_renames(renames, dry_run=args.dry_run)
 
     print(f"Duplicate basename groups checked: {total_groups}")
     print(f"Renames {'planned' if args.dry_run else 'performed'}: {total_renames}")
