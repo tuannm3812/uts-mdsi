@@ -47,6 +47,7 @@ Source folder: `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@
 - [Assignment Dashboard](assignments/README.md)
 - [Notebook Notes](notebooks/lab-notes.md)
 - [Revision Questions](questions/revision-questions.md)
+- [Glossary](glossary.md)
 
 ## Import Summary
 
