@@ -1,11 +1,11 @@
 ---
 type: assessment
-subject: 36118-applied-natural-language-processing
-code: 36118
+subject: 36120-advanced-machine-learning-application
+code: 36120
 status: planning
 ---
 
-# 36118 Assessment Planning
+# 36120 Assessment Planning
 
 Canonical AT workflow pages are now:
 `at1.md`, `at2.md`, `at3.md`

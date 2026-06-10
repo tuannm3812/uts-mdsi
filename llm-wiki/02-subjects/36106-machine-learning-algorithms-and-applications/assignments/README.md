@@ -3,7 +3,7 @@
 Assessment briefs, rubric checklists, draft reviews, and copied raw assessment files.
 
 ## Assessment Pages
-
+- [Assessment Planning (compatibility)](assessment-planning.md)
 - [AT1](at1.md)
 - [AT2](at2.md)
 - [AT3](at3.md)

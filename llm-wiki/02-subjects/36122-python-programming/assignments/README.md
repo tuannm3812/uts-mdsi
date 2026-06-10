@@ -3,7 +3,7 @@
 Assessment briefs, rubric checklists, and evidence links.
 
 ## Assessment Pages
-
+- [Assessment Planning (compatibility)](assessment-planning.md)
 - [AT1](at1.md)
 - [project](project.md)
 - [week-01](week-01.md)
