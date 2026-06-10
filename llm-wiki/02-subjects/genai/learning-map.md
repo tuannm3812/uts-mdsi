@@ -37,7 +37,7 @@ Use this page as the curated entry point for the subject. Raw copied files are u
 
 | Bucket | Source Count |
 |---|---:|
-| Lectures | 0 |
+| Lectures | 1 |
 | Assignments | 0 |
 | Notebooks | 0 |
 | Sources | 1 |
@@ -46,7 +46,7 @@ Use this page as the curated entry point for the subject. Raw copied files are u
 
 ### Lectures
 
-- No copied lecture files detected.
+- [session-01.md](lectures/session-01.md)
 
 ### Assignments
 
@@ -59,6 +59,7 @@ Use this page as the curated entry point for the subject. Raw copied files are u
 ## Assessment Links
 
 - [Assessment Planning](assignments/assessment-planning.md)
+- [Session 01 Notes](lectures/session-01.md)
 
 ## LLM Study Prompts
 
@@ -69,8 +70,8 @@ Use this page as the curated entry point for the subject. Raw copied files are u
 
 ## Maintenance Checklist
 
-- [ ] Weekly notes created
+- [x] Weekly notes created
 - [ ] Assignment pages created
 - [ ] Key notebooks explained
-- [ ] Shared concepts linked
-- [ ] Exam/revision questions added
+- [x] Shared concepts linked
+- [x] Exam/revision questions added
