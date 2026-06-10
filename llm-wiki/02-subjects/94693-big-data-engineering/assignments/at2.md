@@ -5,7 +5,7 @@ code: 94693
 status: planning
 ---
 
-# 94693 ASSIGNMENT 2
+# 94693 AT2
 
 ## Official Task
 

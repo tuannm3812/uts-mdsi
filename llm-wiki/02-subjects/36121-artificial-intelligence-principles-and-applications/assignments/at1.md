@@ -5,7 +5,7 @@ code: 36121
 status: planning
 ---
 
-# 36121 AT1 - Assessment Draft
+# 36121 AT1
 
 ## Official Task Evidence
 

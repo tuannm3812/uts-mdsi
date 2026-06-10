@@ -5,6 +5,6 @@ code: 94693
 status: planning
 ---
 
-# 94693 ASSIGNMENT 1
+# 94693 AT1
 
 Source files and notes are maintained in the canonical assessment page: `assignments/at1.md`.
