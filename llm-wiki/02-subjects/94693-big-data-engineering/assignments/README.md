@@ -1,12 +1,12 @@
 # 94693 Big Data Engineering - Assignments
 
-Assessment briefs, rubric checklists, draft reviews, and copied raw assessment files.
+Assessment briefs, rubric checklists, and copied raw assessment files.
 
 ## Assessment Pages
 
-- [ASSIGNMENT 1](assignment-1.md)
-- [ASSIGNMENT 3](assignment-3.md)
-- [ASSIGNMENT 2](assignment-2.md)
+- [AT1](at1.md)
+- [AT2](at2.md)
+- [AT3](at3.md)
 
 ## Standard Review Workflow
 
@@ -18,9 +18,8 @@ Assessment briefs, rubric checklists, draft reviews, and copied raw assessment f
 
 ## Raw Imports
 
-Raw copied files, when present, live in `raw/`.
-
-Imported or referenced source count for this bucket: 78
+Raw copied files, when present, live in `raw`.
+Imported or referenced source count for this bucket: 65
 
 ## LLM Review Prompt
 

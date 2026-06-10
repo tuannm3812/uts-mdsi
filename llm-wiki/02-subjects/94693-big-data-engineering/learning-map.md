@@ -108,9 +108,9 @@ Use this page as the curated entry point for the subject. Raw copied files are u
 
 ## Assessment Links
 
-- [ASSIGNMENT 1](assignments/assignment-1.md)
-- [ASSIGNMENT 2](assignments/assignment-2.md)
-- [ASSIGNMENT 3](assignments/assignment-3.md)
+- [AT1](assignments/at1.md)
+- [AT2](assignments/at2.md)
+- [AT3](assignments/at3.md)
 
 ## LLM Study Prompts
 

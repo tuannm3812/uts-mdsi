@@ -9,10 +9,20 @@ status: planning
 
 ## Official Task
 
-- Source:
-- Due date:
-- Weight:
-- Submission format:
+Source material is available under `assignments/raw/` and should be copied into this page before drafting.
+
+## Raw Source Files
+
+- `assignments/raw/dl_assignments/dl_at2/Assignment2-25739083-cover.pdf` (pdf)
+- `assignments/raw/dl_assignments/dl_at2/Assignment2-25739083.ipynb` (ipynb)
+- `assignments/raw/dl_assignments/dl_at2/Assignment2-25739083_report.pdf` (pdf)
+- `assignments/raw/dl_assignments/dl_at2/Deep Learning_AT2.ipynb` (ipynb)
+- `assignments/raw/dl_assignments/dl_at2/Deep Learning_AT2_v0.ipynb` (ipynb)
+- `assignments/raw/dl_assignments/dl_at2/Deep Learning_AT2_v1.ipynb` (ipynb)
+- `assignments/raw/dl_assignments/dl_at2/StoredFile.htm` (htm)
+- `assignments/raw/dl_assignments/dl_at2/Untitled0.ipynb` (ipynb)
+- `assignments/raw/dl_assignments/dl_at2/assignment_2_submission/Assignment2-25739083.ipynb` (ipynb)
+- `assignments/raw/dl_assignments/dl_at2/assignment_2_submission/Assignment2-25739083.pdf` (pdf)
 
 ## Rubric Checklist
 
@@ -34,12 +44,3 @@ status: planning
 | Final check | Submission-ready work | Not started |
 
 ## LLM Review Notes
-
-
-## Final Verification
-
-- [ ] Answer addresses the task directly
-- [ ] All claims are supported
-- [ ] Citations are verified
-- [ ] Code/notebook runs from a clean state where relevant
-- [ ] Final submission matches required format

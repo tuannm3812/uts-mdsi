@@ -20,6 +20,14 @@ status: draft
 | Week 08 | Object Detection with Faster R-CNN and SSD | 4 | [note](../lectures/week-08.md) |
 | Week 09 | Object Detection with YOLO and RF-DETR | 3 | [note](../lectures/week-09.md) |
 
+## Assignment Evidence
+
+| Assessment | Source File Count | Curated Note |
+|---|---:|---|
+| AT1 | 8 source files | [AT1](../assignments/at1.md) |
+| AT2 | 10 source files | [AT2](../assignments/at2.md) |
+| AT3 | 12 source files | [AT3](../assignments/at3.md) |
+
 ## Assignment Source Files
 
 - `assignments/raw/dl_assignments/dl_at1/Assignment1-PartA-25739083.ipynb`

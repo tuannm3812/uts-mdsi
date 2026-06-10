@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import json
 import re
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -162,6 +161,19 @@ def extract_notebook_text(path: Path, max_chars: int = 12000) -> str:
         return f"[Notebook extraction failed: {exc}]"
 
 
+def extract_text(path: Path, max_chars: int = 12000) -> str:
+    if path.suffix.lower() == ".pdf":
+        return extract_pdf_text(path, max_chars=max_chars)
+    if path.suffix.lower() == ".ipynb":
+        return extract_notebook_text(path, max_chars=max_chars)
+    if path.suffix.lower() in {".md", ".txt", ".json", ".csv", ".py"}:
+        try:
+            return clean_text(path.read_text(encoding="utf-8", errors="ignore"))[:max_chars]
+        except Exception:
+            return f"[Text read failed: {path.name}]"
+    return ""
+
+
 def week_from_name(path: Path) -> int | None:
     text = str(path)
     patterns = [
@@ -203,6 +215,109 @@ def collect_sources() -> dict[int, list[dict[str, str]]]:
         text = extract_notebook_text(path)
         by_week[week].append({"type": "notebook", "path": str(path.relative_to(SUBJECT)), "text": text})
     return by_week
+
+
+def detect_assignment_bucket(path: Path) -> str | None:
+    lower = str(path).lower()
+    if "dl_at1" in lower or "at1" in lower:
+        return "at1"
+    if "dl_at2" in lower or "at2" in lower:
+        return "at2"
+    if "dl_at3" in lower or "at3" in lower or "flickr_baseline" in lower:
+        return "at3"
+    return None
+
+
+def collect_assignments() -> dict[str, list[dict[str, str]]]:
+    payloads: dict[str, list[dict[str, str]]] = defaultdict(list)
+    for path in sorted(ASSIGNMENTS_RAW.rglob("*")):
+        if not path.is_file():
+            continue
+        bucket = detect_assignment_bucket(path)
+        if bucket is None:
+            continue
+        payloads[bucket].append(
+            {
+                "type": path.suffix.lower().lstrip(".") or "file",
+                "path": str(path.relative_to(SUBJECT)),
+                "text": extract_text(path),
+            }
+        )
+    return payloads
+
+
+def assignment_filename(bucket: str) -> str:
+    return f"assignments/{bucket}.md"
+
+
+def write_assignment_pages(assignment_payloads: dict[str, list[dict[str, str]]]) -> None:
+    for bucket, payload in sorted(assignment_payloads.items()):
+        source_lines = "\n".join(f"- `{item['path']}` ({item['type']})" for item in sorted(payload, key=lambda item: item["path"]))
+        if not source_lines:
+            source_lines = "- No source files detected."
+        write(
+            SUBJECT / assignment_filename(bucket),
+            "\n".join(
+                [
+                    "---",
+                    "type: assessment",
+                    "subject: 94691-deep-learning",
+                    "code: 94691",
+                    "status: planning",
+                    "---",
+                    "",
+                    f"# 94691 AT{bucket[-1]}",
+                    "",
+                    "## Official Task",
+                    "",
+                    "Source material is available under `assignments/raw/` and should be copied into this page before drafting.",
+                    "",
+                    "## Raw Source Files",
+                    "",
+                    source_lines,
+                    "",
+                    "## Rubric Checklist",
+                    "",
+                    "- [ ] Requirement 1:",
+                    "- [ ] Requirement 2:",
+                    "- [ ] Requirement 3:",
+                    "- [ ] Evidence and citations checked",
+                    "- [ ] Code, calculations, or outputs verified",
+                    "- [ ] Academic integrity requirements checked",
+                    "",
+                    "## Working Plan",
+                    "",
+                    "| Step | Output | Status |",
+                    "|---|---|---|",
+                    "| Understand task | Brief summary | Not started |",
+                    "| Gather sources | Relevant raw files and notes | Not started |",
+                    "| Draft | Initial response or notebook | Not started |",
+                    "| Review | Rubric-based critique | Not started |",
+                    "| Final check | Submission-ready work | Not started |",
+                    "",
+                    "## LLM Review Notes",
+                ]
+            ),
+        )
+
+        # Keep legacy compatibility pages used by older templates.
+        legacy = {"at1": "assignment1.md", "at2": "assignment2.md", "at3": "assignment-3.md"}.get(bucket)
+        if legacy:
+            legacy_path = SUBJECT / "assignments" / legacy
+            if legacy_path.exists():
+                legacy_path.unlink()
+            legacy_path.write_text(
+                f"---\n"
+                f"type: assessment\n"
+                f"subject: 94691-deep-learning\n"
+                f"code: 94691\n"
+                f"status: planning\n"
+                f"---\n\n"
+                f"# 94691 AT{bucket[-1]}\n\n"
+                "Source files and notes are maintained in the canonical assessment page: "
+                f"`{assignment_filename(bucket)}`.\n",
+                encoding="utf-8",
+            )
 
 
 def top_terms(text: str, n: int = 12) -> list[str]:
@@ -316,11 +431,15 @@ status: draft
     )
 
 
-def write_evidence_map(by_week: dict[int, list[dict[str, str]]]) -> None:
+def write_evidence_map(by_week: dict[int, list[dict[str, str]]], assignment_payloads: dict[str, list[dict[str, str]]]) -> None:
     assignment_files = sorted(str(p.relative_to(SUBJECT)) for p in ASSIGNMENTS_RAW.rglob("*") if p.is_file())
     weekly_rows = []
     for week, sources in sorted(by_week.items()):
         weekly_rows.append(f"| Week {week:02d} | {WEEK_TOPICS.get(week, '')} | {len(sources)} | [note](../lectures/week-{week:02d}.md) |")
+    assignment_rows = [
+        f"| {bucket.upper()} | {len(payload)} source files | [{bucket.upper()}](../assignments/{bucket}.md) |"
+        for bucket, payload in sorted(assignment_payloads.items())
+    ]
     assignment_lines = "\n".join(f"- `{path}`" for path in assignment_files[:40])
     write(
         SUBJECT / "assignments" / "evidence-map.md",
@@ -337,6 +456,12 @@ status: draft
 | Week | Topic | Source Count | Curated Note |
 |---|---|---:|---|
 {chr(10).join(weekly_rows)}
+
+## Assignment Evidence
+
+| Assessment | Source File Count | Curated Note |
+|---|---:|---|
+{chr(10).join(assignment_rows)}
 
 ## Assignment Source Files
 
@@ -381,13 +506,52 @@ def update_indexes(by_week: dict[int, list[dict[str, str]]]) -> None:
         )
     write(subject_readme, text)
 
+    assignment_readme = SUBJECT / "assignments" / "README.md"
+    assignment_file_count = len([p for p in ASSIGNMENTS_RAW.rglob("*") if p.is_file()])
+    write(
+        assignment_readme,
+        "\n".join(
+            [
+                "# 94691 Deep Learning - Assignments",
+                "",
+                "Assessment briefs, rubric checklists, and copied raw assessment files.",
+                "",
+                "## Assessment Pages",
+                "",
+                "- [AT1](at1.md)",
+                "- [AT2](at2.md)",
+                "- [AT3](at3.md)",
+                "",
+                "## Standard Review Workflow",
+                "",
+                "1. Copy the official task and rubric into the assessment page.",
+                "2. Convert the rubric into a checklist.",
+                "3. Draft against the checklist.",
+                "4. Ask the LLM for strict marker-style feedback.",
+                "5. Verify claims, citations, code, calculations, and academic integrity requirements.",
+                "",
+                "## Raw Imports",
+                "",
+                "Raw copied files, when present, live in `raw`.",
+                f"Imported or referenced source count for this bucket: {assignment_file_count}",
+                "",
+                "## LLM Review Prompt",
+                "",
+                "Act as a strict UTS marker. Compare my draft against the official task and rubric. "
+                "Return missing requirements, weak evidence, unclear reasoning, citation issues, and concrete revisions.",
+            ]
+        ),
+    )
+
 
 def main() -> None:
     by_week = collect_sources()
+    assignment_payloads = collect_assignments()
     for week, sources in sorted(by_week.items()):
         write_week_note(week, sources)
     write_glossary(by_week)
-    write_evidence_map(by_week)
+    write_evidence_map(by_week, assignment_payloads)
+    write_assignment_pages(assignment_payloads)
     update_indexes(by_week)
     print(f"Generated {len(by_week)} weekly notes for 94691 Deep Learning")
 

@@ -322,44 +322,50 @@ def collect_assignment_payloads() -> dict[str, list[str]]:
     return payloads
 
 
+def assignment_label(index: int | str) -> str:
+    value = str(int(index))
+    return f"at{value}"
+
+
 def write_assignment_pages(payloads: dict[str, list[str]]) -> None:
     for assignment in ["01", "02", "03"]:
         paths = sorted(payloads.get(assignment, []))
-        if not paths:
-            source_lines = "- No copied source files were detected in this assignment folder."
-            task_guess = "Source files were not detected automatically. Populate this assignment using your final handover and spec documents."
-            checklist = [
-                "Task scope and required outputs are defined in official task files.",
-                "Data inputs and schemas are identified and checked for consistency.",
-                "Pipeline logic and SQL/analytics flow are reproducible.",
-                "Final deliverables are checked against due date and required format.",
-            ]
-            at_link = ""
-        else:
+        if paths:
             source_lines = "\n".join(f"- `{path}`" for path in paths[:120])
-            if assignment == "01":
-                task_guess = (
-                    "AT1 appears to focus on trending-data ingestion, transformation, and query deliverables. "
-                    "Expected evidence includes SQL scripts, screenshots of handover, and architecture notes."
-                )
-            elif assignment == "02":
-                task_guess = (
-                    "AT2 appears to cover NYC taxi trip workflow and Databricks analytics refinement. "
-                    "Expected evidence includes notebooks, SQL/data exploration, and model/report documentation."
-                )
-            else:
-                task_guess = (
-                    "AT3 appears to be a final integration task. Confirm source brief and rubric files before assessment drafting."
-                )
-            checklist = [
-                "Convert raw outputs into reproducible notebook steps.",
-                "Document assumptions, schema interpretation, and edge-case handling.",
-                "Prepare one concise evidence map linking each deliverable to rubric requirements.",
-                "Review for consistency with grading criteria and word-count limits.",
-            ]
+        else:
+            source_lines = "- No copied source files were detected in this assignment folder."
+        if assignment == "01":
+            task_guess = (
+                "AT1 appears to focus on trending-data ingestion, transformation, and query deliverables. "
+                "Expected evidence includes SQL scripts, screenshots of handover, and architecture notes."
+            )
+        elif assignment == "02":
+            task_guess = (
+                "AT2 appears to cover NYC taxi trip workflow and Databricks analytics refinement. "
+                "Expected evidence includes notebooks, SQL/data exploration, and model/report documentation."
+            )
+        else:
+            task_guess = (
+                "AT3 appears to be a final integration task. Confirm source brief and rubric files before assessment drafting."
+            )
+        checklist = [
+            "Convert raw outputs into reproducible notebook steps.",
+            "Document assumptions, schema interpretation, and edge-case handling.",
+            "Prepare one concise evidence map linking each deliverable to rubric requirements.",
+            "Review for consistency with grading criteria and word-count limits.",
+        ]
+        assignment_num = int(assignment)
+        slug = assignment_label(assignment)
+        canonical_path = SUBJECT / "assignments" / f"{slug}.md"
+        legacy_name = f"assignment-{assignment_num}.md"
+        legacy_text = (
+            f"# 94693 ASSIGNMENT {assignment_num}\n\n"
+            "Source files and notes are maintained in the canonical assessment page: "
+            f"`assignments/{slug}.md`.\n"
+        )
 
         write(
-            SUBJECT / "assignments" / f"assignment-{int(assignment)}.md",
+            canonical_path,
             f"""---
 type: assessment
 subject: 94693-big-data-engineering
@@ -406,6 +412,86 @@ status: planning
 - [ ] Submission format matches the official requirement.
 """,
         )
+        write(
+            SUBJECT / "assignments" / legacy_name,
+            f"""---
+type: assessment
+subject: 94693-big-data-engineering
+code: 94693
+status: planning
+---
+
+{legacy_text}""",
+        )
+
+
+def write_evidence_map(payloads: dict[str, list[str]]) -> None:
+    assignment_rows = [
+        f"| AT{int(assignment)} | {len(paths)} source files | [AT{int(assignment)}](../assignments/{assignment_label(assignment)}.md) |"
+        for assignment, paths in sorted(payloads.items())
+    ]
+    source_rows = []
+    for assignment in ["01", "02", "03"]:
+        for path in sorted(payloads.get(assignment, [])):
+            source_rows.append(f"- `{path}`")
+    write(
+        SUBJECT / "assignments" / "evidence-map.md",
+        f"""---
+type: evidence-map
+subject: 94693-big-data-engineering
+status: draft
+---
+
+# 94693 Big Data Engineering - Assessment Evidence Map
+
+## Assessment Evidence
+
+| Assessment | Source File Count | Curated Assessment |
+|---|---:|---|
+{chr(10).join(assignment_rows) if assignment_rows else '- No assignment sources detected.'}
+
+## Assignment Source Files
+
+{chr(10).join(source_rows) if source_rows else '- No assignment source files were detected.'}
+""",
+    )
+
+
+def update_assignment_readme() -> None:
+    write(
+        SUBJECT / "assignments" / "README.md",
+        "\n".join(
+            [
+                "# 94693 Big Data Engineering - Assignments",
+                "",
+                "Assessment briefs, rubric checklists, and copied raw assessment files.",
+                "",
+                "## Assessment Pages",
+                "",
+                "- [AT1](at1.md)",
+                "- [AT2](at2.md)",
+                "- [AT3](at3.md)",
+                "",
+                "## Standard Review Workflow",
+                "",
+                "1. Copy the official task and rubric into the assessment page.",
+                "2. Convert the rubric into a checklist.",
+                "3. Draft against the checklist.",
+                "4. Ask the LLM for strict marker-style feedback.",
+                "5. Verify claims, citations, code, calculations, and academic integrity requirements.",
+                "",
+                "## Raw Imports",
+                "",
+                "Raw copied files, when present, live in `raw`.",
+                f"Imported or referenced source count for this bucket: {len([p for p in ASSIGNMENT_RAW.rglob('*') if p.is_file()])}",
+                "",
+                "## LLM Review Prompt",
+                "",
+                "Act as a strict UTS marker. Compare my draft against the official task and rubric. "
+                "Return missing requirements, weak evidence, unclear reasoning, citation issues, and concrete revisions.",
+            ]
+        ),
+    )
 
 
 def write_notebook_catalog() -> None:
@@ -582,9 +668,9 @@ def update_learning_map(by_session: dict[int, list[dict[str, str]]], payloads: d
         "",
         "## Assessment Links",
         "",
-        "- [ASSIGNMENT 1](assignments/assignment-1.md)",
-        "- [ASSIGNMENT 2](assignments/assignment-2.md)",
-        "- [ASSIGNMENT 3](assignments/assignment-3.md)",
+        "- [AT1](assignments/at1.md)",
+        "- [AT2](assignments/at2.md)",
+        "- [AT3](assignments/at3.md)",
         "",
         "## LLM Study Prompts",
         "",
@@ -632,6 +718,8 @@ def main() -> None:
     write_session_notes(by_session)
     payloads = collect_assignment_payloads()
     write_assignment_pages(payloads)
+    write_evidence_map(payloads)
+    update_assignment_readme()
     write_notebook_catalog()
     write_questions()
     update_learning_map(by_session, payloads)
