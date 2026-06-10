@@ -199,12 +199,19 @@ python3 scripts/create_obsidian_indexes.py --subject "36122-python-programming"
 - `llm-wiki/08-assets/README.md`
 - `llm-wiki/00-admin/vault-structure.md`
 
-- [ ] Publish a practical Obsidian setup section:
+- [x] Publish a practical Obsidian setup section:
   - workspace split for `02-subjects` + `03-shared-concepts`
   - graph settings for cross-links
   - common query snippets (Dataview if present)
-- [ ] Add consistent note naming conventions for rapid linking.
-- [ ] Add quick-start script for opening a fresh vault from this repo.
+- [x] Add consistent note naming conventions for rapid linking.
+- [x] Add quick-start script for opening a fresh vault from this repo.
+
+### Task 7 execution notes (completed)
+
+- Added `llm-wiki/00-admin/open-obsidian-vault.sh`.
+- Expanded `llm-wiki/00-admin/vault-structure.md` naming conventions and quick-start workflow guidance.
+- Expanded `llm-wiki/00-admin/obsidian-setup.md` launch fallback and workspace layout guidance.
+- Expanded `llm-wiki/08-assets/README.md` attachment conventions and link examples.
 
 ## Task 8: Link & Naming Consistency Cleanup
 

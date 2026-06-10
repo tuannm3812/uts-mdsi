@@ -33,10 +33,42 @@ Each subject uses the same internal structure:
 
 - Use lowercase kebab-case for file and folder paths.
 - Keep subject folders as `{subject-code}-{short-subject-name}`.
-- Keep durable notes as Markdown.
+- Keep durable notes as Markdown files with stable, human-readable names.
 - Keep copied course files inside `raw/` folders.
 - Do not rename raw imported files unless there is a specific reason; source filenames help trace back to Google Drive.
 - Prefer concise, descriptive note names such as `week-03-model-evaluation.md` or `at2-rubric-checklist.md`.
+
+### Recommended Naming Conventions
+
+Use these patterns unless the assignment or source file has a fixed public name:
+
+- Subject index: `README.md`
+- Subject learning map: `learning-map.md`
+- Lectures:
+  - `week-01.md`, `week-02.md`, ...
+  - `week-01-topic.md` when multiple notes for one week.
+- Assignments:
+  - `assessment-planning.md`
+  - `at1.md`, `at2.md`, ... when AT numbering is known.
+  - `week-01.md` if the assignment is week-based.
+  - `project.md` for project work.
+- Notebooks:
+  - `lab-notes.md`
+  - `notebook-01.md`, `notebook-02.md`, ...
+- Questions:
+  - `revision-questions.md`
+- Shared concepts:
+  - `kebab-case.md` (`attention-mechanisms.md`, `evaluation-metrics.md`)
+- Assets:
+  - `08-assets/<subject-folder>/<kebab-case>-YYYY-MM-DD.<ext>`
+
+### Quick Start
+
+- Open with `./00-admin/open-obsidian-vault.sh`.
+- In Obsidian:
+  - Open `02-subjects/` and jump to subject `README.md` files first.
+  - Prefer `03-shared-concepts/` for reuse across subjects.
+  - Put temporary prompts and review notes in `06-prompt-library/`.
 
 ## LLM Retrieval Rules
 
@@ -44,4 +76,3 @@ Each subject uses the same internal structure:
 - Use `raw/` files as source evidence, not as the main study interface.
 - Large datasets, videos, archives, and model weights are referenced in inventories rather than copied.
 - When an LLM answer matters for assessment, trace the claim back to a source file or official rubric.
-
