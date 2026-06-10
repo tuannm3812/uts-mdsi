@@ -44,7 +44,6 @@ This note was generated from copied lecture PDFs and notebooks. Treat it as a fi
 
 - code
 - output
-- placeholder
 - student
 - function
 - neural
