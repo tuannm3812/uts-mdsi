@@ -4,12 +4,9 @@ Assessment briefs, rubric checklists, draft reviews, and copied raw assessment f
 
 ## Assessment Pages
 
-- [ASSIGNMENT 1](assignment-1.md)
 - [AT1](at1.md)
-- [AT3](at3.md)
-- [ASSIGNMENT 3](assignment-3.md)
 - [AT2](at2.md)
-- [ASSIGNMENT 2](assignment-2.md)
+- [AT3](at3.md)
 
 ## Standard Review Workflow
 
