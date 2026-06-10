@@ -265,6 +265,19 @@ def write_manifest(rows: list[dict[str, str]], write_files: bool) -> None:
         writer.writerows(rows)
 
 
+def load_manifest_rows() -> list[dict[str, str]]:
+    """Load the existing manifest from disk for merge-style updates."""
+    if not MANIFEST_PATH.exists():
+        return []
+    with MANIFEST_PATH.open("r", newline="", encoding="utf-8") as f:
+        rows = list(csv.DictReader(f))
+    # Normalise any accidental BOM/whitespace in headers
+    for row in rows:
+        if "semester" in row and isinstance(row["semester"], str):
+            row["semester"] = row["semester"].strip()
+    return rows
+
+
 def write_subject_inventory(
     subject_rows: list[dict[str, str]],
     dst_subject: Path,
@@ -374,6 +387,7 @@ def main() -> None:
 
     rows: list[dict[str, str]] = []
     errors: list[dict[str, str]] = []
+    selected_subjects: set[str] = set()
 
     for semester, drive_subject, repo_subject in SUBJECTS:
         if subject_filter and repo_subject not in subject_filter:
@@ -385,6 +399,7 @@ def main() -> None:
         dst_subject = SUBJECTS_ROOT / repo_subject
         subject_rows: list[dict[str, str]] = []
         seen_dest_paths: set[Path] = set()
+        selected_subjects.add(repo_subject)
 
         if not src_subject.exists():
             row = {
@@ -498,9 +513,28 @@ def main() -> None:
         ),
     )
 
-    policy_exceptions, policy_candidates = validate_reference_policy(rows)
-    write_manifest(rows, not args.dry_run)
-    write_import_summary(rows, policy_exceptions, not args.dry_run)
+    rows_to_persist = rows
+    if subject_filter or subject_re:
+        existing_rows = load_manifest_rows()
+        existing_rows = [
+            row
+            for row in existing_rows
+            if row.get("repo_subject") not in selected_subjects
+        ]
+        rows_to_persist = existing_rows + rows
+
+        rows_to_persist = sorted(
+            rows_to_persist,
+            key=lambda r: (
+                r["repo_subject"],
+                r["target_bucket"],
+                r["source_file"],
+            ),
+        )
+    write_manifest(rows_to_persist, not args.dry_run)
+
+    policy_exceptions, policy_candidates = validate_reference_policy(rows_to_persist)
+    write_import_summary(rows_to_persist, policy_exceptions, not args.dry_run)
     error_log = write_error_log(errors, args.dry_run)
 
     if args.summary:
