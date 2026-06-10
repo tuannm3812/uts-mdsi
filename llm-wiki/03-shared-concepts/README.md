@@ -16,6 +16,7 @@ Shared concepts prevent repeated ideas from being trapped inside one subject. Us
 - [Deep Learning](deep-learning.md)
 - [Machine Learning](machine-learning.md)
 - [Natural Language Processing](natural-language-processing.md)
+- [Programming Fundamentals](programming.md)
 - [Prompt Library](prompt-library.md)
 - [Python](python.md)
 - [Reinforcement Learning](reinforcement-learning.md)
