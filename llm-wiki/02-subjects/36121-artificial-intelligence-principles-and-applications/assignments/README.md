@@ -20,5 +20,11 @@ Imported or referenced source count for this bucket: 7
 
 ## Raw Imports
 
+Raw copied files, when present, live in `raw/`.
+
 - AT1 source files: 4
 - AT3 source files: 3
+
+## LLM Review Prompt
+
+Act as a strict UTS marker. Compare my draft against the official task and rubric. Return missing requirements, weak evidence, unclear reasoning, citation issues, and concrete revisions.
