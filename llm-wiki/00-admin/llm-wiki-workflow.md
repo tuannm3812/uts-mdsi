@@ -6,6 +6,7 @@
 2. Add concise notes to the relevant subject page.
 3. Extract reusable ideas into `03-shared-concepts/`.
 4. Add source file names and dates so claims remain traceable.
+5. After importing, run `make normalize-raw` and `make quality` before publishing generated notes.
 
 ## Study
 
@@ -27,4 +28,3 @@
 - Add new concepts discovered in lectures.
 - Fill the assessment calendar.
 - Add prompts that worked well to `06-prompt-library/master-prompts.md`.
-

@@ -315,6 +315,7 @@ def check_duplicate_raw_basenames(subject_dir: Path, issues: list[Issue]) -> Non
         ("assignments/raw", subject_dir / "assignments" / "raw"),
         ("sources/raw", subject_dir / "sources" / "raw"),
         ("lectures/raw", subject_dir / "lectures" / "raw"),
+        ("notebooks/raw", subject_dir / "notebooks" / "raw"),
     ]
 
     for label, raw_dir in raw_dirs:
