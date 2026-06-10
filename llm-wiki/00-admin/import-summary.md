@@ -6,8 +6,8 @@ Source manifest: [drive-import-manifest.csv](drive-import-manifest.csv)
 
 | Status | Count |
 |---|---:|
-| already-copied | 1734 |
-| copied | 73 |
+| already-copied | 1731 |
+| copied | 76 |
 | referenced-binary-file | 92 |
 | referenced-large-file | 2 |
 
