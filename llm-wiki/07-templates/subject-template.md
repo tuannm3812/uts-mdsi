@@ -1,3 +1,8 @@
+---
+type: subject-index
+status: active
+---
+
 # CODE Subject Name
 
 Semester:

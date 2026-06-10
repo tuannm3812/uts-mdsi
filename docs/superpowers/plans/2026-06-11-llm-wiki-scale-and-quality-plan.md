@@ -38,7 +38,7 @@ No semantic changes to coursework content are planned in the first phase; focus 
 - New: `docs/superpowers/plans/2026-06-11-llm-wiki-scale-and-quality-plan.md` (this file)
 - New: `docs/superpowers/audit/subject-coverage-YYYY-MM-DD.json` (generated)
 
-- [ ] Export a full subject map from `scripts/import_drive_subjects.py`:
+- [x] Export a full subject map from `scripts/import_drive_subjects.py`:
 
 ```bash
 python3 scripts/import_drive_subjects.py
@@ -57,7 +57,29 @@ print(len(subjects), "subjects found:", ", ".join(subjects))
 PY
 ```
 
-- [ ] Record missing subject folders in a short gap list in this plan (owner: Lead Agent).
+- [x] Record missing subject folders in a short gap list in this plan (owner: Lead Agent).
+
+### Task 1 Execution Notes (completed)
+
+- `docs/superpowers/audit/subject-coverage-2026-06-11.json` created.
+- 13 subjects present under `llm-wiki/02-subjects`.
+- Missing subject folder list: none.
+
+Subjects:
+
+- 36100-data-science-for-innovation
+- 36103-statistical-thinking-for-data-science
+- 36104-data-visualisation-and-narratives
+- 36106-machine-learning-algorithms-and-applications
+- 36118-applied-natural-language-processing
+- 36120-advanced-machine-learning-application
+- 36121-artificial-intelligence-principles-and-applications
+- 36122-python-programming
+- 43008-reinforcement-learning
+- 94691-deep-learning
+- 94692-data-science-practice
+- 94693-big-data-engineering
+- genai
 
 ## Task 2: Formalize Content Contracts
 
@@ -67,15 +89,15 @@ PY
 - Modify: `llm-wiki/07-templates/concept-template.md`
 - Modify: `llm-wiki/07-templates/subject-template.md`
 
-- [ ] Define explicit required fields for each file class:
+- [x] Define explicit required fields for each file class:
   - `subject-index` frontmatter shape for `02-subjects/*/README.md`.
   - `assessment` frontmatter for `assignments/assessment-planning.md`.
   - Standard section ordering for assignments/lectures/questions/notebooks/readmes.
-- [ ] Add a canonical example in each template:
+- [x] Add a canonical example in each template:
   - Assessment Workflow
   - LLM Review Prompt block
   - Source count table/section
-- [ ] Add "What to do if unknown field" policy to avoid partial/inconsistent metadata.
+- [x] Add "What to do if unknown field" policy to avoid partial/inconsistent metadata.
 
 ## Task 3: Assignments Standardization (Parallel by subject)
 

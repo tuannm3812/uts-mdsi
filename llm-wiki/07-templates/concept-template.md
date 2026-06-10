@@ -1,3 +1,8 @@
+---
+type: concept
+status: draft
+---
+
 # Concept Name
 
 ## Definition
@@ -21,4 +26,3 @@
 ## Sources
 
 - 
-

@@ -1,0 +1,392 @@
+{
+  "subjects": {
+    "36100-data-science-for-innovation": {
+      "sources": {
+        "count": 4,
+        "bytes": 1628543,
+        "copied": 0,
+        "already-copied": 4,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 0
+      },
+      "assignments": {
+        "count": 45,
+        "bytes": 175988147,
+        "copied": 0,
+        "already-copied": 43,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 2
+      },
+      "lectures": {
+        "count": 14,
+        "bytes": 50349616,
+        "copied": 0,
+        "already-copied": 14,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 0
+      },
+      "notebooks": {
+        "count": 23,
+        "bytes": 6584069,
+        "copied": 0,
+        "already-copied": 23,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 0
+      }
+    },
+    "36106-machine-learning-algorithms-and-applications": {
+      "sources": {
+        "count": 33,
+        "bytes": 71591540,
+        "copied": 0,
+        "already-copied": 31,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 2
+      },
+      "assignments": {
+        "count": 89,
+        "bytes": 213085722,
+        "copied": 0,
+        "already-copied": 86,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 3
+      },
+      "lectures": {
+        "count": 16,
+        "bytes": 75131589,
+        "copied": 0,
+        "already-copied": 16,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 0
+      },
+      "notebooks": {
+        "count": 45,
+        "bytes": 122883628,
+        "copied": 0,
+        "already-copied": 45,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 0
+      }
+    },
+    "36122-python-programming": {
+      "sources": {
+        "count": 3,
+        "bytes": 525,
+        "copied": 0,
+        "already-copied": 3,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 0
+      },
+      "assignments": {
+        "count": 44,
+        "bytes": 112353761,
+        "copied": 0,
+        "already-copied": 42,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 2
+      },
+      "notebooks": {
+        "count": 24,
+        "bytes": 3074210,
+        "copied": 0,
+        "already-copied": 24,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 0
+      },
+      "lectures": {
+        "count": 10,
+        "bytes": 7644163,
+        "copied": 0,
+        "already-copied": 10,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 0
+      }
+    },
+    "36103-statistical-thinking-for-data-science": {
+      "sources": {
+        "count": 5,
+        "bytes": 5187763,
+        "copied": 0,
+        "already-copied": 5,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 0
+      },
+      "assignments": {
+        "count": 546,
+        "bytes": 149708541,
+        "copied": 0,
+        "already-copied": 546,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 0
+      },
+      "lectures": {
+        "count": 16,
+        "bytes": 24732138,
+        "copied": 0,
+        "already-copied": 16,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 0
+      },
+      "notebooks": {
+        "count": 16,
+        "bytes": 73145437,
+        "copied": 0,
+        "already-copied": 16,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 0
+      }
+    },
+    "36120-advanced-machine-learning-application": {
+      "sources": {
+        "count": 2,
+        "bytes": 31356140,
+        "copied": 0,
+        "already-copied": 1,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 1
+      },
+      "assignments": {
+        "count": 149,
+        "bytes": 121929414,
+        "copied": 0,
+        "already-copied": 113,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 36
+      },
+      "lectures": {
+        "count": 24,
+        "bytes": 63927297,
+        "copied": 0,
+        "already-copied": 24,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 0
+      },
+      "notebooks": {
+        "count": 41,
+        "bytes": 704227,
+        "copied": 0,
+        "already-copied": 41,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 0
+      }
+    },
+    "94693-big-data-engineering": {
+      "sources": {
+        "count": 4,
+        "bytes": 7424046,
+        "copied": 0,
+        "already-copied": 4,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 0
+      },
+      "assignments": {
+        "count": 78,
+        "bytes": 14820076803,
+        "copied": 0,
+        "already-copied": 70,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 8
+      },
+      "notebooks": {
+        "count": 42,
+        "bytes": 160034073,
+        "copied": 0,
+        "already-copied": 40,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 2
+      },
+      "lectures": {
+        "count": 16,
+        "bytes": 30679812,
+        "copied": 0,
+        "already-copied": 16,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 0
+      }
+    },
+    "36104-data-visualisation-and-narratives": {
+      "sources": {
+        "count": 5,
+        "bytes": 57314,
+        "copied": 0,
+        "already-copied": 4,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 1
+      },
+      "assignments": {
+        "count": 29,
+        "bytes": 314118922,
+        "copied": 0,
+        "already-copied": 27,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 2
+      },
+      "lectures": {
+        "count": 10,
+        "bytes": 41435678,
+        "copied": 0,
+        "already-copied": 10,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 0
+      }
+    },
+    "36121-artificial-intelligence-principles-and-applications": {
+      "sources": {
+        "count": 1,
+        "bytes": 175,
+        "copied": 0,
+        "already-copied": 1,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 0
+      },
+      "assignments": {
+        "count": 9,
+        "bytes": 614490645,
+        "copied": 0,
+        "already-copied": 8,
+        "referenced-large-file": 1,
+        "referenced-binary-file": 0
+      },
+      "lectures": {
+        "count": 29,
+        "bytes": 58127469,
+        "copied": 0,
+        "already-copied": 29,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 0
+      },
+      "notebooks": {
+        "count": 17,
+        "bytes": 2046118,
+        "copied": 0,
+        "already-copied": 17,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 0
+      }
+    },
+    "94691-deep-learning": {
+      "sources": {
+        "count": 1,
+        "bytes": 175,
+        "copied": 0,
+        "already-copied": 1,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 0
+      },
+      "lectures": {
+        "count": 38,
+        "bytes": 106069361,
+        "copied": 0,
+        "already-copied": 37,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 1
+      },
+      "assignments": {
+        "count": 51,
+        "bytes": 2162510440,
+        "copied": 0,
+        "already-copied": 32,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 19
+      },
+      "notebooks": {
+        "count": 67,
+        "bytes": 113257335,
+        "copied": 0,
+        "already-copied": 63,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 4
+      }
+    },
+    "94692-data-science-practice": {
+      "sources": {
+        "count": 20,
+        "bytes": 1861131,
+        "copied": 0,
+        "already-copied": 20,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 0
+      },
+      "assignments": {
+        "count": 49,
+        "bytes": 2929138,
+        "copied": 0,
+        "already-copied": 46,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 3
+      },
+      "lectures": {
+        "count": 10,
+        "bytes": 20556799,
+        "copied": 0,
+        "already-copied": 10,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 0
+      },
+      "notebooks": {
+        "count": 12,
+        "bytes": 25000002,
+        "copied": 0,
+        "already-copied": 10,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 2
+      }
+    },
+    "36118-applied-natural-language-processing": {
+      "sources": {
+        "count": 1,
+        "bytes": 175,
+        "copied": 0,
+        "already-copied": 1,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 0
+      },
+      "notebooks": {
+        "count": 37,
+        "bytes": 15180091,
+        "copied": 0,
+        "already-copied": 37,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 0
+      },
+      "assignments": {
+        "count": 34,
+        "bytes": 43173068,
+        "copied": 0,
+        "already-copied": 33,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 1
+      },
+      "lectures": {
+        "count": 61,
+        "bytes": 1124558534,
+        "copied": 0,
+        "already-copied": 57,
+        "referenced-large-file": 1,
+        "referenced-binary-file": 3
+      }
+    },
+    "43008-reinforcement-learning": {
+      "sources": {
+        "count": 130,
+        "bytes": 320619905,
+        "copied": 0,
+        "already-copied": 130,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 0
+      }
+    },
+    "genai": {
+      "sources": {
+        "count": 1,
+        "bytes": 31152,
+        "copied": 0,
+        "already-copied": 1,
+        "referenced-large-file": 0,
+        "referenced-binary-file": 0
+      }
+    }
+  },
+  "total_subjects": 13,
+  "total_rows": 1901
+}
