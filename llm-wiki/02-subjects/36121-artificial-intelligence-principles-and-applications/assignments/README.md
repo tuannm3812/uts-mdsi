@@ -1,10 +1,12 @@
 # 36121 Artificial Intelligence Principles and Applications - Assignments
 
-Assessment briefs, rubric checklists, draft reviews, and copied raw assessment files.
+Assessment briefs, rubric checklists, and evidence links.
 
 ## Assessment Pages
 
-- [ASSIGNMENT 1](assignment-1.md)
+- [AT1](at1.md)
+- [AT3](at3.md)
+- [Evidence Map](evidence-map.md)
 
 ## Standard Review Workflow
 
@@ -12,14 +14,11 @@ Assessment briefs, rubric checklists, draft reviews, and copied raw assessment f
 2. Convert the rubric into a checklist.
 3. Draft against the checklist.
 4. Ask the LLM for strict marker-style feedback.
-5. Verify claims, citations, code, calculations, and academic integrity requirements.
+5. Verify claims, citations, code, calculations, and format requirements.
+
+Imported or referenced source count for this bucket: 7
 
 ## Raw Imports
 
-Raw copied files, when present, live in `raw/`.
-
-Imported or referenced source count for this bucket: 9
-
-## LLM Review Prompt
-
-Act as a strict UTS marker. Compare my draft against the official task and rubric. Return missing requirements, weak evidence, unclear reasoning, citation issues, and concrete revisions.
+- AT1 source files: 4
+- AT3 source files: 3

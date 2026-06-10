@@ -6,16 +6,15 @@ Source folder: `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@
 ## Folder Convention
 
 - `lectures/`: weekly lecture summaries and extracted concepts
-- `assignments/`: assessment briefs, rubric checklists, draft reviews
-- `notebooks/`: notebook explanations, experiment logs, code review notes
+- `assignments/`: assessment briefs, rubric checklists, evidence maps
+- `notebooks/`: notebook explanations, code review notes, reproducibility evidence
 - `sources/`: source-file inventories and reading notes tied to this subject
 - `questions/`: exam drills, open questions, and tutor prompts
 
-
 ## What This Subject Is About
 
-- Foundations and applications of artificial intelligence.
-- Search, reasoning, learning systems, and applied AI framing.
+- AI foundations, search, symbolic reasoning, and applied machine-learning concepts.
+- Evaluation under uncertainty and practical deployment constraints.
 
 ## Source Subfolders
 
@@ -33,22 +32,24 @@ Source folder: `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@
 
 | Assessment | Due Date | Weight | Status | Notes |
 |---|---:|---:|---|---|
-|  |  |  |  |  |
+| AT1 |  |  | Draft created | Evidence pages are linked. |
+| AT3 |  |  | Draft created | Evidence pages are linked. |
 
 ## LLM Tutor Prompts
 
-- Explain this AI method as a decision process.
-- Compare symbolic, statistical, and neural approaches.
-- Generate exam questions from the current module.
+- Explain AI methods as a selection and evaluation workflow.
+- Build evidence links from lectures and notebooks to each AT.
+- Generate short viva-style questions per topic cluster.
 
 ## Curated Study Layer
 
 - [Learning Map](learning-map.md)
-- [Assignment Dashboard](assignments/README.md)
+- [Assignments](assignments/README.md)
 - [Revision Questions](questions/revision-questions.md)
+- [Glossary](glossary.md)
 
 ## Import Summary
 
-- Copied/readable files: 55
+- Copied/readable files: 49
 - Referenced large or binary files: 1
 - Source inventory: [sources/drive-source-inventory.md](sources/drive-source-inventory.md)
