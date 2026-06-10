@@ -6,10 +6,11 @@ Source manifest: [drive-import-manifest.csv](drive-import-manifest.csv)
 
 | Status | Count |
 |---|---:|
-| already-copied | 1703 |
-| copied | 31 |
+| already-copied | 1705 |
+| copied | 29 |
 | referenced-binary-file | 165 |
 | referenced-large-file | 2 |
+
 
 ## Per-subject file-row totals
 
@@ -26,6 +27,7 @@ Source manifest: [drive-import-manifest.csv](drive-import-manifest.csv)
 - 94692-data-science-practice: 91
 - 94693-big-data-engineering: 140
 - genai: 1
+
 
 ## Reference Policy
 

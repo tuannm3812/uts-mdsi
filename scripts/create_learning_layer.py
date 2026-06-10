@@ -236,6 +236,21 @@ def read_manifest() -> tuple[dict[str, Counter], dict[str, list[dict[str, str]]]
     return counts, rows
 
 
+def iter_subjects(
+    subject_filter: list[str] | None = None,
+    subject_re: str | None = None,
+):
+    filter_set = set(subject_filter or [])
+    subject_pattern = re.compile(subject_re) if subject_re else None
+
+    for slug, data in SUBJECTS.items():
+        if filter_set and slug not in filter_set:
+            continue
+        if subject_pattern and not subject_pattern.search(slug):
+            continue
+        yield slug, data
+
+
 def source_name(path: str) -> str:
     return Path(path).name
 
@@ -278,6 +293,12 @@ def write(path: Path, text: str) -> None:
     path.write_text(text.rstrip() + "\n", encoding="utf-8")
 
 
+def write_if_missing(path: Path, text: str) -> None:
+    if path.exists() and path.read_text(encoding="utf-8").strip():
+        return
+    write(path, text)
+
+
 def concept_links(concepts: list[str]) -> str:
     return "\n".join(f"- [{Path(c).stem.replace('-', ' ').title()}]({c})" for c in concepts)
 
@@ -286,10 +307,13 @@ def bullet_list(items: list[str]) -> str:
     return "\n".join(f"- {item}" for item in items)
 
 
-def main() -> None:
+def main(
+    subject_filter: list[str] | None = None,
+    subject_re: str | None = None,
+) -> None:
     counts, rows_by_subject = read_manifest()
 
-    for slug, data in SUBJECTS.items():
+    for slug, data in iter_subjects(subject_filter, subject_re):
         subject_dir = SUBJECTS_ROOT / slug
         rows = rows_by_subject.get(slug, [])
         count = counts.get(slug, Counter())
@@ -306,8 +330,8 @@ def main() -> None:
             learning_map_assessment_links = ["- [Assessment Planning](assignments/assessment-planning.md)"]
             assignment_dashboard_links = ["- [Assessment Planning](assessment-planning.md)"]
 
-        write(
-            subject_dir / "learning-map.md",
+            write_if_missing(
+                subject_dir / "learning-map.md",
             f"""---
 type: learning-map
 subject: {slug}
@@ -384,7 +408,7 @@ Use this page as the curated entry point for the subject. Raw copied files are u
 
         assignment_index = subject_dir / "assignments" / "README.md"
         existing = assignment_index.read_text(encoding="utf-8") if assignment_index.exists() else ""
-        write(
+        write_if_missing(
             assignment_index,
             f"""# {data['code']} {data['title']} - Assignments
 
@@ -417,7 +441,7 @@ Act as a strict UTS marker. Compare my draft against the official task and rubri
         target_assessments = assessments or ["assessment-planning"]
         for name in target_assessments:
             title = name.upper().replace("-", " ")
-            write(
+            write_if_missing(
                 subject_dir / "assignments" / f"{name}.md",
                 f"""---
 type: assessment
@@ -467,7 +491,7 @@ status: planning
 """,
             )
 
-        write(
+        write_if_missing(
             subject_dir / "questions" / "revision-questions.md",
             f"""---
 type: question-bank
@@ -497,7 +521,7 @@ Create 20 questions for this subject using the learning map, lecture notes, note
         )
 
         readme = subject_dir / "README.md"
-        text = readme.read_text(encoding="utf-8")
+        text = readme.read_text(encoding="utf-8") if readme.exists() else f"# {data['code']} {data['title']}\n"
         insert = "\n## Curated Study Layer\n\n- [Learning Map](learning-map.md)\n- [Assignment Dashboard](assignments/README.md)\n- [Revision Questions](questions/revision-questions.md)\n"
         if "## Curated Study Layer" not in text:
             parts = text.split("\n## Import Summary", 1)
@@ -509,4 +533,10 @@ Create 20 questions for this subject using the learning map, lecture notes, note
 
 
 if __name__ == "__main__":
-    main()
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Generate learning layer notes for selected subjects")
+    parser.add_argument("--subject", nargs="*", help="Optional subject filter (repo_subject names)")
+    parser.add_argument("--subject-regex", help="Optional regex filter for repo_subject names")
+    args = parser.parse_args()
+    main(subject_filter=args.subject, subject_re=args.subject_regex)

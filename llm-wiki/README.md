@@ -61,8 +61,15 @@ Readable course files are copied into each subject folder under:
 
 Large binaries, model weights, videos, archives, and large datasets are referenced instead of copied. The full import log is in [00-admin/drive-import-manifest.csv](00-admin/drive-import-manifest.csv), and each subject has a `sources/drive-source-inventory.md` file.
 
-To rerun the import:
+To rerun a selected subject import and refresh onboarding scaffolding:
 
 ```bash
-python3 scripts/import_drive_subjects.py
+python3 scripts/import_drive_subjects.py --subject "36122-python-programming" --sync
+```
+
+To update only scaffolding for one or more subjects (no file copies):
+
+```bash
+python3 scripts/create_learning_layer.py --subject "36122-python-programming"
+python3 scripts/create_obsidian_indexes.py --subject "36122-python-programming"
 ```

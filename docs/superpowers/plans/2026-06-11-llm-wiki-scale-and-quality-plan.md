@@ -173,16 +173,24 @@ python3 scripts/audit_llm_wiki.py --strict
 - `scripts/import_drive_subjects.py`
 - `docs/superpowers/` runbooks
 
-- [ ] Add `--subject` mode to import and scaffold only selected subjects.
-- [ ] Auto-generate missing folders from template:
+- [x] Add `--subject` mode to import and scaffold only selected subjects.
+- [x] Auto-generate missing folders from template:
   - `lectures/raw`, `assignments/raw`, `notebooks/raw`, `sources/raw`
   - `README.md` placeholders for lectures/notebooks/questions
-- [ ] Add a single command:
+- [x] Add a single command:
 ```bash
 python3 scripts/import_drive_subjects.py --subject "36122-python-programming" --sync
 python3 scripts/create_obsidian_indexes.py --subject "36122-python-programming"
 ```
-- [ ] Add "rollback-safe" process: dry-run + manifest comparison.
+- [x] Add "rollback-safe" process: dry-run + manifest comparison.
+
+### Task 6 execution notes (completed)
+
+- `scripts/import_drive_subjects.py` now supports deterministic subject filtering and a `--sync` mode that also refreshes:
+  - `scripts/create_learning_layer.py` for learning-layer scaffolding
+  - `scripts/create_obsidian_indexes.py` for bucket README/subject summary sync
+- `scripts/create_learning_layer.py` and `scripts/create_obsidian_indexes.py` now support `--subject` and `--subject-regex`.
+- Added dry-run-aware onboarding flow and added `llm-wiki/00-admin/subject-onboarding-runbook.md`.
 
 ## Task 7: Obsidian Usability Enhancements
 

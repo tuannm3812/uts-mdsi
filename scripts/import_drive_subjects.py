@@ -386,6 +386,11 @@ def main() -> None:
         action="store_true",
         help="Continue importing when a copy/write error is encountered",
     )
+    parser.add_argument(
+        "--sync",
+        action="store_true",
+        help="After import, refresh learning-layer and obsidian scaffolding for selected subjects",
+    )
     args = parser.parse_args()
 
     subject_filter = set(args.subject or [])
@@ -529,7 +534,7 @@ def main() -> None:
         ]
         rows_to_persist = existing_rows + rows
 
-        rows_to_persist = sorted(
+    rows_to_persist = sorted(
             rows_to_persist,
             key=lambda r: (
                 r["repo_subject"],
@@ -554,6 +559,19 @@ def main() -> None:
     else:
         print(f"Manifest: {MANIFEST_PATH}")
         print(f"Error log: {error_log}")
+
+    if args.sync and not args.dry_run:
+        import create_learning_layer
+        import create_obsidian_indexes
+
+        create_learning_layer.main(subject_filter=args.subject, subject_re=args.subject_regex)
+        create_obsidian_indexes.main(
+            subject_filter=args.subject,
+            subject_re=args.subject_regex,
+        )
+
+    if args.sync and args.dry_run:
+        print("DRY RUN mode: --sync requested but scaffold writes are skipped.")
 
 
 if __name__ == "__main__":
