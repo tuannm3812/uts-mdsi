@@ -1,25 +1,19 @@
 # 36122 Python Programming - Assignments
 
-Assessment briefs, rubric checklists, draft reviews, and copied raw assessment files.
+Assessment briefs, rubric checklists, and evidence links.
 
 ## Assessment Pages
 
-- [Assessment Planning](assessment-planning.md)
+- [project](./project)
+- [week-01](./week-01)
+- [week-03](./week-03)
+- [week-04](./week-04)
+- [week-05](./week-05)
+- [week-06](./week-06)
+- [week-10](./week-10)
+- [week-12](./week-12)
+- [Evidence Map](evidence-map.md)
 
-## Standard Review Workflow
+## Source Count
 
-1. Copy the official task and rubric into the assessment page.
-2. Convert the rubric into a checklist.
-3. Draft against the checklist.
-4. Ask the LLM for strict marker-style feedback.
-5. Verify claims, citations, code, calculations, and academic integrity requirements.
-
-## Raw Imports
-
-Raw copied files, when present, live in `raw/`.
-
-Imported or referenced source count for this bucket: 44
-
-## LLM Review Prompt
-
-Act as a strict UTS marker. Compare my draft against the official task and rubric. Return missing requirements, weak evidence, unclear reasoning, citation issues, and concrete revisions.
+Imported or referenced assignment source files: 42
