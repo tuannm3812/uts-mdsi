@@ -4,7 +4,9 @@ Assessment briefs, rubric checklists, draft reviews, and copied raw assessment f
 
 ## Assessment Pages
 
-- [Assessment Planning](assessment-planning.md)
+- [AT1](at1.md)
+- [Evidence Map](evidence-map.md)
+- [Assessment Planning (compatibility)](assessment-planning.md)
 
 ## Standard Review Workflow
 

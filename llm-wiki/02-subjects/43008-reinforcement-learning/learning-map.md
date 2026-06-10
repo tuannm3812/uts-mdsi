@@ -58,7 +58,7 @@ Use this page as the curated entry point for the subject. Raw copied files are u
 
 ## Assessment Links
 
-- [Assessment Planning](assignments/assessment-planning.md)
+- [AT1](assignments/at1.md)
 
 ## LLM Study Prompts
 
@@ -70,7 +70,7 @@ Use this page as the curated entry point for the subject. Raw copied files are u
 ## Maintenance Checklist
 
 - [ ] Weekly notes created
-- [ ] Assignment pages created
+- [x] Assignment pages created
 - [ ] Key notebooks explained
 - [ ] Shared concepts linked
 - [ ] Exam/revision questions added
