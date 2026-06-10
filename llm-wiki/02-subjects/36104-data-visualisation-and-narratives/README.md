@@ -46,6 +46,8 @@ Source folder: `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@
 - [Learning Map](learning-map.md)
 - [Assignment Dashboard](assignments/README.md)
 - [Revision Questions](questions/revision-questions.md)
+- [Glossary](glossary.md)
+- [Assessment Evidence Map](assignments/evidence-map.md)
 
 ## Import Summary
 
