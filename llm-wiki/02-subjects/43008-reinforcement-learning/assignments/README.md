@@ -6,7 +6,9 @@ Assessment briefs, rubric checklists, draft-review notes, and copied assignment 
 ## Assessment Pages
 
 - [Assessment planning](assessment-planning.md)
-- [AT1](at1.md)
+- [AT1](at1.md) — MDP + Dynamic Programming, 35%, due 5 Sep 2025
+- [AT2](at2.md) — RL problem + DQN/Q-learning, 35%, due 17 Oct 2025
+- [AT3](at3.md) — Group final project, 30%, final due 24 Oct 2025
 
 ## Standard Review Workflow
 

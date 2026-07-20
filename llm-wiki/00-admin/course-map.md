@@ -7,7 +7,7 @@ status: active
 
 ## Source Folder
 
-`/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive`
+`~/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive`
 
 ## Semesters
 

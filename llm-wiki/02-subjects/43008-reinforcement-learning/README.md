@@ -53,9 +53,8 @@ Source folder: `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@
 - [Glossary](glossary.md)
 - [Assessment Evidence Map](assignments/evidence-map.md)
 
-
 ## Import Summary
 
-- Copied/readable files: 130
-- Referenced large or binary files: 0
+- Copied/readable files: 129
+- Referenced large or binary files: 1
 - Source inventory: [sources/drive-source-inventory.md](sources/drive-source-inventory.md)

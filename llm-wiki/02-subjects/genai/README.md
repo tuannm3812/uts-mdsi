@@ -7,7 +7,7 @@ name: "GenAI"
 # GenAI
 
 Semester: [Sem4 2026 Spring](../../01-semesters/sem4-2026-spring.md)
-Source folder: `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem4_2026 Spring/GenAI`
+Source folder: `~/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem4_2026 Spring/GenAI`
 
 ## Folder Convention
 
@@ -28,8 +28,6 @@ Source folder: `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@
 - `notes`
 - `materials`
 - `assignment`
-
-## Key Concepts
 
 ## Key Concepts
 
@@ -54,7 +52,6 @@ Source folder: `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@
 - [Learning Map](learning-map.md)
 - [Assignment Dashboard](assignments/README.md)
 - [Revision Questions](questions/revision-questions.md)
-
 
 ## Import Summary
 

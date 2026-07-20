@@ -1,8 +1,8 @@
 # Obsidian Setup
 
-Open this folder as the vault:
+Open this folder as the vault (the local clone of this repo, e.g. `~/Documents/GitHub/1. Study/uts-mdsi/llm-wiki`):
 
-`/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/10_Github/1. Study/uts-mdsi/llm-wiki`
+`<repo-root>/llm-wiki`
 
 ```bash
 # If this is a new session, launch Obsidian directly:

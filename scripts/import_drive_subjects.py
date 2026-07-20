@@ -11,9 +11,10 @@ from pathlib import Path
 from datetime import datetime
 
 
-DRIVE_ROOT = Path(
-    "/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/"
-    "My Drive/01_Study/0. Master/6. UTS Drive"
+DRIVE_ROOT = (
+    Path.home()
+    / "Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com"
+    / "My Drive/01_Study/0. Master/6. UTS Drive"
 )
 
 REPO_ROOT = Path(__file__).resolve().parents[1]

@@ -5,22 +5,22 @@ code: 43008
 status: planning
 ---
 
-# 43008 AT1
+# 43008 AT2
 
 ## Official Task
 
 - Source: `sources/raw/43008 Reinforcement Learning/rl_slides/Week1-Introduction-2025.pdf` (Week 1 slides, "Assessment Items")
-- Due date: 11:59pm Friday 5 September 2025 (Week 6)
+- Due date: 11:59pm Friday 17 October 2025 (Week 11)
 - Weight: 35%
-- Task: Formulate a given scenario as a finite-horizon MDP; use Markov Decision Process (MDP) formulation and Dynamic Programming to solve it.
+- Task: Formulate a given scenario as an RL problem and solve it using a combination of DQN, Q-learning, and other techniques.
 - Deliverables: Short report + code/implementation, submitted via Canvas.
 - Submission format: individual.
 
 ## Rubric Checklist
 
-- [ ] MDP formulation of the given scenario (states, actions, transitions, rewards, horizon)
-- [ ] Dynamic Programming solution implemented and correct
-- [ ] Short report explaining formulation and results
+- [ ] RL problem formulation (states, actions, rewards, policy)
+- [ ] Implementation of DQN and/or Q-learning (and any other technique used)
+- [ ] Comparison/justification of technique choices
 - [ ] Evidence and citations checked
 - [ ] Code, calculations, or outputs verified
 - [ ] Academic integrity requirements checked
@@ -37,7 +37,7 @@ status: planning
 
 ## Raw Source Files
 
-- No copied assessment sources detected yet (`assignments/raw/` does not exist for this subject). Only the Week 1 slide deck mentions the brief; the actual assignment spec/dataset was not found in the synced Drive folder — check Canvas or re-sync once available.
+- No copied assessment sources detected yet (`assignments/raw/` does not exist for this subject). Only the Week 1 slide deck mentions the brief; check Canvas or re-sync once the full spec/dataset is available.
 
 ## LLM Review Notes
 

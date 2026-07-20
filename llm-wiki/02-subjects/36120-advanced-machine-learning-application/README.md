@@ -55,9 +55,8 @@ Source folder: `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@
 - [Revision Questions](questions/revision-questions.md)
 - [Glossary](glossary.md)
 
-
 ## Import Summary
 
-- Copied/readable files: 179
-- Referenced large or binary files: 37
+- Copied/readable files: 168
+- Referenced large or binary files: 48
 - Source inventory: [sources/drive-source-inventory.md](sources/drive-source-inventory.md)
