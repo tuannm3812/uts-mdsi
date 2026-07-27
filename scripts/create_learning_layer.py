@@ -141,6 +141,38 @@ SUBJECTS = {
             "../../03-shared-concepts/academic-integrity.md",
         ],
     },
+    "36126-innovation-lab-research-project": {
+        "code": "36126",
+        "title": "Innovation Lab: Research Project",
+        "semester": "Sem4 2026 Spring",
+        "focus": [
+            "Research problem formulation",
+            "Literature review and synthesis",
+            "Experimental design and methodology",
+            "Empirical evaluation and reporting",
+        ],
+        "concepts": [
+            "../../03-shared-concepts/data-science-workflow.md",
+            "../../03-shared-concepts/machine-learning.md",
+            "../../03-shared-concepts/artificial-intelligence.md",
+        ],
+    },
+    "36127-innovation-lab-capstone-project": {
+        "code": "36127",
+        "title": "Innovation Lab: Capstone Project",
+        "semester": "Sem4 2026 Spring",
+        "focus": [
+            "Client problem framing and scoping",
+            "Production data and model pipelines",
+            "Validation and model governance",
+            "Stakeholder presentation and handover",
+        ],
+        "concepts": [
+            "../../03-shared-concepts/data-science-workflow.md",
+            "../../03-shared-concepts/machine-learning.md",
+            "../../03-shared-concepts/artificial-intelligence.md",
+        ],
+    },
     "43008-reinforcement-learning": {
         "code": "43008",
         "title": "Reinforcement Learning",

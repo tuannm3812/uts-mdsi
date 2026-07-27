@@ -31,8 +31,12 @@ status: active
 | Sem3 2026 Autumn | 94691 Deep Learning | [wiki](../02-subjects/94691-deep-learning/README.md) |
 | Sem3 2026 Autumn | 94692 Data Science Practice | [wiki](../02-subjects/94692-data-science-practice/README.md) |
 | Sem4 2026 Spring | 36118 Applied Natural Language Processing | [wiki](../02-subjects/36118-applied-natural-language-processing/README.md) |
-| Sem4 2026 Spring | 43008 Reinforcement Learning | [wiki](../02-subjects/43008-reinforcement-learning/README.md) |
-| Sem4 2026 Spring | GenAI | [wiki](../02-subjects/genai/README.md) |
+| Sem4 2026 Spring | 36126 Innovation Lab: Research Project | [wiki](../02-subjects/36126-innovation-lab-research-project/README.md) |
+| Sem4 2026 Spring | 36127 Innovation Lab: Capstone Project | [wiki](../02-subjects/36127-innovation-lab-capstone-project/README.md) |
+
+## Reference & Elective Subjects
+
+- [Reference & Elective Subjects Catalog](../02-subjects/reference-subjects.md)
 
 ## Cross-Subject Themes
 

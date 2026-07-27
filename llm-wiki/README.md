@@ -18,6 +18,7 @@ Use it with an LLM as a course tutor, synthesis engine, assignment reviewer, and
 - [Vault Structure](00-admin/vault-structure.md)
 - [Assessment Calendar](04-assessments/assessment-calendar.md)
 - [Master Prompts](06-prompt-library/master-prompts.md)
+- [Reference Subjects](02-subjects/reference-subjects.md)
 
 ## Semesters
 
@@ -26,7 +27,7 @@ Use it with an LLM as a course tutor, synthesis engine, assignment reviewer, and
 - [Sem3 2026 Autumn](01-semesters/sem3-2026-autumn.md)
 - [Sem4 2026 Spring](01-semesters/sem4-2026-spring.md)
 
-## Subjects
+## Core Curriculum Subjects
 
 - [36100 Data Science for Innovation](02-subjects/36100-data-science-for-innovation/README.md)
 - [36103 Statistical Thinking for Data Science](02-subjects/36103-statistical-thinking-for-data-science/README.md)
@@ -36,11 +37,15 @@ Use it with an LLM as a course tutor, synthesis engine, assignment reviewer, and
 - [36120 Advanced Machine Learning Application](02-subjects/36120-advanced-machine-learning-application/README.md)
 - [36121 Artificial Intelligence Principles and Applications](02-subjects/36121-artificial-intelligence-principles-and-applications/README.md)
 - [36122 Python Programming](02-subjects/36122-python-programming/README.md)
-- [43008 Reinforcement Learning](02-subjects/43008-reinforcement-learning/README.md)
+- [36126 Innovation Lab: Research Project](02-subjects/36126-innovation-lab-research-project/README.md)
+- [36127 Innovation Lab: Capstone Project](02-subjects/36127-innovation-lab-capstone-project/README.md)
 - [94691 Deep Learning](02-subjects/94691-deep-learning/README.md)
 - [94692 Data Science Practice](02-subjects/94692-data-science-practice/README.md)
 - [94693 Big Data Engineering](02-subjects/94693-big-data-engineering/README.md)
-- [GenAI](02-subjects/genai/README.md)
+
+## Reference & Elective Subjects
+
+- [Reference Subjects Catalog](02-subjects/reference-subjects.md) (Includes `43008 Reinforcement Learning`, `GenAI`, etc.)
 
 ## Operating Rules
 
@@ -60,16 +65,3 @@ Readable course files are copied into each subject folder under:
 - `sources/raw/`
 
 Large binaries, model weights, videos, archives, and large datasets are referenced instead of copied. The full import log is in [00-admin/drive-import-manifest.csv](00-admin/drive-import-manifest.csv), and each subject has a `sources/drive-source-inventory.md` file.
-
-To rerun a selected subject import and refresh onboarding scaffolding:
-
-```bash
-python3 scripts/import_drive_subjects.py --subject "36122-python-programming" --sync
-```
-
-To update only scaffolding for one or more subjects (no file copies):
-
-```bash
-python3 scripts/create_learning_layer.py --subject "36122-python-programming"
-python3 scripts/create_obsidian_indexes.py --subject "36122-python-programming"
-```
