@@ -7,7 +7,7 @@ name: "36126 Innovation Lab: Research Project"
 # 36126 Innovation Lab: Research Project
 
 Semester: [Sem4 2026 Spring](../../01-semesters/sem4-2026-spring.md)
-Source folder: `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem4_2026 Spring/36126 Innovation Lab Research Project`
+Source folder: `/Users/tuannm3812/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem4_2026 Spring/36126 Innovation Lab Research Project`
 
 ## Folder Convention
 
@@ -50,12 +50,12 @@ Source folder: `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@
 
 ## Curated Study Layer
 
-- [Spring 2026 Research Project Detailed Guide (Full 120KB Specifications)](sources/research-projects-detailed-guide-2026.md)
-- [Spring 2026 Research Project Topics Catalog](sources/research-projects-catalog-2026.md)
+- [Spring 2026 Research Topic Picker — 27 verified topics](sources/research-topic-picker-2026.md)
+- [Research Supervisor Outreach](assignments/supervisor-outreach-2026.md)
 - [Assignment Dashboard](assignments/README.md)
 
 ## Import Summary
 
-- Copied/readable files: 3 raw source documents
+- Copied/readable files: 2 raw Research source documents
 - Referenced large or binary files: 0
 - Source inventory: [sources/drive-source-inventory.md](sources/drive-source-inventory.md)

@@ -7,7 +7,7 @@ name: "36127 Innovation Lab: Capstone Project"
 # 36127 Innovation Lab: Capstone Project
 
 Semester: [Sem4 2026 Spring](../../01-semesters/sem4-2026-spring.md)
-Source folder: `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem4_2026 Spring/36127 Innovation Lab Capstone Project`
+Source folder: `/Users/tuannm3812/Library/CloudStorage/GoogleDrive-tuannm3812@gmail.com/My Drive/01_Study/0. Master/6. UTS Drive/Sem4_2026 Spring/36127 Innovation Lab Capstone Project`
 
 ## Folder Convention
 
@@ -50,10 +50,14 @@ Source folder: `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@
 
 ## Curated Study Layer
 
+- [Spring 2026 Capstone Topic Picker — 14 verified topics](sources/capstone-topic-picker-2026.md)
+- [Spring 2026 Kickoff Requirements](sources/36127-kickoff-requirements-spring-2026.md)
+- [Instructor Instructions Paste Area](assignments/instructor-instructions-capture.md)
+- [Group Formation Outreach](assignments/group-formation-outreach-2026.md)
 - [Assignment Dashboard](assignments/README.md)
 
 ## Import Summary
 
-- Copied/readable files: 0
+- Copied/readable files: 1 raw Capstone source document
 - Referenced large or binary files: 0
 - Source inventory: [sources/drive-source-inventory.md](sources/drive-source-inventory.md)
