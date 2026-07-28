@@ -3,7 +3,7 @@ type: assessment
 subject: 36118-applied-natural-language-processing
 code: 36118
 semester: 2026-spring
-status: planning
+status: in-progress
 ---
 
 # 36118 AT1 — Text Analysis
@@ -99,16 +99,16 @@ NLP techniques.
 
 ## Recommended Analytical Direction
 
-A promising question is:
+A defensible corpus-wide baseline question is:
 
-> **How do different types of submitters frame the expected benefits, risks,
-> and policy conditions of skilled migration?**
+> **Which expected-benefit, risk, and policy-condition themes recur across the
+> supplied submissions, and how consistently do those themes co-occur?**
 
-This question fits the inquiry, enables meaningful group comparisons, and
-avoids reducing the task to generic word counts. It requires a small metadata
-table mapping submission IDs to submitter names and categories such as
-individual, industry/employer, professional body, union/worker representative,
-government/public body, and research/community organisation.
+This version is answerable with the supplied files and avoids inventing
+submitter metadata. Once a reliable mapping is available, it can be extended
+to compare submitter categories such as individual, industry/employer,
+professional body, union/worker representative, government/public body, and
+research/community organisation.
 
 Possible evidence:
 
@@ -143,14 +143,14 @@ and report ambiguity.
 
 ## Immediate Next Actions
 
-1. Run the PDF inventory and extraction checks already provided in the current
-   AT1 README.
-2. Create `metadata.csv` with `submission_id`, `submitter_name`,
-   `submitter_type`, and `source_url`.
-3. Measure how many PDFs need OCR before choosing downstream methods.
-4. Review the proposed research question after seeing category sizes.
-5. Produce one baseline comparison before considering topic modelling,
-   clustering, embeddings, or an LLM.
+1. Manually inspect or OCR the four files flagged by the baseline as having
+   fewer than 500 extracted characters.
+2. Validate theme matches and non-matches against a stratified sample of source
+   PDFs; revise the dictionary and report the rule.
+3. Add verified representative excerpts for the strongest theme relationships.
+4. Create `metadata.csv` only if submitter identity and category can be mapped
+   reliably to every supplied file.
+5. Export the trusted clean run to PDF and inspect the report page by page.
 
 ## Academic-Integrity Boundary
 

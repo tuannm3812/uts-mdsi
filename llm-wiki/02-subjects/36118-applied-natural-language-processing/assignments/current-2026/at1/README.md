@@ -20,6 +20,11 @@ The rubric weights are:
 - `ANLP_AT1_Template_Sample.ipynb`
 - `36118_Spring_2026_AT1_Detailed_Description.pdf`
 - `36118_Spring_2026_AT1_FAQ.pdf`
+- `notebooks/1_skilled_migration_text_analysis.ipynb`: reproducible AT1
+  baseline using the complete supplied corpus
+- `docs/0_coding_standards.md`: AT1-specific adaptation of the repository's
+  master coding standard
+- `requirements-at1.txt`: Python 3.11 dependency ranges
 - `data/submissions-skilled-migration/submissions_Skilledmigration/`: **143 PDFs**, extracted from the supplied archive
 
 The official inquiry page lists submissions and can be used to build submitter metadata:
@@ -30,57 +35,19 @@ The official inquiry page lists submissions and can be used to build submitter m
 
 ## Start the Analysis
 
-Open `ANLP_AT1_Template_Sample.ipynb` from this directory. The following setup finds every PDF without depending on the current working directory:
+Use the dedicated Python 3.11 environment and open the numbered working
+notebook:
 
-```python
-from pathlib import Path
-
-data_dir = Path("data/submissions-skilled-migration/submissions_Skilledmigration")
-pdf_paths = sorted(data_dir.glob("*.pdf"))
-
-print(f"PDF files found: {len(pdf_paths)}")
-assert len(pdf_paths) == 143, "Unexpected dataset size—check extraction and path."
+```bash
+/opt/homebrew/bin/python3.11 -m pip install -r requirements-at1.txt
+jupyter lab notebooks/1_skilled_migration_text_analysis.ipynb
 ```
 
-Extract text with `pypdf`, while recording failures instead of stopping the whole run:
-
-```python
-from pypdf import PdfReader
-
-documents = []
-errors = []
-
-for pdf_path in pdf_paths:
-    try:
-        reader = PdfReader(pdf_path)
-        text = "\n".join(page.extract_text() or "" for page in reader.pages)
-        documents.append(
-            {
-                "submission_id": pdf_path.stem,
-                "filename": pdf_path.name,
-                "page_count": len(reader.pages),
-                "text": text,
-            }
-        )
-    except Exception as exc:
-        errors.append({"filename": pdf_path.name, "error": str(exc)})
-```
-
-Then create a dataframe and inspect data quality before analysis:
-
-```python
-import pandas as pd
-
-df = pd.DataFrame(documents)
-df["character_count"] = df["text"].str.len()
-df["word_count"] = df["text"].str.split().str.len()
-
-display(df[["submission_id", "page_count", "word_count"]].describe())
-display(df.nsmallest(10, "character_count"))
-print(f"Extraction errors: {len(errors)}")
-```
-
-Some PDFs may contain scanned pages. A very low character count is a signal to inspect the document and, if necessary, use OCR. Record OCR and cleaning choices because they affect reproducibility.
+The baseline accounts for all 143 PDFs, records extraction failures, and flags
+documents with fewer than 500 extracted characters. Its current question
+examines benefit, risk, and policy-condition themes without claiming that a
+keyword match reveals stance. Extend it through validation and reliable
+submitter metadata rather than adding unrelated NLP methods.
 
 ## Suggested Notebook Structure
 

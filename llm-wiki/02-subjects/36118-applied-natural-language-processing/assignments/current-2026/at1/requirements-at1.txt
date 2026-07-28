@@ -1,0 +1,9 @@
+jupyterlab>=4.4,<5
+ipykernel>=6.29,<8
+matplotlib>=3.9,<4
+nbconvert>=7.16,<8
+numpy>=1.26,<3
+pandas>=2.2,<3
+pypdf>=5,<7
+scikit-learn>=1.5,<2
+seaborn>=0.13,<1
