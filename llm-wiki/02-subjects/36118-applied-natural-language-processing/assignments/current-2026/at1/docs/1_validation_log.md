@@ -139,3 +139,26 @@ against passages from both sides of each comparison and recorded in
 The notebook labels these as qualitative checks rather than statistical tests.
 Each reported comparison retains the usable group denominator, and no excerpt
 is treated as representative of every member of its category.
+
+## 8. Sentence-Level Stance-Cue Audit
+
+The stance extension is multi-label and sentence-level. A theme-bearing
+sentence may contain **Benefit**, **Concern**, and **Recommendation / condition**
+cues simultaneously. Sentences without a configured cue remain
+`Context only / unclear`; they are not forced into a position.
+
+Using NumPy seed `42`, five initial examples from each detected label were
+manually reviewed in `validation/stance_validation_audit.csv`. Eighteen of the
+20 sampled labels were supported:
+
+1. `Sub006` copied the inquiry purpose, so a benefit word in that boilerplate
+   did not represent the submitter's stance. The known purpose wording is now
+   excluded.
+2. `Sub033` called skilled migration a “practical and timely solution,” which
+   the initial benefit patterns missed. A bounded `solution` cue was added.
+
+The audit also preserves multi-label human judgments even when only one
+sampled label is being evaluated. It is a development check, not an unbiased
+accuracy estimate. The output describes rhetorical cues rather than whole
+documents, cannot reliably resolve negation or third-party quotations, and
+does not justify labelling a submitter as simply supportive or opposed.
