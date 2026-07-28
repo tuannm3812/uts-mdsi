@@ -143,14 +143,10 @@ and report ambiguity.
 
 ## Immediate Next Actions
 
-1. Manually inspect or OCR the four files flagged by the baseline as having
-   fewer than 500 extracted characters.
-2. Validate theme matches and non-matches against a stratified sample of source
-   PDFs; revise the dictionary and report the rule.
-3. Add verified representative excerpts for the strongest theme relationships.
-4. Create `metadata.csv` only if submitter identity and category can be mapped
+1. Add verified representative excerpts for the strongest theme relationships.
+2. Create `metadata.csv` only if submitter identity and category can be mapped
    reliably to every supplied file.
-5. Export the trusted clean run to PDF and inspect the report page by page.
+3. Export the trusted clean run to PDF and inspect the report page by page.
 
 ## Academic-Integrity Boundary
 

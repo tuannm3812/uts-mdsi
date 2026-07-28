@@ -1,0 +1,5 @@
+# Optional preprocessing dependencies for image-based PDFs.
+# These are not needed once the ignored OCR sidecar files have been generated.
+pymupdf>=1.26,<2
+pypdf>=5,<7
+rapidocr-onnxruntime>=1.4,<2

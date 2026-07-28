@@ -24,7 +24,11 @@ The rubric weights are:
   baseline using the complete supplied corpus
 - `docs/0_coding_standards.md`: AT1-specific adaptation of the repository's
   master coding standard
+- `docs/1_validation_log.md`: extraction diagnosis and an 18-submission
+  theme-validation audit
 - `requirements-at1.txt`: Python 3.11 dependency ranges
+- `requirements-ocr.txt` and `scripts/ocr_low_text_pdfs.py`: optional local
+  OCR workflow for image-based submissions
 - `data/submissions-skilled-migration/submissions_Skilledmigration/`: **143 PDFs**, extracted from the supplied archive
 
 The official inquiry page lists submissions and can be used to build submitter metadata:
@@ -48,6 +52,14 @@ documents with fewer than 500 extracted characters. Its current question
 examines benefit, risk, and policy-condition themes without claiming that a
 keyword match reveals stance. Extend it through validation and reliable
 submitter metadata rather than adding unrelated NLP methods.
+
+The four image-based submissions have been recovered into ignored OCR
+sidecars. To reproduce that preprocessing:
+
+```bash
+/opt/homebrew/bin/python3.11 -m pip install -r requirements-ocr.txt
+/opt/homebrew/bin/python3.11 scripts/ocr_low_text_pdfs.py
+```
 
 ## Suggested Notebook Structure
 
