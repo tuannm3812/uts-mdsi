@@ -143,10 +143,9 @@ and report ambiguity.
 
 ## Immediate Next Actions
 
-1. Add verified representative excerpts for the strongest theme relationships.
-2. Create `metadata.csv` only if submitter identity and category can be mapped
+1. Create `metadata.csv` only if submitter identity and category can be mapped
    reliably to every supplied file.
-3. Export the trusted clean run to PDF and inspect the report page by page.
+2. Export the trusted clean run to PDF and inspect the report page by page.
 
 ## Academic-Integrity Boundary
 
