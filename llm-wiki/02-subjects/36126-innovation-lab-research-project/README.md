@@ -51,6 +51,9 @@ Source folder: `/Users/tuannm3812/Library/CloudStorage/GoogleDrive-tuannm3812@gm
 ## Curated Study Layer
 
 - [Spring 2026 Research Topic Picker — 27 verified topics](sources/research-topic-picker-2026.md)
+- [Dr Arnick Bushfire Supervision Log](assignments/arnick-bushfire-supervision-log-2026.md)
+- [Dr Arnick Topic Meeting Playbook](assignments/arnick-topic-meeting-playbook-2026.md)
+- [Dr Arnick Topic Meeting Playbook (PDF)](assignments/arnick-topic-meeting-playbook-2026.pdf)
 - [Research Supervisor Outreach](assignments/supervisor-outreach-2026.md)
 - [Assignment Dashboard](assignments/README.md)
 

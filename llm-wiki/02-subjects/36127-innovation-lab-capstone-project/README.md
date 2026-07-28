@@ -50,7 +50,7 @@ Source folder: `/Users/tuannm3812/Library/CloudStorage/GoogleDrive-tuannm3812@gm
 
 ## Curated Study Layer
 
-- [Spring 2026 Capstone Topic Picker — 14 verified topics](sources/capstone-topic-picker-2026.md)
+- [Spring 2026 Capstone Topic Picker — 16 verified topics](sources/capstone-topic-picker-2026.md)
 - [Spring 2026 Kickoff Requirements](sources/36127-kickoff-requirements-spring-2026.md)
 - [Instructor Instructions Paste Area](assignments/instructor-instructions-capture.md)
 - [Group Formation Outreach](assignments/group-formation-outreach-2026.md)

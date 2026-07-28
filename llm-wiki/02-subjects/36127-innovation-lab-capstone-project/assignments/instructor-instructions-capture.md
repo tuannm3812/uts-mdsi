@@ -80,12 +80,10 @@ Ali Anaissi
 - Allocation considers submission order, group completeness, preferences, and availability.
 - Students without a group may submit individually but are not guaranteed a preferred project.
 - Results are expected by the end of Week 1.
-- At least one project has been added since the original 13-project list.
+- The official list updated on 28 July contains 16 projects. Projects 15 and 16 are the latest additions.
 
 ## Questions to clarify
 
-- What is the title and specification of the newly added Project 14?
-- Have any other projects been added since the original PDF?
 - When preferences are reordered, does priority use the original or latest submission time?
 - Are the major assessments group or individual submissions? The kickoff slides conflict.
 - Project 14 says “Autumn 2026 semester, 12 August–21 October” inside the Spring 2026 list. Is that wording/date range correct?

@@ -2,12 +2,13 @@
 
 ## Recommended action order
 
-1. Reply immediately to **“Looking for members Project 14.”** Project 14 is now the preferred enterprise-knowledge topic.
+1. Reply immediately to **“Looking for members Project 14.”** Project 14 remains the preferred enterprise-knowledge topic and explicitly permits multiple teams.
 2. Also contact **“looking for teammates (11 > 10 > 13 > 12).”** Its first two choices match the preferred graph/RAG and LLM-assurance alternatives.
 3. If needed, reply to **“Looking for FINAL Teammate for Projects 10–13.”**
 4. Then contact **“Looking for Teammates for Projects 10–13.”**
 5. Contact the author of **“Spring 2026: Looking for a group, keen on the LLM/evaluation projects (#09, #10, #13)”** if the stronger graph-oriented groups are full.
-6. Open a new thread only if these targeted enquiries do not promptly produce a viable group.
+6. Also look for new posts mentioning Projects 15 and 16, which were added on 28 July and strongly match agent-development and evaluation skills.
+7. Open a new thread if these targeted enquiries do not promptly produce a viable group.
 
 It is fine to ask several groups about availability, but confirm membership with only one.
 
@@ -33,23 +34,26 @@ It is fine to ask several groups about availability, but confirm membership with
 
 ## New thread, only if needed
 
-**Title:** Looking for a committed Capstone group — Projects 14, 11, and 10
+**Title:** Forming a Capstone group — Projects 14, 15 and 11
 
-> Hi everyone, I’m Tuan and I’m looking to form or join a serious 36127 Capstone group.
+> Hi everyone, I’m Tuan and I’m looking to form a committed 36127 Capstone group.
 >
-> My current preference order is:
+> My preferred projects are 14, 15 and 11. My interests include LLMs, AI agents, RAG, knowledge graphs, evaluation and explainable AI. I can contribute Python, PyTorch, agent development, data engineering, application development, Git, testing and technical writing.
 >
-> 1. Project 14 — Organisational Knowledge Credibility
-> 2. Project 11 — Grounded NCC AI Assistant
-> 3. Project 10 — Automated LLM Verification and Assurance
+> If you are reliable, collaborative and able to commit the required weekly time, please message me with your preferred projects and key skills.
 >
-> My interests are enterprise AI, LLMs, RAG, knowledge graphs, graph ML, and explainable AI. I can contribute Python, PyTorch, NLP/agent development, data engineering, FastAPI, Streamlit, React, Docker, Git, testing, evaluation, and technical documentation.
->
-> I’m looking for teammates who can commit the required weekly time, communicate consistently, use Git for technical contributions, and aim for both a strong product and rigorous report.
->
-> Please reply with your preferred projects, key skills, availability, and whether you are already part of a partial group.
->
+> WhatsApp: [your phone number]
 > Portfolio: https://tuannm3812.github.io/
+
+## Updated preference recommendation — 28 July
+
+1. Project 14 — strongest overall fit and explicitly open to multiple teams
+2. Project 15 — strongest new agentic-AI fit
+3. Project 11 — well-scoped graph/RAG option with prepared data and starter resources
+
+If the final group strongly prefers coding agents, consider **14 → 15 → 16** instead.
+
+Because preferences close at **11:59 PM on 28 July 2026** and allocation is first-in, first-served, prioritise completing the group and submitting promptly. Do not delay solely to perfect the preference order.
 
 ## Questions before joining
 
