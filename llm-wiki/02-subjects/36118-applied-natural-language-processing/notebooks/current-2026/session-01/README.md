@@ -21,14 +21,21 @@ Local Jupyter is the most reliable setup for both the lecture notebooks and late
 python3.11 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
-python -m pip install jupyterlab pandas matplotlib seaborn nltk spacy beautifulsoup4 requests regex svgling wordcloud pypdf
+python -m pip install -r requirements-week-01.txt
 python -m spacy download en_core_web_sm
+python -m ipykernel install --user \
+  --name python311-nlp \
+  --display-name "Python 3.11 (NLP)"
 python -m jupyter lab
 ```
 
 Python **3.11** is recommended. The latest spaCy release may fail to resolve
 against Apple’s system Python 3.9. If Python 3.9 is unavoidable, use
 `python -m pip install "spacy==3.7.5"`; otherwise, do not pin spaCy.
+
+The requirements file covers all imports used across Part 1, Part 2, and the
+worked homework. The `en_core_web_sm` model is installed separately because it
+is a spaCy model package rather than a normal project dependency.
 
 Run this once in Python to install the resources used by the current notebooks:
 

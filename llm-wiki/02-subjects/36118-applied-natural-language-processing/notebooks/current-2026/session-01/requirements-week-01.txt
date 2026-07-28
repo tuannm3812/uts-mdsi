@@ -1,0 +1,19 @@
+# Runtime and notebook kernel
+jupyterlab>=4.4,<5
+ipykernel>=6.29,<8
+
+# Core NLP libraries
+spacy>=3.8,<3.9
+nltk>=3.9,<4
+regex>=2024.0
+svgling>=0.5,<1
+
+# Data acquisition and parsing
+requests>=2.32,<3
+beautifulsoup4>=4.13,<5
+
+# Data analysis and visualisation
+pandas>=2.2,<3
+matplotlib>=3.9,<4
+seaborn>=0.13,<1
+wordcloud>=1.9,<2
