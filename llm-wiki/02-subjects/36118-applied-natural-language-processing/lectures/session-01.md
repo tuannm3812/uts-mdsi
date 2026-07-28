@@ -356,7 +356,64 @@ columns. Record the order of operations, custom stopwords, tokenizer, library
 versions, and any rows removed. This makes the analysis reproducible and lets
 you trace a surprising result back to a specific preprocessing decision.
 
-## 10. Session 1 Practical Workflow
+## 10. Notebook Study Summary
+
+### 10.1 Part 1 — From Raw Text to Linguistic Structure
+
+Part 1 begins with three ways to obtain text: a Python variable, interactive
+input, and HTML retrieved with **requests** and parsed with
+**BeautifulSoup**. It then demonstrates how the same text can be represented
+at progressively richer levels:
+
+1. sentence and word tokens establish processing units;
+2. stopword filtering, stemming, and lemmatisation normalise selected forms;
+3. POS tags attach grammatical categories;
+4. named entities identify spans such as people and organisations;
+5. dependency relations represent head–dependent structure; and
+6. regex extracts explicitly formatted patterns.
+
+The central lesson is that every representation answers a different question.
+A stemmer is useful for consolidating counts but does not analyse grammar; a
+dependency parse adds syntax but does not guarantee correct interpretation;
+and regex is precise only when the target format is stable.
+
+### 10.2 Part 2 — From a Corpus to Exploratory Evidence
+
+Part 2 shifts the unit of analysis from one string to a collection of
+documents in a **pandas DataFrame**. The notebook models a repeatable EDA
+sequence: load, inspect, quantify missingness and length, tokenise, count,
+visualise, clean, and compare the result after cleaning.
+
+The frequency table, bar chart, n-gram list, and word cloud are alternative
+views of the same corpus rather than independent proof. A good explanation
+states the denominator, identifies the preprocessing version used, interprets
+the visible pattern, and acknowledges that frequent language is not
+automatically important, positive, or representative.
+
+### 10.3 Worked Homework — Testing the Building Blocks
+
+The worked homework turns the lecture concepts into six small, testable tasks:
+
+1. collect text while retaining a reproducible default;
+2. inspect tokens and sentences with spaCy;
+3. compare a transparent custom tokenizer with NLTK;
+4. extract citations and URLs with regex;
+5. compare corpus frequencies with standard, custom, and no stopword removal;
+6. scrape the four MDSI core subjects from the current UTS course page.
+
+The tokenizer comparison exposes a practical trade-off. The custom rules split
+“state-of-the-art,” preserve a complete URL, and convert “don’t” to `do` +
+`n't`, while NLTK preserves the hyphenated compound and splits the URL.
+Neither behaviour is universally superior; the appropriate boundary policy
+depends on the downstream task.
+
+The corpus exercise also shows why results must be compared across
+preprocessing choices. Without stopword removal, grammatical function words
+dominate. Standard stopwords reveal more content words, custom stopwords remove
+corpus-specific high-frequency names, and retaining punctuation makes marks
+such as commas and periods among the most frequent tokens.
+
+### 10.4 End-to-End Practical Workflow
 
 ```text
 collect text

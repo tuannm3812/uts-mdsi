@@ -18,7 +18,7 @@ relationship between current and archived notebooks.
 Local Jupyter is the most reliable setup for both the lecture notebooks and later PDF export for AT1.
 
 ```bash
-python3 -m venv .venv
+python3.11 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
 python -m pip install jupyterlab pandas matplotlib seaborn nltk spacy beautifulsoup4 requests regex svgling wordcloud pypdf
@@ -26,12 +26,17 @@ python -m spacy download en_core_web_sm
 python -m jupyter lab
 ```
 
+Python **3.11** is recommended. The latest spaCy release may fail to resolve
+against Apple’s system Python 3.9. If Python 3.9 is unavoidable, use
+`python -m pip install "spacy==3.7.5"`; otherwise, do not pin spaCy.
+
 Run this once in Python to install the resources used by the current notebooks:
 
 ```python
 import nltk
 
 for resource in [
+    "punkt",
     "punkt_tab",
     "averaged_perceptron_tagger_eng",
     "tagsets_json",
@@ -61,3 +66,16 @@ data_path = Path("Session1_CNN_Articles_2021-2023.csv")
 ## Current-Version Notes
 
 Part 1 now requests newer NLTK resource names such as **`punkt_tab`**, **`averaged_perceptron_tagger_eng`**, **`tagsets_json`**, and **`maxent_ne_chunker_tab`**. Use these current names if an older notebook or tutorial produces a resource lookup error.
+
+## Worked-Homework Troubleshooting
+
+- `ModuleNotFoundError: No module named 'spacy'`: activate the environment and
+  install the packages above.
+- `LookupError: Resource punkt... not found`: run the NLTK download cell; the
+  worked notebook downloads both `punkt` and `punkt_tab` for compatibility.
+- `OSError: Can't find model 'en_core_web_sm'`: run
+  `python -m spacy download en_core_web_sm`. The worked notebook falls back to
+  a blank English tokenizer, but POS tags and named entities require the model.
+- UTS scraping errors usually indicate a network restriction or page redesign.
+  The scraper uses table structure rather than presentation-specific CSS and
+  was verified against the live UTS page on 28 July 2026.

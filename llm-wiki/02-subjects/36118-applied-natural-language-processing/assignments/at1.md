@@ -2,49 +2,159 @@
 type: assessment
 subject: 36118-applied-natural-language-processing
 code: 36118
+semester: 2026-spring
 status: planning
 ---
 
-# 36118 AT1
+# 36118 AT1 — Text Analysis
 
-## Official Task
+## Official 2026 Task
 
-- Source:
-- Due date:
-- Weight:
-- Submission format:
+- **Due:** Wednesday, 19 August 2026
+- **Weight:** 30%
+- **Mode:** individual
+- **Corpus:** public submissions to the parliamentary inquiry into the value
+  of skilled migration to Australia
+- **Deliverables:** submit the `.ipynb` notebook and `.pdf` report separately
+- **Current sources:** [brief, FAQ, sample notebook, data setup, and checks](current-2026/at1/README.md)
 
-## Rubric Checklist
+The work must combine reproducible Python, suitable statistics and
+visualisations, and interpretation that answers a focused question. The rubric
+places more weight on communication than on technical breadth:
 
-- [ ] Requirement 1:
-- [ ] Requirement 2:
-- [ ] Requirement 3:
-- [ ] Evidence and citations checked
-- [ ] Code, calculations, or outputs verified
-- [ ] Academic integrity requirements checked
+1. Technical proficiency and justification: **35%**
+2. Explanations and visualisations: **40%**
+3. Readability, structure, and originality: **25%**
 
-## Working Plan
+## Should We Follow the Previous Reports?
 
-- Session 1 slides (`lectures/raw/archive-2025/ANLP Session1_Week1_After Session-2.pdf`) show AT1 as "NLP for data analysis," individual, 30% weight, due Monday 18 Aug (Spring 2025 offering), submission as `.ipynb` (code + markdown report) plus PDF/HTML export.
-- Dataset: 31 public submissions to the Australian Senate inquiry on the Workplace Gender Equality Amendment (Setting Gender Equality Targets) Bill 2024 — these are third-party documents (submitted by organisations such as ACTU, WGEA, etc.), not authored by the student.
-- A completed notebook already exists at `assignments/raw/archive-2025/at1/ANLP_AT1_ManhTuanNguyen_25739083.ipynb` (EDA, stakeholder classification, cleaning pipeline, interpretive summary) alongside `ANLP_AT1_Template_Development.ipynb`.
-- Not yet verified against the rubric below — needs a pass to confirm all checklist items before treating as submission-ready.
+**Use them as examples of report organisation, not as templates to reproduce.**
+They address different corpora and older task requirements. Following their
+analyses or visual style too closely would weaken originality and may introduce
+methods that do not help answer the 2026 question.
 
-| Step | Output | Status |
+### 2023 Redacted Sample
+
+The 40-page sample progresses from setup and cleaning through word frequency,
+NER, n-grams, dependency trees, similarity, clustering, BERT topic modelling,
+and references.
+
+Useful features:
+
+- commentary is placed beside code and output;
+- several methods are compared rather than presented without explanation;
+- charts are followed by interpretation;
+- limitations of cleaning and modelling are sometimes discussed.
+
+Features not to copy:
+
+- its scope is much too broad for a focused 2026 story;
+- numerous advanced methods compete for attention;
+- many large code outputs make the report harder to scan;
+- dark charts and dense notebook pages are not consistently print-friendly.
+
+### 2024 Redacted Sample
+
+The 46-page sample has a clearer report structure: project overview, data
+understanding, preprocessing, EDA, text analysis, clustering, topic modelling,
+conclusion, and references. It compares Australian radio transcripts by
+station type and region.
+
+Useful features:
+
+- an explicit table of contents and numbered analytical sections;
+- dataset context before modelling;
+- preprocessing choices are explained;
+- group comparisons are tied to defined metadata;
+- the report closes with findings, limitations, future work, and references.
+
+Features not to copy:
+
+- 46 pages is longer than necessary for this AT1;
+- repeated tables and charts could be condensed;
+- some frequency views show common conversational words rather than evidence
+  tightly aligned with the research question;
+- methods should not be included merely because they appeared in a previous
+  high-quality submission.
+
+### Recommended 2026 Structure
+
+Adopt the **narrative discipline** of the 2024 sample and the **method
+explanations** of the 2023 sample, but use the official 2026 sample notebook as
+the structural starting point:
+
+1. Question and motivation
+2. Corpus provenance and metadata
+3. PDF extraction and quality audit
+4. Preprocessing decisions
+5. Focused exploratory evidence
+6. One main comparative or thematic analysis
+7. Interpretation and limitations
+8. Conclusion
+9. References
+
+Aim for the shortest report that fully supports the argument. A compact,
+well-explained analysis is better aligned with the rubric than a catalogue of
+NLP techniques.
+
+## Recommended Analytical Direction
+
+A promising question is:
+
+> **How do different types of submitters frame the expected benefits, risks,
+> and policy conditions of skilled migration?**
+
+This question fits the inquiry, enables meaningful group comparisons, and
+avoids reducing the task to generic word counts. It requires a small metadata
+table mapping submission IDs to submitter names and categories such as
+individual, industry/employer, professional body, union/worker representative,
+government/public body, and research/community organisation.
+
+Possible evidence:
+
+- document count and length by submitter category;
+- relative term or phrase frequencies, not only raw counts;
+- distinctive bigrams or TF-IDF terms by category;
+- a small, interpretable set of themes such as skills shortages, productivity,
+  exploitation, wages, recognition of qualifications, regional needs, housing,
+  and pathways to permanence;
+- representative excerpts verified against the original PDFs;
+- sensitivity checks showing how cleaning or category definitions affect the
+  result.
+
+Do not infer support or opposition from isolated keywords. If stance becomes
+part of the analysis, define an annotation rule, manually validate a sample,
+and report ambiguity.
+
+## Work Plan
+
+| Phase | Output | Quality gate |
 |---|---|---|
-| Understand task | Brief summary | Done (see above) |
-| Gather sources | Relevant raw files and notes | Done — 31 submission PDFs + notebook present |
-| Draft | Initial response or notebook | Done — see raw notebook |
-| Review | Rubric-based critique | Not started |
-| Final check | Submission-ready work | Not started |
+| 1. Inventory | One row per supplied PDF | 143 files accounted for; variants and numbering gaps preserved |
+| 2. Extract | Raw text, page count, extraction status | Failures and low-text scans listed; OCR decisions recorded |
+| 3. Enrich metadata | Submitter name and category | Mapping checked against the official inquiry page |
+| 4. Define question | One question and expected comparison | Answerable with available text and metadata |
+| 5. Preprocess | Original and cleaned text columns | Each transformation justified; negation and domain terms reviewed |
+| 6. Baseline EDA | Length, missingness, category balance | Raw and relative quantities clearly distinguished |
+| 7. Main analysis | A small set of tables and charts | Every output contributes to the question |
+| 8. Validate | Manual review of documents and excerpts | Claims traceable to source submissions |
+| 9. Write | Connected notebook narrative | Results interpreted, not merely described |
+| 10. Reproduce | Clean restart and PDF export | All cells run in order; paths relative; PDF readable |
 
-## LLM Review Notes
+## Immediate Next Actions
 
+1. Run the PDF inventory and extraction checks already provided in the current
+   AT1 README.
+2. Create `metadata.csv` with `submission_id`, `submitter_name`,
+   `submitter_type`, and `source_url`.
+3. Measure how many PDFs need OCR before choosing downstream methods.
+4. Review the proposed research question after seeing category sizes.
+5. Produce one baseline comparison before considering topic modelling,
+   clustering, embeddings, or an LLM.
 
-## Final Verification
+## Academic-Integrity Boundary
 
-- [ ] Answer addresses the task directly
-- [ ] All claims are supported
-- [ ] Citations are verified
-- [ ] Code/notebook runs from a clean state where relevant
-- [ ] Final submission matches required format
+The archived reports can inform expectations about readability and
+explanation. Do not reuse their wording, code, hypotheses, charts, taxonomies,
+or conclusions. The 2026 corpus, research question, implementation, validation,
+and interpretive argument must be independently developed.
