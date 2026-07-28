@@ -21,7 +21,9 @@ The rubric weights are:
 - `36118_Spring_2026_AT1_Detailed_Description.pdf`
 - `36118_Spring_2026_AT1_FAQ.pdf`
 - `notebooks/1_skilled_migration_text_analysis.ipynb`: reproducible AT1
-  baseline using the complete supplied corpus
+  report using the complete supplied corpus
+- `reports/36118_AT1_Skilled_Migration_Report.pdf`: inspected submission-ready
+  rendering of the executed notebook
 - `docs/0_coding_standards.md`: AT1-specific adaptation of the repository's
   master coding standard
 - `docs/1_validation_log.md`: extraction diagnosis and an 18-submission
@@ -31,7 +33,7 @@ The rubric weights are:
   OCR workflow for image-based submissions
 - `validation/`: the tracked 18-submission audit, source-verified thematic and
   group-contrast excerpts, curated submitter metadata, and the 20-sentence
-  stance audit displayed by the notebook
+  stance audit and page-verified stance evidence displayed by the notebook
 - `data/submissions-skilled-migration/submissions_Skilledmigration/`: **143 PDFs**, extracted from the supplied archive
 
 The official inquiry page is the authoritative public submissions register:
@@ -50,12 +52,11 @@ notebook:
 jupyter lab notebooks/1_skilled_migration_text_analysis.ipynb
 ```
 
-The baseline accounts for all 143 PDFs, records extraction failures, and flags
+The report accounts for all 143 PDFs, records extraction failures, and flags
 documents with fewer than 500 extracted characters. Its current question
-examines benefit, risk, and policy-condition themes without claiming that a
-keyword match reveals stance. It also profiles the corpus using curated
-submitter metadata and compares document-level theme prevalence across
-submitter types.
+examines recurring themes, co-occurrence, submitter-group emphasis, and
+sentence-level benefit, concern, and policy cues. It does not infer a whole
+submitter position from one keyword or sentence.
 
 The notebook also audits metadata readiness: the 143 files represent 139 main
 submission numbers and four supplements. Numbers 49, 121, 124, 125, 126, and
@@ -96,3 +97,8 @@ Before submission:
 3. Check that every chart has a title, readable labels, and an explanation.
 4. Export to PDF and inspect every page for clipped code or figures.
 5. Submit the `.ipynb` and `.pdf` separately.
+
+The current executed notebook and inspected 26-page PDF satisfy these checks.
+The intermediate HTML used for local printing is intentionally not retained,
+because the FAQ requests the notebook and PDF as two separate submission
+files.
