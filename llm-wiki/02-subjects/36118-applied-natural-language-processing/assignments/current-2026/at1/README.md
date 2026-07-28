@@ -55,6 +55,11 @@ examines benefit, risk, and policy-condition themes without claiming that a
 keyword match reveals stance. Extend it through validation and reliable
 submitter metadata rather than adding unrelated NLP methods.
 
+The notebook also audits metadata readiness: the 143 files represent 139 main
+submission numbers and four supplements. Numbers 49, 121, 124, 125, 126, and
+144 are absent from the supplied archive, so preserve official identifiers and
+do not treat file order as a submitter index.
+
 The four image-based submissions have been recovered into ignored OCR
 sidecars. To reproduce that preprocessing:
 
