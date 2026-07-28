@@ -118,3 +118,24 @@ uses one native-text main submission per row, excludes supplements, and omits
 the unresolved category. Percentages are document prevalence within each
 group. They describe this self-selected archive only; they are not population
 estimates, measures of stance, or causal effects.
+
+## 7. Balanced Group-Contrast Check
+
+The largest or most interpretable percentage-point differences were checked
+against passages from both sides of each comparison and recorded in
+`validation/group_contrast_excerpts.csv`.
+
+- The union worker-protection result is supported by `Sub112`, which explicitly
+  links equal workplace rights and protection from exploitation.
+- The education comparison in `Sub109` emphasises science, innovation, and
+  workforce capability. This illustrates a different emphasis but does not
+  establish theme absence across a document or group.
+- `Sub014` connects an industry workforce claim to rural and regional
+  communities, supporting the regional-development contrast.
+- `Sub042` explicitly calls for recognition reform, while `Sub135` confirms
+  that the lower individual-group recognition rate still contains important
+  within-group exceptions.
+
+The notebook labels these as qualitative checks rather than statistical tests.
+Each reported comparison retains the usable group denominator, and no excerpt
+is treated as representative of every member of its category.

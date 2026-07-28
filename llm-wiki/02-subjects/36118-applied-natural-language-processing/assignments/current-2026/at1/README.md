@@ -29,8 +29,9 @@ The rubric weights are:
 - `requirements-at1.txt`: Python 3.11 dependency ranges
 - `requirements-ocr.txt` and `scripts/ocr_low_text_pdfs.py`: optional local
   OCR workflow for image-based submissions
-- `validation/`: the tracked 18-submission audit, source-verified excerpts,
-  and curated submitter metadata displayed by the notebook
+- `validation/`: the tracked 18-submission audit, source-verified thematic and
+  group-contrast excerpts, and curated submitter metadata displayed by the
+  notebook
 - `data/submissions-skilled-migration/submissions_Skilledmigration/`: **143 PDFs**, extracted from the supplied archive
 
 The official inquiry page is the authoritative public submissions register:
