@@ -5,6 +5,10 @@ llm-wiki/02-subjects/**/assignments/raw/
 llm-wiki/02-subjects/**/notebooks/raw/
 llm-wiki/02-subjects/**/sources/raw/
 
+# Locally extracted assessment corpora; keep the reproducible setup and source
+# archive location in notes, but do not commit third-party submission documents.
+llm-wiki/02-subjects/**/assignments/current-*/**/data/
+
 # Local OS metadata.
 .DS_Store
 __MACOSX/

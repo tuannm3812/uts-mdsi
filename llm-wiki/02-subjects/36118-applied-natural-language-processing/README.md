@@ -25,10 +25,12 @@ Source folder: `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@
 
 ## Source Subfolders
 
-- `nlp_notebooks`
-- `googleskillboost notebook`
-- `nlp_assignments`
-- `nlp_slides`
+- **Current 2026:** authoritative slides, notebooks, handouts, and assessments
+  live under each category’s `current-2026/` directory.
+- **Archived 2025:** inherited source material lives under each category’s
+  ignored `raw/archive-2025/` directory.
+- [Notebook Guide](notebooks/notebook-guide.md) summarises the current and
+  archived practical sequence.
 
 ## Key Concepts
 
@@ -40,7 +42,7 @@ Source folder: `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@
 
 | Assessment | Due Date | Weight | Status | Notes |
 |---|---:|---:|---|---|
-|  |  |  |  |  |
+| AT1 Text Analysis | 19 Aug 2026 | 30% | Released | [Brief, FAQ, template, dataset, and setup](assignments/current-2026/at1/README.md) |
 
 ## LLM Tutor Prompts
 
@@ -51,6 +53,14 @@ Source folder: `/Users/tuanm.nguyen/Library/CloudStorage/GoogleDrive-tuannm3812@
 ## Curated Study Layer
 
 - [Learning Map](learning-map.md)
+- [Session 1 Preparation - 27 July 2026](lectures/session-01-preparation-2026.md)
+- [Session 1 Note-Taking Handout](lectures/handouts/session-01-note-taking-handout.pdf)
+- [Session 1 Comprehensive Notes](lectures/handouts/session-01-comprehensive-notes.pdf)
+- [Session 1 Current Notebooks and Setup](notebooks/current-2026/session-01/README.md)
+- [NLP Notebook Guide](notebooks/notebook-guide.md)
+- [AT1 Current Materials and Setup](assignments/current-2026/at1/README.md)
+- [Current-Semester Material Tracker](sources/current-semester-2026.md)
+- [Archive Cleanup Record](sources/archive-cleanup-2026-07-27.md)
 - [Assignment Dashboard](assignments/README.md)
 - [Revision Questions](questions/revision-questions.md)
 - [Glossary](glossary.md)

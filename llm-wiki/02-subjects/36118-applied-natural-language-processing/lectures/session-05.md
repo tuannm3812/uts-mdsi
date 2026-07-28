@@ -9,10 +9,10 @@ status: draft
 
 ## Source Files
 
-- `lectures/raw/nlp_slides/ANLP Session5_Week7_After session.pdf` (lecture)
-- `lectures/raw/nlp_slides/Uploaded Media/ANLP Session5_Week7_After session.pdf` (lecture)
-- `notebooks/raw/nlp_notebooks/ANLP_Session 5_Part 1_BERT for Sentiment Analysis.ipynb` (notebook)
-- `notebooks/raw/nlp_notebooks/ANLP_Session 5_Part 2_Hugging Face models_Gradio.ipynb` (notebook)
+- `lectures/raw/archive-2025/ANLP Session5_Week7_After session.pdf` (lecture)
+- `lectures/raw/archive-2025/resources/ANLP Session5_Week7_After session.pdf` (lecture)
+- `notebooks/raw/archive-2025/course-notebooks/ANLP_Session 5_Part 1_BERT for Sentiment Analysis.ipynb` (notebook)
+- `notebooks/raw/archive-2025/course-notebooks/ANLP_Session 5_Part 2_Hugging Face models_Gradio.ipynb` (notebook)
 
 ## Working Summary
 

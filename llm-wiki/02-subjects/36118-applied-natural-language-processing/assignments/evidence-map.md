@@ -28,36 +28,36 @@ status: draft
 
 ## Assignment Source Files
 
-- `assignments/raw/nlp_assignments/nlp_AT1/ANLP_AT1_ManhTuanNguyen_25739083.ipynb`
-- `assignments/raw/nlp_assignments/nlp_AT1/ANLP_AT1_Template_Development.ipynb`
-- `assignments/raw/nlp_assignments/nlp_AT1/submissions_genderequity bill/1. Workplace Gender Equality Agency (WGEA).pdf`
-- `assignments/raw/nlp_assignments/nlp_AT1/submissions_genderequity bill/10. Commission for Gender Equality in the Public Sector, Victoria.PDF`
-- `assignments/raw/nlp_assignments/nlp_AT1/submissions_genderequity bill/11. Australian Council of Superannuation Investors (ACSI).PDF`
-- `assignments/raw/nlp_assignments/nlp_AT1/submissions_genderequity bill/12. Australian Nursing and Midwifery Federation (ANMF).pdf`
-- `assignments/raw/nlp_assignments/nlp_AT1/submissions_genderequity bill/13. Master Electricians Australia.pdf`
-- `assignments/raw/nlp_assignments/nlp_AT1/submissions_genderequity bill/14. Health Services Union (HSU).pdf`
-- `assignments/raw/nlp_assignments/nlp_AT1/submissions_genderequity bill/15. Clubs Australia.pdf`
-- `assignments/raw/nlp_assignments/nlp_AT1/submissions_genderequity bill/16. Finance Sector Union of Australia (FSU).pdf`
-- `assignments/raw/nlp_assignments/nlp_AT1/submissions_genderequity bill/17. Business Council of Australia (BCA).pdf`
-- `assignments/raw/nlp_assignments/nlp_AT1/submissions_genderequity bill/18. Migrant Workers Centre (MWC)).pdf`
-- `assignments/raw/nlp_assignments/nlp_AT1/submissions_genderequity bill/19. Partnership Centre for Gender Equality and Leadership Advancement (MCHRI).PDF`
-- `assignments/raw/nlp_assignments/nlp_AT1/submissions_genderequity bill/2. Dr Leonora Risse.pdf`
-- `assignments/raw/nlp_assignments/nlp_AT1/submissions_genderequity bill/20. Australian Financial Markets Association (AFMA).pdf`
-- `assignments/raw/nlp_assignments/nlp_AT1/submissions_genderequity bill/21. AEU Federal.pdf`
-- `assignments/raw/nlp_assignments/nlp_AT1/submissions_genderequity bill/22. Science in Australia Gender Equity (SAGE).pdf`
-- `assignments/raw/nlp_assignments/nlp_AT1/submissions_genderequity bill/23. Mr Greg Peak.pdf`
-- `assignments/raw/nlp_assignments/nlp_AT1/submissions_genderequity bill/24. Australian Retailers Association (ARA).pdf`
-- `assignments/raw/nlp_assignments/nlp_AT1/submissions_genderequity bill/25. Australian Human Rights Commission.pdf`
-- `assignments/raw/nlp_assignments/nlp_AT1/submissions_genderequity bill/26. Victorian Trades Hall Council (VTHC).pdf`
-- `assignments/raw/nlp_assignments/nlp_AT1/submissions_genderequity bill/27. Queensland Council of Unions.pdf`
-- `assignments/raw/nlp_assignments/nlp_AT1/submissions_genderequity bill/28. Virgin Australia.pdf`
-- `assignments/raw/nlp_assignments/nlp_AT1/submissions_genderequity bill/29. Unions NSW.pdf`
-- `assignments/raw/nlp_assignments/nlp_AT1/submissions_genderequity bill/3. Diversity Council Australia (DCA).pdf`
-- `assignments/raw/nlp_assignments/nlp_AT1/submissions_genderequity bill/30. Chief Exectuive Women (CEW).pdf`
-- `assignments/raw/nlp_assignments/nlp_AT1/submissions_genderequity bill/31. Name Withheld.pdf`
-- `assignments/raw/nlp_assignments/nlp_AT1/submissions_genderequity bill/4. CPSU (PSU Group).pdf`
-- `assignments/raw/nlp_assignments/nlp_AT1/submissions_genderequity bill/5. Australian Industry Group.pdf`
-- `assignments/raw/nlp_assignments/nlp_AT1/submissions_genderequity bill/6. Law Council of Australia.pdf`
-- `assignments/raw/nlp_assignments/nlp_AT1/submissions_genderequity bill/7. Australian Council of Trade Unions (ACTU).pdf`
-- `assignments/raw/nlp_assignments/nlp_AT1/submissions_genderequity bill/8. Minerals Council of Australia.pdf`
-- `assignments/raw/nlp_assignments/nlp_AT1/submissions_genderequity bill/9. Australian Public Service Commission (APSC).pdf`
+- `assignments/raw/archive-2025/at1/ANLP_AT1_ManhTuanNguyen_25739083.ipynb`
+- `assignments/raw/archive-2025/at1/ANLP_AT1_Template_Development.ipynb`
+- `assignments/raw/archive-2025/at1/submissions_genderequity bill/1. Workplace Gender Equality Agency (WGEA).pdf`
+- `assignments/raw/archive-2025/at1/submissions_genderequity bill/10. Commission for Gender Equality in the Public Sector, Victoria.PDF`
+- `assignments/raw/archive-2025/at1/submissions_genderequity bill/11. Australian Council of Superannuation Investors (ACSI).PDF`
+- `assignments/raw/archive-2025/at1/submissions_genderequity bill/12. Australian Nursing and Midwifery Federation (ANMF).pdf`
+- `assignments/raw/archive-2025/at1/submissions_genderequity bill/13. Master Electricians Australia.pdf`
+- `assignments/raw/archive-2025/at1/submissions_genderequity bill/14. Health Services Union (HSU).pdf`
+- `assignments/raw/archive-2025/at1/submissions_genderequity bill/15. Clubs Australia.pdf`
+- `assignments/raw/archive-2025/at1/submissions_genderequity bill/16. Finance Sector Union of Australia (FSU).pdf`
+- `assignments/raw/archive-2025/at1/submissions_genderequity bill/17. Business Council of Australia (BCA).pdf`
+- `assignments/raw/archive-2025/at1/submissions_genderequity bill/18. Migrant Workers Centre (MWC)).pdf`
+- `assignments/raw/archive-2025/at1/submissions_genderequity bill/19. Partnership Centre for Gender Equality and Leadership Advancement (MCHRI).PDF`
+- `assignments/raw/archive-2025/at1/submissions_genderequity bill/2. Dr Leonora Risse.pdf`
+- `assignments/raw/archive-2025/at1/submissions_genderequity bill/20. Australian Financial Markets Association (AFMA).pdf`
+- `assignments/raw/archive-2025/at1/submissions_genderequity bill/21. AEU Federal.pdf`
+- `assignments/raw/archive-2025/at1/submissions_genderequity bill/22. Science in Australia Gender Equity (SAGE).pdf`
+- `assignments/raw/archive-2025/at1/submissions_genderequity bill/23. Mr Greg Peak.pdf`
+- `assignments/raw/archive-2025/at1/submissions_genderequity bill/24. Australian Retailers Association (ARA).pdf`
+- `assignments/raw/archive-2025/at1/submissions_genderequity bill/25. Australian Human Rights Commission.pdf`
+- `assignments/raw/archive-2025/at1/submissions_genderequity bill/26. Victorian Trades Hall Council (VTHC).pdf`
+- `assignments/raw/archive-2025/at1/submissions_genderequity bill/27. Queensland Council of Unions.pdf`
+- `assignments/raw/archive-2025/at1/submissions_genderequity bill/28. Virgin Australia.pdf`
+- `assignments/raw/archive-2025/at1/submissions_genderequity bill/29. Unions NSW.pdf`
+- `assignments/raw/archive-2025/at1/submissions_genderequity bill/3. Diversity Council Australia (DCA).pdf`
+- `assignments/raw/archive-2025/at1/submissions_genderequity bill/30. Chief Exectuive Women (CEW).pdf`
+- `assignments/raw/archive-2025/at1/submissions_genderequity bill/31. Name Withheld.pdf`
+- `assignments/raw/archive-2025/at1/submissions_genderequity bill/4. CPSU (PSU Group).pdf`
+- `assignments/raw/archive-2025/at1/submissions_genderequity bill/5. Australian Industry Group.pdf`
+- `assignments/raw/archive-2025/at1/submissions_genderequity bill/6. Law Council of Australia.pdf`
+- `assignments/raw/archive-2025/at1/submissions_genderequity bill/7. Australian Council of Trade Unions (ACTU).pdf`
+- `assignments/raw/archive-2025/at1/submissions_genderequity bill/8. Minerals Council of Australia.pdf`
+- `assignments/raw/archive-2025/at1/submissions_genderequity bill/9. Australian Public Service Commission (APSC).pdf`

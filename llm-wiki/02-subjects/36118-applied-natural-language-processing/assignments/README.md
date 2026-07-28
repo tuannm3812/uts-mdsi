@@ -7,6 +7,7 @@ Assessment briefs, rubric checklists, draft-review notes, and copied assignment 
 
 - [Assessment planning](assessment-planning.md)
 - [AT1](at1.md)
+- [AT1 current brief, dataset, and setup — Spring 2026](current-2026/at1/README.md)
 - [AT2](at2.md)
 - [AT3](at3.md)
 
@@ -19,11 +20,10 @@ Assessment briefs, rubric checklists, draft-review notes, and copied assignment 
 5. Final integrity and submission checks.
 ## Raw Imports
 
-Raw copied files, when present, live in `raw/`.
-
-Imported or referenced source count for this bucket: 34
-Current filesystem entries under `raw/`: 36
-
+- `current-2026/`: authoritative current briefs, templates, setup notes, and
+  locally ignored data.
+- `raw/archive-2025/at1/`: inherited prior-semester work and corpus, retained
+  for provenance and comparison only.
 
 ## LLM Review Prompt
 

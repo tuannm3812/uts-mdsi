@@ -9,11 +9,11 @@ status: draft
 
 ## Source Files
 
-- `lectures/raw/nlp_slides/ANLP Session3_Week4_After session-2.pdf` (lecture)
-- `lectures/raw/nlp_slides/Uploaded Media/ANLP Session3_Week4_After session-2.pdf` (lecture)
-- `notebooks/raw/nlp_notebooks/ANLP_Session 3_Part 1_Summarization.ipynb` (notebook)
-- `notebooks/raw/nlp_notebooks/ANLP_Session 3_Part 2_Text Classification.ipynb` (notebook)
-- `notebooks/raw/nlp_notebooks/ANLP_Session 3_Part 3_Sentiment Analysis.ipynb` (notebook)
+- `lectures/raw/archive-2025/ANLP Session3_Week4_After session-2.pdf` (lecture)
+- `lectures/raw/archive-2025/resources/ANLP Session3_Week4_After session-2.pdf` (lecture)
+- `notebooks/raw/archive-2025/course-notebooks/ANLP_Session 3_Part 1_Summarization.ipynb` (notebook)
+- `notebooks/raw/archive-2025/course-notebooks/ANLP_Session 3_Part 2_Text Classification.ipynb` (notebook)
+- `notebooks/raw/archive-2025/course-notebooks/ANLP_Session 3_Part 3_Sentiment Analysis.ipynb` (notebook)
 
 ## Working Summary
 

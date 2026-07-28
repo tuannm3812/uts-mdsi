@@ -2,15 +2,16 @@
 
 Lecture slides, class materials, weekly notes, and extracted explanations.
 
-## Raw Imports
+## Semester Layout
 
-Raw copied files, when present, live in `raw/`.
-
-Imported or referenced source count for this bucket: 61
-Current filesystem entries under `raw/`: 61
+- `current-2026/`: authoritative slides for the active semester.
+- `handouts/`: generated note-taking and comprehensive notes.
+- `raw/archive-2025/`: inherited 2025 slide exports.
+- `raw/archive-2025/resources/`: inherited readings, assessment references,
+  images, and supporting class files.
 
 ## Working Notes
 
-- Add curated notes in this folder, beside `raw/`.
+- Prefer current 2026 material whenever it conflicts with the archive.
 - Keep source-specific file maps in `sources/`.
 - Link durable concepts to `../../03-shared-concepts/`.

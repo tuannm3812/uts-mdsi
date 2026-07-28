@@ -9,8 +9,8 @@ status: draft
 
 ## Source Files
 
-- `lectures/raw/nlp_slides/ANLP Session8_Week 10.pdf` (lecture)
-- `lectures/raw/nlp_slides/Uploaded Media/ANLP Session8_Week 10.pdf` (lecture)
+- `lectures/raw/archive-2025/ANLP Session8_Week 10.pdf` (lecture)
+- `lectures/raw/archive-2025/resources/ANLP Session8_Week 10.pdf` (lecture)
 
 ## Working Summary
 

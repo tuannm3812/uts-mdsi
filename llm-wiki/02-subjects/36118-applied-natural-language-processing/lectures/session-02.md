@@ -9,10 +9,10 @@ status: draft
 
 ## Source Files
 
-- `lectures/raw/nlp_slides/ANLP Session2_Week2_After Session-1.pdf` (lecture)
-- `lectures/raw/nlp_slides/Uploaded Media/ANLP Session2_Week2_After Session-1.pdf` (lecture)
-- `notebooks/raw/nlp_notebooks/ANLP_Session 2_Part 2_Topic Modeling.ipynb` (notebook)
-- `notebooks/raw/nlp_notebooks/ANLP_Session 2_Part 3_Text Clustering.ipynb` (notebook)
+- `lectures/raw/archive-2025/ANLP Session2_Week2_After Session-1.pdf` (lecture)
+- `lectures/raw/archive-2025/resources/ANLP Session2_Week2_After Session-1.pdf` (lecture)
+- `notebooks/raw/archive-2025/course-notebooks/ANLP_Session 2_Part 2_Topic Modeling.ipynb` (notebook)
+- `notebooks/raw/archive-2025/course-notebooks/ANLP_Session 2_Part 3_Text Clustering.ipynb` (notebook)
 
 ## Working Summary
 

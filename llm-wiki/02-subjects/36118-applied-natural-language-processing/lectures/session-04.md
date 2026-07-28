@@ -9,11 +9,11 @@ status: draft
 
 ## Source Files
 
-- `lectures/raw/nlp_slides/ANLP Session4_Week5_After Session.pdf` (lecture)
-- `lectures/raw/nlp_slides/Uploaded Media/ANLP Session4_Week5_After Session.pdf` (lecture)
-- `lectures/raw/nlp_slides/ANLP Session4_Week5_After Session.pptx` (slides)
-- `lectures/raw/nlp_slides/Uploaded Media/ANLP Session4_Week5_After Session.pptx` (slides)
-- `notebooks/raw/nlp_notebooks/ANLP_Session 4_Part 1_Word2Vec Embedding.ipynb` (notebook)
+- `lectures/raw/archive-2025/ANLP Session4_Week5_After Session.pdf` (lecture)
+- `lectures/raw/archive-2025/resources/ANLP Session4_Week5_After Session.pdf` (lecture)
+- `lectures/raw/archive-2025/ANLP Session4_Week5_After Session.pptx` (slides)
+- `lectures/raw/archive-2025/resources/ANLP Session4_Week5_After Session.pptx` (slides)
+- `notebooks/raw/archive-2025/course-notebooks/ANLP_Session 4_Part 1_Word2Vec Embedding.ipynb` (notebook)
 
 ## Working Summary
 

@@ -9,10 +9,10 @@ status: draft
 
 ## Source Files
 
-- `lectures/raw/nlp_slides/ANLP Session6_Week8_After session.pdf` (lecture)
-- `lectures/raw/nlp_slides/Uploaded Media/ANLP Session6_Week8_After session.pdf` (lecture)
-- `notebooks/raw/nlp_notebooks/ANLP_Session 6_Part 1_LLM_Prompting_Basics_OpenAIModels.ipynb` (notebook)
-- `notebooks/raw/nlp_notebooks/ANLP_Session 6_Part 2_Pre-lecture (for reference).ipynb` (notebook)
+- `lectures/raw/archive-2025/ANLP Session6_Week8_After session.pdf` (lecture)
+- `lectures/raw/archive-2025/resources/ANLP Session6_Week8_After session.pdf` (lecture)
+- `notebooks/raw/archive-2025/course-notebooks/ANLP_Session 6_Part 1_LLM_Prompting_Basics_OpenAIModels.ipynb` (notebook)
+- `notebooks/raw/archive-2025/course-notebooks/ANLP_Session 6_Part 2_Pre-lecture (for reference).ipynb` (notebook)
 
 ## Working Summary
 
