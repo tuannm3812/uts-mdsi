@@ -1,0 +1,140 @@
+main_submission_number,submitter_name,submitter_type,verification_status,classification_basis
+1,Australian Restaurant & Cafe Association Ltd,Industry and employer,local_text_verified,industry association
+2,Don Stewart,Individual,local_text_verified,named individual
+3,"Department of Social Work, Monash University",Education and research,local_text_verified,university unit
+4,Electrical Trades Union of Australia,Union and worker representative,local_text_verified,trade union
+5,Massage & Myotherapy Australia,Professional association,local_text_verified,professional association
+6,Kerry Rodgers,Individual,local_text_verified,named individual
+7,RDA Goldfields Esperance,Government and public body,local_text_verified,regional development body
+8,Group of Eight,Education and research,local_text_verified,university peak body
+9,Children's Cancer Institute,Education and research,local_text_verified,research institute
+10,Robert Heron,Individual,local_text_verified,named individual
+11,Australian Institute for Teaching and School Leadership,Government and public body,local_text_verified,national public body
+12,"Cross Border Commissioners of New South Wales, South Australia and Victoria",Government and public body,local_text_verified,joint public office
+13,Australian Pork Limited,Industry and employer,local_text_verified,industry association
+14,Seafood Industry Australia,Industry and employer,local_text_verified,industry association
+15,Australian Bureau of Statistics,Government and public body,local_text_verified,government agency
+16,Activate Australia's Skills,Community and advocacy,local_text_verified,multi-organisation advocacy initiative
+17,Canberra Business Chamber,Industry and employer,local_text_verified,business chamber
+18,Pearson,Industry and employer,local_text_verified,private enterprise
+19,Minerals Council of Australia,Industry and employer,local_text_verified,industry association
+20,AUSVEG,Industry and employer,local_text_verified,industry association
+21,Construction Forestry and Maritime Employees Union,Union and worker representative,local_text_verified,trade union
+22,City of Greater Geelong,Government and public body,local_text_verified,local government
+23,Housing Industry Association,Industry and employer,local_text_verified,industry association
+24,Australian Constructors Association,Industry and employer,local_text_verified,industry association
+25,Ageing Australia,Industry and employer,local_text_verified,sector peak body
+26,Australian Academy of Technological Sciences and Engineering,Education and research,local_text_verified,learned academy
+27,Australian Nursing and Midwifery Accreditation Council,Professional association,local_text_verified,professional accreditation body
+28,Australian Medical Association,Professional association,local_text_verified,professional association
+29,Multicultural Youth Advocacy Network Australia,Community and advocacy,local_text_verified,community advocacy organisation
+30,Settlement Services International,Community and advocacy,local_visual_verified,settlement organisation
+31,Australian Industry Group,Industry and employer,local_visual_verified,industry peak body
+32,Citrus Australia,Industry and employer,local_text_verified,industry association
+33,Pharmacy Guild of Australia,Industry and employer,local_text_verified,industry association
+34,Australian Computer Society,Professional association,local_visual_verified,professional association
+35,La Trobe University,Education and research,local_text_verified,university
+36,BDO,Industry and employer,local_text_verified,professional services firm
+37,Clubs Australia,Industry and employer,local_text_verified,industry association
+38,Chartered Accountants Australia and New Zealand,Professional association,local_text_verified,professional association
+39,Western Australian Small Business Development Corporation,Government and public body,local_text_verified,government agency
+40,AMES Australia,Community and advocacy,local_visual_verified,settlement and education organisation
+41,Bendigo Kangan Institute,Education and research,local_text_verified,tertiary education provider
+42,Refugee Council of Australia,Community and advocacy,local_text_verified,community advocacy organisation
+43,KPMG Australia,Industry and employer,local_text_verified,professional services firm
+44,"Morgan Harrington and Matt Withers",Education and research,local_text_verified,named researchers
+45,International Organization for Migration,Community and advocacy,local_text_verified,intergovernmental migration organisation
+46,RDA Mid North Coast and Norfolk Island,Government and public body,local_text_verified,regional development body
+47,The Social Policy Group,Community and advocacy,local_text_verified,social policy organisation
+48,Australian Nursing and Midwifery Federation,Union and worker representative,local_text_verified,trade union
+50,Kaldor Centre for International Refugee Law,Education and research,local_text_verified,university research centre
+51,PAX Migration Australia,Migration and legal services,local_visual_verified,migration services firm
+52,RDA Hume,Government and public body,local_text_verified,regional development body
+53,RDA Sydney,Government and public body,local_text_verified,regional development body
+54,"Sukhmani Khorana and collaborators, UNSW Media Futures Hub",Education and research,local_text_verified,university research collaboration
+55,"Leah Williams Veazey and Alexandra Block, University of Sydney",Education and research,local_text_verified,named university researchers
+56,RDA Pilbara,Government and public body,local_text_verified,regional development body
+57,Talent Beyond Boundaries,Community and advocacy,local_text_verified,refugee labour-mobility organisation
+58,Australasian College of PeriAnaesthesia Nurses,Professional association,local_text_verified,professional association
+59,Unions NSW,Union and worker representative,local_text_verified,union peak body
+60,Master Electricians Australia,Industry and employer,local_text_verified,industry association
+61,Independent Higher Education Australia,Education and research,local_text_verified,education peak body
+62,Regional Universities Network,Education and research,local_text_verified,university peak body
+63,CPA Australia,Professional association,local_text_verified,professional association
+64,Jobs and Skills Australia,Government and public body,local_text_verified,government agency
+65,Auctioneers and Valuers Association of Australia,Professional association,local_text_verified,professional association
+66,Australian Dairy Farmers and Dairy Australia,Industry and employer,local_text_verified,joint industry submission
+67,Australian Meat Industry Council,Industry and employer,local_text_verified,industry association
+68,RDA Tasmania,Government and public body,local_text_verified,regional development body
+69,Vialto Partners,Migration and legal services,local_visual_verified,mobility and migration services firm
+70,Archdiocese of Brisbane,Community and advocacy,local_text_verified,faith-based organisation
+71,Universities Australia,Education and research,local_text_verified,university peak body
+72,Australian Automotive Dealer Association,Industry and employer,local_text_verified,industry association
+73,Australian College of Nursing,Professional association,local_text_verified,professional association
+74,Australian Hotels Association,Industry and employer,local_text_verified,industry association
+75,Sustainable Population Australia,Community and advocacy,local_text_verified,policy advocacy organisation
+76,Migration Institute of Australia,Migration and legal services,local_text_verified,migration professional association
+77,Mildura Rural City Council,Government and public body,local_text_verified,local government
+78,RDA Riverina,Government and public body,local_text_verified,regional development body
+79,Submitter not identifiable from supplied PDF,Unclassified,needs_review,document begins mid-submission
+80,National Growth Areas Alliance,Government and public body,local_text_verified,local-government alliance
+81,Tatiara District Council,Government and public body,local_text_verified,local government
+82,Motor Trades Association of Australia,Industry and employer,local_text_verified,industry association
+83,The Multicultural Professional Network,Community and advocacy,local_visual_verified,professional community network
+84,Community Industry Group,Community and advocacy,local_text_verified,community-sector organisation
+85,Association of Mining and Exploration Companies,Industry and employer,local_text_verified,industry association
+86,Australian Small Business and Family Enterprise Ombudsman,Government and public body,local_text_verified,statutory office
+87,Australian Information Industry Association,Industry and employer,local_text_verified,industry association
+88,Council of Small Business Organisations Australia,Industry and employer,local_text_verified,business peak body
+89,South Australian Dairyfarmers' Association,Industry and employer,local_text_verified,industry association
+90,Infrastructure Australia,Government and public body,local_text_verified,government advisory body
+91,Australian Academy of Science,Education and research,local_text_verified,learned academy
+92,Law Council of Australia,Professional association,local_text_verified,professional peak body
+93,"Department of Infrastructure, Transport, Regional Development, Communications, Sport and the Arts",Government and public body,local_text_verified,government department
+94,Regional Capitals Australia,Government and public body,local_text_verified,local-government alliance
+95,Notitia,Industry and employer,local_text_verified,private enterprise
+96,Multicultural Australia,Community and advocacy,local_text_verified,settlement organisation
+97,Science & Technology Australia,Education and research,local_text_verified,science and technology peak body
+98,RDA Gippsland,Government and public body,local_text_verified,regional development body
+99,Tech Council of Australia,Industry and employer,local_text_verified,industry peak body
+100,Immigration Advice and Rights Centre,Migration and legal services,local_text_verified,immigration legal centre
+101,Victorian Chamber of Commerce and Industry and Committee for Melbourne,Industry and employer,local_text_verified,joint business submission
+102,Master Plumbers Australia and New Zealand,Industry and employer,local_text_verified,industry association
+103,Financial Advice Association Australia,Professional association,local_text_verified,professional association
+104,Department of Foreign Affairs and Trade,Government and public body,local_text_verified,government department
+105,Fragomen,Migration and legal services,local_text_verified,immigration law firm
+106,"FECCA, Australian Migrant Women's Alliance and Australian Multicultural Health Collaborative",Community and advocacy,local_text_verified,joint community advocacy submission
+107,Migrant Workers Centre,Union and worker representative,local_text_verified,worker advocacy organisation
+108,Australian Automotive Aftermarket Association,Industry and employer,local_text_verified,industry association
+109,Monash University,Education and research,local_text_verified,university
+110,Australian Chamber of Commerce and Industry,Industry and employer,local_text_verified,business peak body
+111,Business Council of Australia,Industry and employer,local_text_verified,business peak body
+112,Australian Council of Trade Unions,Union and worker representative,local_text_verified,union peak body
+113,Queensland Council of Unions,Union and worker representative,local_text_verified,union peak body
+114,ACT Government,Government and public body,local_text_verified,state or territory government
+115,Ethnic Communities' Council of Victoria,Community and advocacy,local_text_verified,community advocacy organisation
+116,Capricorn Society,Industry and employer,local_text_verified,member-based enterprise
+117,Government of Western Australia,Government and public body,local_text_verified,state or territory government
+118,National Farmers' Federation,Industry and employer,local_text_verified,industry peak body
+119,Master Builders Australia,Industry and employer,local_text_verified,industry association
+120,Australian Local Government Association,Government and public body,local_text_verified,local-government peak body
+122,Name not publicly stated,Individual,name_not_public,first-person or unsigned submission
+123,Name not publicly stated,Individual,name_not_public,unsigned submission
+127,Michael Dwyer,Individual,local_text_verified,named individual
+128,Future Skills Organisation,Education and research,local_text_verified,skills organisation
+129,Tasmanian Government,Government and public body,local_text_verified,state or territory government
+130,Council of Australian Postgraduate Associations,Education and research,local_text_verified,student peak body
+131,Service and Creative Skills Australia,Education and research,local_text_verified,skills organisation
+132,"Anna Boucher and collaborators, University of Sydney",Education and research,local_text_verified,named university researchers
+133,Global Adelaide,Migration and legal services,local_text_verified,migration services firm
+134,Northern Territory Government,Government and public body,local_text_verified,state or territory government
+135,Katherine Kandalaft,Individual,local_text_verified,named individual
+136,RDA Barwon South West,Government and public body,local_text_verified,regional development body
+137,Australian International Skilled Recruitment Services,Migration and legal services,local_text_verified,recruitment and migration services firm
+138,Name not publicly stated,Individual,name_not_public,submission label is blank
+139,Name not publicly stated,Individual,name_not_public,unsigned submission
+140,Name not publicly stated,Individual,numbering_discrepancy,file is Sub140 but internal footer says Submission 121
+141,Federation of Hazara Councils Australia,Community and advocacy,local_text_verified,community advocacy organisation
+142,Department of Home Affairs,Government and public body,local_text_verified,government department
+143,Australian Association of Social Workers,Professional association,local_text_verified,professional association
+145,Steven O'Neil,Migration and legal services,local_text_verified,named migration professional

@@ -85,3 +85,36 @@ After refinement, the leading themes remain **skills and essential services**
 (approximately 92.8% of usable documents) and **economic contribution**
 (approximately 85.6%). The changes therefore improve measurement precision
 without reversing the main finding.
+
+## 6. Submitter Metadata and Group Comparison
+
+The curated file `validation/submitter_metadata.csv` contains one row for each
+of the 139 observed main submission numbers. The four supplements inherit their
+parent's metadata through a many-to-one join. The notebook asserts that the
+metadata identifiers exactly equal the observed main identifiers before any
+group analysis runs.
+
+Names were transcribed from the supplied PDFs where visible. Visual headers
+were used for seven image-based or logo-led documents. Four unsigned documents
+are labelled `Name not publicly stated`; `Sub079` remains `Unclassified`
+because the supplied PDF begins mid-submission. `Sub140.pdf` is retained under
+its supplied identifier and flagged because its internal footers say
+`Submission 121`.
+
+The submitter taxonomy records the primary represented role:
+
+1. Industry and employer
+2. Government and public body
+3. Education and research
+4. Community and advocacy
+5. Professional association
+6. Individual
+7. Migration and legal services
+8. Union and worker representative
+9. Unclassified
+
+`classification_basis` records the reason for each assignment. The comparison
+uses one native-text main submission per row, excludes supplements, and omits
+the unresolved category. Percentages are document prevalence within each
+group. They describe this self-selected archive only; they are not population
+estimates, measures of stance, or causal effects.

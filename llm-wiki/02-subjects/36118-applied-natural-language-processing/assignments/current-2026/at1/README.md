@@ -29,11 +29,11 @@ The rubric weights are:
 - `requirements-at1.txt`: Python 3.11 dependency ranges
 - `requirements-ocr.txt` and `scripts/ocr_low_text_pdfs.py`: optional local
   OCR workflow for image-based submissions
-- `validation/`: the tracked 18-submission audit and source-verified excerpt
-  records displayed by the notebook
+- `validation/`: the tracked 18-submission audit, source-verified excerpts,
+  and curated submitter metadata displayed by the notebook
 - `data/submissions-skilled-migration/submissions_Skilledmigration/`: **143 PDFs**, extracted from the supplied archive
 
-The official inquiry page lists submissions and can be used to build submitter metadata:
+The official inquiry page is the authoritative public submissions register:
 
 <https://www.aph.gov.au/Parliamentary_Business/Committees/Joint/Migration/Skilledmigration/Submissions>
 
@@ -52,13 +52,18 @@ jupyter lab notebooks/1_skilled_migration_text_analysis.ipynb
 The baseline accounts for all 143 PDFs, records extraction failures, and flags
 documents with fewer than 500 extracted characters. Its current question
 examines benefit, risk, and policy-condition themes without claiming that a
-keyword match reveals stance. Extend it through validation and reliable
-submitter metadata rather than adding unrelated NLP methods.
+keyword match reveals stance. It also profiles the corpus using curated
+submitter metadata and compares document-level theme prevalence across
+submitter types.
 
 The notebook also audits metadata readiness: the 143 files represent 139 main
 submission numbers and four supplements. Numbers 49, 121, 124, 125, 126, and
 144 are absent from the supplied archive, so preserve official identifiers and
-do not treat file order as a submitter index.
+do not treat file order as a submitter index. Four unsigned submissions retain
+the label `Name not publicly stated`; `Sub079` remains unclassified because its
+PDF begins mid-submission. `Sub140.pdf` is not silently renamed even though its
+internal page footers say `Submission 121`; the discrepancy is recorded in
+`validation/submitter_metadata.csv`.
 
 The four image-based submissions have been recovered into ignored OCR
 sidecars. To reproduce that preprocessing:
