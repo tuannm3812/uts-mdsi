@@ -89,6 +89,10 @@ class Project15PdfRendererTests(unittest.TestCase):
         breaks = [flowable for flowable in story if isinstance(flowable, PageBreak)]
 
         self.assertEqual(len(breaks), 2)
+        self.assertIn(
+            "Project significance and real-world analysis",
+            renderer.PAGE_BREAK_H2,
+        )
 
     def test_markdown_bold_maps_to_registered_medium_font(self) -> None:
         marked_up = renderer.inline_markup("Use **Terminal-Bench**, **Harbor**, and `JSONL`.")

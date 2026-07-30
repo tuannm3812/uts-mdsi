@@ -14,7 +14,7 @@
 - Use Google Sans Medium for headings and bold emphasis.
 - Use blue `#0B57D0` for level-one headings, teal `#137F8B` for level-two headings, and violet `#6554C0` for level-three headings.
 - Align list bullets and numbers with the body column at `57.024 pt`; align list text and wrapped continuation lines at approximately `69 pt`.
-- Start selected chapter-level `##` sections on a new page: each paper, cross-paper synthesis, custom-harness implications, evaluation framework, reproducibility, research questions, team allocation, and references.
+- Start selected chapter-level `##` sections on a new page: project significance and real-world analysis, each paper, cross-paper synthesis, custom-harness implications, evaluation framework, reproducibility, research questions, team allocation, and references.
 - Do not force page breaks before `###` subsections or shorter related `##` sections.
 - Bold only meaningful technical terms, benchmark names, metrics, hypotheses, risks, and key findings.
 - Preserve unrelated worktree changes.

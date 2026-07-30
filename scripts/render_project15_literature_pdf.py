@@ -48,6 +48,7 @@ GOOGLE_SURFACE = colors.HexColor("#F8F9FA")
 
 PAGE_BREAK_H2 = {
     "Paper 1: Terminal-Bench",
+    "Project significance and real-world analysis",
     "Paper 2: SWE-agent",
     "Paper 3: OpenHands",
     "Paper 4: Agentless",
