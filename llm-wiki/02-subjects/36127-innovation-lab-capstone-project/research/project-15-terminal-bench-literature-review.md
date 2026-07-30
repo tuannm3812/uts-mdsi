@@ -30,11 +30,11 @@ The literature selected for this review addresses five complementary questions:
 
 ## Executive summary
 
-The five papers support a consistent conclusion: the underlying model is only one part of an agentic system. Performance also depends on the interface between the model and its environment, the information retained in context, the feedback supplied after actions, the checks performed before completion, and the mechanisms used to recover from errors.
+The five papers support a consistent conclusion: the **underlying model is only one part of an agentic system**. Performance also depends on the **model-environment interface**, the information retained in context, the feedback supplied after actions, the checks performed before completion, and the mechanisms used to recover from errors.
 
-Terminal-Bench provides 89 difficult, outcome-verified terminal tasks. Its failure analysis highlights behaviours directly relevant to harness design: failing to follow specifications, repeating ineffective steps, stopping prematurely, hallucinating results, failing to verify core requirements, and claiming success despite contradictory evidence. Terminal-Bench 2.1 subsequently corrected issues in 28 of the original 89 tasks, demonstrating that benchmark configuration and verifier quality can materially change measured performance.
+**Terminal-Bench** provides **89 difficult, outcome-verified terminal tasks**. Its failure analysis highlights behaviours directly relevant to harness design: failing to follow specifications, repeating ineffective steps, stopping prematurely, hallucinating results, failing to verify core requirements, and claiming success despite contradictory evidence. **Terminal-Bench 2.1** subsequently corrected issues in 28 of the original 89 tasks, demonstrating that **benchmark configuration and verifier quality** can materially change measured performance.
 
-SWE-agent offers the strongest direct evidence that interface design matters. It introduces the agent-computer interface, or ACI, and shows that simple actions, compact operations, concise feedback, and guardrails can improve an agent while keeping the model fixed. Its ablations suggest that summarised search, bounded file views, compact editing operations, linting, and reduced observation history can be more effective than exposing an unstructured shell alone.
+**SWE-agent** offers the strongest direct evidence that **interface design matters**. It introduces the **agent-computer interface (ACI)** and shows that simple actions, compact operations, concise feedback, and guardrails can improve an agent while keeping the model fixed. Its ablations suggest that summarised search, bounded file views, compact editing operations, linting, and reduced observation history can be more effective than exposing an unstructured shell alone.
 
 OpenHands demonstrates the breadth of a general software-agent platform: agent logic, tools, sandboxed execution, event history, state management, model abstraction, applications, and benchmark adapters. It is valuable as an established baseline and architectural reference, but its breadth is also a warning against reproducing a production platform within a one-semester Capstone.
 
@@ -42,7 +42,7 @@ Agentless shows that complex autonomy is not always necessary. A staged workflow
 
 The OpenHands SDK paper contributes production-oriented design lessons: separate agent logic from applications, keep configuration immutable, maintain a single authoritative state, store actions and observations as events, and isolate infrastructure failures from model failures. These practices are particularly important for a Capstone in which every result must be reproducible and explained.
 
-The recommended initial harness is therefore a minimal external Harbor agent with:
+The recommended initial harness is therefore a **minimal external Harbor agent** with:
 
 - a fixed prompt and explicit plan-execute-verify workflow;
 - one terminal execution interface initially;
@@ -59,19 +59,19 @@ The first experiments should test prompt structure, verification gating, error-a
 
 | Term | Working definition for Project 15 |
 |---|---|
-| Model | The underlying large language model that generates reasoning, commands, and responses. It must remain fixed during a controlled harness comparison. |
-| Agent | The model plus the policy or loop that decides how to act in an environment. |
-| Harness | The surrounding system that connects the model to tasks, tools, execution, context, logging, retries, and evaluation. |
-| Agent-computer interface | The actions available to an agent and the observations returned by the environment. |
-| Harbor | The evaluation framework used to run agents in containerised task environments and collect trial results. |
-| Task | An instruction, container environment, resource policy, and verifier that define one benchmark problem. |
-| Verifier | Automated tests or checks that judge the final environment state. |
-| Trajectory | The ordered record of prompts, actions, observations, tool results, state changes, and completion. |
-| Baseline | An established harness run under the same model and benchmark conditions as the custom harness. |
-| Development subset | The fixed 20-task subset used to design and compare harness changes. |
-| Final evaluation | The frozen custom harness run on the full 89-task benchmark under an agreed protocol. |
-| Ablation | A controlled comparison in which one component is removed or changed to estimate its contribution. |
-| Reward hacking | Achieving a verifier score without satisfying the intended task outcome. |
+| **Model** | The underlying large language model that generates reasoning, commands, and responses. It must remain fixed during a controlled harness comparison. |
+| **Agent** | The model plus the policy or loop that decides how to act in an environment. |
+| **Harness** | The surrounding system that connects the model to tasks, tools, execution, context, logging, retries, and evaluation. |
+| **Agent-computer interface** | The actions available to an agent and the observations returned by the environment. |
+| **Harbor** | The evaluation framework used to run agents in containerised task environments and collect trial results. |
+| **Task** | An instruction, container environment, resource policy, and verifier that define one benchmark problem. |
+| **Verifier** | Automated tests or checks that judge the final environment state. |
+| **Trajectory** | The ordered record of prompts, actions, observations, tool results, state changes, and completion. |
+| **Baseline** | An established harness run under the same model and benchmark conditions as the custom harness. |
+| **Development subset** | The fixed 20-task subset used to design and compare harness changes. |
+| **Final evaluation** | The frozen custom harness run on the full 89-task benchmark under an agreed protocol. |
+| **Ablation** | A controlled comparison in which one component is removed or changed to estimate its contribution. |
+| **Reward hacking** | Achieving a verifier score without satisfying the intended task outcome. |
 
 ## Paper 1: Terminal-Bench
 

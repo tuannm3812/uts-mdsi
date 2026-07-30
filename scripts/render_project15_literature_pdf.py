@@ -37,6 +37,8 @@ from reportlab.platypus.frames import Frame
 
 
 GOOGLE_BLUE = colors.HexColor("#0B57D0")
+GOOGLE_TEAL = colors.HexColor("#137F8B")
+GOOGLE_VIOLET = colors.HexColor("#6554C0")
 GOOGLE_DARK = colors.HexColor("#202124")
 GOOGLE_TEXT = colors.HexColor("#3C4043")
 GOOGLE_MUTED = colors.HexColor("#5F6368")
@@ -49,21 +51,27 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", type=Path, required=True, help="Source Markdown file")
     parser.add_argument("--output", type=Path, required=True, help="Destination PDF file")
-    parser.add_argument("--font", type=Path, required=True, help="Google Sans Flex TTF file")
+    parser.add_argument(
+        "--font-regular", type=Path, required=True, help="Google Sans Regular TTF file"
+    )
+    parser.add_argument(
+        "--font-medium", type=Path, required=True, help="Google Sans Medium TTF file"
+    )
     return parser.parse_args()
 
 
-def register_google_sans(font_path: Path) -> None:
-    if not font_path.is_file():
-        raise FileNotFoundError(f"Google Sans font not found: {font_path}")
-    pdfmetrics.registerFont(TTFont("GoogleSansFlex", str(font_path)))
-    pdfmetrics.registerFont(TTFont("GoogleSansFlexMedium", str(font_path), subfontIndex=0))
+def register_google_sans(regular_path: Path, medium_path: Path) -> None:
+    for font_path in (regular_path, medium_path):
+        if not font_path.is_file():
+            raise FileNotFoundError(f"Google Sans font not found: {font_path}")
+    pdfmetrics.registerFont(TTFont("GoogleSans", str(regular_path)))
+    pdfmetrics.registerFont(TTFont("GoogleSansMedium", str(medium_path)))
     registerFontFamily(
-        "GoogleSansFlex",
-        normal="GoogleSansFlex",
-        bold="GoogleSansFlexMedium",
-        italic="GoogleSansFlex",
-        boldItalic="GoogleSansFlexMedium",
+        "GoogleSans",
+        normal="GoogleSans",
+        bold="GoogleSansMedium",
+        italic="GoogleSans",
+        boldItalic="GoogleSansMedium",
     )
 
 
@@ -73,7 +81,7 @@ def build_styles() -> dict[str, ParagraphStyle]:
         "title": ParagraphStyle(
             "Title",
             parent=sample["Title"],
-            fontName="GoogleSansFlexMedium",
+            fontName="GoogleSansMedium",
             fontSize=25,
             leading=30,
             textColor=GOOGLE_DARK,
@@ -83,7 +91,7 @@ def build_styles() -> dict[str, ParagraphStyle]:
         "subtitle": ParagraphStyle(
             "Subtitle",
             parent=sample["Normal"],
-            fontName="GoogleSansFlex",
+            fontName="GoogleSans",
             fontSize=11,
             leading=16,
             textColor=GOOGLE_MUTED,
@@ -92,7 +100,7 @@ def build_styles() -> dict[str, ParagraphStyle]:
         "h1": ParagraphStyle(
             "Heading1",
             parent=sample["Heading1"],
-            fontName="GoogleSansFlexMedium",
+            fontName="GoogleSansMedium",
             fontSize=17,
             leading=21,
             textColor=GOOGLE_BLUE,
@@ -103,10 +111,10 @@ def build_styles() -> dict[str, ParagraphStyle]:
         "h2": ParagraphStyle(
             "Heading2",
             parent=sample["Heading2"],
-            fontName="GoogleSansFlexMedium",
+            fontName="GoogleSansMedium",
             fontSize=13,
             leading=17,
-            textColor=GOOGLE_DARK,
+            textColor=GOOGLE_TEAL,
             spaceBefore=10,
             spaceAfter=5,
             keepWithNext=True,
@@ -114,10 +122,10 @@ def build_styles() -> dict[str, ParagraphStyle]:
         "h3": ParagraphStyle(
             "Heading3",
             parent=sample["Heading3"],
-            fontName="GoogleSansFlexMedium",
+            fontName="GoogleSansMedium",
             fontSize=11,
             leading=15,
-            textColor=GOOGLE_TEXT,
+            textColor=GOOGLE_VIOLET,
             spaceBefore=8,
             spaceAfter=4,
             keepWithNext=True,
@@ -125,7 +133,7 @@ def build_styles() -> dict[str, ParagraphStyle]:
         "body": ParagraphStyle(
             "Body",
             parent=sample["BodyText"],
-            fontName="GoogleSansFlex",
+            fontName="GoogleSans",
             fontSize=9.2,
             leading=13.3,
             textColor=GOOGLE_TEXT,
@@ -136,7 +144,7 @@ def build_styles() -> dict[str, ParagraphStyle]:
         "quote": ParagraphStyle(
             "Quote",
             parent=sample["BodyText"],
-            fontName="GoogleSansFlex",
+            fontName="GoogleSans",
             fontSize=9.2,
             leading=13.3,
             textColor=GOOGLE_DARK,
@@ -167,7 +175,7 @@ def build_styles() -> dict[str, ParagraphStyle]:
         "list": ParagraphStyle(
             "List",
             parent=sample["BodyText"],
-            fontName="GoogleSansFlex",
+            fontName="GoogleSans",
             fontSize=9.1,
             leading=12.8,
             textColor=GOOGLE_TEXT,
@@ -176,7 +184,7 @@ def build_styles() -> dict[str, ParagraphStyle]:
         "table_header": ParagraphStyle(
             "TableHeader",
             parent=sample["BodyText"],
-            fontName="GoogleSansFlexMedium",
+            fontName="GoogleSansMedium",
             fontSize=7.6,
             leading=9.5,
             textColor=colors.white,
@@ -185,7 +193,7 @@ def build_styles() -> dict[str, ParagraphStyle]:
         "table_body": ParagraphStyle(
             "TableBody",
             parent=sample["BodyText"],
-            fontName="GoogleSansFlex",
+            fontName="GoogleSans",
             fontSize=7.3,
             leading=9.4,
             textColor=GOOGLE_TEXT,
@@ -194,7 +202,7 @@ def build_styles() -> dict[str, ParagraphStyle]:
         "footer": ParagraphStyle(
             "Footer",
             parent=sample["Normal"],
-            fontName="GoogleSansFlex",
+            fontName="GoogleSans",
             fontSize=7.3,
             leading=9,
             textColor=GOOGLE_MUTED,
@@ -206,7 +214,11 @@ def inline_markup(value: str) -> str:
     """Escape Markdown text and retain a small, safe inline subset."""
     escaped = html.escape(value.strip())
     escaped = re.sub(r"`([^`]+)`", r"<font name='Courier'>\1</font>", escaped)
-    escaped = re.sub(r"\*\*([^*]+)\*\*", r"<b>\1</b>", escaped)
+    escaped = re.sub(
+        r"\*\*([^*]+)\*\*",
+        r"<font name='GoogleSansMedium'>\1</font>",
+        escaped,
+    )
     escaped = re.sub(r"\*([^*]+)\*", r"<i>\1</i>", escaped)
     escaped = re.sub(
         r"(https?://[^\s<]+)",
@@ -282,15 +294,16 @@ def build_list(
     styles: dict[str, ParagraphStyle],
 ) -> ListFlowable:
     list_items = [
-        ListItem(Paragraph(inline_markup(item), styles["list"]), leftIndent=8)
+        ListItem(Paragraph(inline_markup(item), styles["list"]), leftIndent=0)
         for item in items
     ]
     return ListFlowable(
         list_items,
         bulletType="1" if ordered else "bullet",
         start="1" if ordered else "\u2022",
-        leftIndent=18,
-        bulletFontName="GoogleSansFlex",
+        leftIndent=14,
+        bulletDedent=6,
+        bulletFontName="GoogleSans",
         bulletFontSize=8,
         bulletColor=GOOGLE_BLUE,
         spaceAfter=6,
@@ -441,7 +454,7 @@ def add_page_chrome(canvas: Canvas, document: BaseDocTemplate) -> None:
     canvas.setStrokeColor(GOOGLE_BORDER)
     canvas.setLineWidth(0.35)
     canvas.line(18 * mm, 15.5 * mm, width - 18 * mm, 15.5 * mm)
-    canvas.setFont("GoogleSansFlex", 7.2)
+    canvas.setFont("GoogleSans", 7.2)
     canvas.setFillColor(GOOGLE_MUTED)
     canvas.drawString(18 * mm, 10.5 * mm, "36127 Capstone - Project 15")
     canvas.drawRightString(
@@ -477,10 +490,15 @@ class LiteratureDocTemplate(BaseDocTemplate):
         )
 
 
-def build_pdf(input_path: Path, output_path: Path, font_path: Path) -> None:
+def build_pdf(
+    input_path: Path,
+    output_path: Path,
+    regular_font_path: Path,
+    medium_font_path: Path,
+) -> None:
     if not input_path.is_file():
         raise FileNotFoundError(f"Markdown input not found: {input_path}")
-    register_google_sans(font_path)
+    register_google_sans(regular_font_path, medium_font_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     styles = build_styles()
     source = input_path.read_text(encoding="utf-8")
@@ -492,7 +510,7 @@ def build_pdf(input_path: Path, output_path: Path, font_path: Path) -> None:
 def main() -> int:
     args = parse_args()
     try:
-        build_pdf(args.input, args.output, args.font)
+        build_pdf(args.input, args.output, args.font_regular, args.font_medium)
     except (FileNotFoundError, OSError, ValueError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
