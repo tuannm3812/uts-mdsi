@@ -18,7 +18,7 @@
 
 ## First mentor meeting - Week 2
 
-**Target date:** 5 Aug 2026  
+**Target date:** 5 Aug 2026
 **Purpose:** Confirm experimental contract, resources, scope, and communication process.
 
 ### Required agenda
@@ -58,7 +58,7 @@
 
 ## Early progress client meeting - Week 5
 
-**Target date:** 26 Aug 2026  
+**Target date:** 26 Aug 2026
 **Purpose:** Demonstrate reproducible infrastructure, baseline protocol, and initial evidence.
 
 ### Proposed evidence package
@@ -93,7 +93,7 @@
 
 ## Midpoint client review - Week 7
 
-**Target date:** 9 Sep 2026  
+**Target date:** 9 Sep 2026
 **Purpose:** Demonstrate custom harness V1 and controlled comparisons.
 
 ### Proposed evidence package
@@ -127,7 +127,7 @@
 
 ## Pre-final client meeting - Week 9
 
-**Target date:** 30 Sep 2026  
+**Target date:** 30 Sep 2026
 **Purpose:** Freeze the harness and final evaluation protocol.
 
 ### Required decisions
@@ -169,7 +169,7 @@
 
 ## Final presentation review - Week 11
 
-**Target date:** 14 Oct 2026  
+**Target date:** 14 Oct 2026
 **Purpose:** Confirm the final evidence, claims, limitations, and presentation delivery.
 
 ### Review checklist
@@ -193,7 +193,7 @@
 
 ## Showcase and handover retrospective - Week 12
 
-**Target date:** 21 Oct 2026  
+**Target date:** 21 Oct 2026
 **Purpose:** Deliver final artifacts and capture lessons for the client, team, and future work.
 
 ### Handover checklist
@@ -226,4 +226,3 @@
 **Future research:**
 
 -
-

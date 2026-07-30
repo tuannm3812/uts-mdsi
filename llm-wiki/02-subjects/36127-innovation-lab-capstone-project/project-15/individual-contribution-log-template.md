@@ -138,4 +138,3 @@ The official kickoff material groups weekly evidence into three contribution sta
 | 3 | Weeks 9, 10, and 11 | Final Report |
 
 Complete the log every week even when a particular week is not one of the three formal evidence weeks. Continuous records make the formal submissions easier and more defensible.
-

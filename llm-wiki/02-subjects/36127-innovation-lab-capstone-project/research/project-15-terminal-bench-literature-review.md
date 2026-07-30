@@ -1,8 +1,8 @@
 # Project 15 Literature Review
 
-**Project:** Build a Custom Harness and Beat an Established One on Terminal-Bench  
-**Subject:** 36127 Innovation Lab: Capstone Project  
-**Prepared for:** Six-member Project 15 team  
+**Project:** Build a Custom Harness and Beat an Established One on Terminal-Bench
+**Subject:** 36127 Innovation Lab: Capstone Project
+**Prepared for:** Six-member Project 15 team
 **Date:** 30 July 2026
 
 ## Project context

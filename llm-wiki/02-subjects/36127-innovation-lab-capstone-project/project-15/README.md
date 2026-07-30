@@ -119,4 +119,3 @@ The initial tracker allocates eight primary tasks to each member. Equality must 
 - Require at least one reviewer.
 - Do not commit API keys, secrets, raw provider credentials, or private client data.
 - Tag frozen baseline and final-evaluation configurations.
-

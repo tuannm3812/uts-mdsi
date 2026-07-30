@@ -94,4 +94,3 @@ Before the full evaluation:
 - [ ] Confirm leaderboard requirements
 - [ ] Test result export and backup
 - [ ] Record mentor/client approval
-

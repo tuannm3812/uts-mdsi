@@ -118,4 +118,3 @@ Complete this table during the weekly team meeting.
 - [ ] Decisions were added to the meeting log.
 - [ ] Experiments were added to the experiment register.
 - [ ] Risks to the next client or assessment milestone were escalated.
-
