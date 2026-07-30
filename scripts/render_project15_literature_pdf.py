@@ -46,6 +46,21 @@ GOOGLE_LIGHT = colors.HexColor("#E8F0FE")
 GOOGLE_BORDER = colors.HexColor("#DADCE0")
 GOOGLE_SURFACE = colors.HexColor("#F8F9FA")
 
+PAGE_BREAK_H2 = {
+    "Paper 1: Terminal-Bench",
+    "Paper 2: SWE-agent",
+    "Paper 3: OpenHands",
+    "Paper 4: Agentless",
+    "Paper 5: OpenHands Software Agent SDK",
+    "Cross-paper synthesis",
+    "Implications for our custom harness",
+    "Evaluation framework",
+    "Reproducibility, cost, and validity",
+    "Research questions and hypotheses",
+    "Six-member reading allocation",
+    "References",
+}
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
@@ -179,7 +194,7 @@ def build_styles() -> dict[str, ParagraphStyle]:
             fontSize=9.1,
             leading=12.8,
             textColor=GOOGLE_TEXT,
-            leftIndent=2,
+            leftIndent=12,
         ),
         "table_header": ParagraphStyle(
             "TableHeader",
@@ -302,7 +317,7 @@ def build_list(
         bulletType="1" if ordered else "bullet",
         start="1" if ordered else "\u2022",
         leftIndent=14,
-        bulletDedent=6,
+        bulletDedent=0,
         bulletFontName="GoogleSans",
         bulletFontSize=8,
         bulletColor=GOOGLE_BLUE,
@@ -408,6 +423,8 @@ def parse_markdown(
                 )
                 first_heading = False
             else:
+                if level == 2 and text in PAGE_BREAK_H2:
+                    story.append(PageBreak())
                 story.append(Paragraph(inline_markup(text), styles[f"h{level}"]))
             continue
 

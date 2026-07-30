@@ -3,10 +3,13 @@
 from __future__ import annotations
 
 import importlib.util
+import tempfile
 import unittest
 from pathlib import Path
 
+import fitz
 from reportlab.lib import colors
+from reportlab.platypus import PageBreak
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -41,12 +44,51 @@ class Project15PdfRendererTests(unittest.TestCase):
         self.assertEqual(styles["h2"].textColor, colors.HexColor("#137F8B"))
         self.assertEqual(styles["h3"].textColor, colors.HexColor("#6554C0"))
 
-    def test_lists_use_one_safe_hanging_indent(self) -> None:
-        flowable = renderer.build_list(["first item"], False, renderer.build_styles())
+    def test_rendered_list_markers_and_text_use_body_aligned_hanging_indent(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            source = Path(temp_dir) / "source.md"
+            output = Path(temp_dir) / "output.pdf"
+            source.write_text(
+                "# Test\n\nParagraph alignment.\n\n"
+                "- A bullet item that wraps across multiple lines because it contains "
+                "enough words to exceed a deliberately narrow line width in the PDF.\n\n"
+                "1. A numbered item.\n",
+                encoding="utf-8",
+            )
+            renderer.build_pdf(
+                source,
+                output,
+                Path("/Applications/Google Drive.app/Contents/Resources/GoogleSans-Regular.ttf"),
+                Path("/Applications/Google Drive.app/Contents/Resources/GoogleSans-Medium.ttf"),
+            )
+            page = fitz.open(output)[0]
+            spans = [
+                span
+                for block in page.get_text("dict")["blocks"]
+                for line in block.get("lines", [])
+                for span in line["spans"]
+            ]
 
-        self.assertEqual(flowable._leftIndent, 14)
-        self.assertEqual(flowable._bulletDedent, 6)
-        self.assertEqual(flowable._flowables[0]._params["leftIndent"], 0)
+        paragraph = next(span for span in spans if span["text"] == "Paragraph alignment.")
+        bullet = next(span for span in spans if span["text"] == "\u2022")
+        bullet_text = next(span for span in spans if span["text"].startswith("A bullet item"))
+        number = next(span for span in spans if span["text"] == "1")
+        number_text = next(span for span in spans if span["text"] == "A numbered item.")
+        self.assertAlmostEqual(bullet["bbox"][0], paragraph["bbox"][0], places=2)
+        self.assertAlmostEqual(number["bbox"][0], paragraph["bbox"][0], places=2)
+        self.assertGreaterEqual(bullet_text["bbox"][0], paragraph["bbox"][0] + 11.5)
+        self.assertGreaterEqual(number_text["bbox"][0], paragraph["bbox"][0] + 11.5)
+
+    def test_only_approved_major_sections_receive_page_breaks(self) -> None:
+        source = (
+            "# Review\n\n## Project context\nIntro.\n\n"
+            "## Paper 1: Terminal-Bench\nPaper.\n\n### Research problem\nDetail.\n\n"
+            "## Experimental variables\nVariables.\n\n## References\nSources.\n"
+        )
+        story = renderer.parse_markdown(source, renderer.build_styles(), 400)
+        breaks = [flowable for flowable in story if isinstance(flowable, PageBreak)]
+
+        self.assertEqual(len(breaks), 2)
 
     def test_markdown_bold_maps_to_registered_medium_font(self) -> None:
         marked_up = renderer.inline_markup("Use **Terminal-Bench**, **Harbor**, and `JSONL`.")

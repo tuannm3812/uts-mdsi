@@ -13,7 +13,9 @@
 - Use Google Sans Regular for body, list, table, callout, header, and footer text.
 - Use Google Sans Medium for headings and bold emphasis.
 - Use blue `#0B57D0` for level-one headings, teal `#137F8B` for level-two headings, and violet `#6554C0` for level-three headings.
-- Keep list bullets and numbers inside the content frame with a consistent hanging indent.
+- Align list bullets and numbers with the body column at `57.024 pt`; align list text and wrapped continuation lines at approximately `69 pt`.
+- Start selected chapter-level `##` sections on a new page: each paper, cross-paper synthesis, custom-harness implications, evaluation framework, reproducibility, research questions, team allocation, and references.
+- Do not force page breaks before `###` subsections or shorter related `##` sections.
 - Bold only meaningful technical terms, benchmark names, metrics, hypotheses, risks, and key findings.
 - Preserve unrelated worktree changes.
 
@@ -43,7 +45,8 @@
 - Produces: a styled A4 PDF with safe list geometry and selective technical emphasis
 
 - [ ] Register separate Regular and Medium fonts and use them according to the approved hierarchy.
-- [ ] Replace cumulative list indentation with one frame-relative hanging-indent model.
+- [ ] Replace cumulative list indentation with one frame-relative hanging-indent model whose marker aligns with the body column and whose text uses a fixed 12 pt indent.
+- [ ] Add controlled page breaks before the approved chapter-level headings.
 - [ ] Apply distinct heading colours and selective Markdown bold markup.
 - [ ] Run the regression tests and confirm they pass.
 
