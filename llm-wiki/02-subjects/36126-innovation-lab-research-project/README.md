@@ -53,6 +53,7 @@ Source folder: `/Users/tuannm3812/Library/CloudStorage/GoogleDrive-tuannm3812@gm
 - [Research Execution Plan](research/research-execution-plan-2026.md)
 - [Active-Fire Research Materials Summary](research/active-fire-materials-summary-2026-07-30.md)
 - [Tổng quan tài liệu phát hiện điểm nóng cháy — Tiếng Việt](research/active-fire-literature-review-vi-2026-07-30.md)
+- [Tổng quan tài liệu phát hiện điểm nóng cháy — PDF tiếng Việt](research/active-fire-literature-review-vi-2026-07-30.pdf)
 - [Public-Data Feasibility Pilot](research/data-feasibility-pilot-2026-07-30.md)
 - [Public-Data Feasibility Results](research/data-feasibility-pilot-results.csv)
 - [Active-Fire Pilot Pipeline](notebooks/active-fire-pilot/README.md)
