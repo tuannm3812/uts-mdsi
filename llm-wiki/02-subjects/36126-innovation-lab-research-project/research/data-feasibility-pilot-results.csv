@@ -1,0 +1,18 @@
+analysis,sensor,match_class,hotspot_count,match_rate_within_sensor,mean_confidence,interpretation
+exact,AHI,bushfire,1510,0.1104,50.000,Point lies inside a recorded fire polygon and event window
+exact,AHI,unmatched,12164,0.8896,50.000,Not proof of a false alarm
+exact,AVHRR,bushfire,1,0.0196,50.000,Point lies inside a recorded fire polygon and event window
+exact,AVHRR,unmatched,50,0.9804,50.000,Not proof of a false alarm
+exact,MODIS,bushfire,341,0.2032,65.689,Point lies inside a recorded fire polygon and event window
+exact,MODIS,unmatched,1337,0.7968,65.313,Not proof of a false alarm
+exact,VIIRS,bushfire,1026,0.2308,22.890,Point lies inside a recorded fire polygon and event window
+exact,VIIRS,unmatched,3420,0.7692,22.698,Not proof of a false alarm
+accuracy_buffered,AHI,bushfire,1888,0.1381,50.000,Uses documented 2 km positional tolerance
+accuracy_buffered,AHI,spatial_only,3,0.0002,50.000,Near polygon but outside recorded event window
+accuracy_buffered,AHI,unmatched,11783,0.8617,50.000,Not proof of a false alarm
+accuracy_buffered,AVHRR,bushfire,3,0.0588,50.000,Uses documented 1 km positional tolerance
+accuracy_buffered,AVHRR,unmatched,48,0.9412,50.000,Not proof of a false alarm
+accuracy_buffered,MODIS,bushfire,385,0.2294,65.704,Uses documented 1 km positional tolerance
+accuracy_buffered,MODIS,unmatched,1293,0.7706,65.295,Not proof of a false alarm
+accuracy_buffered,VIIRS,bushfire,1109,0.2494,22.857,Uses documented 0.375 km positional tolerance
+accuracy_buffered,VIIRS,unmatched,3337,0.7506,22.705,Not proof of a false alarm

@@ -1,0 +1,12 @@
+filename,pages,year,short_title,source_type,priority,source_url
+01-singh-2025-active-wildfire-detection-australia.pdf,24,2025,Active wildfire detection in Australia,Publisher open PDF,6,https://doi.org/10.1007/s11069-025-07163-w
+02-zhang-2021-sentinel2-deep-active-fire-detection.pdf,15,2021,Sentinel-2 deep active-fire detection,Publisher open PDF,5,https://doi.org/10.3390/rs13234790
+03-zhang-2023-viirs-himawari-real-time-detection.pdf,23,2023,VIIRS and Himawari-8 real-time detection,Publisher open PDF,2,https://doi.org/10.3390/rs15061541
+04-jones-2022-himawari8-final-project-report.pdf,34,2022,Himawari-8 Australian final project report,Institutional report,1,https://www.naturalhazards.com.au/crc-collection/downloads/active_fire_detection_using_the_himawari-8_satellite_final_project_report.pdf
+05-schroeder-2014-viirs-375m-active-fire.pdf,12,2014,VIIRS 375 m active-fire product,Repository copy,4,https://www.earthdata.nasa.gov/sites/default/files/imported/Schroeder_et_al_2014b_RSE.pdf
+06-giglio-2016-modis-collection6-fire.pdf,11,2016,MODIS Collection 6 active-fire algorithm,Repository copy,3,https://www.earthdata.nasa.gov/s3fs-public/imported/Giglio2016_C6_Fire.pdf
+07-rad-2024-vision-transformer-wildfire-detection.pdf,16,2024,Vision transformer wildfire detection,Proceedings open PDF,8,https://proceedings.mlr.press/v222/rad24a/rad24a.pdf
+08-barco-2024-self-supervised-hotspot-detection.pdf,5,2024,Self-supervised hotspot detection,Preprint,9,https://arxiv.org/pdf/2405.20093
+09-xu-2024-sen2fire-dataset.pdf,5,2024,Sen2Fire benchmark dataset,Preprint,10,https://arxiv.org/pdf/2403.17884
+10-zhao-2024-ts-satfire-dataset.pdf,16,2024,TS-SatFire time-series dataset,Preprint,11,https://arxiv.org/pdf/2412.11555
+11-manolakis-2022-real-time-semantic-explanations.pdf,27,2022,Real-time detection with semantic explanations,Repository copy,7,https://doi.org/10.1016/j.eswa.2022.117007

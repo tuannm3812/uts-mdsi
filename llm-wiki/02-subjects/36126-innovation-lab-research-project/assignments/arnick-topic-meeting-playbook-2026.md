@@ -31,6 +31,196 @@ You do not need to finalise the model architecture during this meeting.
 >
 > I’d like to understand the topics and datasets currently available, then identify an option that has a clear research contribution and is feasible within the subject timeline.
 
+## Full demo conversation
+
+This is a model conversation, not a script that must be followed word for word. Listen to Dr Arnick’s answer before moving to the next question.
+
+### Opening and available topics
+
+**Tuan:**
+
+> Thank you for meeting with me. I’m interested in developing rigorous research skills while building on my machine-learning and data-engineering experience. I may also consider a PhD later.
+>
+> Could you first explain which environmental or climate-hazard topics and datasets are currently available for a student to begin this semester?
+
+**Possible answer from Dr Arnick:**
+
+> The two main options are bushfire occurrence prediction and agentic AI for weather extremes. I may also have a related topic depending on your interests.
+
+**Tuan:**
+
+> Thank you. Before choosing, could you explain the main research question, available data, and expected contribution for each option? I would like to compare them based on feasibility and research value, not only the application title.
+
+### If he explains the bushfire project
+
+**Possible answer from Dr Arnick:**
+
+> The bushfire project uses satellite, climate, and historical fire data to predict where fire occurrence is likely. Explainability is important because we want to understand the environmental drivers.
+
+**Tuan:**
+
+> That direction interests me because it combines predictive modelling, time-dependent data, explainability, and an important Australian application.
+>
+> What would the model predict exactly: fire occurrence, susceptibility, or a risk category? What geographic unit and prediction horizon would we use?
+
+**Possible answer:**
+
+> We may predict fire occurrence across regional grid cells using monthly environmental variables.
+
+**Tuan:**
+
+> Is that dataset already prepared and aligned, or would acquiring and integrating the satellite, climate, and fire records be a major part of my work?
+
+**Possible answer:**
+
+> We have some processed data, but you may need to perform further cleaning and feature engineering.
+
+**Tuan:**
+
+> That sounds manageable. Could we identify what is already available and define a minimum dataset for the first modelling baseline? I want to preserve enough time for leakage-safe validation, explainability, and writing.
+
+### Clarifying the research contribution
+
+**Tuan:**
+
+> What would make this a research contribution rather than only applying standard models to an environmental dataset?
+
+**Possible answer:**
+
+> You could compare models across bioregions, study how risk drivers vary spatially, or improve the validation and explainability framework.
+
+**Tuan:**
+
+> Of those directions, which one addresses the clearest gap in the existing research and is realistic within the remaining semester?
+
+**Possible answer:**
+
+> Region-specific explainability and robust spatial validation would be useful.
+
+**Tuan:**
+
+> Would a suitable provisional question be: “Can region-specific explainable machine-learning models improve bushfire occurrence prediction and reveal how environmental risk drivers vary across regions compared with a single national model?”
+>
+> I understand that we would refine the wording after reviewing the data and literature.
+
+### If he recommends the agentic weather project
+
+**Possible answer from Dr Arnick:**
+
+> Your AI-agent experience may make the agentic weather-extremes project a better technical fit.
+
+**Tuan:**
+
+> I’m open to that direction. What measurable problem would the agents solve better than a conventional anomaly-detection or forecasting pipeline?
+
+**Possible answer:**
+
+> The agents would combine several sources, detect unusual conditions, and generate an interpretable assessment.
+
+**Tuan:**
+
+> What objective baselines and metrics would we use to evaluate earlier detection, false alarms, evidence grounding, and reliability? I would want the project to test a scientific hypothesis rather than only demonstrate a multi-agent application.
+
+### If he proposes another topic
+
+**Possible answer from Dr Arnick:**
+
+> I also have another project involving drought, vegetation, or climate-risk prediction.
+
+**Tuan:**
+
+> I would be interested in considering it. Could we define its prediction target, available dataset, research gap, minimum experiment, and new skills required? That would help me compare it fairly with the two listed topics.
+
+### Discussing your background
+
+**Possible question from Dr Arnick:**
+
+> What experience can you bring to the project?
+
+**Tuan:**
+
+> I can contribute Python, data preparation and pipelines, machine learning, deep learning, time-series forecasting, reproducible evaluation, APIs, dashboards, and technical documentation. My main learning areas would be remote sensing, GIS operations, spatial validation, and environmental interpretation.
+>
+> I’m willing to learn those areas, but I would like to begin with a focused scope and data that lets me establish a reliable baseline early.
+
+### Discussing computing
+
+**Tuan:**
+
+> I don’t currently have a dedicated local GPU. Do you expect the project to require substantial GPU training, and are university computing resources available? If appropriate, I can use Kaggle, Colab, or another cloud environment for experiments.
+
+**Possible answer:**
+
+> Classical models may be sufficient initially, and we can discuss cloud resources if deep learning is required.
+
+**Tuan:**
+
+> That approach suits me. I would prefer to establish strong interpretable baselines first and only add a complex model if it addresses a demonstrated limitation.
+
+### Discussing publication without overpromising
+
+**Tuan:**
+
+> I saw the recent MDSI drought-prediction preprint and was encouraged by the research outcome. If my results are strong, could this project potentially be developed into a preprint or publication?
+
+**Possible answer:**
+
+> It may be possible, but it depends on the novelty and quality of the results.
+
+**Tuan:**
+
+> Understood. My priority is to complete a rigorous and reproducible subject project. I would be willing to continue after the semester if the results justify a manuscript and we agree on the additional work.
+
+### Selecting the topic
+
+**Tuan:**
+
+> Based on what we have discussed, which option would you recommend for my background, the available data, and the limited timeline?
+
+**Possible answer:**
+
+> I recommend the bushfire project because the data and research direction are clearer.
+
+**Tuan:**
+
+> I’m happy to proceed with that recommendation. Could we record a provisional title and research question now, even if we refine them after the initial literature and data review?
+
+### Confirming the first task
+
+**Tuan:**
+
+> What should I complete during the first week? For example, should I begin with a focused literature review, inspect a provided dataset, reproduce an existing baseline, or prepare a short proposal?
+
+**Possible answer:**
+
+> Read these papers, review the data dictionary, and prepare an initial problem statement.
+
+**Tuan:**
+
+> Thank you. When should I send those materials to you, and when would you like our next supervision meeting?
+
+### Closing
+
+**Tuan:**
+
+> Let me confirm my understanding. The provisional direction is **[topic]**, the initial research question is **[question]**, and the main data will be **[dataset]**. My first tasks are **[tasks]** by **[date]**.
+>
+> I’ll send you a short written summary today so you can correct anything I misunderstood. What administrative confirmation should we send to the subject coordinator to formalise the topic and supervision?
+
+## Short demo for a rushed meeting
+
+If only five minutes remain, use:
+
+> Of the topics and datasets currently available, which one would you recommend for my background and the remaining timeline?
+>
+> What exact research question would I investigate?
+>
+> Is the data ready for me to begin?
+>
+> What should I complete during the first week?
+>
+> What must we send to the coordinator to confirm the supervision?
+
 ## First questions: understand the available choices
 
 Ask these before selecting a topic:

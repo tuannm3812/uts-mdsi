@@ -23,7 +23,12 @@
 |---|---|---|---|---|
 | 27 July 2026 | In person | Asked whether Dr Arnick accepts students for the bushfire project. He requested an email. | Awaiting formal discussion and confirmation. | Send initial email. |
 | 28 July 2026 | Email | Dr Arnick welcomed the interest in transparent predictive models for environmental and climate hazards. He advised finalising a topic quickly because of the limited subject timeline. | Offered a meeting on 29 July 2026 at 10:00 AM to explore potential topics and select one. | Confirm availability and send Zoom/Teams invitation. |
-| 29 July 2026, 10:00 AM | Meeting | Scheduled topic-exploration meeting. | Pending. | Prepare shortlist, questions, and meeting notes. |
+| 29 July 2026, 10:00 AM | Teams meeting | Discussed the subject expectations and a broad transparent fire-hotspot modelling direction. | Dr Arnick proposed time-series transformer and/or graph-based models, supported by data fusion, feature engineering, explainability, confidence, and uncertainty analysis. | Confirm supervisor/topic with coordinator and submit a focused literature-gap scan by 31 July or 1 August. |
+| 29 July 2026 | Canvas announcement | Dr Tony Huang clarified the subject and assessment requirements. | Topic and supervisor confirmation are required for enrolment; the final report and face-to-face presentation are each worth 50%; supervisors are asked to provide at least 12 contact hours. | Confirm enrolment process, negotiate supervision schedule, and monitor Canvas for assessment dates and presentation venue. |
+| 29 July 2026 | Microsoft Teams | Dr Arnick clarified the research scope after the meeting. | Focus on fire-hotspot detection and active-fire monitoring, not fire spread. Review Australian and international studies. Limit modelling to a selected Australian state or fire-prone region, potentially NSW. | Conduct the geographically broad review and use evidence to recommend a manageable case-study region and methodology. |
+| 29 July 2026 | Microsoft Teams | Dr Arnick shared MyFireWatch and Digital Earth Australia Hotspots as operational resources. | Treat existing Australian hotspot systems as the operational baseline and potential data foundation rather than rebuilding a map. DEA offers multi-sensor historic records and confidence metadata; MyFireWatch documents practical detection limitations. | Incorporate both systems into the findings and investigate an NSW hotspot-reliability study. |
+
+Detailed record: [2026-07-29 meeting summary](2026-07-29-arnick-topic-meeting-summary.md)
 
 ## Dr Arnick's response
 
@@ -276,15 +281,17 @@ Then ask:
 
 ## Immediate checklist
 
-- [ ] Send the initial email.
-- [ ] Record Dr Arnick’s response in the contact log.
-- [ ] Arrange a short scope meeting.
-- [ ] Ask the four essential questions.
-- [ ] Complete the meeting notes.
-- [ ] Confirm supervision and topic in writing.
+- [x] Send the initial email.
+- [x] Record Dr Arnick’s response in the contact log.
+- [x] Arrange a short scope meeting.
+- [x] Ask the essential topic questions.
+- [x] Complete the initial meeting notes.
+- [ ] Confirm supervision and broad topic with the subject coordinator, copying Dr Arnick.
 - [ ] Notify the subject coordinator using the required evidence.
-- [ ] Obtain the initial reading list and dataset information.
-- [ ] Create a preliminary research question only after supervisor guidance.
+- [ ] Complete the focused literature and gap scan by 31 July or 1 August.
+- [ ] Send the first deliverable to Dr Arnick through Teams.
+- [ ] Ask for dataset information and the next supervision meeting.
+- [ ] Define objectives, research questions, and methodology after the gap is agreed.
 
 ## Items not to do yet
 
