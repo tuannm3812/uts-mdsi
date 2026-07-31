@@ -52,6 +52,7 @@ Source folder: `/Users/tuannm3812/Library/CloudStorage/GoogleDrive-tuannm3812@gm
 
 - [Project 15 Workspace](project-15/README.md)
 - [Project 15 Detailed Literature Review](research/project-15-terminal-bench-literature-review.md)
+- [Project 15 Literature Review — Vietnamese](research/project-15-terminal-bench-literature-review-vi.md)
 - [Project 15 Team Task Tracker](project-15/team-task-tracker.md)
 - [Project 15 Individual Contribution Log](project-15/individual-contribution-log-template.md)
 - [Spring 2026 Capstone Topic Picker — 16 verified topics](sources/capstone-topic-picker-2026.md)

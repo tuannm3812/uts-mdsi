@@ -19,6 +19,8 @@ The team will compare two established agent harnesses with a custom harness whil
 
 - [Detailed literature review](../research/project-15-terminal-bench-literature-review.md)
 - [PDF literature review](../research/project-15-terminal-bench-literature-review.pdf)
+- [Vietnamese literature review](../research/project-15-terminal-bench-literature-review-vi.md)
+- [Vietnamese PDF literature review](../research/project-15-terminal-bench-literature-review-vi.pdf)
 - [Team task tracker](team-task-tracker.md)
 - [Individual contribution log template](individual-contribution-log-template.md)
 - [Experiment register](experiment-register.md)

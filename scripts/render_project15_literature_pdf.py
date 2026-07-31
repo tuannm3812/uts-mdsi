@@ -60,6 +60,19 @@ PAGE_BREAK_H2 = {
     "Research questions and hypotheses",
     "Six-member reading allocation",
     "References",
+    "Ý nghĩa dự án và phân tích thực tế",
+    "Bài báo 1: Terminal-Bench",
+    "Bài báo 2: SWE-agent",
+    "Bài báo 3: OpenHands",
+    "Bài báo 4: Agentless",
+    "Bài báo 5: OpenHands Software Agent SDK",
+    "Tổng hợp liên bài báo",
+    "Hàm ý đối với harness tùy chỉnh của nhóm",
+    "Khung đánh giá",
+    "Khả năng tái tạo, chi phí và hiệu lực",
+    "Câu hỏi nghiên cứu và giả thuyết",
+    "Phân bổ đọc sáu thành viên",
+    "Tài liệu tham khảo",
 }
 
 
@@ -72,6 +85,12 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--font-medium", type=Path, required=True, help="Google Sans Medium TTF file"
+    )
+    parser.add_argument(
+        "--language",
+        choices=("en", "vi"),
+        default="en",
+        help="Language used for PDF metadata, header, and footer text",
     )
     return parser.parse_args()
 
@@ -474,17 +493,27 @@ def add_page_chrome(canvas: Canvas, document: BaseDocTemplate) -> None:
     canvas.line(18 * mm, 15.5 * mm, width - 18 * mm, 15.5 * mm)
     canvas.setFont("GoogleSans", 7.2)
     canvas.setFillColor(GOOGLE_MUTED)
-    canvas.drawString(18 * mm, 10.5 * mm, "36127 Capstone - Project 15")
+    language = getattr(document, "language", "en")
+    canvas.drawString(
+        18 * mm,
+        10.5 * mm,
+        "36127 Capstone - Project 15",
+    )
     canvas.drawRightString(
         width - 18 * mm,
         10.5 * mm,
-        f"Literature review  |  {canvas.getPageNumber()}",
+        (
+            f"Tổng quan tài liệu  |  {canvas.getPageNumber()}"
+            if language == "vi"
+            else f"Literature review  |  {canvas.getPageNumber()}"
+        ),
     )
     canvas.restoreState()
 
 
 class LiteratureDocTemplate(BaseDocTemplate):
-    def __init__(self, filename: str) -> None:
+    def __init__(self, filename: str, language: str = "en") -> None:
+        self.language = language
         super().__init__(
             filename,
             pagesize=A4,
@@ -492,7 +521,11 @@ class LiteratureDocTemplate(BaseDocTemplate):
             rightMargin=18 * mm,
             topMargin=17 * mm,
             bottomMargin=21 * mm,
-            title="Project 15 Terminal-Bench Literature Review",
+            title=(
+                "Tổng quan tài liệu Project 15 Terminal-Bench"
+                if language == "vi"
+                else "Project 15 Terminal-Bench Literature Review"
+            ),
             author="Tuan Nguyen and Project 15 Team",
             subject="36127 Innovation Lab Capstone Project",
         )
@@ -513,6 +546,7 @@ def build_pdf(
     output_path: Path,
     regular_font_path: Path,
     medium_font_path: Path,
+    language: str = "en",
 ) -> None:
     if not input_path.is_file():
         raise FileNotFoundError(f"Markdown input not found: {input_path}")
@@ -520,7 +554,7 @@ def build_pdf(
     output_path.parent.mkdir(parents=True, exist_ok=True)
     styles = build_styles()
     source = input_path.read_text(encoding="utf-8")
-    doc = LiteratureDocTemplate(str(output_path))
+    doc = LiteratureDocTemplate(str(output_path), language=language)
     story = parse_markdown(source, styles, doc.width)
     doc.build(story)
 
@@ -528,7 +562,13 @@ def build_pdf(
 def main() -> int:
     args = parse_args()
     try:
-        build_pdf(args.input, args.output, args.font_regular, args.font_medium)
+        build_pdf(
+            args.input,
+            args.output,
+            args.font_regular,
+            args.font_medium,
+            language=args.language,
+        )
     except (FileNotFoundError, OSError, ValueError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
