@@ -17,6 +17,7 @@ The team will compare two established agent harnesses with a custom harness whil
 
 ## Project resources
 
+- [Agent collaboration log](agent-collaboration-log.md) — open running discussion between Tuan, Claude, and Codex
 - [Detailed literature review](../research/project-15-terminal-bench-literature-review.md)
 - [PDF literature review](../research/project-15-terminal-bench-literature-review.pdf)
 - [Vietnamese literature review](../research/project-15-terminal-bench-literature-review-vi.md)
