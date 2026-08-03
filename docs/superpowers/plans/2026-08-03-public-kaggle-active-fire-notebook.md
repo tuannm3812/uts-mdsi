@@ -53,7 +53,7 @@
 - Create: `llm-wiki/02-subjects/36126-innovation-lab-research-project/sources/data/nsw-fire-history-licence-decision.md`
 
 **Interfaces:**
-- Consumes: source files, manifest entries with `source_id`, `licence_status`, `licence_name`, `attribution`, and `allowed_files`.
+- Consumes: source files, manifest entries with `source_id`, `licence_status`, `licence_name`, `kaggle_license_name`, `attribution`, `reviewed_sha256`, and `allowed_files`.
 - Produces: `validate_manifest(manifest: dict) -> None` and `package_snapshot(manifest_path: Path, source_dir: Path, output_dir: Path) -> list[Path]`.
 
 - [ ] **Step 1: Write the failing licence-gate tests**
@@ -93,6 +93,13 @@ def test_packager_writes_checksums_for_every_file(tmp_path):
         "fire_history.geojson",
         "source-config.json",
     }
+
+
+def test_packager_rejects_file_that_differs_from_reviewed_provenance(tmp_path):
+    source_dir, manifest_path = confirmed_fixture_with_reviewed_hashes(tmp_path)
+    (source_dir / "dea_hotspots.geojson").write_text("modified", encoding="utf-8")
+    with pytest.raises(ValueError, match="reviewed provenance"):
+        package_snapshot(manifest_path, source_dir, tmp_path / "package")
 ```
 
 - [ ] **Step 2: Run the focused test and verify failure**
@@ -108,7 +115,7 @@ def validate_manifest(manifest: dict) -> None:
     for source in manifest.get("sources", []):
         if source.get("licence_status") != "confirmed":
             raise ValueError(f"Source licence is unconfirmed: {source.get('source_id')}")
-        for field in ("licence_name", "attribution", "allowed_files"):
+        for field in ("licence_name", "kaggle_license_name", "attribution", "reviewed_sha256", "allowed_files"):
             if not source.get(field):
                 raise ValueError(f"Confirmed source is missing {field}: {source.get('source_id')}")
 
@@ -123,6 +130,10 @@ def package_snapshot(manifest_path: Path, source_dir: Path, output_dir: Path) ->
             src = source_dir / name
             if not src.is_file():
                 raise FileNotFoundError(src)
+            expected = source["reviewed_sha256"].get(name)
+            actual = hashlib.sha256(src.read_bytes()).hexdigest()
+            if expected != actual:
+                raise ValueError(f"File differs from reviewed provenance: {name}")
             dst = output_dir / name
             shutil.copy2(src, dst)
             packaged.append(dst)
@@ -147,7 +158,9 @@ The decision document must record:
 - the Data.NSW NPWS page and its stated Creative Commons Attribution licence;
 - decision `A`: exact NSW RFS licence confirmed with attribution, or decision `B`: NPWS replacement and full rerun required.
 
-Do not set `licence_status` to `confirmed` from the ambiguous phrase alone.
+Do not set `licence_status` to `confirmed` from the ambiguous phrase alone. If no authoritative exact NSW RFS licence is already available when Task 1 executes, select decision `B` immediately and rerun with NPWS. Do not contact a data custodian or other external party unless Tuan separately authorises that outreach.
+
+Task 1 must finish, including any NPWS rerun and its new reviewed hashes/invariants, before Tasks 2-4 begin. This prevents public analysis or notebook copy from being built around a source that cannot be packaged.
 
 - [ ] **Step 5: Run licence tests**
 
@@ -273,7 +286,7 @@ Expected: FAIL because `public_visuals.py` does not exist.
 
 - [ ] **Step 3: Implement the five figures**
 
-Use a colour-blind-safe blue/orange/purple/grey palette, white chart backgrounds, dark text, explicit denominators, and `tight_layout()`. Use deterministic display sampling only for the map; calculate all plotted summaries from full data.
+Use the Okabe-Ito categorical colours `#0072B2`, `#E69F00`, `#CC79A7`, and `#999999`, white chart backgrounds, dark text, explicit denominators, and `tight_layout()`. Use deterministic display sampling only for the map; calculate all plotted summaries from full data. Add a test using `colorspacious` to simulate 100% protanomaly and deuteranomaly and require a minimum pairwise CIE Lab colour distance of 10 for the selected series colours.
 
 - [ ] **Step 4: Save test renders and inspect them**
 
@@ -296,7 +309,7 @@ git commit -m "feat(research): add public pilot visualisations"
 - Create: `llm-wiki/02-subjects/36126-innovation-lab-research-project/notebooks/active-fire-kaggle/build_notebook.py`
 - Create: `llm-wiki/02-subjects/36126-innovation-lab-research-project/notebooks/active-fire-kaggle/requirements-public.txt`
 - Create: `llm-wiki/02-subjects/36126-innovation-lab-research-project/notebooks/active-fire-kaggle/tests/test_notebook_contract.py`
-- Generate: `llm-wiki/02-subjects/36126-innovation-lab-research-project/notebooks/active-fire-kaggle/nsw-active-fire-reliability-pilot.ipynb`
+- Generate and later execute in place: `llm-wiki/02-subjects/36126-innovation-lab-research-project/notebooks/active-fire-kaggle/nsw-active-fire-reliability-pilot.ipynb`
 
 **Interfaces:**
 - Consumes: Task 1 snapshot contract and Task 2/3 public helpers.
@@ -413,8 +426,8 @@ Scan text extracted from notebook cells and outputs plus JSON/Markdown/CSV metad
 Run:
 
 ```bash
-python3 -m jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 --output nsw-active-fire-reliability-pilot.executed.ipynb llm-wiki/02-subjects/36126-innovation-lab-research-project/notebooks/active-fire-kaggle/nsw-active-fire-reliability-pilot.ipynb
-python3 -m jupyter nbconvert --to html nsw-active-fire-reliability-pilot.executed.ipynb --output-dir output/kaggle/active-fire-pilot/review
+python3 -m jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=600 llm-wiki/02-subjects/36126-innovation-lab-research-project/notebooks/active-fire-kaggle/nsw-active-fire-reliability-pilot.ipynb
+python3 -m jupyter nbconvert --to html llm-wiki/02-subjects/36126-innovation-lab-research-project/notebooks/active-fire-kaggle/nsw-active-fire-reliability-pilot.ipynb --output-dir output/kaggle/active-fire-pilot/review
 ```
 
 Expected: every cell completes and HTML is created.
@@ -425,7 +438,7 @@ Run:
 
 ```bash
 python3 -m pytest llm-wiki/02-subjects/36126-innovation-lab-research-project/notebooks/active-fire-pilot/tests llm-wiki/02-subjects/36126-innovation-lab-research-project/notebooks/active-fire-kaggle/tests -q
-python3 llm-wiki/02-subjects/36126-innovation-lab-research-project/notebooks/active-fire-kaggle/audit_public_artifact.py output/kaggle/active-fire-pilot
+python3 llm-wiki/02-subjects/36126-innovation-lab-research-project/notebooks/active-fire-kaggle/audit_public_artifact.py llm-wiki/02-subjects/36126-innovation-lab-research-project/notebooks/active-fire-kaggle/nsw-active-fire-reliability-pilot.ipynb output/kaggle/active-fire-pilot
 ```
 
 Expected: tests PASS and audit reports zero findings.
@@ -469,6 +482,13 @@ def test_dataset_is_private_and_has_no_collaborators():
     metadata = json.loads(DATASET_METADATA.read_text())
     assert metadata["isPrivate"] is True
     assert metadata.get("collaborators", []) == []
+
+
+def test_dataset_licence_matches_confirmed_manifest():
+    dataset = json.loads(DATASET_METADATA.read_text())
+    manifest = json.loads(LICENCE_MANIFEST.read_text())
+    confirmed = {source["kaggle_license_name"] for source in manifest["sources"]}
+    assert dataset["licenses"][0]["name"] in confirmed
 ```
 
 - [ ] **Step 2: Verify metadata tests fail**
@@ -539,7 +559,7 @@ Expected: all tests PASS, zero audit findings, exact licence gate PASS.
 
 - [ ] **Step 4: Upload privately using the account-specific credential**
 
-Run the upload script with `/Users/tuannm3812/Documents/GitHub/2. Kaggle/kaggle_tuannm3812.json` supplied as the runtime `--credentials` argument. The script must not copy that path or credential content into any staged or uploaded artifact.
+Run the upload script with the account-specific credential file supplied as the runtime `--credentials` argument. The credential must remain outside this repository, and neither its path nor content may appear in a staged or uploaded artifact, checked-in document, notebook cell, output, or log.
 
 - [ ] **Step 5: Verify remote state**
 
