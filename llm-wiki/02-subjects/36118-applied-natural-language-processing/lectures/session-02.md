@@ -2,21 +2,24 @@
 type: lecture-note
 subject: 36118-applied-natural-language-processing
 session: 2
-status: draft
+status: current-source-backed
 ---
 
 # Session 02 - Text Analysis, Topic Modelling, and Clustering
 
 ## Source Files
 
-- `lectures/raw/archive-2025/ANLP Session2_Week2_After Session-1.pdf` (lecture)
-- `lectures/raw/archive-2025/resources/ANLP Session2_Week2_After Session-1.pdf` (lecture)
-- `notebooks/raw/archive-2025/course-notebooks/ANLP_Session 2_Part 2_Topic Modeling.ipynb` (notebook)
-- `notebooks/raw/archive-2025/course-notebooks/ANLP_Session 2_Part 3_Text Clustering.ipynb` (notebook)
+- `current-2026/ANLP Session2_Week2-5.pdf` (authoritative current lecture)
+- `../notebooks/current-2026/session-02/` (three practical notebooks and homework)
+- `raw/archive-2025/ANLP Session2_Week2_After Session-1.pdf` (comparison only)
 
 ## Working Summary
 
-This is a first-pass curated note generated from copied slides, PDFs, and notebooks. Verify details against source files before using it for assessment.
+The comprehensive current-semester note is maintained in
+`session-02-preparation-2026.md` and rendered as
+`handouts/session-02-comprehensive-notes.pdf`. It integrates the updated 2026
+slides with all four Session 2 notebooks and records the LDA notebook’s saved
+execution-order issue.
 
 ## Study Objectives
 
@@ -24,16 +27,15 @@ This is a first-pass curated note generated from copied slides, PDFs, and notebo
 - Explain how document representations affect unsupervised text results.
 - Evaluate whether discovered topics or clusters are meaningful for a task.
 
-## Likely Concepts
+## Core Concepts
 
 - clustering: Grouping documents or text units by representation similarity without using labelled classes.
 - topic modelling: Unsupervised methods for discovering recurring themes or latent topics in a document collection.
 - text preprocessing: Cleaning and transforming text before analysis, including normalisation, stopword handling, stemming, lemmatisation, and filtering.
 - bag of words: A sparse representation that counts words or weighted word occurrences without modelling word order.
 - tokenisation: Splitting raw text into units such as words, subwords, or tokens that downstream NLP models can process.
-- word embeddings: Dense vector representations that capture semantic or contextual relationships between words or text units.
-- deep learning for text: Neural models for sequence or text tasks, including RNNs, LSTMs, CNNs, and transformer-based models.
-- text classification: Assigning one or more labels to text, usually with supervised learning and task-specific metrics.
+- word association and collocation: complementary methods for finding repeated lexical relationships using frequency, PMI, likelihood ratio, or chi-square evidence.
+- evaluation: elbow, silhouette, stability, representative-document inspection, and interpretability checks for unsupervised outputs.
 
 ## Extracted Keywords
 
@@ -70,6 +72,8 @@ This is a first-pass curated note generated from copied slides, PDFs, and notebo
 - Which evaluation metric or qualitative check is appropriate?
 - What could go wrong with this method in a real applied setting?
 
-## LLM Follow-Up Prompt
+## Current Outputs
 
-Using the source files listed above, expand this draft into a precise study note with definitions, examples, code workflow, evaluation strategy, and assessment relevance. Keep claims traceable to source files.
+- Comprehensive Markdown: `session-02-preparation-2026.md`
+- Printable PDF: `handouts/session-02-comprehensive-notes.pdf`
+- Notebook setup and summaries: `../notebooks/current-2026/session-02/README.md`

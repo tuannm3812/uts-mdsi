@@ -83,6 +83,30 @@ EQUATIONS = {
         (r"$\mathrm{TTR}(d)=\frac{|V_d|}{N_d}$",
          "Type–token ratio: unique token types divided by all tokens; it is length-sensitive."),
     ],
+    "2.3 Word Association and Pointwise Mutual Information": [
+        (r"$\mathrm{PMI}(x,y)=\log_{2}\!\left(\frac{P(x,y)}{P(x)P(y)}\right)$",
+         "Association relative to independence; the log base controls the unit."),
+    ],
+    "4.2 Term Frequency–Inverse Document Frequency": [
+        (r"$\mathrm{TF}(t,d)=\frac{f_{t,d}}{\sum_{t'\in d}f_{t',d}}$",
+         "One common normalised term-frequency definition."),
+        (r"$\mathrm{IDF}(t)=\log\!\left(\frac{N}{\mathrm{df}(t)}\right)$",
+         "N is corpus size; df(t) is the number of documents containing t."),
+        (r"$\mathrm{TFIDF}(t,d)=\mathrm{TF}(t,d)\times\mathrm{IDF}(t)$",
+         "Distinctive-in-document weighting; implementations may smooth or normalise."),
+    ],
+    "7.2 Similarity and Distance in Text Space": [
+        (r"$d_{2}(\mathbf{x},\mathbf{y})=\sqrt{\sum_i(x_i-y_i)^2}$",
+         "Euclidean distance: straight-line separation in feature space."),
+        (r"$d_{1}(\mathbf{x},\mathbf{y})=\sum_i|x_i-y_i|$",
+         "Manhattan distance: coordinate-wise absolute separation."),
+        (r"$d_{\cos}(\mathbf{x},\mathbf{y})=1-\frac{\mathbf{x}\cdot\mathbf{y}}{\|\mathbf{x}\|_2\|\mathbf{y}\|_2}$",
+         "Cosine distance compares direction and reduces magnitude effects."),
+    ],
+    "9.2 Elbow and Silhouette Methods": [
+        (r"$s(i)=\frac{b(i)-a(i)}{\max\{a(i),b(i)\}}$",
+         "Silhouette ranges from -1 to 1; larger values indicate clearer separation."),
+    ],
 }
 
 
@@ -203,6 +227,10 @@ def clean_markdown(text: str) -> list[tuple[str, list[str]]]:
 
     for raw in text.splitlines():
         line = raw.strip()
+        if line == ">":
+            line = ""
+        elif line.startswith("> "):
+            line = line[2:].strip()
         if line.startswith("```"):
             flush_bullet()
             flush_paragraph()

@@ -3,6 +3,7 @@ from pathlib import Path
 import pytest
 
 from scripts.create_nlp_comprehensive_notes import (
+    clean_markdown,
     default_output_for,
     infer_session_label,
 )
@@ -30,3 +31,11 @@ def test_default_output_uses_session_number():
 
     assert default_output_for(path).name == "session-02-comprehensive-notes.pdf"
     assert default_output_for(path).parent == path.parent / "handouts"
+
+
+def test_clean_markdown_strips_blockquote_markers():
+    sections = clean_markdown("### Deep Dive — Check\n>\n> **PMI** needs a frequency filter.\n")
+
+    assert sections == [
+        ("Deep Dive — Check", ["¶**PMI** needs a frequency filter."])
+    ]

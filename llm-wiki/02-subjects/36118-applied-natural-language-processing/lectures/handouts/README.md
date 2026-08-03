@@ -24,3 +24,17 @@ This folder contains handwriting-friendly PDFs for the current semester.
 
 The archived 2025 material is conceptual reference only. Update the handout
 when current Canvas slides or instructions are available.
+
+## Session 2
+
+- `session-02-comprehensive-notes.pdf`: twelve-page comprehensive notes on
+  n-grams, association measures, preprocessing, TF-IDF, visualisation, LDA,
+  hierarchical clustering, K-means, model selection, notebook workflows, and
+  AT1 relevance. The PDF uses Google Sans, numbered heading levels,
+  syntax-coloured code, equation panels, and compact Deep Dive blocks.
+- Source note: `../session-02-preparation-2026.md`
+- Current slide source: `../current-2026/ANLP Session2_Week2-5.pdf`
+- Current notebooks: `../../notebooks/current-2026/session-02/`
+
+The 2026 slide deck and notebooks are authoritative. The 2025 Session 2 deck
+remains available only for comparison.
