@@ -124,6 +124,17 @@ def default_output_for(path: Path) -> Path:
     return path.parent / "handouts" / f"{session}-comprehensive-notes.pdf"
 
 
+def pdf_metadata(session_label: str) -> dict[str, str | None]:
+    """Return stable PDF metadata so identical notes render reproducibly."""
+    return {
+        "Title": f"36118 ANLP {session_label} Comprehensive Notes",
+        "Author": "36118 Applied Natural Language Processing",
+        "Subject": "Study-ready lecture notes",
+        "CreationDate": None,
+        "ModDate": None,
+    }
+
+
 def register_fonts() -> tuple[fm.FontProperties, fm.FontProperties]:
     for path in (REGULAR, MEDIUM):
         if not path.exists():
@@ -481,7 +492,7 @@ def render(input_path: Path, output_path: Path) -> None:
     source = input_path.read_text(encoding="utf-8")
     sections = clean_markdown(source) if input_path.suffix.lower() == ".md" else clean_export(source)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    with PdfPages(output_path) as pdf:
+    with PdfPages(output_path, metadata=pdf_metadata(session_label)) as pdf:
         writer = NotesWriter(pdf, regular, medium, session_label)
         suppress_before = False
         for index, (title, items) in enumerate(sections):

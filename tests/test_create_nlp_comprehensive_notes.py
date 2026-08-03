@@ -6,6 +6,7 @@ from scripts.create_nlp_comprehensive_notes import (
     clean_markdown,
     default_output_for,
     infer_session_label,
+    pdf_metadata,
 )
 
 
@@ -39,3 +40,10 @@ def test_clean_markdown_strips_blockquote_markers():
     assert sections == [
         ("Deep Dive — Check", ["¶**PMI** needs a frequency filter."])
     ]
+
+
+def test_pdf_metadata_omits_volatile_timestamps():
+    metadata = pdf_metadata("Session 02")
+
+    assert metadata["CreationDate"] is None
+    assert metadata["ModDate"] is None
