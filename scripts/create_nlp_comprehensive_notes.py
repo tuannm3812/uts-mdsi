@@ -22,11 +22,6 @@ from matplotlib.textpath import TextToPath
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_OUTPUT = (
-    ROOT
-    / "llm-wiki/02-subjects/36118-applied-natural-language-processing"
-    / "lectures/handouts/session-01-comprehensive-notes.pdf"
-)
 FONT_DIR = Path("/Applications/Google Drive.app/Contents/Resources")
 REGULAR = FONT_DIR / "GoogleSans-Regular.ttf"
 MEDIUM = FONT_DIR / "GoogleSans-Medium.ttf"
@@ -89,6 +84,21 @@ EQUATIONS = {
          "Type–token ratio: unique token types divided by all tokens; it is length-sensitive."),
     ],
 }
+
+
+def infer_session_label(path: Path) -> str:
+    """Return a zero-padded session label inferred from a source filename."""
+    match = re.search(r"session[-_ ](\d+)", path.stem, flags=re.IGNORECASE)
+    if not match:
+        raise ValueError(f"Cannot infer session number from: {path.name}")
+    return f"Session {int(match.group(1)):02d}"
+
+
+def default_output_for(path: Path) -> Path:
+    """Return the standard handout output path for a curated session note."""
+    session = infer_session_label(path).lower().replace(" ", "-")
+    return path.parent / "handouts" / f"{session}-comprehensive-notes.pdf"
+
 
 def register_fonts() -> tuple[fm.FontProperties, fm.FontProperties]:
     for path in (REGULAR, MEDIUM):
@@ -233,10 +243,17 @@ def clean_markdown(text: str) -> list[tuple[str, list[str]]]:
 
 
 class NotesWriter:
-    def __init__(self, pdf: PdfPages, regular: fm.FontProperties, medium: fm.FontProperties):
+    def __init__(
+        self,
+        pdf: PdfPages,
+        regular: fm.FontProperties,
+        medium: fm.FontProperties,
+        session_label: str,
+    ):
         self.pdf = pdf
         self.regular = regular
         self.medium = medium
+        self.session_label = session_label
         self.code = fm.FontProperties(fname="/System/Library/Fonts/Menlo.ttc")
         self.page_no = 0
         self.fig = None
@@ -262,7 +279,7 @@ class NotesWriter:
         self.y = 0.90
 
     def finish_page(self) -> None:
-        self.ax.text(0.065, 0.035, "Session 01 • Study-ready lecture notes",
+        self.ax.text(0.065, 0.035, f"{self.session_label} • Study-ready lecture notes",
                      fontsize=7.5, color=MUTED, fontproperties=self.regular)
         self.ax.text(0.935, 0.035, f"{self.page_no:02d}", fontsize=7.5, color=MUTED,
                      fontproperties=self.regular, ha="right")
@@ -432,11 +449,12 @@ class NotesWriter:
 
 def render(input_path: Path, output_path: Path) -> None:
     regular, medium = register_fonts()
+    session_label = infer_session_label(input_path)
     source = input_path.read_text(encoding="utf-8")
     sections = clean_markdown(source) if input_path.suffix.lower() == ".md" else clean_export(source)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with PdfPages(output_path) as pdf:
-        writer = NotesWriter(pdf, regular, medium)
+        writer = NotesWriter(pdf, regular, medium, session_label)
         suppress_before = False
         for index, (title, items) in enumerate(sections):
             next_is_subsection = (
@@ -460,10 +478,11 @@ def render(input_path: Path, output_path: Path) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("input", type=Path, help="NotebookLM plain-text export")
-    parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument("--output", type=Path)
     args = parser.parse_args()
-    render(args.input, args.output)
-    print(args.output.resolve())
+    output = args.output or default_output_for(args.input)
+    render(args.input, output)
+    print(output.resolve())
 
 
 if __name__ == "__main__":
