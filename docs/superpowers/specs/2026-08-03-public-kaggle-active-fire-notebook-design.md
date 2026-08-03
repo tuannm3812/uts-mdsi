@@ -31,7 +31,7 @@ The notebook succeeds when:
 ### Allowed public content
 
 - Public DEA Hotspots and NSW Fire History source descriptions and URLs
-- Public study configuration, code, provenance, checksums, and derived results
+- Public study configuration, code, provenance, checksums, and derived results whose source licences permit redistribution
 - Scientific interpretation, uncertainty, limitations, and general future work
 - Repository-neutral reproduction instructions
 
@@ -50,14 +50,25 @@ The public notebook may describe the work as an independent feasibility pilot. I
 
 The Kaggle deliverable consists of two private artifacts during review:
 
-1. **Snapshot dataset:** immutable pilot inputs and outputs, configuration, provenance, checksums, licence/source notes, and reusable analysis modules.
+1. **Snapshot dataset:** immutable pilot inputs and outputs that have explicit redistribution permission, configuration, provenance, checksums, licence/source notes, and reusable analysis modules.
 2. **Presentation notebook:** a readable `.ipynb` that uses the attached snapshot by default and optionally refreshes from the public source services.
 
 This separation keeps the notebook readable, makes saved results reliable, and avoids embedding large raw payloads in notebook JSON.
 
+### Source-licence packaging gate
+
+The NSW RFS `NSWFireHistory/FeatureServer/0` item is public and its official item description states `Terms and Conditions: Creative Common`, but the item record has an empty formal `licenseInfo` field and does not identify a licence version. That is insufficient for Codex to assert precise redistribution rights.
+
+Before any private or public Kaggle upload, one of these conditions must be satisfied:
+
+1. Confirm an exact licence and attribution statement for the NSW RFS feature service from an authoritative NSW source; or
+2. Replace it in the public artifact with the separately published NPWS Fire History dataset, whose Data.NSW record states Creative Commons Attribution, then rerun the complete pilot and regenerate every number, table, map, and interpretation.
+
+Until then, the NSW RFS raw features, geometry, and record-level derivatives remain local-only. The original internal pilot remains valid as a local feasibility result, but its figures must never be paired with a substituted public source.
+
 ### Execution modes
 
-- `snapshot` is the default mode. It reads the attached Kaggle dataset and must work without network access.
+- `snapshot` is the default mode after the source-licence packaging gate passes. It reads the attached Kaggle dataset and must work without network access.
 - `live_refresh` is opt-in. It retrieves the same bounded public-source queries, records new provenance and checksums, and reruns the analysis. It must never silently replace the reviewed snapshot.
 - A compact comparison reports whether refreshed headline results match the reviewed snapshot. Differences are flagged as source evolution, not automatically treated as code failures.
 
@@ -123,6 +134,7 @@ The narrative is grouped into six major sections.
 - Keep setup and helper code collapsed where Kaggle supports it, while leaving the core matching and calculation logic inspectable.
 - Use a colour-blind-safe palette with sufficient contrast and avoid red/green-only encoding.
 - Every chart must state its population or sample size and distinguish counts from rates.
+- Any display sampling must use a fixed seed or a documented deterministic thinning rule, and the caption must state the method and displayed sample size.
 - Maps must avoid misleading precision and explain that final fire polygons are not point-in-time flame boundaries.
 - Avoid decorative visualisations that do not answer a stated question.
 - Use Australian English and define technical terms on first use.
@@ -135,7 +147,7 @@ The narrative is grouped into six major sections.
 3. Normalise hotspot and fire-event records using the existing tested pilot logic.
 4. Produce exact and sensor-buffered observation-level classifications.
 5. Derive all summaries and chart frames from those classifications.
-6. Assert the reviewed snapshot invariants: 19,849 hotspots, 14 overlapping events, 2,878 exact matches, 3,385 buffered matches, and 16,461 unresolved buffered observations.
+6. In `snapshot` mode only, assert the reviewed snapshot invariants: 19,849 hotspots, 14 overlapping events, 2,878 exact matches, 3,385 buffered matches, and 16,461 unresolved buffered observations. If a licensed replacement source is used, establish and document a new reviewed invariant set instead.
 7. Render tables, maps, charts, interpretations, and provenance.
 8. In live mode, compare refreshed results with the reviewed snapshot and explain any drift.
 
@@ -144,6 +156,7 @@ The narrative is grouped into six major sections.
 - Missing snapshot files stop execution with a clear instruction to attach the required Kaggle dataset.
 - Schema drift identifies the missing or changed fields and stops before producing misleading results.
 - Live-source network failures fall back only when the user explicitly accepts the reviewed snapshot; they must not masquerade as a successful refresh.
+- `live_refresh` differences are reported as possible source evolution and do not trigger snapshot-invariant assertions.
 - Hash mismatches produce a visible warning and prevent reviewed-snapshot claims.
 - Empty filters or zero-event queries stop with the active region and date configuration shown.
 - Visualisation sampling affects display only; numerical calculations always use the full dataset.
@@ -157,10 +170,13 @@ Before upload, Codex will:
 3. Assert the headline counts and percentages against the reviewed pilot report.
 4. Confirm charts and maps use the intended full-data summaries or clearly labelled display samples.
 5. Validate notebook JSON and confirm no cell has an unintended exception.
-6. Scan notebook source, outputs, metadata, snapshot files, and Kaggle metadata for secrets, private paths, contact details, and internal-only names.
-7. render the executed notebook to HTML or an equivalent visual form and inspect every section for clipping, unreadable colours, misleading labels, and excessive output;
-8. upload both artifacts privately; and
-9. confirm their Kaggle privacy state and successful private execution.
+6. Audit every occurrence of terms such as `accuracy`, `false alarm`, `false positive`, `detection rate`, `miss rate`, and `ground truth` in notebook source and rendered prose to ensure the claim is properly scoped.
+7. Scan notebook source, outputs, metadata, snapshot files, and Kaggle metadata for secrets, private paths, contact details, and internal-only names.
+8. Render the executed notebook to HTML or an equivalent visual form and inspect every section for clipping, unreadable colours, misleading labels, and excessive output.
+9. Record exact Python and direct-library versions in a lock file or environment manifest, while avoiding unnecessary pinning of transitive Kaggle platform packages.
+10. Verify the source licence and required attribution for every uploaded input or derivative.
+11. Upload both artifacts privately and invite no collaborator by default; any additional private reviewer must be explicitly named by Tuan.
+12. Confirm their Kaggle privacy state and successful private execution.
 
 Claude's review should challenge privacy leakage, scientific overclaiming, result reproducibility, visual clarity, and whether the six-section structure is understandable to a public reader. Any review finding will be evaluated and resolved before implementation or publication, rather than accepted without technical verification.
 
