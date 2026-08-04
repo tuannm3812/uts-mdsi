@@ -5,7 +5,7 @@ Source Google Drive directory: `/Users/tuannm3812/Library/CloudStorage/GoogleDri
 | Official Google Drive file | Repository text extract |
 |---|---|
 | `01 Topic Lists/36127-capstone-project-topics-spring-2026.pdf` | `raw/36127-capstone-project-topics-spring-2026.txt` |
-| `01 Topic Lists/36127-capstone-project-list-spring-2026.pdf` | Additional Capstone project-list source; extraction pending |
+| `01 Topic Lists/36127-capstone-project-list-spring-2026.pdf` | `raw/36127-capstone-project-list-spring-2026.txt` (full 16-project list, 28 Jul revision); Project 15's entry also captured cleanly at [project-15/official-brief-verbatim.md](../project-15/official-brief-verbatim.md) |
 | `02 Subject Materials/36127-ilab-project-kickoff-slides-spring-2026.pdf` | [36127-kickoff-requirements-spring-2026.md](36127-kickoff-requirements-spring-2026.md) |
 | `03 Project 15 - Terminal-Bench/00 Project Guide/Project 15 - Detailed Literature Review.pdf` | [project-15-terminal-bench-literature-review.md](../research/project-15-terminal-bench-literature-review.md) |
 | `03 Project 15 - Terminal-Bench/00 Project Guide/Project 15 - Tong quan tai lieu chi tiet - Tieng Viet.pdf` | [project-15-terminal-bench-literature-review-vi.md](../research/project-15-terminal-bench-literature-review-vi.md) |

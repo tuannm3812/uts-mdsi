@@ -854,12 +854,12 @@ How do selected harness-design choices affect task accuracy, cost, and reliabili
 
 | Member | Primary reading | Required output | Cross-review |
 |---|---|---|---|
-| Member 1 | Terminal-Bench paper and 2.1 release notes | Benchmark structure, failure taxonomy, version-control checklist | Review Member 4's benchmark-validity notes |
-| Member 2 | SWE-agent | ACI design principles, ablation table, candidate interface experiments | Review Member 5's architecture notes |
-| Member 3 | OpenHands platform paper | Baseline architecture, Harbor comparison questions, scope exclusions | Review Member 6's reproducibility notes |
-| Member 4 | Agentless | Minimal workflow, validation strategy, simplicity/cost argument | Review Member 1's failure taxonomy |
-| Member 5 | OpenHands SDK | State, event logging, modularity, failure separation | Review Member 2's experiment proposals |
-| Member 6 | Cross-paper synthesis and official Harbor docs | Shared terminology, evidence table, mentor questions, reference audit | Review Member 3's baseline analysis |
+| Daniel Alexander | Terminal-Bench paper and 2.1 release notes | Benchmark structure, failure taxonomy, version-control checklist | Review Manu Sasikanth Oruvilakode's benchmark-validity notes |
+| Mukesh Murugesan | SWE-agent | ACI design principles, ablation table, candidate interface experiments | Review Faisal Shoaib's architecture notes |
+| Manh Tuan Nguyen | OpenHands platform paper | Baseline architecture, Harbor comparison questions, scope exclusions | Review Yash Raj Singh's reproducibility notes |
+| Manu Sasikanth Oruvilakode | Agentless | Minimal workflow, validation strategy, simplicity/cost argument | Review Daniel Alexander's failure taxonomy |
+| Faisal Shoaib | OpenHands SDK | State, event logging, modularity, failure separation | Review Mukesh Murugesan's experiment proposals |
+| Yash Raj Singh | Cross-paper synthesis and official Harbor docs | Shared terminology, evidence table, mentor questions, reference audit | Review Manh Tuan Nguyen's baseline analysis |
 
 Each member should prepare:
 

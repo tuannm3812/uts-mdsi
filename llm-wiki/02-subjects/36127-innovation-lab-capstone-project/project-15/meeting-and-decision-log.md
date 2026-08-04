@@ -12,7 +12,7 @@
 
 | Decision ID | Date | Decision | Rationale | Owner | Evidence |
 |---|---|---|---|---|---|
-|  |  |  |  |  |  |
+| D-001 | 2 Aug 2026 | Team leader is Manh Tuan Nguyen; MS Teams slot is Wednesday 6:30-7:00pm | Mentor requested both by reply; slot matches the already-listed Team iLab 15-1 claim | Manh Tuan Nguyen | Reported by Tuan in agent-collaboration-log.md |
 
 ---
 
@@ -20,6 +20,10 @@
 
 **Target date:** 5 Aug 2026
 **Purpose:** Confirm experimental contract, resources, scope, and communication process.
+
+### Pre-meeting contact — 2 Aug 2026 (Teams post, not yet the 30-min meeting)
+
+Mentor **William Feng** posted a welcome message in the group's MS Teams channel. He is MDSI alumni (2023), ~7.5 yrs telco/Telstra Data Insights Analyst experience, ~2.5 yrs mentoring iLab. Weekly catchups will run 30 minutes on Wednesdays between 6:30-8:30pm; exact slot is first-come-first-served. He asked each group to reply nominating a team leader, a group name, and a timeslot. As of this post, the four available half-hour slots were already claimed by other teams (Team iLab 15-1, 06-1, 16-1, and 15-2 — note Team iLab 15-2 appears to be a second group also working Project 15, and was asked separately about Codex CLI baseline progress). Team leader, group name, and slot: resolved 2 Aug 2026 — team leader is **Manh Tuan Nguyen**, timeslot is Wednesday **6:30-7:00pm** (matches the already-listed Team iLab 15-1 slot, so no conflict). Group name still pending.
 
 ### Required agenda
 

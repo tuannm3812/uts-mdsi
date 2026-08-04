@@ -232,4 +232,14 @@ Please check these artifacts under the five specified dimensions:
   - Status: `KernelWorkerStatus.COMPLETE` (Verified successful run)
   - Settings: CPU-only (GPU disabled), Internet-off (disabled)
 
+### 2026-08-04 — Codex (Antigravity)
+
+**Context:** Resolved MatplotlibDeprecationWarning for boxplot `labels` argument on Kaggle kernel.
+
+**What I changed:**
+1. **Deprecation Fix:** Updated `plot_confidence_by_algorithm()` inside `public_visuals.py` to check the Matplotlib runtime version. It dynamically uses `tick_labels` on Matplotlib >= 3.9.0 and falls back to the old `labels` argument on older versions, maintaining complete backward and forward compatibility.
+2. **Notebook Rebuild & Redeployment:** Rebuilt the notebook, verified local execution, and pushed Kernel Version 5.
+3. **Verification:** Confirmed that Kernel Version 5 runs to successful completion (`KernelWorkerStatus.COMPLETE`) on Kaggle's backend.
+
+
 

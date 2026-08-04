@@ -31,7 +31,7 @@ Record these values in the experiment configuration or linked artifact:
 
 | ID | Date | Owner | Reviewer | Hypothesis | Split | Control | Changed variable | Trials | Accuracy | Tokens | Cost | Runtime | Status | Artifact/trajectory |
 |---|---|---|---|---|---|---|---|---:|---:|---:|---:|---:|---|---|
-| EXAMPLE-001 | 5 Aug 2026 | Member 1 | Member 5 | Oracle smoke test confirms Harbor can fetch, build, execute, and verify tasks | First five tasks | N/A | Infrastructure only | 5 | Record result | Record result | Record result | Record result | Example - remove after first real run | Link job directory |
+| EXAMPLE-001 | 5 Aug 2026 | Daniel Alexander | Faisal Shoaib | Oracle smoke test confirms Harbor can fetch, build, execute, and verify tasks | First five tasks | N/A | Infrastructure only | 5 | Record result | Record result | Record result | Record result | Example - remove after first real run | Link job directory |
 
 ## Trial-level results
 

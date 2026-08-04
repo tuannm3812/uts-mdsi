@@ -8,7 +8,12 @@ The team will compare two established agent harnesses with a custom harness whil
 
 ## Current status
 
-- Group size: six
+- Team: **Team iLab 15-1**, confirmed 2 Aug 2026 — Daniel Alexander, Mukesh Murugesan, Manh Tuan Nguyen, Manu Sasikanth Oruvilakode, Faisal Shoaib, Yash Raj Singh
+- Mentor: **William Feng** (MDSI alumni 2023, Telstra Data Insights Analyst, ~2.5 yrs iLab mentoring) — made first contact 2 Aug 2026 via Teams; weekly 30-min catchup, Wednesdays, exact slot TBD
+- Client/brief author: **William So**, Synogize — do not conflate with the mentor
+- Team leader: **Manh Tuan Nguyen**
+- MS Teams timeslot: Wednesday **6:30-7:00pm** (Team iLab 15-1)
+- Group name: pending
 - Work allocation: three pairs with rotating secondary responsibilities
 - Model: awaiting mentor/client confirmation
 - Established harnesses: awaiting mentor/client confirmation
@@ -17,6 +22,7 @@ The team will compare two established agent harnesses with a custom harness whil
 
 ## Project resources
 
+- [Official brief (verbatim)](official-brief-verbatim.md) — the authoritative Project 15 source text, extracted 4 Aug 2026
 - [Agent collaboration log](agent-collaboration-log.md) — open running discussion between Tuan, Claude, and Codex
 - [Detailed literature review](../research/project-15-terminal-bench-literature-review.md)
 - [PDF literature review](../research/project-15-terminal-bench-literature-review.pdf)
@@ -33,9 +39,9 @@ The team will compare two established agent harnesses with a custom harness whil
 
 | Pair | Members | Primary workstream | Rotating secondary work |
 |---|---|---|---|
-| A | Members 1 and 2 | Harbor environment and established baselines | Literature synthesis, report review, presentation |
-| B | Members 3 and 4 | Custom harness and agent behaviour | Experiment review, client demonstrations, documentation |
-| C | Members 5 and 6 | Evaluation, analysis, and documentation | Test automation, reproducibility review, integration |
+| A | Daniel Alexander and Mukesh Murugesan | Harbor environment and established baselines | Literature synthesis, report review, presentation |
+| B | Manh Tuan Nguyen and Manu Sasikanth Oruvilakode | Custom harness and agent behaviour | Experiment review, client demonstrations, documentation |
+| C | Faisal Shoaib and Yash Raj Singh | Evaluation, analysis, and documentation | Test automation, reproducibility review, integration |
 
 Primary ownership gives one person accountability for delivery. It does not mean that person works alone. Every task has a reviewer, and pairs should cross-train so that no critical component has a single point of failure.
 
