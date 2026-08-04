@@ -1,0 +1,33 @@
+[{"stream_name":"stderr","time":9.442672815,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":9.44275076,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":9.442759874,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":9.442768784,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":10.292857558,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":10.292903373,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":10.292934936,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":10.29294153,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":13.6337252,"data":"Found dataset at: /kaggle/input/datasets/tuannm3812/nsw-active-fire-pilot-snapshot\n"}
+,{"stream_name":"stdout","time":13.633819077,"data":"Loading spatial datasets...\n"}
+,{"stream_name":"stdout","time":14.015327943,"data":"Running exact matching...\n"}
+,{"stream_name":"stdout","time":105.375681225,"data":"Running sensor-buffered matching...\n"}
+,{"stream_name":"stdout","time":195.58092545,"data":"\n"}
+,{"stream_name":"stdout","time":195.580973072,"data":"=== HEADLINE METRICS ===\n"}
+,{"stream_name":"stdout","time":195.580983104,"data":"total_hotspots: 19,849\n"}
+,{"stream_name":"stdout","time":195.580990382,"data":"exact_matches: 15,334\n"}
+,{"stream_name":"stdout","time":195.580997818,"data":"exact_unresolved: 4,515\n"}
+,{"stream_name":"stdout","time":195.581004653,"data":"exact_match_rate: 77.25%\n"}
+,{"stream_name":"stdout","time":195.581011545,"data":"buffered_matches: 19,277\n"}
+,{"stream_name":"stdout","time":195.58101912,"data":"buffered_unresolved: 572\n"}
+,{"stream_name":"stdout","time":195.581027187,"data":"buffered_match_rate: 97.12%\n"}
+,{"stream_name":"stdout","time":195.581034572,"data":"fire_event_count: 14\n"}
+,{"stream_name":"stdout","time":195.581041747,"data":"\n"}
+,{"stream_name":"stdout","time":195.581049091,"data":"[SUCCESS] Snapshot invariants verified successfully.\n"}
+,{"stream_name":"stderr","time":201.153650971,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":201.153712099,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":201.395740407,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":201.395783793,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":202.214894018,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":202.632814751,"data":"[NbConvertApp] Writing 45375 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":205.970877615,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":207.26317235,"data":"[NbConvertApp] Writing 422924 bytes to __results__.html\n"}
+]

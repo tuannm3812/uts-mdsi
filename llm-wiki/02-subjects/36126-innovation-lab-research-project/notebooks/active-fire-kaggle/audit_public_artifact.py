@@ -106,7 +106,7 @@ def main():
     # Audit notebooks
     kag_dir = Path(__file__).resolve().parent
     notebook_paths = [
-        kag_dir / "nsw-active-fire-reliability-pilot.ipynb",
+        kag_dir / "2_active_fire_reliability_pilot.ipynb",
         kag_dir / "1_active_fire_eda.ipynb"
     ]
     manifest_path = kag_dir / "licence-manifest.json"

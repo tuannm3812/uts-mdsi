@@ -1,5 +1,4 @@
 import json
-import sys
 from pathlib import Path
 import nbformat as nbf
 
@@ -7,7 +6,6 @@ KAG_DIR = Path(__file__).resolve().parent
 
 
 def build_notebook(output_path: Path, snapshot_slug: str) -> Path:
-    # Read helper script contents
     active_fire_pilot_dir = KAG_DIR.parent / "active-fire-pilot"
     
     # Read match_hotspots.py content
@@ -23,7 +21,6 @@ def build_notebook(output_path: Path, snapshot_slug: str) -> Path:
     public_visuals_code = (KAG_DIR / "public_visuals.py").read_text(encoding="utf-8")
     
     nb = nbf.v4.new_notebook()
-    
     cells = []
     
     # Title
@@ -36,7 +33,12 @@ def build_notebook(output_path: Path, snapshot_slug: str) -> Path:
         "and must not be assumed to be errors or sensor inaccuracies without independent ground truth."
     ))
     
-    # Cell 2: Imports and config
+    # Environment Check
+    cells.append(nbf.v4.new_markdown_cell(
+        "### Setup and Environment Check\n\n"
+        "We verify standard package versions to ensure reproducible executions."
+    ))
+    
     config_code = (
         f'# Execution Configuration\n'
         f'EXECUTION_MODE = "snapshot"  # Options: "snapshot", "live_refresh"\n'
@@ -44,14 +46,22 @@ def build_notebook(output_path: Path, snapshot_slug: str) -> Path:
         f'import json\n'
         f'import hashlib\n'
         f'import os\n'
+        f'import sys\n'
         f'from pathlib import Path\n'
         f'from datetime import datetime, timedelta, timezone\n'
         f'import math\n'
-        f'from typing import Dict, List, Tuple, Optional, Sequence\n'
+        f'from typing import Dict, List, Tuple, Optional, Sequence, Iterable\n'
         f'import pandas as pd\n'
         f'import numpy as np\n'
         f'import matplotlib.pyplot as plt\n'
-        f'import matplotlib.colors as mcolors\n'
+        f'import matplotlib.colors as mcolors\n\n'
+        'from importlib.metadata import version\n'
+        'print("Runtime Environment:")\n'
+        'for pkg in ["pandas", "numpy", "matplotlib", "colorspacious", "nbformat"]:\n'
+        '    try:\n'
+        '        print(f"- {pkg}: {version(pkg)}")\n'
+        '    except Exception:\n'
+        '        print(f"- {pkg}: not installed")\n'
     )
     cells.append(nbf.v4.new_code_cell(config_code))
     
@@ -66,29 +76,57 @@ def build_notebook(output_path: Path, snapshot_slug: str) -> Path:
     
     # Section 2 Markdown
     cells.append(nbf.v4.new_markdown_cell(
-        "## 2. Data and methodology\n\n"
-        "We utilize two primary public datasets:\n"
-        "1. **DEA Hotspots WFS:** Historical active-fire point observations collected by Geoscience Australia, including attributes like "
-        "satellite, sensor, acquisition time, temp_kelvin, power, confidence, and positional accuracy.\n"
-        "2. **NPWS Fire History Layer:** Polygon boundaries representing wildfires and prescribed burns managed by the NSW National Parks "
-        "and Wildlife Service (NPWS), explicitly licensed under Creative Commons Attribution (CC BY 4.0).\n\n"
-        "**Methodology:**\n"
-        "- **Exact Matching:** A hotspot point is matched if it falls directly inside a fire boundary polygon, and its observation time "
-        "is within the fire's ignition-to-extinguish window (plus a symmetric 1-day temporal grace period).\n"
-        "- **Sensor-Buffered Matching:** The match criteria are expanded by buffering the fire polygons using each sensor's documented "
-        "positional accuracy (e.g., ±0.375 km for VIIRS, ±1 km for MODIS)."
+        "## 2. Methodology & Mathematical Formulation\n\n"
+        "To calibrate the spatiotemporal overlap between satellite hotspot observations and historical fire boundaries, we define a formal matching framework. Let a hotspot observation $h$ be represented as:\n"
+        "$$h = (\\phi_h, \\lambda_h, t_h, \\text{sensor}(h))$$\n"
+        "where $(\\phi_h, \\lambda_h)$ is the geographic position (latitude, longitude), $t_h$ is the acquisition timestamp, and $\\text{sensor}(h)$ designates the observing instrument (e.g., MODIS, VIIRS, AHI).\n\n"
+        "A fire event $F_i$ from the historical boundary record is represented as:\n"
+        "$$F_i = (P_i, [t_{\\text{ignition}, i}, t_{\\text{extinguish}, i}])$$\n"
+        "where $P_i$ is the spatial polygon (or MultiPolygon) boundary, and $[t_{\\text{ignition}, i}, t_{\\text{extinguish}, i}]$ is the active burn interval.\n\n"
+        "We evaluate matching under two distinct regimes:\n\n"
+        "### A. Exact Spatial Matching (Baseline)\n"
+        "A hotspot $h$ is classified as an **exact match** to fire event $F_i$ if it satisfies both spatial containment and temporal window overlap (including a symmetric temporal grace period $\\Delta t$):\n"
+        "1. **Spatial Containment:**\n"
+        "   $$(\\phi_h, \\lambda_h) \\in P_i$$\n"
+        "2. **Temporal Alignment:**\n"
+        "   $$t_h \\in [t_{\\text{ignition}, i} - \\Delta t, t_{\\text{extinguish}, i} + \\Delta t]$$\n"
+        "We set the temporal grace period to $\\Delta t = 1 \\text{ day}$ to account for reporting latencies and ignition/extinguishment boundary uncertainties.\n\n"
+        "### B. Sensor-Buffered Spatial Matching\n"
+        "To account for the physical limits and positional accuracy of satellite sensors, we expand the spatial boundary $P_i$ using a sensor-specific buffer $\\epsilon_{s}$. A hotspot $h$ matches $F_i$ under buffered tolerances if:\n"
+        "1. **Buffered Spatial Containment:**\n"
+        "   $$\\text{dist}((\\phi_h, \\lambda_h), P_i) \\le \\epsilon_{s}$$\n"
+        "   where $\\text{dist}$ is the shortest spherical distance from the hotspot coordinates to the boundary of $P_i$:\n"
+        "   $$\\text{dist}(h_{\\text{pos}}, P_i) = \\begin{cases} 0 & \\text{if } h_{\\text{pos}} \\in P_i \\\\ \\min_{p \\in \\partial P_i} \\text{dist}_{\\text{great-circle}}(h_{\\text{pos}}, p) & \\text{otherwise} \\end{cases}$$\n"
+        "2. **Temporal Alignment:**\n"
+        "   $$t_h \\in [t_{\\text{ignition}, i} - \\Delta t, t_{\\text{extinguish}, i} + \\Delta t]$$\n\n"
+        "The spatial buffer threshold $\\epsilon_{s}$ is determined by the sensor's native nominal spatial resolution:\n"
+        "* **VIIRS:** $\\epsilon_{\\text{VIIRS}} = 0.375\\text{ km}$ (high-resolution channels)\n"
+        "* **MODIS:** $\\epsilon_{\\text{MODIS}} = 1.0\\text{ km}$\n"
+        "* **AHI:** $\\epsilon_{\\text{AHI}} = 2.0\\text{ km}$"
     ))
     
-    # Cell 4: Match hotspots code
+    # Cell 5: Math & Matching helpers
+    cells.append(nbf.v4.new_markdown_cell(
+        "### 2.1 Spatiotemporal Containment Core Algorithms\n\n"
+        "The core mathematical and containment logic for ray-casting containment checks and segment-distance buffer calculations."
+    ))
     cells.append(nbf.v4.new_code_cell(match_hotspots_code))
     
-    # Cell 5: Public analysis code
+    # Cell 6: Data analysis helpers
+    cells.append(nbf.v4.new_markdown_cell(
+        "### 2.2 Data Aggregation and Metrics Helpers\n\n"
+        "Helper functions to compute statistics, match rates, event concentration distributions, and refresh differences."
+    ))
     cells.append(nbf.v4.new_code_cell(public_analysis_code))
     
-    # Cell 6: Public visuals code
+    # Cell 7: Visuals helpers
+    cells.append(nbf.v4.new_markdown_cell(
+        "### 2.3 Visualization Helpers\n\n"
+        "Functions utilizing the Okabe-Ito colorblind-accessible color palette and Matplotlib version-compatibility checks to render analysis figures."
+    ))
     cells.append(nbf.v4.new_code_cell(public_visuals_code))
     
-    # Cell 7: Section 3 Results Markdown
+    # Section 3 Markdown
     cells.append(nbf.v4.new_markdown_cell(
         "## 3. Results\n\n"
         "We load the datasets from the snapshot package and perform the spatiotemporal matching. We compare the match rates and "
@@ -119,64 +157,58 @@ def build_notebook(output_path: Path, snapshot_slug: str) -> Path:
         "# Helper to map NPWS schema to standard RFS-like fields consumed by matching code\n"
         "def map_npws_to_rfs(feature: dict) -> dict:\n"
         "    props = feature.get('properties', {})\n"
-        "    mapped_props = {\n"
-        "        'fire_id': props.get('FireNo') or str(props.get('OBJECTID')),\n"
-        "        'fire_name': props.get('FireName') or 'Unnamed NPWS Event',\n"
-        "        'ignition_date': props.get('StartDate'),\n"
-        "        'extinguish_date': props.get('EndDate'),\n"
-        "        'fire_type': 'bushfire' if props.get('FireType') == 1 else 'prescribed_burn',\n"
-        "        'area_ha': props.get('AreaHa'),\n"
-        "        'perim_km': (props.get('PerimeterM') or 0.0) / 1000.0,\n"
-        "        'state': 'NSW',\n"
-        "        'agency': 'NPWS'\n"
-        "    }\n"
         "    return {\n"
-        "        'type': feature.get('type'),\n"
-        "        'properties': mapped_props,\n"
-        "        'geometry': feature.get('geometry')\n"
+        "        'geometry': feature.get('geometry'),\n"
+        "        'properties': {\n"
+        "            'fire_id': props.get('FireNo') or str(props.get('OBJECTID')),\n"
+        "            'fire_name': props.get('FireName') or 'Unnamed',\n"
+        "            'ignition_date': props.get('StartDate'),\n"
+        "            'extinguish_date': props.get('EndDate'),\n"
+        "            'fire_type': 'bushfire' if props.get('FireType') == 1 else 'prescribed_burn',\n"
+        "        }\n"
         "    }\n\n"
-        "# Define file paths based on execution mode\n"
-        "if EXECUTION_MODE == 'snapshot':\n"
-        "    import os\n"
-        "    # Check Kaggle input dataset, recursive search, or local fallback\n"
-        "    dataset_dir = None\n"
-        "    for root, dirs, files in os.walk('/kaggle/input'):\n"
+        "# 1. Dynamic search of Kaggle/local inputs\n"
+        "dataset_dir = None\n"
+        "for root, dirs, files in os.walk('/kaggle/input'):\n"
+        "    if 'dea_hotspots.geojson' in files:\n"
+        "        dataset_dir = Path(root)\n"
+        "        print(f\"Found dataset at: {dataset_dir}\")\n"
+        "        break\n"
+        "if dataset_dir is None:\n"
+        "    for root, dirs, files in os.walk('../input'):\n"
         "        if 'dea_hotspots.geojson' in files:\n"
         "            dataset_dir = Path(root)\n"
         "            print(f\"Found dataset at: {dataset_dir}\")\n"
         "            break\n"
-        "    if dataset_dir is None:\n"
-        "        for root, dirs, files in os.walk('../input'):\n"
-        "            if 'dea_hotspots.geojson' in files:\n"
-        "                dataset_dir = Path(root)\n"
-        "                print(f\"Found dataset at: {dataset_dir}\")\n"
-        "                break\n"
-        "    if dataset_dir is None:\n"
-        "        dataset_dir = Path('.')\n"
-        "        print(f\"Dataset not found in Kaggle inputs. Falling back to local: {dataset_dir}\")\n"
-        "    dea_path = dataset_dir / 'dea_hotspots.geojson'\n"
-        "    npws_path = dataset_dir / 'npws_fire_history.geojson'\n"
-        "else:\n"
-        "    # Live refresh (download fresh features)\n"
-        "    raise NotImplementedError('Live refresh from ArcGIS/WFS endpoints requires direct network access')\n\n"
-        "# Load datasets\n"
-        "print('Loading spatial datasets...')\n"
+        "if dataset_dir is None:\n"
+        "    curr = Path('.').resolve()\n"
+        "    for parent in [curr] + list(curr.parents):\n"
+        "        candidate = parent / 'output' / 'kaggle' / 'active-fire-pilot'\n"
+        "        if (candidate / 'dea_hotspots.geojson').is_file():\n"
+        "            dataset_dir = candidate\n"
+        "            print(f\"Found local repository dataset at: {dataset_dir}\")\n"
+        "            break\n"
+        "if dataset_dir is None:\n"
+        "    dataset_dir = Path('.')\n"
+        "    print(f\"Dataset not found. Falling back to current directory: {dataset_dir}\")\n\n"
+        "dea_path = dataset_dir / 'dea_hotspots.geojson'\n"
+        "npws_path = dataset_dir / 'npws_fire_history.geojson'\n\n"
         "with open(dea_path) as f:\n"
         "    dea_data = json.load(f)\n"
         "with open(npws_path) as f:\n"
         "    npws_data = json.load(f)\n\n"
-        "# Map and prepare features\n"
-        "npws_mapped = [map_npws_to_rfs(f) for f in npws_data['features']]\n"
-        "features = prepare_features(npws_mapped)\n"
-        "hotspots = [normalize_hotspot(h) for h in dea_data['features']]\n\n"
-        "# Perform exact spatiotemporal matching\n"
+        "features = [map_npws_to_rfs(f) for f in npws_data['features']]\n"
+        "prepared_features = prepare_features(features)\n\n"
+        "normalized_hotspots = [normalize_hotspot(h) for h in dea_data['features']]\n\n"
         "print('Running exact matching...')\n"
-        "exact_matches = [classify_hotspot(h, features, grace_days=1, spatial_buffer_km=0.0) for h in hotspots]\n"
-        "df_exact = pd.DataFrame(exact_matches)\n\n"
-        "# Perform sensor-buffered matching\n"
+        "exact_classified = [classify_hotspot(h, prepared_features, grace_days=1, spatial_buffer_km=0.0) for h in normalized_hotspots]\n"
+        "df_exact = pd.DataFrame(exact_classified)\n\n"
         "print('Running sensor-buffered matching...')\n"
-        "buffered_matches = [classify_hotspot(h, features, grace_days=1, spatial_buffer_km=parse_accuracy_km(h.get('accuracy'))) for h in hotspots]\n"
-        "df_buffered = pd.DataFrame(buffered_matches)\n\n"
+        "buffered_classified = []\n"
+        "for h in normalized_hotspots:\n"
+        "    accuracy_val = parse_accuracy_km(h.get('accuracy'))\n"
+        "    buffered_classified.append(classify_hotspot(h, prepared_features, grace_days=1, spatial_buffer_km=accuracy_val))\n"
+        "df_buffered = pd.DataFrame(buffered_classified)\n\n"
         "# Compute headline summary metrics\n"
         "headline = headline_summary(df_exact, df_buffered)\n"
         "headline['fire_event_count'] = len(features)\n"
@@ -200,54 +232,111 @@ def build_notebook(output_path: Path, snapshot_slug: str) -> Path:
     )
     cells.append(nbf.v4.new_code_cell(main_execution_code))
     
-    # Cell 9: Main visualization code
-    main_visuals_code = (
-        "# 1. Generate and display sensor composition plot\n"
+    # Interpretation of Results
+    cells.append(nbf.v4.new_markdown_cell(
+        "### Interpretation of Results:\n"
+        "- **Exact Matching Baseline:** Containment-only matching yields a 77.25% match rate, leaving 4,515 hotspots unresolved.\n"
+        "- **Sensor-Buffered matching:** Expanding containment boundaries by the sensors' spatial resolution tolerances increase the match rate to 97.12%, resolving all but 572 hotspots.\n"
+        "- **Context:** While buffering resolves spatial uncertainty at polygon edges, the high baseline match rate (77.25%) is heavily influenced by the spatial-temporal footprints of the fire complexes in this area, which we inspect below."
+    ))
+    
+    # Section 4 Markdown
+    cells.append(nbf.v4.new_markdown_cell(
+        "## 4. Visual Analysis & Event Concentration\n\n"
+        "### The Event Concentration Problem\n"
+        "While the headline matching metrics show high overall alignment (77.25% exact, 97.12% buffered), a detailed inspection of the match distribution across individual fire events reveals a severe concentration pattern:\n\n"
+        "* **The Dominance of Two Mega-Complexes:** Out of the 14 fire events analyzed in this region, just two events—the **Kerry Ridge** complex (183,647 ha) and the **Gospers Mountain** complex (479,514 ha)—account for **97.85% of all matched hotspots** (with Kerry Ridge alone capturing 85.34% of exact matches and 84.97% of buffered matches).\n"
+        "* **Spatial Dominance:** The Gospers Mountain polygon alone covers approximately 4,795 km², representing roughly 21% of the entire 22,500 km² study bounding box.\n"
+        "* **The \"Hold-out Event\" Caveat:** Because the statistical sample is almost entirely composed of hotspots from these two massive fire complexes, the reported reliability rates are highly sensitive to their specific characteristics. They **cannot be assumed to generalize** to other regions of New South Wales or to smaller, isolated fire incidents. Any operational performance metrics derived from this pilot are effectively evaluations of these two mega-fires."
+    ))
+    
+    # 4.1 Sensor Composition
+    cells.append(nbf.v4.new_markdown_cell(
+        "### 4.1 Sensor Composition\n\n"
+        "We plot the distribution of raw active-fire hotspots across the different satellite instruments in our snapshot."
+    ))
+    cells.append(nbf.v4.new_code_cell(
         "fig1 = plot_sensor_composition(pd.DataFrame([\n"
         "    {'sensor': s, 'total_hotspots': count}\n"
         "    for s, count in df_exact.groupby('sensor').size().items()\n"
         "]))\n"
-        "plt.show()\n\n"
-        "# 2. Generate and display match rates plot\n"
+        "plt.show()"
+    ))
+    cells.append(nbf.v4.new_markdown_cell(
+        "**Sensor Composition Takeaway:**\n"
+        "VIIRS dominates the hotspot observation count (representing over 80% of all detections) due to its combination of high polar-orbiting pass rates and 375m spatial resolution. MODIS contributes a smaller fraction, while geostationary AHI contributes less than 1% of the total dataset."
+    ))
+    
+    # 4.2 Match Rates
+    cells.append(nbf.v4.new_markdown_cell(
+        "### 4.2 Match Rates by Sensor\n\n"
+        "We plot the match rate of each sensor type to evaluate spatiotemporal reliability."
+    ))
+    cells.append(nbf.v4.new_code_cell(
         "df_sensor = sensor_summary(df_buffered)\n"
         "fig2 = plot_match_rates(df_sensor)\n"
-        "plt.show()\n\n"
-        "# 3. Generate confidence distribution boxplot\n"
+        "plt.show()"
+    ))
+    cells.append(nbf.v4.new_markdown_cell(
+        "**Match Rates Takeaway:**\n"
+        "Under sensor-buffered matching thresholds, VIIRS matches at 98.1%, MODIS at 92.5%, and AHI at 98.3%. The higher match rates reflect how spatial buffers compensate for nominal grid-cell sizes, especially for high-resolution VIIRS."
+    ))
+    
+    # 4.3 Confidence Distributions
+    cells.append(nbf.v4.new_markdown_cell(
+        "### 4.3 Confidence Distribution\n\n"
+        "We evaluate the distribution of confidence values across sensors."
+    ))
+    cells.append(nbf.v4.new_code_cell(
         "fig3 = plot_confidence_by_algorithm(df_buffered)\n"
-        "plt.show()\n\n"
-        "# 4. Generate fire event concentration plot\n"
+        "plt.show()"
+    ))
+    cells.append(nbf.v4.new_markdown_cell(
+        "**Confidence Distributions Takeaway:**\n"
+        "The boxplot reveals how MODIS utilizes a continuous scale (median confidence around 67%) whereas VIIRS utilizes a nominal class mapping represented by discrete value thresholds (nominal/high)."
+    ))
+    
+    # 4.4 Fire Event Concentration
+    cells.append(nbf.v4.new_markdown_cell(
+        "### 4.4 Match Concentration Across Fire Events\n\n"
+        "We evaluate the concentration of hotspot matches across the 14 fire events."
+    ))
+    cells.append(nbf.v4.new_code_cell(
         "df_concentration = event_concentration(df_buffered)\n"
         "fig4 = plot_event_concentration(df_concentration)\n"
-        "plt.show()\n\n"
-        "# 5. Generate and display spatial distribution map\n"
-        "fig5 = plot_pilot_map(df_buffered, npws_mapped, displayed_n=len(df_buffered))\n"
-        "plt.show()\n"
-    )
-    cells.append(nbf.v4.new_code_cell(main_visuals_code))
-    
-    # Section 4 Markdown
+        "plt.show()"
+    ))
     cells.append(nbf.v4.new_markdown_cell(
-        "## 4. Reliability analysis\n\n"
-        "Based on the results, we observe that the exact spatiotemporal match rate of active-fire observations against "
-        "the NPWS Fire History is **77.25%** (15,334 of 19,849 hotspots matched). When taking the sensors' spatial positional "
-        "accuracy into account via buffering, the match rate increases to **97.12%** (19,277 of 19,849 hotspots matched).\n\n"
-        "Crucially, the remaining **2.88%** (572 hotspots) are labeled as **unresolved**. These observations represent "
-        "spatiotemporal offsets that could be caused by:\n"
-        "1. Positional or temporal drift in the satellite products.\n"
-        "2. Off-reserve fire events not captured in the NPWS-specific reserve dataset.\n"
-        "3. Small agricultural burns or brief fire events that did not form a mapped boundary.\n\n"
-        "This confirms the necessity of using the term *unresolved* rather than assuming they represent errors or omissions, "
-        "as they may indicate real fire activity outside of NPWS-managed boundaries."
+        "**Event Concentration Takeaway:**\n"
+        "The bar chart confirms the severe concentration of matched hotspots: **Kerry Ridge** accounts for over 16,000 matches, and **Gospers Mountain** accounts for over 2,400 matches. Together they account for 97.85% of matches, highlighting the spatial-temporal scale skew."
+    ))
+    
+    # 4.5 Spatial Distribution Map
+    cells.append(nbf.v4.new_markdown_cell(
+        "### 4.5 Spatial Distribution Map\n\n"
+        "We plot the map showing matched and unresolved hotspots overlaid on fire boundaries."
+    ))
+    cells.append(nbf.v4.new_code_cell(
+        "fig5 = plot_pilot_map(df_buffered, features, displayed_n=1000)\n"
+        "plt.show()"
+    ))
+    cells.append(nbf.v4.new_markdown_cell(
+        "**Spatial Map Takeaway:**\n"
+        "Unresolved hotspots (marked by 'x') are mostly located outside the boundary of the reserves or on the outer edges of Gospers Mountain and Kerry Ridge. This confirms that spatial buffer thresholds resolve border matches, but active fires outside reserve boundaries remain unmatched (unresolved)."
     ))
     
     # Section 5 Markdown
     cells.append(nbf.v4.new_markdown_cell(
-        "## 5. Research implications\n\n"
-        "For downstream modeling, this pilot illustrates that spatial and temporal tolerances are critical. "
-        "A strict containment check (exact matching) under-reports the alignment of satellite hotspots with actual events. "
-        "By buffering the polygons, we align the official data with the sensors' physical limits, resolving the spatiotemporal offsets. "
-        "Future research must account for administrative boundaries when analyzing active fires to ensure off-reserve observations "
-        "are not mischaracterized as errors."
+        "## 5. Research Implications\n\n"
+        "### Incident-Level vs. Complex-Level Confound\n"
+        "The transition to the NPWS Fire History layer (implemented to comply with CC BY 4.0 licensing) introduced a major methodological change:\n"
+        "* **NSW RFS Feature Service:** Logs granular, localized, short-duration *incident-level* records.\n"
+        "* **NPWS Fire History:** Represents consolidated, whole-of-season *fire-complex* boundaries (e.g., the Gospers Mountain record spans 107 active days from 25 Oct 2019 to 9 Feb 2020).\n\n"
+        "This change in source shifted the scientific unit of analysis from a localized fire front to a massive, long-lived mega-complex. Because a hotspot is statistically much more likely to intersect a 4,795 km² polygon that remains open for over three months, the observed match-rate jump (from 14.5% to 77.25% exact) is driven by this **complex-level spatial-temporal scale confound**, rather than an intrinsic improvement in the operational sensor performance or label reliability.\n\n"
+        "### Modeling Recommendations\n"
+        "For downstream machine learning and active-fire modeling:\n"
+        "1. **Validation Design:** Models evaluated on datasets dominated by mega-complexes will overfit to their specific temporal and spatial footprints. Validation frameworks must implement **split-complex cross-validation**, where entire large complexes (like Gospers Mountain) are held out during training to test generalization on smaller, independent fires.\n"
+        "2. **Buffer Attribution:** While spatial buffering increases the match rate to 97.12%, its role must not be overstated. Exact matching is already 77.25% because of the immense size of the target polygons; buffering only resolves minor edge-drift (accounting for a ~20% marginal increase)."
     ))
     
     # Section 6 Markdown
@@ -261,6 +350,22 @@ def build_notebook(output_path: Path, snapshot_slug: str) -> Path:
         "- `dea_hotspots.geojson` (SHA-256): `e3fef8c1c9b4a81b07482eca2209885dc0b9c5f08fc5c6ddf310ad39313655d3`\n"
         "- `npws_fire_history.geojson` (SHA-256): `990507571b2b028c0d5687a7ba4351adb0b7e60ced1a53eddf9eb30e91f92dd5`"
     ))
+    
+    # JSON Snapshot Cell
+    snapshot_code = (
+        "import json\n"
+        "snapshot = {\n"
+        "    \"total_hotspots\": int(headline[\"total_hotspots\"]),\n"
+        "    \"exact_matches\": int(headline[\"exact_matches\"]),\n"
+        "    \"exact_match_rate\": round(headline[\"exact_match_rate\"], 4),\n"
+        "    \"buffered_matches\": int(headline[\"buffered_matches\"]),\n"
+        "    \"buffered_match_rate\": round(headline[\"buffered_match_rate\"], 4),\n"
+        "    \"buffered_unresolved\": int(headline[\"buffered_unresolved\"]),\n"
+        "}\n"
+        "print(\"=== REPRODUCIBILITY SNAPSHOT ===\")\n"
+        "print(json.dumps(snapshot, indent=2))"
+    )
+    cells.append(nbf.v4.new_code_cell(snapshot_code))
     
     # Cell 11: Live refresh code
     live_refresh_code = (

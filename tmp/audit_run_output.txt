@@ -1,0 +1,5 @@
+=== STARTING ARTIFACT AUDIT ===
+Auditing notebook at: /Users/tuannm3812/Documents/GitHub/1. Study/uts-mdsi/llm-wiki/02-subjects/36126-innovation-lab-research-project/notebooks/active-fire-kaggle/nsw-active-fire-reliability-pilot.ipynb
+[PASS] Notebook audit successful.
+Auditing provenance hashes using: /Users/tuannm3812/Documents/GitHub/1. Study/uts-mdsi/llm-wiki/02-subjects/36126-innovation-lab-research-project/notebooks/active-fire-kaggle/licence-manifest.json
+[PASS] Hash audit successful.

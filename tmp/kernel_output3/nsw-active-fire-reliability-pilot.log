@@ -1,0 +1,42 @@
+[{"stream_name":"stderr","time":11.455460419,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":11.455550833,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":11.455558176,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":11.455561213,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":12.387052866,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":12.3870957,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":12.387101241,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":12.387105552,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":15.779598299,"data":"Staging directory ../input/nsw-active-fire-pilot-snapshot not found. Searching in paths...\n"}
+,{"stream_name":"stdout","time":15.779670118,"data":"Contents of /kaggle/input: ['datasets']\n"}
+,{"stream_name":"stdout","time":15.77967617,"data":"Contents of ../input: ['datasets']\n"}
+,{"stream_name":"stdout","time":15.779680482,"data":"Contents of .: ['__notebook__.ipynb']\n"}
+,{"stream_name":"stdout","time":15.77968456,"data":"Loading spatial datasets...\n"}
+,{"stream_name":"stderr","time":16.522275643,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":16.522310547,"data":"  File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":16.522315528,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 131, in execute_notebook\n"}
+,{"stream_name":"stderr","time":16.522328118,"data":"    raise_for_execution_errors(nb, output_path)\n"}
+,{"stream_name":"stderr","time":16.522500666,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 251, in raise_for_execution_errors\n"}
+,{"stream_name":"stderr","time":16.522957758,"data":"    raise error\n"}
+,{"stream_name":"stderr","time":16.523001316,"data":"papermill.exceptions.PapermillExecutionError: \n"}
+,{"stream_name":"stderr","time":16.523006434,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":16.523010724,"data":"Exception encountered at \"In [5]\":\n"}
+,{"stream_name":"stderr","time":16.523014746,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":16.52301837,"data":"FileNotFoundError                         Traceback (most recent call last)\n"}
+,{"stream_name":"stderr","time":16.523021818,"data":"/tmp/ipykernel_16/2001794553.py in \u003ccell line: 0\u003e()\n"}
+,{"stream_name":"stderr","time":16.523025778,"data":"     68 # Load datasets\n"}
+,{"stream_name":"stderr","time":16.523029304,"data":"     69 print('Loading spatial datasets...')\n"}
+,{"stream_name":"stderr","time":16.523032682,"data":"---\u003e 70 with open(dea_path) as f:\n"}
+,{"stream_name":"stderr","time":16.523036255,"data":"     71     dea_data = json.load(f)\n"}
+,{"stream_name":"stderr","time":16.523039882,"data":"     72 with open(npws_path) as f:\n"}
+,{"stream_name":"stderr","time":16.523043886,"data":"\n"}
+,{"stream_name":"stderr","time":16.523047308,"data":"FileNotFoundError: [Errno 2] No such file or directory: 'dea_hotspots.geojson'\n"}
+,{"stream_name":"stderr","time":16.523051139,"data":"\n"}
+,{"stream_name":"stderr","time":20.009906435,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":20.009958111,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":20.314656523,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":20.314686482,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":21.44259257,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":21.894903977,"data":"[NbConvertApp] Writing 45846 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":25.528674429,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":27.076647334,"data":"[NbConvertApp] Writing 421768 bytes to __results__.html\n"}
+]

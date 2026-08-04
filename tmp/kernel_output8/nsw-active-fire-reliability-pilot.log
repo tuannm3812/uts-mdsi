@@ -1,0 +1,39 @@
+[{"stream_name":"stderr","time":10.294978307,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":10.295049527,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":10.295056560999999,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":10.295061438,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":11.191684488,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":11.191732629,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":11.191737325,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":11.191740256,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":14.421398323,"data":"Found dataset at: /kaggle/input/datasets/tuannm3812/nsw-active-fire-pilot-snapshot\n"}
+,{"stream_name":"stdout","time":14.421466591,"data":"Loading spatial datasets...\n"}
+,{"stream_name":"stdout","time":14.813001788,"data":"Running exact matching...\n"}
+,{"stream_name":"stdout","time":107.027607401,"data":"Running sensor-buffered matching...\n"}
+,{"stream_name":"stdout","time":197.348781421,"data":"\n"}
+,{"stream_name":"stdout","time":197.348827486,"data":"=== HEADLINE METRICS ===\n"}
+,{"stream_name":"stdout","time":197.348834058,"data":"total_hotspots: 19,849\n"}
+,{"stream_name":"stdout","time":197.348839725,"data":"exact_matches: 15,334\n"}
+,{"stream_name":"stdout","time":197.348844534,"data":"exact_unresolved: 4,515\n"}
+,{"stream_name":"stdout","time":197.348848691,"data":"exact_match_rate: 77.25%\n"}
+,{"stream_name":"stdout","time":197.348853173,"data":"buffered_matches: 19,277\n"}
+,{"stream_name":"stdout","time":197.348858023,"data":"buffered_unresolved: 572\n"}
+,{"stream_name":"stdout","time":197.348862686,"data":"buffered_match_rate: 97.12%\n"}
+,{"stream_name":"stdout","time":197.348867451,"data":"fire_event_count: 14\n"}
+,{"stream_name":"stdout","time":197.348872067,"data":"\n"}
+,{"stream_name":"stdout","time":197.348876825,"data":"[SUCCESS] Snapshot invariants verified successfully.\n"}
+,{"stream_name":"stderr","time":203.029562587,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":203.02960966,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":203.231923906,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":203.231951809,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":203.970227047,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":204.373964024,"data":"[NbConvertApp] Writing 405700 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":207.434734162,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":208.628543984,"data":"[NbConvertApp] Support files will be in __results___files/\n"}
+,{"stream_name":"stderr","time":208.628587886,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":208.628843508,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":208.629085067,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":208.629251999,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":208.629466865,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":208.629798793,"data":"[NbConvertApp] Writing 424201 bytes to __results__.html\n"}
+]

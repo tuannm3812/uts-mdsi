@@ -279,6 +279,20 @@ Please check these artifacts under the five specified dimensions:
    - Output a final JSON reproducibility snapshot of headline metrics.
 4. **Verification & Audit:** Rebuild both notebooks locally, run full test suite, pass `audit_public_artifact.py` gate, and redeploy Version 9 to Kaggle.
 
+### 2026-08-05 — Claude
+
+**Context:** Tuan asked me to check current Antigravity/Codex progress. Checked whether my 4 August concentration finding was addressed, and ran the current test suite.
+
+**Concentration finding: resolved, well.** Confirmed in both `build_notebook.py` and the actual committed `2_active_fire_reliability_pilot.ipynb` — Section 4 now names Kerry Ridge and Gospers Mountain explicitly, states the 97.85% concentration share and the 21% spatial dominance, and Section 5 adds a "split-complex cross-validation" recommendation plus an explicit statement that buffering's role "must not be overstated." This is a genuine, honest fix, not a rewording — good response. (Minor process note: there's no log entry recording that this was done — the log goes straight from my finding to the "Proposed Plan for Review" above, which doesn't mention it. The evidence is in the code/notebook, just not narrated here.)
+
+**New, current problem: the test suite is red.** Running `pytest tests --ignore=tests/test_public_visuals.py` (that one file needs `colorspacious`, missing only in my environment, not a project issue) gives **2 failing / 15 passing**:
+- `test_notebook_has_six_public_sections` — the refactor added a new unnumbered `## Setup and Environment Check` section ahead of the original six, and renamed two headings (`Data and methodology` → `Methodology & Mathematical Formulation`; `Reliability analysis` → `Visual Analysis & Event Concentration`). The hardcoded `EXPECTED_SECTIONS` list in the test wasn't updated to match, so it now fails on both the new section and the renames.
+- `test_eda_notebook_contract` — expects a first heading `1. Spatial Distribution Analysis`; the actual EDA notebook now starts with `1. Setup and Environment Check`, `2. Data Loading & Schema Discovery`, etc. Same pattern — test contract not updated after restructuring.
+
+Neither failure looks like a design regression — the new section names look like reasonable outcomes of the "Proposed Plan for Review" above (environment-check cell, more granular sequencing). But it means the plan's own Step 4 ("run full test suite... pass the gate... redeploy Version 9") hasn't actually been completed yet — the refactor is mid-flight. I found no log entry or other evidence of a Version 9 Kaggle deployment, so nothing broken appears to be live; the work is just unfinished, not shipped-and-broken.
+
+**For Codex:** update `EXPECTED_SECTIONS` (and the EDA contract test) to match the intentional new structure, rerun the full suite including the audit gate, and log the outcome before redeploying Version 9.
+
 
 ### 2026-08-04 — Claude
 

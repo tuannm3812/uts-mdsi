@@ -12,10 +12,10 @@ from build_eda_notebook import build_eda_notebook
 
 EXPECTED_SECTIONS = [
     "1. Project overview",
-    "2. Data and methodology",
+    "2. Methodology & Mathematical Formulation",
     "3. Results",
-    "4. Reliability analysis",
-    "5. Research implications",
+    "4. Visual Analysis & Event Concentration",
+    "5. Research Implications",
     "6. Reproducibility",
 ]
 
@@ -42,5 +42,6 @@ def test_eda_notebook_contract(tmp_path):
     assert 'EXECUTION_MODE = "snapshot"' in source
     
     headings = [cell.source.split("\n")[0].replace("## ", "").strip() for cell in notebook.cells if cell.cell_type == "markdown" and cell.source.startswith("## ")]
-    assert "1. Spatial Distribution Analysis" in headings
-    assert "2. Sensor Attribute Relationships" in headings
+    assert "2. Data Loading & Schema Discovery" in headings
+    assert "6. Spatial Overlays" in headings
+    assert "7. Attribute Characterization & Skewness" in headings

@@ -47,11 +47,16 @@ def upload_private(credentials_path: Path, staging_dir: Path) -> dict:
     # Copy kernel-metadata.json into staging directory, along with the notebook itself
     shutil.copy2(kernel_meta, staging_dir / "kernel-metadata.json")
     
-    # Copy the notebook itself
-    notebook_src = KAG_DIR / "nsw-active-fire-reliability-pilot.ipynb"
-    if not notebook_src.is_file():
-        raise FileNotFoundError(f"Notebook missing: {notebook_src}")
-    shutil.copy2(notebook_src, staging_dir / "nsw-active-fire-reliability-pilot.ipynb")
+    # Copy the notebooks
+    notebook_src2 = KAG_DIR / "2_active_fire_reliability_pilot.ipynb"
+    if not notebook_src2.is_file():
+        raise FileNotFoundError(f"Notebook missing: {notebook_src2}")
+    shutil.copy2(notebook_src2, staging_dir / "2_active_fire_reliability_pilot.ipynb")
+    
+    notebook_src1 = KAG_DIR / "1_active_fire_eda.ipynb"
+    if not notebook_src1.is_file():
+        raise FileNotFoundError(f"Notebook missing: {notebook_src1}")
+    shutil.copy2(notebook_src1, staging_dir / "1_active_fire_eda.ipynb")
     
     results = {}
     
