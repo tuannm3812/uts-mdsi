@@ -103,22 +103,32 @@ def audit_notebook(notebook_path: Path) -> List[str]:
 
 
 def main():
-    # Audit notebook
+    # Audit notebooks
     kag_dir = Path(__file__).resolve().parent
-    notebook_path = kag_dir / "nsw-active-fire-reliability-pilot.ipynb"
+    notebook_paths = [
+        kag_dir / "nsw-active-fire-reliability-pilot.ipynb",
+        kag_dir / "1_active_fire_eda.ipynb"
+    ]
     manifest_path = kag_dir / "licence-manifest.json"
     
     print("=== STARTING ARTIFACT AUDIT ===")
     
-    # 1. Audit Notebook
-    print(f"Auditing notebook at: {notebook_path}")
-    nb_errors = audit_notebook(notebook_path)
-    if nb_errors:
-        print("\n[FAIL] Notebook audit failed with errors:")
-        for err in nb_errors:
-            print(f" - {err}")
-    else:
-        print("[PASS] Notebook audit successful.")
+    any_errors = False
+    
+    # 1. Audit Notebooks
+    for notebook_path in notebook_paths:
+        if not notebook_path.is_file():
+            continue
+        print(f"Auditing notebook at: {notebook_path}")
+        nb_errors = audit_notebook(notebook_path)
+        if nb_errors:
+            print(f"\n[FAIL] Notebook {notebook_path.name} audit failed with errors:")
+            for err in nb_errors:
+                print(f" - {err}")
+            any_errors = True
+        else:
+            print(f"[PASS] Notebook {notebook_path.name} audit successful.")
+        print()
         
     # 2. Audit Provenance Hashes
     if manifest_path.is_file():
@@ -139,7 +149,7 @@ def main():
         else:
             print(f"[WARN] Local tmp directory {tmp_dir} not found. Skipping hash audit.")
             
-    if nb_errors:
+    if any_errors:
         sys.exit(1)
     else:
         sys.exit(0)
