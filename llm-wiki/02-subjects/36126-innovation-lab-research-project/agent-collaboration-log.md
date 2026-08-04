@@ -191,3 +191,45 @@ Please check these artifacts under the five specified dimensions:
 4. **Public readability and visual design:** Check that Okabe-Ito colors are implemented correctly and denominators are stated explicitly on all summary charts.
 5. **Kaggle metadata correctness:** Verify `kernel-metadata.json` and `dataset-metadata.json` are set to private, CPU-only, internet-off, and owner-only.
 
+### 2026-08-04 — Claude
+
+**Context:** Artifact audit findings for private-ready public-Kaggle materials.
+
+**Findings:**
+1. **Privacy leakage:** UTS subject code `36126` is used as the default seed in the sampling function, leaking an administration detail.
+2. **Scientific overclaiming:** None. Mismatches are appropriately framed as unresolved.
+3. **Reproducibility gaps:** A mismatch exists in Section 4 narrative (claims 569/2.87% unresolved instead of the correct 572/2.88%). Lower bounds in requirements rather than strict pins.
+4. **Public readability and visual design:** Denominators are missing on `plot_sensor_composition`, `plot_confidence_by_algorithm`, and `plot_event_concentration`.
+5. **Kaggle metadata correctness:** Configured correctly (private, CPU-only, internet-off, owner-only).
+
+### 2026-08-04 — Codex (Antigravity)
+
+**Context:** Evaluated and resolved Claude's review findings, executed final verification, and deployed to Kaggle.
+
+**What I changed:**
+1. **Subject Seed Leak:** Updated default seed parameter in `deterministic_display_sample()` in `public_analysis.py` and its tests from `36126` to `42`.
+2. **Section 4 Discrepancy:** Updated the markdown narrative inside Section 4 of `build_notebook.py` to state the mathematically correct 572 unresolved hotspots (2.88%).
+3. **Chart Denominators:** Updated `public_visuals.py` to disclose total sample sizes and/or category $n$ counts on the remaining three charts:
+   - `plot_sensor_composition`: Added `(Total N=19,849)` to the title.
+   - `plot_confidence_by_algorithm`: Appended `(n=...)` sample size directly to each sensor x-tick label.
+   - `plot_event_concentration`: Added `(Total Matched N=19,277)` to the title.
+4. **Notebook Metadata:** Added `kernelspec` and `language_info` metadata to the notebook object inside `build_notebook.py` to prevent papermill execution errors on Kaggle.
+5. **Kaggle Staging Paths:** Modified path resolution inside `build_notebook.py` to recursively search `/kaggle/input` for `dea_hotspots.geojson` to handle dynamic mount structures.
+
+**Verification & Local Audit:**
+- Rebuilt the notebook and executed it from a clean state locally (passing all invariant assertions).
+- Ran all 33 unit and contract tests: **ALL PASSED**.
+- Passed final `audit_public_artifact.py` privacy and claim audit.
+
+**Private Kaggle Deployment Record:**
+- **Dataset Slug:** `tuannm3812/nsw-active-fire-pilot-snapshot`
+  - URL: https://www.kaggle.com/datasets/tuannm3812/nsw-active-fire-pilot-snapshot
+  - Visibility: Private (Owner-only, no collaborators)
+  - Status: `ready`
+- **Kernel Slug:** `tuannm3812/nsw-active-fire-reliability-pilot`
+  - URL: https://www.kaggle.com/code/tuannm3812/nsw-active-fire-reliability-pilot
+  - Visibility: Private (Owner-only, no collaborators)
+  - Status: `KernelWorkerStatus.COMPLETE` (Verified successful run)
+  - Settings: CPU-only (GPU disabled), Internet-off (disabled)
+
+

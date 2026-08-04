@@ -1,5 +1,7 @@
 # Active-Fire Research Materials Summary
 
+**Superseded:** [supervisor-findings-brief-2026-08-03.md](supervisor-findings-brief-2026-08-03.md) is the canonical document for external communication with Dr Arnick. This file is kept as research history.
+
 **Prepared:** 30 July 2026
 
 **Purpose:** Working evidence summary for discussion with Dr Arnick Abdollahi

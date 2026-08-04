@@ -137,10 +137,23 @@ def build_notebook(output_path: Path, snapshot_slug: str) -> Path:
         "    }\n\n"
         "# Define file paths based on execution mode\n"
         "if EXECUTION_MODE == 'snapshot':\n"
-        "    # Check Kaggle input dataset or local directory\n"
-        "    dataset_dir = Path('../input/nsw-active-fire-pilot-snapshot')\n"
-        "    if not dataset_dir.is_dir():\n"
+        "    import os\n"
+        "    # Check Kaggle input dataset, recursive search, or local fallback\n"
+        "    dataset_dir = None\n"
+        "    for root, dirs, files in os.walk('/kaggle/input'):\n"
+        "        if 'dea_hotspots.geojson' in files:\n"
+        "            dataset_dir = Path(root)\n"
+        "            print(f\"Found dataset at: {dataset_dir}\")\n"
+        "            break\n"
+        "    if dataset_dir is None:\n"
+        "        for root, dirs, files in os.walk('../input'):\n"
+        "            if 'dea_hotspots.geojson' in files:\n"
+        "                dataset_dir = Path(root)\n"
+        "                print(f\"Found dataset at: {dataset_dir}\")\n"
+        "                break\n"
+        "    if dataset_dir is None:\n"
         "        dataset_dir = Path('.')\n"
+        "        print(f\"Dataset not found in Kaggle inputs. Falling back to local: {dataset_dir}\")\n"
         "    dea_path = dataset_dir / 'dea_hotspots.geojson'\n"
         "    npws_path = dataset_dir / 'npws_fire_history.geojson'\n"
         "else:\n"
@@ -261,6 +274,16 @@ def build_notebook(output_path: Path, snapshot_slug: str) -> Path:
     )
     cells.append(nbf.v4.new_code_cell(live_refresh_code))
     
+    nb.metadata = {
+        "kernelspec": {
+            "display_name": "Python 3",
+            "language": "python",
+            "name": "python3"
+        },
+        "language_info": {
+            "name": "python"
+        }
+    }
     nb.cells = cells
     
     # Save notebook

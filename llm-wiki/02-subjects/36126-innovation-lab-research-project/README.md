@@ -50,15 +50,18 @@ Source folder: `/Users/tuannm3812/Library/CloudStorage/GoogleDrive-tuannm3812@gm
 
 ## Curated Study Layer
 
+- [Agent collaboration log](agent-collaboration-log.md) — open running discussion between Tuan, Claude, and Codex
+- [Fire-Hotspot Reliability in NSW: Findings Update (canonical, ready for Dr Arnick)](research/supervisor-findings-brief-2026-08-03.md)
+- [Teams Message to Dr Arnick — 3 August](communications/teams-message-to-arnick-2026-08-03.md)
 - [Research Execution Plan](research/research-execution-plan-2026.md)
-- [Active-Fire Research Materials Summary](research/active-fire-materials-summary-2026-07-30.md)
+- [Active-Fire Research Materials Summary (superseded, kept as history)](research/active-fire-materials-summary-2026-07-30.md)
 - [Tổng quan tài liệu phát hiện điểm nóng cháy — Tiếng Việt](research/active-fire-literature-review-vi-2026-07-30.md)
 - [Tổng quan tài liệu phát hiện điểm nóng cháy — PDF tiếng Việt](research/active-fire-literature-review-vi-2026-07-30.pdf)
 - [Public-Data Feasibility Pilot](research/data-feasibility-pilot-2026-07-30.md)
 - [Public-Data Feasibility Results](research/data-feasibility-pilot-results.csv)
 - [Active-Fire Pilot Pipeline](notebooks/active-fire-pilot/README.md)
 - [Public Data Source Audit](sources/data/data-source-audit-2026-07-30.md)
-- [Preliminary Fire-Hotspot Review Findings](research/preliminary-findings-fire-hotspot-review-2026-07-29.md)
+- [Preliminary Fire-Hotspot Review Findings (superseded, kept as history)](research/preliminary-findings-fire-hotspot-review-2026-07-29.md)
 - [Preliminary Fire-Hotspot Review Findings (PDF)](research/preliminary-findings-fire-hotspot-review-2026-07-29.pdf)
 - [Tooling and Reproducibility](research/tooling-and-reproducibility.md)
 - [Literature Search Protocol](sources/literature/literature-search-protocol.md)

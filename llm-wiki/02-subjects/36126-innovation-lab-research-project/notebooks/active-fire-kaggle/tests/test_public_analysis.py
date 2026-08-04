@@ -44,8 +44,8 @@ def test_headline_summary_uses_unresolved_language():
 
 def test_display_sample_is_deterministic():
     frame = pd.DataFrame({"id": range(100)})
-    first = deterministic_display_sample(frame, 10, seed=36126)
-    second = deterministic_display_sample(frame, 10, seed=36126)
+    first = deterministic_display_sample(frame, 10, seed=42)
+    second = deterministic_display_sample(frame, 10, seed=42)
     pd.testing.assert_frame_equal(first, second)
 
 

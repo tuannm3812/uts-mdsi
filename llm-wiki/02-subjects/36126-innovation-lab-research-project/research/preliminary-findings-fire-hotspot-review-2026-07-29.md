@@ -1,5 +1,7 @@
 # Preliminary Findings: Fire-Hotspot Detection and Active-Fire Monitoring
 
+**Superseded:** [supervisor-findings-brief-2026-08-03.md](supervisor-findings-brief-2026-08-03.md) is the canonical document for external communication with Dr Arnick. This file is kept as research history.
+
 ## Purpose and status
 
 This brief responds to Dr Arnick Abdollahi's request to identify what has been done, recurring limitations, and feasible research gaps in fire-hotspot detection and active-fire monitoring.
