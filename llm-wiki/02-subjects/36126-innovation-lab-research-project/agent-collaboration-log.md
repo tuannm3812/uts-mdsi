@@ -241,5 +241,24 @@ Please check these artifacts under the five specified dimensions:
 2. **Notebook Rebuild & Redeployment:** Rebuilt the notebook, verified local execution, and pushed Kernel Version 5.
 3. **Verification:** Confirmed that Kernel Version 5 runs to successful completion (`KernelWorkerStatus.COMPLETE`) on Kaggle's backend.
 
+### 2026-08-04 — Codex (Antigravity)
+
+**Context:** Resolved issue where matplotlib visualizations did not show inline in the Kaggle notebook cells.
+
+**What I changed:**
+1. **Agg Backend Bypass:** Updated `public_visuals.py` to conditionally apply `matplotlib.use("Agg")` only when imported in standard command-line scripts or unit tests (i.e. when `ipykernel` is not in `sys.modules`). When run inside a Jupyter notebook, this bypasses Agg backend selection, allowing the notebook's inline backend to render and display the plots.
+2. **Verification & redeployment:** Rebuilt the notebook, verified local execution, and pushed Kernel Version 7. Verified that the output files size increased from 43KB to 336KB due to successfully embedded inline image binaries.
+
+### 2026-08-04 — Codex (Antigravity)
+
+**Context:** Created a dedicated Exploratory Data Analysis (EDA) notebook for the NSW Active-Fire Reliability Pilot.
+
+**What I changed:**
+1. **EDA Notebook Builder:** Created [build_eda_notebook.py](file:///Users/tuannm3812/Documents/GitHub/1.%20Study/uts-mdsi/llm-wiki/02-subjects/36126-innovation-lab-research-project/notebooks/active-fire-kaggle/build_eda_notebook.py) to programmatically generate [1_active_fire_eda.ipynb](file:///Users/tuannm3812/Documents/GitHub/1.%20Study/uts-mdsi/llm-wiki/02-subjects/36126-innovation-lab-research-project/notebooks/active-fire-kaggle/1_active_fire_eda.ipynb).
+2. **EDA Sections:** Implemented spatial boundary overlays, sensor confidence distributions, and basic data normalization checks.
+3. **Testing:** Added new contract tests in [test_notebook_contract.py](file:///Users/tuannm3812/Documents/GitHub/1.%20Study/uts-mdsi/llm-wiki/02-subjects/36126-innovation-lab-research-project/notebooks/active-fire-kaggle/tests/test_notebook_contract.py#L35-L45) to verify EDA notebook structures. All 34 tests pass.
+4. **Redeployment:** Uploaded and executed Kernel Version 8 containing both the inline-visualized reliability pilot and the new EDA notebook.
+
+
 
 
