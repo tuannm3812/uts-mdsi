@@ -259,6 +259,45 @@ Please check these artifacts under the five specified dimensions:
 3. **Testing:** Added new contract tests in [test_notebook_contract.py](file:///Users/tuannm3812/Documents/GitHub/1.%20Study/uts-mdsi/llm-wiki/02-subjects/36126-innovation-lab-research-project/notebooks/active-fire-kaggle/tests/test_notebook_contract.py#L35-L45) to verify EDA notebook structures. All 34 tests pass.
 4. **Redeployment:** Uploaded and executed Kernel Version 8 containing both the inline-visualized reliability pilot and the new EDA notebook.
 
+### 2026-08-05 — Codex (Antigravity)
+
+**Context:** Recording the approved implementation plan to refactor the active-fire notebooks for public release.
+
+**Proposed Plan for Review:**
+1. **Pipeline Ordering:** Execute Notebook 1 (EDA) first to establish raw data properties, and Notebook 2 (Reliability Pilot) second. Rename the pilot notebook to `2_active_fire_reliability_pilot.ipynb` for clear sequencing.
+2. **Notebook 1 Refactoring (`1_active_fire_eda.ipynb`):**
+   - Add environment check cell.
+   - Split load/audit code blocks (profile duplicate coordinates/datetimes and value ranges).
+   - Insert markdown explanations under each spatial and attribute visual.
+   - Add a "Next Moves" markdown explaining how EDA shapes Notebook 2 matching thresholds.
+   - Output a final JSON reproducibility snapshot.
+3. **Notebook 2 Refactoring (`2_active_fire_reliability_pilot.ipynb`):**
+   - Add environment check cell.
+   - Document mathematical formulas for containment and buffers in Section 2.
+   - Split core matching code into smaller sequential cells ( containment math, match loops, analysis helpers, visuals definitions).
+   - Run each visualization function in a separate cell, followed by a dedicated markdown takeaway block.
+   - Output a final JSON reproducibility snapshot of headline metrics.
+4. **Verification & Audit:** Rebuild both notebooks locally, run full test suite, pass `audit_public_artifact.py` gate, and redeploy Version 9 to Kaggle.
+
+
+### 2026-08-04 — Claude
+
+**Context:** Tuan asked me to review Antigravity/Codex's progress since the last entries and discuss. Read through the NPWS licence-switch rerun (Decision B), the deployed notebook's Section 4 narrative, and independently recomputed the match statistics from the actual staged files (`output/kaggle/active-fire-pilot/*.geojson`) using the project's own `match_hotspots.py`, rather than trusting the reported summary numbers.
+
+**HIGH-SEVERITY finding: the 77.25%/97.12% match-rate jump is not a reliability improvement — it's almost entirely two enormous fire-complex polygons, and this isn't disclosed anywhere in the deployed notebook.**
+
+Recomputing event concentration directly from `npws_fire_history.geojson` and `dea_hotspots.geojson`:
+- **Kerry Ridge** (183,647 ha) and **Gospers Mountain** (479,514 ha) are 2 of the 14 NPWS events, but together account for **97.85% of every matched hotspot**, exact and buffered alike (85.34%/84.97% from Kerry Ridge alone). Gospers Mountain's polygon alone covers roughly 4,795 km² — about 21% of the entire 22,500 km² study bounding box.
+- This is a materially worse concentration problem than the original NSW-RFS pilot's already-flagged `Stockyard Creek; Little` dominance (88% of matches from one event) — now it's ~98% from two, out of a 19,277-hotspot "buffered match" figure.
+- The NPWS Fire History layer represents **consolidated, whole-of-season fire-complex boundaries** (Gospers Mountain's record spans 25 Oct 2019 – 9 Feb 2020, 107 days), not the more granular, shorter-duration incident-level records the original NSW RFS Feature Service returned. Switching source for licensing reasons (correct call — Decision B) also silently changed what "one matched event" means, from a localised incident to a mega-complex covering a fifth of the study area. That confound, not an improvement in label reliability, is what's driving 14.5%→77.25% and 17.1%→97.12%.
+- **The deployed notebook's Section 4 narrative doesn't disclose this.** It generates an `event_concentration` chart (`fig4`) but never interprets it in prose, states the 97.12% headline as a straightforward result, and Section 5 attributes the improvement to "buffering... resolving the spatiotemporal offsets" — which overstates buffering's role (exact, *unbuffered* matching is already 77.25% and already ~98% concentrated in the same two events; buffering only adds a few more percentage points on top).
+- The original pilot's hold-out-event validation warning (verbatim in every prior document, including the brief now sitting ready for Dr Arnick) is absent from the new Section 4/5 text, even though the concentration problem it warns about is now worse, not better.
+- This is already live on the private Kaggle kernel (Version 8), and the underlying 19,849/14/15,334/19,277/572 invariants are the same ones I was about to treat as the update for Dr Arnick's brief — they are not.
+
+**Recommendation, not yet actioned:** before any further public deployment or supervisor communication uses these NPWS figures, Section 4/5 needs to name Kerry Ridge and Gospers Mountain explicitly, state their concentration share, explain that the NSW-RFS-vs-NPWS comparison is not apples-to-apples (incident-level vs complex-level polygons), and restore the hold-out-event caveat. I have not touched the notebook, the Kaggle deployment, or Dr Arnick's brief — flagging for discussion first since this changes the actual scientific conclusion, not just the presentation.
+
+**Open for Codex/Tuan:** do we want Section 4 rewritten to lead with the concentration finding (arguably the more interesting result — NPWS's complex-level polygons make "event-level reliability" nearly untestable with only 14 events, 2 of which dominate), or do we want a like-for-like rerun using a comparably-scaled reference (e.g. splitting complexes by date/sub-area, or reverting to per-incident tolerances)? Either is defensible; going ahead without disclosing it either way is not.
+
 
 
 

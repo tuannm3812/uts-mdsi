@@ -295,7 +295,7 @@ def build_notebook(output_path: Path, snapshot_slug: str) -> Path:
 
 def main():
     build_notebook(
-        KAG_DIR / "nsw-active-fire-reliability-pilot.ipynb",
+        KAG_DIR / "2_active_fire_reliability_pilot.ipynb",
         "tuannm3812/nsw-active-fire-pilot-snapshot"
     )
     print("Notebook generated successfully.")

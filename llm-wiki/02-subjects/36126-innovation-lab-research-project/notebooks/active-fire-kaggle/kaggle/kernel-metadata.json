@@ -1,7 +1,7 @@
 {
   "id": "tuannm3812/nsw-active-fire-reliability-pilot",
   "title": "NSW Active-Fire Reliability Pilot",
-  "code_file": "nsw-active-fire-reliability-pilot.ipynb",
+  "code_file": "2_active_fire_reliability_pilot.ipynb",
   "language": "python",
   "kernel_type": "notebook",
   "is_private": true,
