@@ -92,8 +92,18 @@ def plot_confidence_by_algorithm(frame: pd.DataFrame) -> plt.Figure:
             labels.append(f"{sensor}\n(n={len(subset):,})")
             
     if data:
-        # Custom boxplot styling
-        box = ax.boxplot(data, labels=labels, patch_artist=True, medianprops={"color": "black", "linewidth": 1.5})
+        # Custom boxplot styling with Matplotlib 3.9+ compatibility
+        try:
+            v_parts = [int(x) for x in matplotlib.__version__.split(".") if x.isdigit()]
+        except Exception:
+            v_parts = [3, 0]
+        use_tick_labels = len(v_parts) >= 2 and (v_parts[0] > 3 or (v_parts[0] == 3 and v_parts[1] >= 9))
+        
+        if use_tick_labels:
+            box = ax.boxplot(data, tick_labels=labels, patch_artist=True, medianprops={"color": "black", "linewidth": 1.5})
+        else:
+            box = ax.boxplot(data, labels=labels, patch_artist=True, medianprops={"color": "black", "linewidth": 1.5})
+            
         for patch in box["boxes"]:
             patch.set_facecolor(OKABE_ITO_COLORS[2])
             patch.set_edgecolor("black")
