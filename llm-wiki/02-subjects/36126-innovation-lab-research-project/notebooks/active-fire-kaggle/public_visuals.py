@@ -94,7 +94,8 @@ def plot_confidence_by_algorithm(frame: pd.DataFrame) -> plt.Figure:
     if data:
         # Custom boxplot styling with Matplotlib 3.9+ compatibility
         try:
-            v_parts = [int(x) for x in matplotlib.__version__.split(".") if x.isdigit()]
+            import re
+            v_parts = [int(x) for x in re.findall(r"\d+", matplotlib.__version__)]
         except Exception:
             v_parts = [3, 0]
         use_tick_labels = len(v_parts) >= 2 and (v_parts[0] > 3 or (v_parts[0] == 3 and v_parts[1] >= 9))
