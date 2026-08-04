@@ -15,10 +15,11 @@ def plot_sensor_composition(frame: pd.DataFrame) -> plt.Figure:
     
     # Sort for consistent display
     df = frame.sort_values(by="total_hotspots", ascending=True)
+    total_n = df["total_hotspots"].sum()
     
     bars = ax.barh(df["sensor"], df["total_hotspots"], color=OKABE_ITO_COLORS[0], edgecolor="none")
     ax.set_xlabel("Total Hotspot Observations", color="black", fontsize=10)
-    ax.set_title("Hotspot Observations by Sensor", color="black", fontsize=12, pad=15)
+    ax.set_title(f"Hotspot Observations by Sensor (Total N={total_n:,})", color="black", fontsize=12, pad=15)
     
     # Style axes
     ax.tick_params(colors="black", labelsize=9)
@@ -88,7 +89,7 @@ def plot_confidence_by_algorithm(frame: pd.DataFrame) -> plt.Figure:
         subset = frame[frame["sensor"] == sensor]["confidence"].dropna()
         if not subset.empty:
             data.append(subset.values)
-            labels.append(sensor)
+            labels.append(f"{sensor}\n(n={len(subset):,})")
             
     if data:
         # Custom boxplot styling
@@ -117,6 +118,7 @@ def plot_event_concentration(frame: pd.DataFrame) -> plt.Figure:
     
     # Display top 10 events for readability
     top_events = frame.head(10).copy()
+    total_matched = frame["matched_hotspots"].sum()
     
     # Shorten long event names
     labels = []
@@ -132,7 +134,7 @@ def plot_event_concentration(frame: pd.DataFrame) -> plt.Figure:
     ax.set_yticklabels(labels, color="black", fontsize=9)
     ax.invert_yaxis()  # top-down
     ax.set_xlabel("Number of Matched Hotspots", color="black", fontsize=10)
-    ax.set_title("Concentration of Matches Across Fire Events (Top 10)", color="black", fontsize=12, pad=15)
+    ax.set_title(f"Concentration of Matches Across Fire Events (Total Matched N={total_matched:,})", color="black", fontsize=12, pad=15)
     
     ax.tick_params(colors="black", labelsize=9)
     ax.spines["top"].set_visible(False)

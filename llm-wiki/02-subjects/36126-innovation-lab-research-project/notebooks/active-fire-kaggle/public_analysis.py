@@ -64,7 +64,7 @@ def event_concentration(matches: pd.DataFrame) -> pd.DataFrame:
     return df.sort_values(by="matched_hotspots", ascending=False).reset_index(drop=True)
 
 
-def deterministic_display_sample(frame: pd.DataFrame, size: int, seed: int = 36126) -> pd.DataFrame:
+def deterministic_display_sample(frame: pd.DataFrame, size: int, seed: int = 42) -> pd.DataFrame:
     n = min(len(frame), size)
     if n <= 0:
         return frame.copy()

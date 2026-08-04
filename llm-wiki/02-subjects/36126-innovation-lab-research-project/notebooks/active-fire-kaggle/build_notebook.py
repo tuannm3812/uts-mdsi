@@ -218,7 +218,7 @@ def build_notebook(output_path: Path, snapshot_slug: str) -> Path:
         "Based on the results, we observe that the exact spatiotemporal match rate of active-fire observations against "
         "the NPWS Fire History is **77.25%** (15,334 of 19,849 hotspots matched). When taking the sensors' spatial positional "
         "accuracy into account via buffering, the match rate increases to **97.12%** (19,277 of 19,849 hotspots matched).\n\n"
-        "Crucially, the remaining **2.87%** (569 hotspots) are labeled as **unresolved**. These observations represent "
+        "Crucially, the remaining **2.88%** (572 hotspots) are labeled as **unresolved**. These observations represent "
         "spatiotemporal offsets that could be caused by:\n"
         "1. Positional or temporal drift in the satellite products.\n"
         "2. Off-reserve fire events not captured in the NPWS-specific reserve dataset.\n"
