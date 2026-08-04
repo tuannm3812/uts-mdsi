@@ -33,7 +33,7 @@ def build_notebook(output_path: Path, snapshot_slug: str) -> Path:
         "matching satellite hotspot observations (DEA Hotspots) against official post-event fire boundary records "
         "(NPWS Fire History). This is a *calibration and reliability study* of spatial-temporal overlap, "
         "**not a detector-accuracy evaluation**. Unmatched observations are labelled as *unresolved*, "
-        "and must not be assumed to be false alarms or false positives without independent ground truth."
+        "and must not be assumed to be errors or sensor inaccuracies without independent ground truth."
     ))
     
     # Cell 2: Imports and config
@@ -203,7 +203,7 @@ def build_notebook(output_path: Path, snapshot_slug: str) -> Path:
         "1. Positional or temporal drift in the satellite products.\n"
         "2. Off-reserve fire events not captured in the NPWS-specific reserve dataset.\n"
         "3. Small agricultural burns or brief fire events that did not form a mapped boundary.\n\n"
-        "This confirms the necessity of using the term *unresolved* rather than assuming they represent false-alarm errors, "
+        "This confirms the necessity of using the term *unresolved* rather than assuming they represent errors or omissions, "
         "as they may indicate real fire activity outside of NPWS-managed boundaries."
     ))
     
