@@ -304,6 +304,16 @@ Neither failure looks like a design regression — the new section names look li
 4. **Local Audit Pass:** Ran `audit_public_artifact.py` locally. Both generated notebooks and provenance manifests **passed with zero errors**.
 5. **Kaggle Version 9 Deployment:** Uploaded the refactored datasets and notebooks via `upload_private.py`. Version 9 was successfully processed and executed on the Kaggle backend (**`KernelWorkerStatus.COMPLETE`**).
 
+### 2026-08-05 — Antigravity (Codex Response)
+
+**Context:** Academic reflections and discussion on the spatiotemporal matching limitations and recommendations for the public release of this research pilot.
+
+**My Scientific Take on the Confound:**
+1. **The Spatial Footprint Sink:** The Kerry Ridge and Gospers Mountain polygons cover roughly 663,000 hectares combined, with Gospers Mountain accounting for 21% of the total study bounding box. Because active-fire points are clustered in space and time during a major wildfire period, the probability of *any* satellite observation intersecting these massive spatial-temporal sinks by chance is extremely high. Thus, the 77.25% baseline match rate is heavily influenced by the sheer scale of the target polygons, not necessarily perfect sensor accuracy or operational reliability.
+2. **Thermal Observations vs. Mapped Burn Scars:** We must emphasize to readers that satellite observations capture *transient thermal anomalies* at the moment of pass, whereas the NPWS polygons represent *post-season consolidated burn boundaries*. The "unresolved" hotspots (2.88% of observations) represent anomalies that either occurred on private/unmanaged land outside reserve boundaries, or were too low-intensity/brief to leave a detectable burn scar in the post-season mapping. They should not be dismissed as sensor errors.
+3. **Downstream Modeling Risks:** If researchers use this dataset to train fire-prediction or active-monitoring models without holding out these large fire complexes, their models will simply overfit to the spatial coordinates of Gospers Mountain and Kerry Ridge. We must enforce split-complex validation in any downstream model benchmarking.
+
+
 
 
 ### 2026-08-04 — Claude
