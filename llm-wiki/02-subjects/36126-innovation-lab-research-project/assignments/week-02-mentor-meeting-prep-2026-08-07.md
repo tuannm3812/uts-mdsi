@@ -2,7 +2,7 @@
 
 **Purpose:** Confirm the redirected project scope with Dr Arnick, get his decisions on the open questions below, and leave with a frozen methodology to start building against.
 
-**Time confirmed by Arnick, 2026-08-05** ([verbatim](../communications/arnick-message-2026-08-05-direction-correction.md)): Friday 7 August, 12pm, to discuss "your review and findings as well this one I shared" — i.e. the reliability-audit work below and (likely) the Bushfire Historical Extents dataset in open question 4.
+**Time confirmed by Arnick, 2026-08-05** ([verbatim](../communications/from-arnick-2026-08-05-direction-correction.md)): Friday 7 August, 12pm, to discuss "your review and findings as well this one I shared" — i.e. the reliability-audit work below and (likely) the Bushfire Historical Extents dataset in open question 4.
 
 **Backing detail:** [`research/week-02-forecasting-literature-scan-2026-08-06.md`](../research/week-02-forecasting-literature-scan-2026-08-06.md) has the full evidence table and reasoning behind §3's methodology outline — bring it along in case Arnick wants the detail.
 
@@ -36,17 +36,31 @@ Following the existing `research-execution-plan-2026.md` phase structure:
 - **Validation:** chronological splits, spatial/leave-region-out holdouts, and — new lesson from this week's work — split-complex holdouts, so a forecast isn't evaluated on the same mega-complex it was trained near.
 - **Evaluation:** PR-AUC alongside ROC-AUC, calibration (Brier score, ECE), and threshold-dependent operational measures (precision/recall/false-alarm burden) — all already specified in the execution plan, unaffected by this pivot.
 
-## 4. Open questions for Arnick
+## 4. Open questions for Arnick — with our recommendation
 
-1. **Forecast horizon:** does he want a single fixed horizon (e.g. exactly 3 days) or a multi-horizon output across 1–7 days? Affects the model's output head design.
-2. **Case-study region/subregion (G3, still open):** NSW confirmed broadly, but this week's pilot found that within NSW, two events dominate almost all signal in the Blue Mountains area — does he want a specific subregion, or a region deliberately chosen to avoid one or two mega-complexes dominating the training data?
-3. **Auxiliary data source preference:** does he have a preferred/prepared weather or vegetation-condition dataset, or should we source SILO/BOM and DEA Land Cover independently?
-4. **Burnt-area reference:** he linked the Digital Atlas of Australia's national "Bushfire Historical Extents" dataset (1899–2024, all jurisdictions except NT) — is this meant to replace or supplement the NSW-specific NPWS/RFS layers already in use for confidence validation?
-5. **Compute:** any GPU/compute resources available beyond Kaggle's free tier, given a multi-decade, multimodal transformer is a meaningfully bigger training job than the pilot?
-6. **Contribution framing (G6):** is the intended contribution the forecasting model itself, the calibrated-uncertainty/explanation layer on top of it, or both — useful to know how much of the semester should go to model iteration vs. trust/explanation analysis (Phase 6 of the execution plan).
+Each framed as a proposal to confirm or correct, not a blank question — faster to resolve in a 30–45 minute meeting.
+
+1. **Forecast horizon.** *Our recommendation:* multi-horizon output across 1–7 days, not a single fixed day — matches his own framing ("this can change based on final data and possibility of the model"), and the literature scan found aleatoric uncertainty grows measurably with horizon (Uncertainty-Aware DL paper, arXiv 2509.25017), which is worth showing explicitly rather than collapsing to one number.
+2. **Case-study region/subregion (G3, still open).** *Our recommendation:* don't restrict to the exact Greater Blue Mountains pilot footprint — two events (Kerry Ridge, Gospers Mountain) dominate ~98% of matches there, too few independent events for split-complex validation. Either widen to all of NSW, or pick a fire-prone NSW subregion with more distinct, comparably-sized fire events. Ask him directly whether he has a preferred subregion or defers to us on this.
+3. **Auxiliary data source preference.** *Our recommendation:* SILO (Queensland Government "Long Paddock" gridded daily climate data, free API, coverage from 1889 — matches the FIRMS 2000–2025 window with no gaps) for weather, and DEA Land Cover for vegetation/land-cover — both free, Australian-government-maintained, and DEA is already the operational baseline Arnick pointed to on 29 July. Proceed with these unless he has a preferred/prepared dataset already.
+4. **Burnt-area reference — the Digital Atlas "Bushfire Historical Extents" dataset he linked.** *New finding (T-032, done ahead of this meeting):* it's CC BY 4.0 licensed (no blocker), but its NSW-portion lineage traces to New South Wales Parks and Wildlife — the same agency behind NPWS Fire History, already in use. It's very likely the same underlying NSW source re-aggregated nationally, not an independent reference that would fix the mega-complex-dominance problem. *Our recommendation:* treat it as supplementary (useful for cross-jurisdictional coverage if the region ever spans a state border), not a replacement for NPWS/RFS — full detail in [`research/digital-atlas-bushfire-extents-evaluation-2026-08-06.md`](../research/digital-atlas-bushfire-extents-evaluation-2026-08-06.md). Worth confirming with him directly since he raised it, rather than just assuming.
+5. **Compute.** *Our recommendation:* default to Kaggle's free tier (P100/T4, ~30 GPU-hours/week) for prototyping and baselines; only escalate if the full 2000–2025 multimodal training run proves infeasible there. Ask whether UTS-provided compute or Colab Pro/GCP credits exist as a fallback, so we know before we hit the wall rather than after.
+6. **Contribution framing (G6).** *Our recommendation:* frame it as "reliability-aware forecasting," not just "a forecasting model" — the label-confidence-aware training/uncertainty design (propagating Phase 1's confirmed/unresolved/non-fire pipeline into the model, rather than treating labels as clean ground truth like every UQ paper found does) and the split-complex validation discipline (now backed by three independent literature findings, not just our own pilot) are both genuine, defensible contributions in their own right — not just scaffolding around the transformer. Worth stating this explicitly so semester time isn't allocated as if the model architecture were the only thing that counts.
 
 ## 5. What to show him in the meeting
 
 - The public Kaggle notebook pair (now includes a short note on where this fits in the larger project, added ahead of this meeting).
 - The reconciled reliability finding (17.1% vs 97.12%, and why).
 - This document's proposed methodology outline, as a discussion starting point, not a finished plan.
+- The Digital Atlas dataset evaluation (T-032, question 4 above) — a direct answer to something he explicitly asked us to check.
+- The evaluation-inflation finding from the literature scan (F1 ranging 36–97% on the identical benchmark dataset across papers) — strengthens the case for treating split-complex validation as a real contribution, not overkill.
+
+## 6. Analysis, workings, and findings behind this plan
+
+Everything above rests on work already done and verifiable, not assumptions:
+
+- **Reliability pipeline (T-004/T-009, D-005–D-007):** built and run twice, against NSW RFS (narrow, incident-level — 17.1% match rate) and NPWS Fire History (broad, complex-level — 97.12%). Root-caused the gap to reference-polygon scale, not sensor performance — both results point the same direction: neither granularity alone supports point-in-time reliability testing.
+- **Literature scan (T-031, first pass done; T-038, 3 of 3 previously-blocked full texts now read in full):** 11+ papers, 2022–2026. Closest direct comparator identified (`TS-SatFire`); concrete architecture template found (FireSenseNet's cross-attention gate, 7.1% F1 gain over concatenation); concrete explainability template found (Dubey & Dubey's Mamdani fuzzy rule-based system, fully worked). Full detail in [`research/week-02-forecasting-literature-scan-2026-08-06.md`](../research/week-02-forecasting-literature-scan-2026-08-06.md).
+- **Evaluation-inflation risk — independently confirmed three separate ways** in that literature (FireSenseNet's own 44% inflation claim; a 60-point F1 spread across papers on the identical "Next Day Wildfire Spread" benchmark; a specific paper's 92.9% F1 looking inflated against its own cited base method's 64–68%). This isn't a hypothetical risk — it's the same failure mode this project already found empirically (mega-complex dominance), now backed by external evidence.
+- **T-032 (Digital Atlas evaluation, done today):** license and lineage checked — CC BY 4.0, but NSW portion likely traces to the same NPWS source already in use. See dedicated finding above.
+- **Data-foundation gap (T-033, not started):** the honest state of the actual next step — sourcing the full FIRMS 2000–2025 history plus weather/land-cover data hasn't begun. Flagged explicitly rather than implied as further along than it is; sequencing for this is in [`research/research-execution-plan-2026.md`](../research/research-execution-plan-2026.md)'s "Arnick's 5 August direction" section (Weeks 3–5).

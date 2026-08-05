@@ -67,7 +67,7 @@ Weeks run Wednesday–Tuesday, starting from the 29 July topic-scoping meeting. 
 
 ## Arnick's 5 August direction — requirement breakdown and near-term plan
 
-Source: [`communications/arnick-message-2026-08-05-direction-correction.md`](../communications/arnick-message-2026-08-05-direction-correction.md) (verbatim). This supersedes the "First research sprint" framing above as the operative plan — recorded here as the working breakdown of what he actually asked for, mapped onto concrete next steps.
+Source: [`communications/from-arnick-2026-08-05-direction-correction.md`](../communications/from-arnick-2026-08-05-direction-correction.md) (verbatim). This supersedes the "First research sprint" framing above as the operative plan — recorded here as the working breakdown of what he actually asked for, mapped onto concrete next steps.
 
 ### What he asked for, broken down
 

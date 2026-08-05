@@ -55,9 +55,9 @@ Source folder: `/Users/tuannm3812/Library/CloudStorage/GoogleDrive-tuannm3812@gm
 - [Agent collaboration log](agent-collaboration-log.md) — open running discussion between Tuan, Claude, and Codex
 - [Week 2 Mentor Meeting Prep — Friday 7 August](assignments/week-02-mentor-meeting-prep-2026-08-07.md) — recap, confirmed direction, methodology outline, open questions
 - [Forecasting Literature and Methodology Scan (T-031)](research/week-02-forecasting-literature-scan-2026-08-06.md) — evidence table, recurring patterns, and the innovation angle for Option B
+- [Digital Atlas "Bushfire Historical Extents" Evaluation (T-032)](research/digital-atlas-bushfire-extents-evaluation-2026-08-06.md) — license/lineage check on the dataset Arnick named directly
 - [Fire-Hotspot Reliability in NSW: Findings Update (sent to Dr Arnick 3 August — response received, see D-011 in the decision log)](research/supervisor-findings-brief-2026-08-03.md)
-- [Teams Message to Dr Arnick — 3 August (sent)](communications/teams-message-to-arnick-2026-08-03.md)
-- [Follow-Up: Reference-Dataset Comparison — 5 August (drafted, deprioritised — see T-010)](communications/arnick-followup-npws-finding-2026-08-05.md)
+- [Communications with Dr Arnick — index](communications/README.md) — all direct messages, chronological, `to-arnick-*`/`from-arnick-*` naming
 - [Research Execution Plan](research/research-execution-plan-2026.md)
 - [Active-Fire Research Materials Summary (superseded, kept as history)](research/active-fire-materials-summary-2026-07-30.md)
 - [Tổng quan tài liệu phát hiện điểm nóng cháy — Tiếng Việt](research/active-fire-literature-review-vi-2026-07-30.md)
