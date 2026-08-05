@@ -556,3 +556,20 @@ Everything above is committed locally; pushing to `origin/main` now so this is v
    - Recompiled and executed both notebooks end-to-end (public audit passed).
    - Uploaded **Version 15** (incorporating dynamic takeaways) to Kaggle as a public release.
    - Committed and synced all updates to the GitHub remote repository.
+
+### 2026-08-05 — Claude
+
+**Context:** Tuan asked for a full re-check and a fresh handoff to Codex, and shared a screenshot of the live Kaggle dataset's Usability panel showing three unchecked items: **Source/Provenance ✗**, **Update Frequency ✗**, and **File Description ✗**.
+
+**T-025/T-026/T-027/T-028 verification: all genuinely fixed, checked at the level of actual rendered output, not just source.**
+- Tests: 20/20 passing, `audit_public_artifact.py` clean. Matches Codex's report.
+- T-027's "dynamic takeaways" claim is real, not a rename — read the source (`build_notebook.py`) and confirmed the markdown cells are now f-strings built from `dominant_sensor`, `dominant_pct`, `modis_median`, `viirs_discrete_pct`, etc., computed from the dataframe, not typed constants.
+- Went one step further and read the *executed* notebook's actual output cells (not just the code that generates them): Cell 17 renders "AHI... 68.9%... VIIRS 22.4%... MODIS 8.5%," Cell 20 renders "MODIS at 99.05%, VIIRS at 98.11%, AHI at 96.58%," Cell 23 renders "MODIS: Median confidence is 50.0%... 41.4%... fixed at exactly 50... VIIRS:... 76.4%... discrete... median confidence value of 8.0." All match my independent recomputation from the raw data (to within trivial rounding). The EDA notebook's equivalent cells (T-028) match too — same numbers, computed the same way. Good, thorough fix.
+
+**New issue — the Kaggle Usability screenshot, root-caused via Kaggle's own published schema, not guesswork:**
+
+1. **Update Frequency ✗ — wrong JSON key.** `dataset-metadata.json` has `"updateFrequency": "never"`. Checked Kaggle's actual `kaggle-cli` metadata schema docs: the real field name is **`expectedUpdateFrequency`**, not `updateFrequency`. Kaggle silently ignores unrecognised keys, so this setting has never actually applied — the file has said "never" the whole time and Kaggle has never seen it. One-line fix: rename the key.
+2. **Source/Provenance ✗ — missing field entirely.** Kaggle has a dedicated field for this, `userSpecifiedSources` ("An explanation of the source(s) of your dataset," markdown supported) — it doesn't exist anywhere in the current `dataset-metadata.json`. The DEA/NPWS source info is only in the free-text `description` field, which is a different field and doesn't satisfy this check. Fix: add a `userSpecifiedSources` field — can reuse the existing "Data Sources & Licensing" section of the description almost verbatim.
+3. **File Description ✗ — can't fully explain from here.** Checked the local `resources` array and the actual upload staging directory (`output/kaggle/active-fire-pilot/`): all 7 files that get uploaded (`dea_hotspots.geojson`, `npws_fire_history.geojson`, both notebooks, both executed copies, `snapshot-manifest.json`) already have non-empty descriptions in the local file. This doesn't look incomplete locally, so either (a) the live Kaggle dataset version predates the current `resources` array and just needs a redeploy to pick it up, or (b) there's a path-matching issue between what's declared and what Kaggle sees on its side that I can't detect without direct Kaggle access. Codex should check this one directly against the live dataset page after fixing 1–2 and redeploying, rather than assume it's already covered.
+
+**Handoff (T-029):** fix the `expectedUpdateFrequency` key name, add `userSpecifiedSources`, redeploy, then re-check the Usability panel directly on Kaggle for all three items — don't mark File Description done from source inspection alone, confirm it against the live page since that's the only way to know for certain in this case.
