@@ -1,6 +1,6 @@
 # Dr Arnick — Direction Correction, 5 August 2026
 
-**Status:** Received from Dr Arnick, 5 August 2026 (reply to the 3 August findings brief). Recorded verbatim below. This is the source text behind [D-011](../research/decision-log.md) and [D-012](../research/decision-log.md) (both previously logged as paraphrase only) and [T-008](../research/task-tracker.md). The closing Teams-invite line is also recorded separately in [arnick-message-2026-08-05-teams-meeting-request.md](arnick-message-2026-08-05-teams-meeting-request.md) — same email, kept as its own file since it drove a standalone action item (T-039).
+**Status:** Received from Dr Arnick via Microsoft Teams, 5 August 2026 (reply to the 3 August findings brief), as two consecutive messages. Recorded verbatim below. This is the source text behind [D-011](../research/decision-log.md) and [D-012](../research/decision-log.md) (both previously logged as paraphrase only) and [T-008](../research/task-tracker.md). The second (Teams-invite) message is also recorded separately in [arnick-message-2026-08-05-teams-meeting-request.md](arnick-message-2026-08-05-teams-meeting-request.md) — kept as its own file since it drove a standalone action item (T-039).
 
 ## Verbatim message
 
@@ -18,13 +18,13 @@
 >
 > Because of timeframe of the research subject, can not add more complexity to the project.
 > thanks
->
-> The Earth Engine version of the Fire Information for Resource Management System (FIRMS) dataset contains the LANCE fire detection product in rasterized form. The near real-time (NRT) active fire lo...
->
+
+Sent as a separate Teams message immediately after:
+
 > If you want to discuss about your review and findings as well this one I shared, please send me a teams invite for Friday 7 August, 12pm to talk the concerns and steps.
 
 ## Notes
 
-- The FIRMS/LANCE paragraph near the end reads as a pasted dataset-description snippet (truncated mid-sentence at "...active fire lo...") rather than Arnick's own prose — likely copied from an Earth Engine catalogue page. Recorded verbatim as received; worth asking at the Friday meeting which specific FIRMS/LANCE product or Earth Engine asset he means, since the snippet itself is cut off.
+- An earlier version of this record included a stray paragraph ("The Earth Engine version of the Fire Information for Resource Management System (FIRMS) dataset contains the LANCE fire detection product...") between "thanks" and the Teams-invite line. Tuan confirmed (2026-08-06) that was a clipboard artifact from copy-pasting the message — not something Arnick wrote — and it's removed here.
 - "this one I shared" in the closing line most plausibly refers to the Digital Atlas of Australia burnt-area link earlier in the same message (`digital.atlas.gov.au/datasets/524e2962...`) — confirmed at the meeting, not assumed.
 - Maps directly onto D-011 (reliability audit reframed as Phase 1 data-quality gate, not the destination) and D-012 (Option B — 1–7 day forecasting — confirmed over Option A — occurrence probability).
