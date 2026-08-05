@@ -2,6 +2,8 @@
 
 **Purpose:** Confirm the redirected project scope with Dr Arnick, get his decisions on the open questions below, and leave with a frozen methodology to start building against.
 
+**Backing detail:** [`research/week-02-forecasting-literature-scan-2026-08-06.md`](../research/week-02-forecasting-literature-scan-2026-08-06.md) has the full evidence table and reasoning behind §3's methodology outline — bring it along in case Arnick wants the detail.
+
 ## 1. Recap since the 3 August brief
 
 - Sent the consolidated findings brief (literature position + a public-data feasibility pilot on DEA Hotspots vs NSW fire-boundary references).

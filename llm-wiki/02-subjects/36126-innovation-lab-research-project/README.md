@@ -54,6 +54,7 @@ Source folder: `/Users/tuannm3812/Library/CloudStorage/GoogleDrive-tuannm3812@gm
 - [Decision log](research/decision-log.md) — settled decisions with rationale
 - [Agent collaboration log](agent-collaboration-log.md) — open running discussion between Tuan, Claude, and Codex
 - [Week 2 Mentor Meeting Prep — Friday 7 August](assignments/week-02-mentor-meeting-prep-2026-08-07.md) — recap, confirmed direction, methodology outline, open questions
+- [Forecasting Literature and Methodology Scan (T-031)](research/week-02-forecasting-literature-scan-2026-08-06.md) — evidence table, recurring patterns, and the innovation angle for Option B
 - [Fire-Hotspot Reliability in NSW: Findings Update (sent to Dr Arnick 3 August — response received, see D-011 in the decision log)](research/supervisor-findings-brief-2026-08-03.md)
 - [Teams Message to Dr Arnick — 3 August (sent)](communications/teams-message-to-arnick-2026-08-03.md)
 - [Follow-Up: Reference-Dataset Comparison — 5 August (drafted, deprioritised — see T-010)](communications/arnick-followup-npws-finding-2026-08-05.md)

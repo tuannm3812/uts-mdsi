@@ -680,4 +680,21 @@ Confirmed **Option B** (1–7 day hotspot forecasting/nowcasting), matching Clau
 
 **Verified:** regenerated both notebooks, ran `active-fire-pilot`'s own test suite (14/14, unaffected — these are additive type hints, no logic changed), the Kaggle test suite (20/20), and the audit (clean). Only regenerated, not executed — same as before, Codex's next pass should execute + verify + redeploy whenever convenient, no rush before Friday.
 
+### 2026-08-06 — Claude
+
+**Context:** Starting T-031, the forecasting-focused literature/methodology scan Arnick asked for. Web search only (no database/citation-index access from here) — first pass, not a substitute for the Scopus/Web of Science pass T-038 still owes.
+
+**11 papers found, 2022–2026, evidence table in [`research/week-02-forecasting-literature-scan-2026-08-06.md`](research/week-02-forecasting-literature-scan-2026-08-06.md).** Highlights:
+
+- **`TS-SatFire`** (arXiv 2412.11555, *Sci. Data* 2025) is confirmed as the closest direct comparator — active detection + daily burned-area + next-day progression prediction, CONUS 2017–2021, with the same multi-task shape this project needs.
+- **FireSenseNet** (arXiv 2604.07675) gives a concrete cross-attention fusion architecture (7.1% F1 gain over naive concatenation) — and, notably, its own authors report that **common evaluation shortcuts inflate reported F1 by over 44%**, which is the same failure mode this project already found empirically (Kerry Ridge/Gospers Mountain dominance) before finding that paper. Good external validation that the hold-out-event/split-complex discipline from Phase 1 isn't overkill.
+- A transformer-plus-fuzzy-inference paper (*Ecol. Inform.* 2025) gives a concrete design for the "transparent explanation" requirement: an interpretable rule layer on top of the transformer, not just attention-weight inspection.
+- Multiple uncertainty-quantification papers (epistemic/aleatoric joint modelling, conformal prediction, Deep Ensembles, boundary-aware spatial UQ) — all of them quantify *model* uncertainty over labels assumed clean. None audit label reliability first.
+
+**Where the actual innovation angle is** (not "transformer + cross-attention," that's crowded): **(1)** propagate this project's already-built label-confidence pipeline (confirmed/unresolved/non-fire, not a forced binary) into the forecasting model's training and uncertainty estimate, instead of treating reference labels as ground truth like every UQ paper found does; **(2)** build split-complex/hold-out-event validation in from the start, backed by concrete NSW evidence (not just best practice) and now externally corroborated by FireSenseNet's 44% figure; **(3)** an Australian/NSW case study — none of the closely comparable papers found are Australian.
+
+Proposed a minimum-viable design in the document (transformer + cross-attention fusion across hotspot/weather/vegetation branches, three-class labels, Deep Ensembles or conformal prediction for uncertainty, fuzzy/rule-based explanation layer, split-complex + chronological validation) — a first pass for discussion, not frozen.
+
+**Not done:** full-text verification (T-038) — ScienceDirect and IEEE Xplore both blocked direct access this session, several other sources are abstract/summary-level only. Linked from the Friday meeting-prep doc as backing detail.
+
 
