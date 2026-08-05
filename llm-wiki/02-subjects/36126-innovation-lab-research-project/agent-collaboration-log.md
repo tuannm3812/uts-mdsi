@@ -519,4 +519,26 @@ Same root cause as Cells 17/20: hardcoded prose in `build_notebook.py`, never co
 
 **Not verified (no way to from here):** I still can't see the actual live Kaggle page, the cover banner image content, or how the rendered charts look next to this text — everything above is checked against the local notebook file and source data. If Version 14 on Kaggle was built from exactly this file, the above should hold; if anything changed between the local file and what got pushed, that gap is invisible to me.
 
+### 2026-08-05 — Claude
+
+**Context:** Tuan asked me to check everything again before handing off to Codex. Did one more pass I hadn't done yet — a full cell-by-cell read of `1_active_fire_eda.ipynb`, the EDA notebook, which is also live and public as part of the same dataset. Confirmed no new commits from Codex since my last one (`d00d7e9`), so this is genuinely current.
+
+**HIGH — the EDA notebook has the same two error patterns as the reliability-pilot notebook, unfixed, currently live and public.** These are separate hardcoded strings in `build_eda_notebook.py`, not shared code with `build_notebook.py`, so fixing one notebook never touched the other:
+
+- **Line 225:** *"VIIRS accounts for the highest density of detections due to its high nominal spatial resolution... AHI shows a wider, scattered spatial distribution."* Same error as the original (now-fixed) Cell 17 in the reliability-pilot notebook — AHI is actually the dominant sensor by count (68.9% vs VIIRS 22.4%), not the other way round.
+- **Line 283:** *"VIIRS uses discrete categories (e.g. low/nominal/high)... whereas MODIS utilizes a continuous scale from 0 to 100%."* Same error as T-025 (Cell 23 in the other notebook) — neither sensor is that clean. VIIRS is 76% a 3-value-only algorithm and 21% fully continuous; MODIS is 59% continuous and 41% fixed at exactly 50.
+
+So there are now **three live, public, factually wrong cells across two notebooks**, all the same root cause: hand-typed narrative prose never checked against the data it's describing.
+
+**Full handoff to Codex — everything outstanding in one place:**
+
+1. **T-025** — fix `build_notebook.py` line ~267 (Cell 23, confidence-distribution takeaway) in `2_active_fire_reliability_pilot.ipynb`. Correct MODIS median is 50.0 (not ~67%); correct characterization is a per-algorithm mix, not a clean continuous-vs-nominal split, for both sensors (numbers above).
+2. **T-028 (new)** — fix `build_eda_notebook.py` lines 225 and 283 in `1_active_fire_eda.ipynb`: the sensor-dominance claim (AHI is dominant, not VIIRS) and the same confidence-mapping oversimplification as T-025.
+3. **T-026** — update `test_kernel_is_private_cpu_and_snapshot_first` and `test_dataset_is_private_and_has_no_collaborators` to assert the current, authorised public state (D-010) instead of the old private-only assumption. 2 of 20 tests are currently red for this reason.
+4. **T-027** — structural fix once the above are patched: this is the third and fourth instance of the same class of bug (hardcoded stats prose, never cross-checked against the dataframe). Recommend either generating these takeaway strings from computed values, or adding a narrative-vs-data check to `audit_public_artifact.py` so this stops depending on manual review catching it. Given it's slipped through three review rounds so far, manual review alone isn't suf ficient here.
+
+After fixing: rebuild both notebooks, rerun the full test suite (should be 20/20 once T-026 lands) and `audit_public_artifact.py`, then push a new Kaggle version — it's public now, so this isn't just updating a private draft, it's correcting something people could currently be looking at.
+
+Everything above is committed locally; pushing to `origin/main` now so this is visible on the remote for Codex to pick up.
+
 
