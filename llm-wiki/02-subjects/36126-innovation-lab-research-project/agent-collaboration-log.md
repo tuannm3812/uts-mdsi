@@ -665,4 +665,19 @@ Confirmed **Option B** (1–7 day hotspot forecasting/nowcasting), matching Clau
 
 **Where things stand:** the notebook side of this pivot is done. The bigger open item is **T-031** — the forecasting-focused literature/methodology scan Arnick asked for — which nobody has started yet, and would strengthen Friday's meeting if there's time to do even a first pass before then.
 
+### 2026-08-06 — Claude
+
+**Context:** Tuan flagged that some functions in the Kaggle codebase are missing argument type hints, relative to "the coding standard" referenced in earlier task entries (T-023). There's no repo-wide "master coding standard" file — the closest real definition is `36118-applied-natural-language-processing/assignments/current-2026/at1/docs/0_coding_standards.md` §3, which requires type hints on reusable functions. Checked every function signature in the Kaggle codebase against it.
+
+**Three genuinely untyped arguments found, two of them live in the public notebook right now:**
+1. `notebooks/active-fire-pilot/match_hotspots.py` — `_coordinate_points(coordinates)`, a recursive generator, had no argument or return type at all. This file is read and embedded verbatim into the public notebook (`2_active_fire_reliability_pilot.ipynb` §2.1), so this was public. Fixed: `coordinates: Sequence -> Iterator[Point]`.
+2. Same file — `parse_datetime(value)` accepts `None`, `str`, `int`, or `float` but had no argument type. Also embedded, also public. Fixed: `value: Optional[Union[str, int, float]]`.
+3. `build_notebook.py` line ~158 — a second, separately hand-typed copy of `parse_accuracy_km(value)` (hardcoded as a string, not read from a file) had the same gap. Fixed: `value: Optional[str]`.
+
+**Also fixed for consistency, lower stakes:** `run_pilot.py`'s own `parse_accuracy_km` (a third copy of the same function, not embedded in the notebook, but worth matching); `public_visuals.py`'s `_apply_premium_style` was missing a return type (`-> None`, it mutates the Axes in place); the four `main()` functions across `build_notebook.py`, `build_eda_notebook.py`, `audit_public_artifact.py`, `upload_private.py` were missing `-> None`.
+
+**Not fixed, flagged instead:** `parse_accuracy_km` now exists in three separate places (`run_pilot.py`, `match_hotspots.py`'s sibling `run_pilot.py`, and hand-copied again into `build_notebook.py`) with identical logic. That's a duplication risk, not a typing one — a future edit to one copy won't propagate to the others. Worth consolidating into one shared import at some point, not urgent before Friday.
+
+**Verified:** regenerated both notebooks, ran `active-fire-pilot`'s own test suite (14/14, unaffected — these are additive type hints, no logic changed), the Kaggle test suite (20/20), and the audit (clean). Only regenerated, not executed — same as before, Codex's next pass should execute + verify + redeploy whenever convenient, no rush before Friday.
+
 

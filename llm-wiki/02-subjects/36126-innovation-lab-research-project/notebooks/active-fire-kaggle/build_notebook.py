@@ -155,7 +155,7 @@ def build_notebook(output_path: Path, snapshot_slug: str) -> Path:
         "        'confidence': properties.get('confidence'),\n"
         "        'accuracy': properties.get('accuracy'),\n"
         "    }\n\n"
-        "def parse_accuracy_km(value) -> float:\n"
+        "def parse_accuracy_km(value: Optional[str]) -> float:\n"
         "    if value in (None, ''):\n"
         "        return 0.0\n"
         "    match = re.search(r'([0-9]+(?:\\.[0-9]+)?)', str(value))\n"
@@ -436,7 +436,7 @@ def build_notebook(output_path: Path, snapshot_slug: str) -> Path:
     return output_path
 
 
-def main():
+def main() -> None:
     build_notebook(
         KAG_DIR / "2_active_fire_reliability_pilot.ipynb",
         "tuannm3812/nsw-active-fire-pilot-snapshot"

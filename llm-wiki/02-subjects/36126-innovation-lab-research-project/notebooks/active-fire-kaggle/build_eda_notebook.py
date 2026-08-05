@@ -346,7 +346,7 @@ def build_eda_notebook(output_path: Path, snapshot_slug: str) -> Path:
     return output_path
 
 
-def main():
+def main() -> None:
     build_eda_notebook(
         KAG_DIR / "1_active_fire_eda.ipynb",
         "tuannm3812/nsw-active-fire-pilot-snapshot"

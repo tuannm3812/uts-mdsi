@@ -102,7 +102,7 @@ def audit_notebook(notebook_path: Path) -> List[str]:
     return errors
 
 
-def main():
+def main() -> None:
     # Audit notebooks
     kag_dir = Path(__file__).resolve().parent
     notebook_paths = [

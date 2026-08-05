@@ -134,7 +134,7 @@ def upload_private(credentials_path: Path, staging_dir: Path) -> dict:
     return results
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(description="Upload dataset and kernel to Kaggle privately.")
     parser.add_argument("--credentials", type=str, default="", help="Path to kaggle.json credentials file")
     parser.add_argument("--staging", type=str, default="output/kaggle/active-fire-pilot", help="Staging directory containing data")

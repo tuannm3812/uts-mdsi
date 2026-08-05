@@ -2,13 +2,13 @@
 
 from datetime import datetime, timedelta, timezone
 import math
-from typing import Dict, Iterable, List, Optional, Sequence, Tuple
+from typing import Dict, Iterable, Iterator, List, Optional, Sequence, Tuple, Union
 
 
 Point = Tuple[float, float]
 
 
-def _coordinate_points(coordinates):
+def _coordinate_points(coordinates: Sequence) -> Iterator[Point]:
     if not coordinates:
         return
     if isinstance(coordinates[0], (int, float)):
@@ -124,7 +124,7 @@ def point_in_geometry(lon: float, lat: float, geometry: Dict) -> bool:
     raise ValueError("Only Polygon and MultiPolygon geometries are supported")
 
 
-def parse_datetime(value) -> Optional[datetime]:
+def parse_datetime(value: Optional[Union[str, int, float]]) -> Optional[datetime]:
     if value in (None, ""):
         return None
     if isinstance(value, (int, float)):

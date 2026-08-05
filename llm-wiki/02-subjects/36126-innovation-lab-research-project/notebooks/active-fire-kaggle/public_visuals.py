@@ -17,7 +17,7 @@ SENSOR_COLORS = {
     "unresolved": "#999999"
 }
 
-def _apply_premium_style(ax: plt.Axes, title: str, xlabel: str = "", ylabel: str = ""):
+def _apply_premium_style(ax: plt.Axes, title: str, xlabel: str = "", ylabel: str = "") -> None:
     """Applies clean, publication-quality theme settings to Matplotlib axes."""
     ax.set_facecolor("white")
     ax.spines["top"].set_visible(False)

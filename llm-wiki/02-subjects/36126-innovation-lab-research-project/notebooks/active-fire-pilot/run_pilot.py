@@ -5,7 +5,7 @@ from collections import Counter, defaultdict
 import csv
 import json
 from pathlib import Path
-from typing import Dict, Iterable, List
+from typing import Dict, Iterable, List, Optional
 import re
 
 from match_hotspots import classify_hotspot, prepare_features
@@ -45,7 +45,7 @@ def normalize_hotspot(feature: Dict) -> Dict:
     }
 
 
-def parse_accuracy_km(value) -> float:
+def parse_accuracy_km(value: Optional[str]) -> float:
     if value in (None, ""):
         return 0.0
     match = re.search(r"([0-9]+(?:\.[0-9]+)?)", str(value))
