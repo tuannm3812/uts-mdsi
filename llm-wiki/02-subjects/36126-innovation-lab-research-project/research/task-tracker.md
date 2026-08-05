@@ -37,6 +37,7 @@ Task status lives here, not in the collaboration log. Formal decisions live in [
 | T-017 | Task 6 — Kaggle metadata and credential-safe upload | Done | `notebooks/active-fire-kaggle/kaggle/`, `upload_private.py` |
 | T-018 | Task 7 — Claude review gate and private deployment | Done — Version 10 live, private, CPU-only, internet-off, owner-only | Collaboration log, 2026-08-05 |
 | T-019 | Public release of the Kaggle dataset/kernel | **Paused (deliberate)** — pending Tuan's explicit go-ahead | D-008 |
+| T-022 | Fix Cells 17 and 20 in the notebook: sensor-composition and per-sensor match-rate claims are factually wrong against the actual staged data (AHI is the dominant sensor at 68.9%, not VIIRS at "over 80%"; MODIS's real match rate is 99.0%, not the claimed 92.5%) | **Blocked — needs a fix + rebuild + redeploy** | Collaboration log, 2026-08-05 (Claude) |
 
 ## Repository hygiene
 

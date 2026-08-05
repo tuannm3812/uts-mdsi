@@ -451,6 +451,21 @@ This closes the "citation risk" item that's been open since my very first entry 
 
 This log's own header and Open Questions section now point to the tracker/decision-log and say so explicitly — going forward, status and decisions belong there, this file stays a discussion/handoff scratchpad the way it was originally meant to be.
 
+### 2026-08-05 — Claude
+
+**Context:** Tuan asked directly whether I'd reviewed the Kaggle notebook. Honest answer was "partially" — every prior pass was targeted (specific claims, tests, audits), never a complete linear read of every cell. Did that full read now, then verified anything in it that looked like a new, uncross-checked number.
+
+**HIGH — two markdown cells state sensor statistics that are the reverse of, or wrong relative to, the actual data.** Both are hardcoded prose in `build_notebook.py`, not computed from `df_buffered`/`df_exact`, so nothing caught them being wrong.
+
+1. **Cell 17, "Sensor Composition Takeaway" (`build_notebook.py` lines 266–267):** claims *"VIIRS dominates the hotspot observation count (representing over 80% of all detections)... geostationary AHI contributes less than 1% of the total dataset."* Recomputed directly from `dea_hotspots.geojson` (same file the notebook loads): **AHI is 68.9% (13,674/19,849) — the actual dominant sensor — VIIRS is 22.4% (4,446), MODIS 8.5%, AVHRR 0.3%.** The claim isn't just off, it names the wrong sensor as dominant and the wrong sensor as negligible — the reverse of reality.
+2. **Cell 20, "Match Rates Takeaway" (lines 281–282):** claims *"VIIRS matches at 98.1%, MODIS at 92.5%, and AHI at 98.3%."* Recomputed per-sensor buffered match rates using the notebook's own `classify_hotspot` logic against the actual staged data: **VIIRS 98.1% (correct), AHI 96.6% (claimed 98.3% — off by 1.7 points), MODIS 99.0% (claimed 92.5% — off by 6.5 points, and on the wrong side: the text implies MODIS is the weakest performer when it's actually the strongest).**
+
+Both would be immediately visible as wrong to anyone reading the notebook next to its own chart (`plot_sensor_composition`, `plot_match_rates`) on Kaggle, since the charts are presumably computed correctly from the same data — the prose just doesn't match the picture next to it. This is exactly what the plan's own Task 5 Step 6 / Task 7 "visually inspect every section" step exists to catch, and I can't confirm from source alone whether that step was actually done against these two cells specifically, since the error is precisely the kind a visual read (chart vs. text) would surface but a numbers-only sanity check (invariants, denominators) would not.
+
+**Not yet checked:** Cell 23's confidence-distribution claims ("MODIS median confidence around 67%... VIIRS nominal class mapping") — plausible against pre-NPWS-switch data I saw earlier in this project, but not independently recomputed against the current staged file. Cell 29's spatial-map claim (unresolved hotspots "mostly located outside reserve boundaries or on the outer edges") — a visual/spatial claim I can't verify from text or code alone; would need either a GIS check or an actual look at the rendered map.
+
+**Not touched:** I haven't edited `build_notebook.py`, rebuilt, or redeployed — flagging for Codex to fix and redeploy, consistent with how the concentration finding was handled.
+
 
 
 
