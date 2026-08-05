@@ -501,4 +501,22 @@ Both would be immediately visible as wrong to anyone reading the notebook next t
    - Updated task tracker status for `T-019` to `Done`.
    - Synced and pushed all modifications to the remote GitHub repository.
 
+### 2026-08-05 — Claude
+
+**Context:** Tuan confirmed directly that he approved the public release — recorded as D-010 (supersedes D-008) in the decision log. Since it's now genuinely live and public, did a full re-check rather than trusting the prior "all clear": reran tests/audit, re-read every markdown cell fresh, and finished checking the two claims I'd flagged as not-yet-verified last time (Cell 23 confidence distribution, Cell 29 spatial map).
+
+**Cells 17 and 20 (my prior findings): confirmed genuinely fixed.** Re-read the current notebook — Cell 17 now says AHI 68.9%/VIIRS 22.4%/MODIS 8.5%/AVHRR 0.3%, Cell 20 says MODIS 99.05%/VIIRS 98.11%/AHI 96.61%. Both match my independent recomputation almost exactly. Good.
+
+**NEW — MEDIUM: Cell 23's confidence-distribution takeaway is also wrong, same pattern as before.** It claims "MODIS utilizes a continuous scale (median confidence around 67%) whereas VIIRS utilizes a nominal class mapping (nominal/high)." Recomputed directly from `dea_hotspots.geojson`:
+- **MODIS median is actually 50.0, not ~67%** (mean is 65.4, which is probably what got typed in as "median" by mistake). MODIS itself isn't purely continuous either — 41% of its records (the two SRSS algorithm variants) are fixed at exactly 50; only the MOD14 subset (59%) is genuinely continuous (mean 76, range 4–100).
+- **VIIRS isn't a clean "nominal/high" mapping.** It's a mix of two very different algorithms: AFIMG (76% of VIIRS records) has only 3 unique confidence values (7, 8, 9) — narrow, but not a "nominal/high" binary — and AFMOD (21%) is fully continuous (91 unique values, mean 72.9).
+
+Same root cause as Cells 17/20: hardcoded prose in `build_notebook.py`, never computed from the actual confidence data, so nothing caught it. This is now the third instance of this exact pattern — worth fixing structurally, not cell-by-cell: either compute these summary numbers from the dataframe and interpolate them into the text (an f-string, not a typed constant), or add a narrative-vs-data cross-check to `audit_public_artifact.py` so this class of error gets caught automatically instead of depending on someone manually recomputing every claim.
+
+**Cell 29 (spatial map claim): checked, reasonably supported, not flagging.** Claims unresolved hotspots are "mostly located outside the boundary of the reserves or on the outer edges." Computed distance from each of the 569 unresolved points to the nearest NPWS polygon: 66.8% are within 5km, 85.2% within 10km, 98.6% within 20km — consistent with "near the edges" rather than scattered randomly across the whole region. Can't verify the "outside reserve boundaries" (land-tenure) part specifically — no land-tenure data in this dataset — but the "near the edges" part checks out reasonably well against what data is available.
+
+**Test suite is now red, but for an expected reason, not a content bug.** `test_kernel_is_private_cpu_and_snapshot_first` and `test_dataset_is_private_and_has_no_collaborators` now fail because they hardcode the old private-only assumption, which the (now-authorized) public release deliberately changed. `audit_public_artifact.py` still passes clean — no privacy or claim-language leaks found. The tests just need updating to match the new intended state; leaving them red risks someone assuming a future round is broken when it isn't, or missing a real regression under the noise of two "expected" failures.
+
+**Not verified (no way to from here):** I still can't see the actual live Kaggle page, the cover banner image content, or how the rendered charts look next to this text — everything above is checked against the local notebook file and source data. If Version 14 on Kaggle was built from exactly this file, the above should hold; if anything changed between the local file and what got pushed, that gap is invisible to me.
+
 
