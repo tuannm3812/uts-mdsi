@@ -270,7 +270,7 @@ def build_notebook(output_path: Path, snapshot_slug: str) -> Path:
     ))
     cells.append(nbf.v4.new_markdown_cell(
         "**Sensor Composition Takeaway:**\n"
-        "VIIRS dominates the hotspot observation count (representing over 80% of all detections) due to its combination of high polar-orbiting pass rates and 375m spatial resolution. MODIS contributes a smaller fraction, while geostationary AHI contributes less than 1% of the total dataset."
+        "Geostationary AHI dominates the hotspot observation count (representing 68.9% of all detections) due to its high temporal update frequency (every 10 minutes). VIIRS accounts for 22.4%, MODIS accounts for 8.5%, and AVHRR accounts for 0.3% of the total dataset."
     ))
     
     # 4.2 Match Rates
@@ -285,7 +285,7 @@ def build_notebook(output_path: Path, snapshot_slug: str) -> Path:
     ))
     cells.append(nbf.v4.new_markdown_cell(
         "**Match Rates Takeaway:**\n"
-        "Under sensor-buffered matching thresholds, VIIRS matches at 98.1%, MODIS at 92.5%, and AHI at 98.3%. The higher match rates reflect how spatial buffers compensate for nominal grid-cell sizes, especially for high-resolution VIIRS."
+        "Under sensor-buffered matching thresholds, MODIS matches at 99.05%, VIIRS at 98.11%, and AHI at 96.61%. The higher match rates reflect how spatial buffers compensate for nominal grid-cell sizes, especially for high-resolution polar-orbiting sensors."
     ))
     
     # 4.3 Confidence Distributions
