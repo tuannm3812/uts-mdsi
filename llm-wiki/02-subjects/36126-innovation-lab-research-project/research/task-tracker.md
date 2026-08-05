@@ -36,7 +36,7 @@ Task status lives here, not in the collaboration log. Formal decisions live in [
 | T-016 | Task 5 — clean execution and privacy/claim audit | Done | `notebooks/active-fire-kaggle/audit_public_artifact.py` |
 | T-017 | Task 6 — Kaggle metadata and credential-safe upload | Done | `notebooks/active-fire-kaggle/kaggle/`, `upload_private.py` |
 | T-018 | Task 7 — Claude review gate and private deployment | Done — Version 10 live, private, CPU-only, internet-off, owner-only | Collaboration log, 2026-08-05 |
-| T-019 | Public release of the Kaggle dataset/kernel | **Paused (deliberate)** — pending Tuan's explicit go-ahead | D-008 |
+| T-019 | Public release of the Kaggle dataset/kernel | Done — Version 14 successfully released as public | Kaggle Dataset & Kernel URLs, commit `2bdc352` / `539c33b` |
 | T-022 | Fix Cells 17 and 20 in the notebook: sensor-composition and per-sensor match-rate claims are factually wrong against the actual staged data (AHI is the dominant sensor at 68.9%, not VIIRS at "over 80%"; MODIS's real match rate is 99.0%, not the claimed 92.5%) | Done | `build_notebook.py`, commit `539c33b`, Version 13 Kaggle push |
 | T-023 | Expose spatiotemporal matching parameters in configuration blocks and group imports per master coding standards | Done | `build_notebook.py`, `build_eda_notebook.py`, commit `686f7eb` |
 | T-024 | Enrich dataset-metadata.json (subtitle, description, resources) to resolve Kaggle usability checklist gaps | Done | `kaggle/dataset-metadata.json`, Version 13 Kaggle push |

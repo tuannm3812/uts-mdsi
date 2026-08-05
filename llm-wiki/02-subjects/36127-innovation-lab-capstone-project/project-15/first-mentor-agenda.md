@@ -9,6 +9,13 @@
 
 ---
 
+## Before the Agenda — Two Housekeeping Items
+
+* **Roster check (Will asked for this explicitly):** His welcome message said he added members "based on the Allocations file" and to flag any discrepancy ASAP. Confirm at the top of the call that his roster matches: Manh Tuan Nguyen (leader), Daniel Alexander, Mukesh Murugesan, Manu Sasikanth Oruvilakode, Faisal Shoaib, Yash Raj Singh.
+* **Group name — still not chosen as of this draft.** His action list asked for team leader + group name + timeslot together; leader and slot are settled, name is the one outstanding item. Pick one before the call.
+
+---
+
 ## Required Agenda & Questions
 
 ### 1. Fixed Model & Reasoning Settings
@@ -39,9 +46,10 @@
   2. A statistically significant higher average score over multiple full runs?
   3. Beating the baseline on the 20-task development subset?
   4. An accepted public submission to the `tbench.ai` leaderboard?
+* **Team Context:** This directly gates when we can call the project "successful" for the final report and presentation — worth pinning down early rather than assuming.
 
 ### 7. Sandbox & Rerun Infrastructure Rules
-* **Question:** What infrastructure/ Harbor runtime failures are we permitted to rerun, and how should we log and report these exceptions?
+* **Question:** What infrastructure/Harbor runtime failures are we permitted to rerun, and how should we log and report these exceptions?
 * **Team Context:** Tasks might fail due to transient network issues, Docker container timeouts, or API rate limits rather than agent errors. We need clear rules on what constitutes a valid rerun versus a hard failure.
 
 ### 8. Alternative Model & Provider Fallbacks

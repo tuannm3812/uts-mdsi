@@ -1,6 +1,6 @@
 # Project 15 — Agent Collaboration Log
 
-Shared, append-only log for open discussion between Tuan, Claude, and Codex while working on Project 15 (custom Terminal-Bench harness). Use it to hand off context between tools, think out loud, flag questions, and record findings that aren't yet formal decisions (formal team/mentor decisions still go in [meeting-and-decision-log.md](meeting-and-decision-log.md); experiment results still go in [experiment-register.md](experiment-register.md); task status still goes in [team-task-tracker.md](team-task-tracker.md)).
+Shared, append-only log for open discussion between Tuan and whichever AI tools he's using on Project 15 (custom Terminal-Bench harness) — Claude, Codex, and Antigravity so far. Use it to hand off context between tools, think out loud, flag questions, and record findings that aren't yet formal decisions (formal team/mentor decisions still go in [meeting-and-decision-log.md](meeting-and-decision-log.md); experiment results still go in [experiment-register.md](experiment-register.md); task status still goes in [team-task-tracker.md](team-task-tracker.md)).
 
 ## How to use this log
 
@@ -8,7 +8,7 @@ Shared, append-only log for open discussion between Tuan, Claude, and Codex whil
 - Every entry needs a date/time, an author tag, and a short context line.
 - If an entry raises something unresolved, add it to **Open questions** below and remove it from there once it's answered (with a pointer to the entry that resolved it).
 - Keep entries conversational — this is a scratchpad for thinking together, not a polished deliverable. Evidence and formal write-ups still belong in the other Project 15 files.
-- Any of the three participants (Tuan, Claude, Codex) can read, append to, or respond in this file.
+- Any participant (Tuan, or any AI tool he's using) can read, append to, or respond in this file. Sign your entry with your actual tool name so provenance stays clear as more tools join.
 
 ## Open questions
 
@@ -89,4 +89,26 @@ Still waiting on Tuan for: which team (15-1/15-2/other), real member names, team
 **Action taken:** Compiled the 10 core questions and background context from the literature review into a formal, standalone agenda document at [first-mentor-agenda.md](first-mentor-agenda.md) to address task P15-006. Marked task P15-006 as "In review" on the tracker.
 
 **Open questions / follow-ups:** Group name is still pending. Tuan should use the drafted agenda for the meeting tonight and fill in the decisions and actions in [meeting-and-decision-log.md](meeting-and-decision-log.md) immediately afterward to satisfy the Week 2 milestone.
+
+### 2026-08-05 — Claude
+
+**Context:** Tuan stated he wants to work individually on Project 15 tasks rather than wait on teammates, then bring drafts to the team — reviewed Antigravity's new [first-mentor-agenda.md](first-mentor-agenda.md) given tonight's 6:30pm mentor meeting is imminent. (Note: a third tool, Antigravity, is now also editing this project — this log's intro line says "Tuan, Claude, and Codex," worth updating to include it.)
+
+**Bug found and fixed — time-critical:** Question 1 and Question 8 recommended **Claude 3.5 Sonnet, GPT-4o, and GPT-4o-mini** as provisional model choices. All three are multiple generations stale as of Aug 2026 (current: Claude's 5-family — Opus 5/Sonnet 5/Haiku 4.5 — and OpenAI's GPT-5.6 Sol/Terra/Luna family, confirmed via web search). Recommending an obsolete model to the mentor tonight would have been an immediate credibility problem. Fixed both questions to reference Claude Sonnet 5 and GPT-5.6 Terra/Luna instead.
+
+**Not otherwise re-reviewed in full** — only checked for factual/currency errors given the time pressure, not for completeness or structure. Tuan: worth a fast skim of the rest of the agenda before 6:30pm.
+
+### 2026-08-05 — Claude
+
+**Context:** Tuan confirmed he wants proactive help going forward (act on findings rather than waiting to be asked), asked me to keep working in this log, and asked for a prioritized mentor-question list ahead of tonight's meeting. Did the full completeness pass on [first-mentor-agenda.md](first-mentor-agenda.md) I'd deferred in the previous entry, cross-checked against the literature review's "Immediate mentor questions" (10 items, same list Antigravity operationalized — good, no drift) and the `meeting-and-decision-log.md` Week 2 "Required agenda" (also the same 10 items).
+
+**Two gaps found and fixed:**
+1. Will's welcome message explicitly asked groups to flag any roster discrepancy against his "Allocations file" ASAP — nothing in the agenda addressed this. Added a housekeeping section at the top of the agenda to confirm the roster live on the call.
+2. **Group name is still unpicked** — it's one of the three things Will's action list asked for (leader/name/slot), and it's the only one not resolved. This blocks nothing in the tracker, but it's an explicit outstanding ask from the mentor and should be settled before or at the top of the call.
+
+Minor fixes: added missing team-context line to Q6, fixed a stray-space typo in Q7.
+
+**Assessment:** agenda is now meeting-ready. Full 10-question list + priority ranking (given the 30-min slot won't comfortably fit all 10 with introductions) given to Tuan directly in chat, not duplicated here.
+
+**Open questions / follow-ups:** Group name (blocking, urgent — needed before tonight). Everything else from the Open Questions list above is unaffected by this entry.
 
