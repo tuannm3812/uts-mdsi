@@ -31,12 +31,12 @@ The repository stores this guide, the literature matrix, and research notes. It 
 ### Stage 4 — Examine newer modelling and dataset directions
 
 8. **Rad et al. (2024)** — vision transformers and multispectral imagery.
-9. **Barbastathis et al. (2024)** — self-supervised temporal hotspot detection.
+9. **Barco et al. (2024)** — self-supervised temporal hotspot detection.
 10. **Sen2Fire (2024)** and **TS-SatFire (2024)** — benchmark datasets, task definitions, and split design.
 
 ### Stage 5 — Examine trustworthy explanations
 
-11. **Manolakis et al. (2022), Real-time wildfire detection with semantic explanations** — evidence that explanations already exist; use it to define what a stronger satellite-monitoring explanation should add.
+11. **Phan et al. (2022), Real-time wildfire detection with semantic explanations** — evidence that explanations already exist; use it to define what a stronger satellite-monitoring explanation should add.
 
 ## Downloaded Full Texts
 

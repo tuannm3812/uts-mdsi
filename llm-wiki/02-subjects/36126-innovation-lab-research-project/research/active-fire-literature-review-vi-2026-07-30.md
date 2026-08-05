@@ -101,9 +101,9 @@ Tài liệu của hệ thống cảnh báo rằng:
 | [Zhang và cộng sự (2021)](https://doi.org/10.3390/rs13234790) | Miền đông Australia và miền tây Hoa Kỳ; Sentinel-2 | Phân đoạn cháy bằng DCPA+HRNetV2 | Cho thấy deep learning tại Australia không còn mới | Nhãn bán thủ công, mây/revisit, rò rỉ sự kiện và chuyển miền |
 | [Singh và cộng sự (2025)](https://doi.org/10.1007/s11069-025-07163-w) | Wolgan Valley, NSW; Landsat-8 và chỉ số phổ | Phân loại bằng SVM | Đường cơ sở địa phương hữu ích | Chỉ một khu vực và không phù hợp giám sát liên tục |
 | [Rad (2024)](https://proceedings.mlr.press/v222/rad24a.html) | Bắc Mỹ; ảnh đa phổ | Phát hiện bằng vision transformer | Chứng minh transformer không tự tạo ra tính mới | Chuyển miền, độ trễ và độ tin cậy được hiệu chỉnh |
-| [Barbastathis và cộng sự (2024)](https://arxiv.org/abs/2405.20093) | Các sự kiện tại châu Âu | Học tự giám sát theo chuỗi thời gian | Gợi ý giảm phụ thuộc vào nhãn | Tiền ấn phẩm, chuyển sang Australia và calibration |
+| [Barco và cộng sự (2024)](https://arxiv.org/abs/2405.20093) | Các sự kiện tại châu Âu | Học tự giám sát theo chuỗi thời gian | Gợi ý giảm phụ thuộc vào nhãn | Tiền ấn phẩm, chuyển sang Australia và calibration |
 | Sen2Fire và [TS-SatFire](https://arxiv.org/abs/2412.11555) | Bộ dữ liệu quốc tế | Chuẩn hóa tác vụ phát hiện và chuỗi thời gian | Hữu ích cho thiết kế benchmark hoặc pretraining | Dịch chuyển phân phối so với vận hành tại Australia |
-| [Manolakis và cộng sự (2022)](https://doi.org/10.1016/j.eswa.2022.117007) | Luồng sự kiện thời gian thực | Giải thích ngữ nghĩa | Cho thấy giải thích trong phát hiện cháy đã tồn tại | Tính trung thực, ổn định và khả năng áp dụng cho lỗi vệ tinh |
+| [Phan và cộng sự (2022)](https://doi.org/10.1016/j.eswa.2022.117007) | Luồng sự kiện thời gian thực | Giải thích ngữ nghĩa | Cho thấy giải thích trong phát hiện cháy đã tồn tại | Tính trung thực, ổn định và khả năng áp dụng cho lỗi vệ tinh |
 | [Kondylatos và cộng sự (2024)](https://doi.org/10.1016/j.scitotenv.2024.173273) | Tổng quan toàn cầu | Tổng hợp dữ liệu và phương pháp phát hiện cháy đang hoạt động | Bản đồ chính cho truy vết tài liệu | Cần đọc toàn văn và lần theo trích dẫn |
 
 Nghiên cứu Sentinel-2 năm 2021 báo cáo IoU khoảng 70–72% ở hai vùng thử nghiệm. Con số này cần được đọc cùng với cách tạo nhãn, cách chia dữ liệu và giới hạn revisit; nó không tự chứng minh hiệu quả vận hành.
@@ -283,12 +283,12 @@ Chỉ nên hỏi sau khi hoàn tất kiểm toán dữ liệu công khai:
 ### Giai đoạn 4 — Phương pháp và dữ liệu mới
 
 8. Rad (2024), vision transformer.
-9. Barbastathis và cộng sự (2024), self-supervised temporal learning.
+9. Barco và cộng sự (2024), self-supervised temporal learning.
 10. Sen2Fire và TS-SatFire.
 
 ### Giai đoạn 5 — Độ tin cậy và giải thích
 
-11. Manolakis và cộng sự (2022), giải thích ngữ nghĩa thời gian thực.
+11. Phan và cộng sự (2022), giải thích ngữ nghĩa thời gian thực.
 12. Kondylatos và cộng sự (2024), bài tổng quan để mở rộng truy vết trích dẫn.
 
 ## 13. Thuật ngữ Anh–Việt

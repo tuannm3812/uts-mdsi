@@ -12,9 +12,9 @@ Shared, append-only log for open discussion between Tuan, Claude, and Codex whil
 
 ## Open questions
 
-- Complete the remaining DOI/arXiv metadata and full-text checks before treating the literature matrix as supervisor-ready; see Codex's 3 August entry.
-- Confirm the Teams message actually went to Dr Arnick today (3 Aug) and log his response here once it arrives.
-- Task 1 execution on the Kaggle notebook plan hasn't started yet (checked 3 Aug — see Claude's entry below) — what's the actual blocker or timeline?
+- The 11 papers cited in the sent brief are now verified against Crossref/arXiv (2 citation errors found and fixed — see Claude's 5 August entry below). Three matrix rows not cited in the brief are still unverified: `Giglio2003MODIS`, `FireCluster2026`, `MTGFCI2026` — lower urgency since they haven't gone to Arnick, but check before citing them anywhere external.
+- Dr Arnick's response to the 3 August brief — not yet received as of 5 August. The brief itself is confirmed sent (see Tuan's 5 August entry below).
+- The NSW-RFS-vs-NPWS figure inconsistency between the sent brief and the private Kaggle notebook is now reconciled into one conclusion (see Claude's 5 August entry below) and a ready-to-send follow-up addendum has been prepared — send it once Arnick responds.
 
 ## Entries
 
@@ -259,6 +259,24 @@ Please check these artifacts under the five specified dimensions:
 3. **Testing:** Added new contract tests in [test_notebook_contract.py](file:///Users/tuannm3812/Documents/GitHub/1.%20Study/uts-mdsi/llm-wiki/02-subjects/36126-innovation-lab-research-project/notebooks/active-fire-kaggle/tests/test_notebook_contract.py#L35-L45) to verify EDA notebook structures. All 34 tests pass.
 4. **Redeployment:** Uploaded and executed Kernel Version 8 containing both the inline-visualized reliability pilot and the new EDA notebook.
 
+### 2026-08-04 — Claude
+
+**Context:** Tuan asked me to review Antigravity/Codex's progress since the last entries and discuss. Read through the NPWS licence-switch rerun (Decision B), the deployed notebook's Section 4 narrative, and independently recomputed the match statistics from the actual staged files (`output/kaggle/active-fire-pilot/*.geojson`) using the project's own `match_hotspots.py`, rather than trusting the reported summary numbers.
+
+**HIGH-SEVERITY finding: the 77.25%/97.12% match-rate jump is not a reliability improvement — it's almost entirely two enormous fire-complex polygons, and this isn't disclosed anywhere in the deployed notebook.**
+
+Recomputing event concentration directly from `npws_fire_history.geojson` and `dea_hotspots.geojson`:
+- **Kerry Ridge** (183,647 ha) and **Gospers Mountain** (479,514 ha) are 2 of the 14 NPWS events, but together account for **97.85% of every matched hotspot**, exact and buffered alike (85.34%/84.97% from Kerry Ridge alone). Gospers Mountain's polygon alone covers roughly 4,795 km² — about 21% of the entire 22,500 km² study bounding box.
+- This is a materially worse concentration problem than the original NSW-RFS pilot's already-flagged `Stockyard Creek; Little` dominance (88% of matches from one event) — now it's ~98% from two, out of a 19,277-hotspot "buffered match" figure.
+- The NPWS Fire History layer represents **consolidated, whole-of-season fire-complex boundaries** (Gospers Mountain's record spans 25 Oct 2019 – 9 Feb 2020, 107 days), not the more granular, shorter-duration incident-level records the original NSW RFS Feature Service returned. Switching source for licensing reasons (correct call — Decision B) also silently changed what "one matched event" means, from a localised incident to a mega-complex covering a fifth of the study area. That confound, not an improvement in label reliability, is what's driving 14.5%→77.25% and 17.1%→97.12%.
+- **The deployed notebook's Section 4 narrative doesn't disclose this.** It generates an `event_concentration` chart (`fig4`) but never interprets it in prose, states the 97.12% headline as a straightforward result, and Section 5 attributes the improvement to "buffering... resolving the spatiotemporal offsets" — which overstates buffering's role (exact, *unbuffered* matching is already 77.25% and already ~98% concentrated in the same two events; buffering only adds a few more percentage points on top).
+- The original pilot's hold-out-event validation warning (verbatim in every prior document, including the brief now sitting ready for Dr Arnick) is absent from the new Section 4/5 text, even though the concentration problem it warns about is now worse, not better.
+- This is already live on the private Kaggle kernel (Version 8), and the underlying 19,849/14/15,334/19,277/572 invariants are the same ones I was about to treat as the update for Dr Arnick's brief — they are not.
+
+**Recommendation, not yet actioned:** before any further public deployment or supervisor communication uses these NPWS figures, Section 4/5 needs to name Kerry Ridge and Gospers Mountain explicitly, state their concentration share, explain that the NSW-RFS-vs-NPWS comparison is not apples-to-apples (incident-level vs complex-level polygons), and restore the hold-out-event caveat. I have not touched the notebook, the Kaggle deployment, or Dr Arnick's brief — flagging for discussion first since this changes the actual scientific conclusion, not just the presentation.
+
+**Open for Codex/Tuan:** do we want Section 4 rewritten to lead with the concentration finding (arguably the more interesting result — NPWS's complex-level polygons make "event-level reliability" nearly untestable with only 14 events, 2 of which dominate), or do we want a like-for-like rerun using a comparably-scaled reference (e.g. splitting complexes by date/sub-area, or reverting to per-incident tolerances)? Either is defensible; going ahead without disclosing it either way is not.
+
 ### 2026-08-05 — Codex (Antigravity)
 
 **Context:** Recording the approved implementation plan to refactor the active-fire notebooks for public release.
@@ -313,26 +331,78 @@ Neither failure looks like a design regression — the new section names look li
 2. **Thermal Observations vs. Mapped Burn Scars:** We must emphasize to readers that satellite observations capture *transient thermal anomalies* at the moment of pass, whereas the NPWS polygons represent *post-season consolidated burn boundaries*. The "unresolved" hotspots (2.88% of observations) represent anomalies that either occurred on private/unmanaged land outside reserve boundaries, or were too low-intensity/brief to leave a detectable burn scar in the post-season mapping. They should not be dismissed as sensor errors.
 3. **Downstream Modeling Risks:** If researchers use this dataset to train fire-prediction or active-monitoring models without holding out these large fire complexes, their models will simply overfit to the spatial coordinates of Gospers Mountain and Kerry Ridge. We must enforce split-complex validation in any downstream model benchmarking.
 
+### 2026-08-05 — Claude
 
+**Context:** Tuan asked me to check current progress and discuss. Independently verified Codex's two completion claims above rather than taking them at face value, then engaged with the "Scientific Take" discussion.
 
+**Verification:** installed the one missing dev dependency (`colorspacious`) and reran everything myself — `pytest tests` gives **20 passed**, and `audit_public_artifact.py` gives **PASS** on both notebooks plus the hash audit. Both match Codex's 5 August report exactly. Good — the fix and Version 9 deployment claims check out, not just asserted.
 
-### 2026-08-04 — Claude
+**One point to discuss on the "Scientific Take" entry, point 2.** The notebook's own Section 4 text hedges the 572 unresolved hotspots across three possibilities — positional/temporal drift, off-reserve fires, or small/brief burns — using "could be caused by." This discussion entry states it more confidently, as two established causes ("represent anomalies that either occurred on private/unmanaged land... or were too low-intensity/brief"), dropping the drift possibility and losing the hedge. Neither of the two remaining causes has actually been checked against the data yet — e.g., testing whether the 572 unresolved points spatially cluster outside NPWS reserve boundaries would directly test the "off-reserve" hypothesis, and NPWS Fire History's land-tenure scope (reserve-only vs. all NSW) isn't confirmed anywhere in this repo. Flagging now, while it's just a log entry, since this project has otherwise been careful everywhere else not to claim more than the evidence supports — worth keeping that same hedge if this framing makes it into a future notebook revision or the supervisor brief.
 
-**Context:** Tuan asked me to review Antigravity/Codex's progress since the last entries and discuss. Read through the NPWS licence-switch rerun (Decision B), the deployed notebook's Section 4 narrative, and independently recomputed the match statistics from the actual staged files (`output/kaggle/active-fire-pilot/*.geojson`) using the project's own `match_hotspots.py`, rather than trusting the reported summary numbers.
+**Minor process note (fixed):** my original 4 August concentration finding had been appended out of chronological order, after several 5 August entries. Moved it back to its correct position (right after the 4 August Version 8/EDA entry, before the 5 August "Proposed Plan" entry) in this same edit — content unchanged, position only.
 
-**HIGH-SEVERITY finding: the 77.25%/97.12% match-rate jump is not a reliability improvement — it's almost entirely two enormous fire-complex polygons, and this isn't disclosed anywhere in the deployed notebook.**
+**Overall assessment:** genuinely good progress since yesterday — the concentration disclosure is solid, the test/audit gate is honestly closed (verified independently), and Version 9 is deployed. The only open item is the epistemic-hedging point above, which is cheap to fix.
 
-Recomputing event concentration directly from `npws_fire_history.geojson` and `dea_hotspots.geojson`:
-- **Kerry Ridge** (183,647 ha) and **Gospers Mountain** (479,514 ha) are 2 of the 14 NPWS events, but together account for **97.85% of every matched hotspot**, exact and buffered alike (85.34%/84.97% from Kerry Ridge alone). Gospers Mountain's polygon alone covers roughly 4,795 km² — about 21% of the entire 22,500 km² study bounding box.
-- This is a materially worse concentration problem than the original NSW-RFS pilot's already-flagged `Stockyard Creek; Little` dominance (88% of matches from one event) — now it's ~98% from two, out of a 19,277-hotspot "buffered match" figure.
-- The NPWS Fire History layer represents **consolidated, whole-of-season fire-complex boundaries** (Gospers Mountain's record spans 25 Oct 2019 – 9 Feb 2020, 107 days), not the more granular, shorter-duration incident-level records the original NSW RFS Feature Service returned. Switching source for licensing reasons (correct call — Decision B) also silently changed what "one matched event" means, from a localised incident to a mega-complex covering a fifth of the study area. That confound, not an improvement in label reliability, is what's driving 14.5%→77.25% and 17.1%→97.12%.
-- **The deployed notebook's Section 4 narrative doesn't disclose this.** It generates an `event_concentration` chart (`fig4`) but never interprets it in prose, states the 97.12% headline as a straightforward result, and Section 5 attributes the improvement to "buffering... resolving the spatiotemporal offsets" — which overstates buffering's role (exact, *unbuffered* matching is already 77.25% and already ~98% concentrated in the same two events; buffering only adds a few more percentage points on top).
-- The original pilot's hold-out-event validation warning (verbatim in every prior document, including the brief now sitting ready for Dr Arnick) is absent from the new Section 4/5 text, even though the concentration problem it warns about is now worse, not better.
-- This is already live on the private Kaggle kernel (Version 8), and the underlying 19,849/14/15,334/19,277/572 invariants are the same ones I was about to treat as the update for Dr Arnick's brief — they are not.
+### 2026-08-05 — Claude
 
-**Recommendation, not yet actioned:** before any further public deployment or supervisor communication uses these NPWS figures, Section 4/5 needs to name Kerry Ridge and Gospers Mountain explicitly, state their concentration share, explain that the NSW-RFS-vs-NPWS comparison is not apples-to-apples (incident-level vs complex-level polygons), and restore the hold-out-event caveat. I have not touched the notebook, the Kaggle deployment, or Dr Arnick's brief — flagging for discussion first since this changes the actual scientific conclusion, not just the presentation.
+**Context:** Tuan asked for a full log review, a fix of any hygiene issues, and a clear remaining-tasks/next-steps summary.
 
-**Open for Codex/Tuan:** do we want Section 4 rewritten to lead with the concentration finding (arguably the more interesting result — NPWS's complex-level polygons make "event-level reliability" nearly untestable with only 14 events, 2 of which dominate), or do we want a like-for-like rerun using a comparably-scaled reference (e.g. splitting complexes by date/sub-area, or reverting to per-incident tolerances)? Either is defensible; going ahead without disclosing it either way is not.
+**Log hygiene fixed:** moved the out-of-order 4 August concentration finding back to its correct chronological position (see note above); rewrote **Open questions** to drop the resolved "Task 1 hasn't started" item (Tasks 1–7 are all done, Version 9 is deployed) and added two items that were being discussed in entries but never tracked there: the brief/Kaggle-notebook inconsistency below, and the epistemic-hedging fix.
+
+**Remaining tasks, in priority order:**
+
+1. **Send the brief to Dr Arnick.** Still unconfirmed after two days. Nothing else here matters until this moves — it's the actual deliverable the whole thread has been preparing.
+2. **Decide how to handle the brief/Kaggle inconsistency.** The brief Arnick would receive describes the original NSW-RFS pilot (17.1% buffered match, `Stockyard Creek; Little` dominance). The Kaggle notebook now tells a materially different, more advanced story on NPWS data (97.12% buffered match, driven almost entirely by two mega-complexes, with a split-complex-validation recommendation). Both are honest and defensible on their own, but Arnick would currently see only the older, simpler one. Two reasonable paths: (a) send the existing brief now to keep momentum, and bring the NPWS/concentration finding as a fast follow-up once he's responded; or (b) hold and fold the newer finding in first, since it's arguably a stronger, more interesting result. No wrong answer, but it should be a decision, not a default.
+3. **Fix the epistemic-hedging phrasing** in the "Scientific Take" discussion entry (5 August) before it influences a future notebook revision or brief update — cheap, low-risk.
+4. **DOI/arXiv full-text verification** on the remaining literature-matrix rows — long-standing, already honestly disclosed everywhere it matters, lower urgency than 1–3.
+5. **Public Kaggle release stays paused by design** — the plan requires Tuan's explicit later authorisation before making the dataset/kernel public, so no action needed here unless that decision is made.
+
+**Not a task, just a note:** the private Kaggle pipeline (licence gate → deterministic analysis → visuals → notebook → audit → metadata/upload → review) is a genuinely solid piece of engineering at this point — tests pass, audit passes, deployment confirmed, and the one serious scientific-integrity issue that came up was caught and fixed properly. The open items above are about closing the loop with Dr Arnick and keeping the two artifacts consistent, not about further building.
+
+### 2026-08-05 — Tuan
+
+**Context:** Answering Claude's remaining-tasks summary directly.
+
+1. The brief was sent to Dr Arnick on 3 August 2026. Still waiting on his response.
+2. Asked why the two figures are inconsistent, since the notebook hasn't been sent yet — wants one consistent conclusion prepared.
+3–4. Asked whether the epistemic-hedging fix and the DOI/citation verification should be done now.
+5. Confirmed: public Kaggle release happens when ready, no fixed timeline needed right now.
+
+### 2026-08-05 — Claude
+
+**Context:** Responding to Tuan's questions above — marking the brief as sent, explaining the root cause of the two inconsistent figures, and proposing one reconciled conclusion.
+
+**1. Brief status updated.** Marked sent 3 August in Open questions above; now waiting on Arnick's response.
+
+**2. Why the figures are inconsistent, and the reconciled conclusion.** The switch from NSW RFS to NPWS Fire History was a **licensing decision, not a research decision** — NSW RFS's ArcGIS metadata has no confirmed exact licence (empty `licenseInfo`), so its records legally can't be redistributed in a public Kaggle artifact, while NPWS Fire History is explicitly CC BY 4.0. That switch, as a side effect, also changed what "one fire event" means: NSW RFS returned 14 narrower, shorter incident records; NPWS returned 14 consolidated, whole-of-season fire-*complex* boundaries, two of which (Kerry Ridge, Gospers Mountain) are enormous and together cover a large share of the whole study region. Matching against much bigger, longer-lived polygons naturally produces a much higher match rate — that is what moved 17.1% to 97.12%, not an improvement in how reliable hotspot detection actually is.
+
+Put together, both pilots point to the **same underlying problem from two directions**, which gives a single, stronger, and more interesting conclusion than either pilot alone: *no NSW fire-event reference layer at any available granularity currently supports point-in-time or event-level reliability testing of active-fire hotspots.* The narrow layer (NSW RFS) under-covers true fire extent and duration, so most hotspots go unmatched. The broad layer (NPWS) over-matches almost trivially because its polygons are so large and long-lived that alignment is nearly guaranteed, and because just 2 of 14 events produce ~98% of all matches, event-level generalisation is close to untestable with it. Framed this way, the NPWS finding doesn't contradict the original pilot or the brief already sent — it **extends and strengthens** the case for Gap B (a reliability/calibration audit) and directly motivates the split-complex validation design already built into the notebook. This is a genuinely stronger story than either pilot told on its own, and it's ready to bring to Arnick as a "here's what the public-data work turned up since I sent you the brief" update, not a walk-back.
+
+**Drafted the ready-to-send follow-up:** [`communications/arnick-followup-npws-finding-2026-08-05.md`](communications/arnick-followup-npws-finding-2026-08-05.md) — short, sits alongside the sent brief, doesn't restate it, and closes with one question. Send it once Arnick responds to the first message (sending two unprompted follow-ups back to back would be worse than waiting).
+
+**3–4. Yes, doing both now** — see the two entries immediately below.
+
+### 2026-08-05 — Claude
+
+**Context:** Closing out the epistemic-hedging point from earlier today (item 3).
+
+Checked where this could actually matter: the notebook's own Section 4 text was never the problem — it already hedges the 572 unresolved hotspots across three possibilities with "could be caused by," and that hasn't changed. The only place the looser framing appeared was the "Scientific Take" discussion entry itself, and it hasn't propagated into the notebook, the sent brief, or the drafted follow-up above (the follow-up doesn't make any claim about *why* hotspots are unresolved, only about the concentration and granularity issue, which is directly evidenced). Since past entries in this log aren't edited, there's no other artifact to change — this note is the correction, and the log's own convention (correct forward, don't rewrite history) means the entry above stays as-is with this pointer. Closed.
+
+### 2026-08-05 — Claude
+
+**Context:** Item 4 — the long-standing DOI/citation verification open item. Checked all 11 papers cited in the sent brief against Crossref (for DOIs), arXiv (for preprints), and the publisher/report page (for the one non-DOI technical report), using their title/author/year metadata directly rather than trusting what's already written in this repo.
+
+**Result: 9 of 11 accurate, 2 confirmed misattributed — both already in the brief sent to Dr Arnick on 3 August.**
+
+- **"Manolakis et al. (2022)" is wrong.** Crossref for `10.1016/j.eswa.2022.117007` ("Real-time wildfire detection with semantic explanations," *Expert Systems with Applications*, 2022) lists the authors as Thanh Cong Phan, Nguyen Duc Khang Quach, Thanh Tam Nguyen, Thanh Toan Nguyen, Jun Jo, and Quoc Viet Hung Nguyen. "Manolakis" does not appear anywhere in the author list. Correct citation: **Phan et al. (2022)**.
+- **"Barbastathis et al. (2024)" is wrong.** The arXiv page for `2405.20093` ("Rapid Wildfire Hotspot Detection Using Self-Supervised Learning on Temporal Remote Sensing Data") lists the authors as Luca Barco, Angelica Urbanelli, and Claudio Rossi. "Barbastathis" doesn't appear. Correct citation: **Barco et al. (2024)** — notably, the downloaded PDF in the reading library was already correctly filed as `08-barco-2024-self-supervised-hotspot-detection.pdf`, so the correct name was sitting right there in `reading-library-2026-07-29.md` the whole time; the wrong surname just never got cross-checked against it.
+- The other 9 (Jones/Himawari-8 report, Giglio 2016, Schroeder 2014, Zhang 2023, Zhang 2021, Singh 2025, Rad 2024, Sen2Fire/Xu 2024, TS-SatFire/Zhao 2024, Kondylatos 2024) all check out — title, first author, year, and venue match publisher/arXiv records exactly. (Minor, not worth fixing: "Rad et al. (2024)" implies co-authors; Crossref/MLR list Ryan Rad as sole author.)
+
+**Fixed:** replaced `Barbastathis` → `Barco` and `Manolakis` → `Phan` (plus the matching `literature-matrix.csv` citation keys `Barbastathis2024SSL`→`Barco2024SSL`, `Manolakis2022FADE`→`Phan2022FADE`) everywhere they appeared: `literature-matrix.csv`, `active-fire-materials-summary-2026-07-30.md`, `active-fire-literature-review-vi-2026-07-30.md`, `reading-library-2026-07-29.md`, and the canonical `supervisor-findings-brief-2026-08-03.md`. The paper identities, titles, and findings attributed to them were already correct — only the author surnames were wrong, so nothing else needed to change.
+
+**Since the brief was already sent with the wrong names:** added a two-line correction to the drafted follow-up (`communications/arnick-followup-npws-finding-2026-08-05.md`) rather than sending a separate message just for this — low-stakes enough to fold in, but should still be corrected explicitly rather than silently fixed only in the repo.
+
+This closes the "citation risk" item that's been open since my very first entry on 2 August — worth having actually checked, since it found two real errors, not zero.
 
 
 

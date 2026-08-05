@@ -44,9 +44,9 @@ Contextual false-positive filtering and confidence indicators already exist oper
 | Zhang et al. (2021), Sentinel-2 deep detection | Eastern Australia and western United States | Deep active-fire segmentation using Sentinel-2 | Shows that Australian deep-learning detection is not new | Semi-manual labels, revisit and cloud constraints, event leakage, and transfer |
 | Singh et al. (2025) | Wolgan Valley, NSW; Landsat-8 bands and spectral indices | SVM-based active-fire and burned-area discrimination | Useful local baseline and potential case-study comparison | Single-region scope and limited suitability for continuous monitoring |
 | Rad et al. (2024) | North America; multispectral imagery | Vision-transformer wildfire detector | Shows that applying a transformer is not itself novel | Geographic transfer, operational latency, and calibrated reliability |
-| Barbastathis et al. (2024) | European events; temporal remote-sensing data | Self-supervised temporal hotspot detection | Motivates label-efficient temporal learning | Preprint status, Australian transfer, and confidence calibration |
+| Barco et al. (2024) | European events; temporal remote-sensing data | Self-supervised temporal hotspot detection | Motivates label-efficient temporal learning | Preprint status, Australian transfer, and confidence calibration |
 | Sen2Fire and TS-SatFire (2024) | International benchmark datasets | Detection and time-series task definitions | Useful for benchmark design and possible pretraining | Dataset shift and whether benchmark labels represent Australian operations |
-| Manolakis et al. (2022) | Real-time event streams | Semantic explanations for wildfire detection | Shows that explainability in real-time fire detection already exists | Whether explanations are faithful, stable, and applicable to satellite false alarms |
+| Phan et al. (2022) | Real-time event streams | Semantic explanations for wildfire detection | Shows that explainability in real-time fire detection already exists | Whether explanations are faithful, stable, and applicable to satellite false alarms |
 | Kondylatos et al. (2024) | Global review | Reviews active-fire datasets and methods | Primary map of the international research landscape | Full-text review and citation chaining are still required |
 
 ## Key findings across the materials
