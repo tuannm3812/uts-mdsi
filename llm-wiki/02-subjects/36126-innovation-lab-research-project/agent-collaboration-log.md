@@ -698,3 +698,20 @@ Proposed a minimum-viable design in the document (transformer + cross-attention 
 **Not done:** full-text verification (T-038) — ScienceDirect and IEEE Xplore both blocked direct access this session, several other sources are abstract/summary-level only. Linked from the Friday meeting-prep doc as backing detail.
 
 
+### 2026-08-06 — Codex (Antigravity)
+
+**Context:** Resolving the outstanding execute + verify + redeploy step for the type-hinted and literature-manifest-updated codebase.
+
+**Actions Taken & Verified:**
+1. **Rebuild & Execution:**
+   - Compiled both notebooks with the newly updated type-hinted codebase (recursively resolving type annotations across `match_hotspots.py`, `build_notebook.py`, `build_eda_notebook.py`, `public_visuals.py`, `run_pilot.py`, `audit_public_artifact.py`, and `upload_private.py`).
+   - Executed both notebooks end-to-end to capture all output cells containing the type-hinted code signatures and outputs.
+2. **Verification Suite:**
+   - Verified that all unit tests passed successfully (20/20 green `pytest`).
+   - Ran `audit_public_artifact.py` to ensure zero privacy or absolute path leaks (passed cleanly).
+3. **Deployment:**
+   - Uploaded **Version 18** of the dataset and kernel to Kaggle.
+   - Pushed all modified `.ipynb` and `reading-library-manifest.csv` files to the GitHub remote repository.
+
+
+

@@ -10,3 +10,6 @@ filename,pages,year,short_title,source_type,priority,source_url
 09-xu-2024-sen2fire-dataset.pdf,5,2024,Sen2Fire benchmark dataset,Preprint,10,https://arxiv.org/pdf/2403.17884
 10-zhao-2024-ts-satfire-dataset.pdf,16,2024,TS-SatFire time-series dataset,Preprint,11,https://arxiv.org/pdf/2412.11555
 11-manolakis-2022-real-time-semantic-explanations.pdf,27,2022,Real-time detection with semantic explanations,Repository copy,7,https://doi.org/10.1016/j.eswa.2022.117007
+dubey-dubey-2025-transformer-frbs-methodsx.pdf,8,2025,Transformer + Fuzzy Rule-Based System wildfire response,Local copy (sources/raw/reading-library/week-02/ gitignored),1,https://doi.org/10.1016/j.mex.2025.103498
+dubey-et-al-2025-transformer-bdi-ieee-access.pdf,8,2025,Transformer + BDI reasoning multi-day wildfire spread,Local copy (sources/raw/reading-library/week-02/ gitignored),1,https://doi.org/10.1109/ACCESS.2025.3586922
+andrianarivony-akhloufi-2024-ml-dl-wildfire-review.pdf,32,2024,ML/DL for wildfire spread prediction -- systematic review,Local copy (sources/raw/reading-library/week-02/ gitignored),1,https://doi.org/10.3390/fire7120482
