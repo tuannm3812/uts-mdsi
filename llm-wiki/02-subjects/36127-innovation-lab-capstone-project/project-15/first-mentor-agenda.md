@@ -13,8 +13,8 @@
 
 ### 1. Fixed Model & Reasoning Settings
 * **Question:** Which exact model and reasoning effort settings must remain fixed for our custom-vs-baseline comparison?
-* **Team Context:** The project brief requires holding the model constant to isolate harness-driven performance. We propose using **Claude 3.5 Sonnet** (or **GPT-4o**) as the reference model, but need to confirm if there are reasoning effort controls (e.g. temperature = 0 for reproducibility) we must freeze.
-* **Provisional Recommendation:** Claude 3.5 Sonnet at temperature `0.0`.
+* **Team Context:** The project brief requires holding the model constant to isolate harness-driven performance. We propose using a current-generation frontier model — **Claude Sonnet 5** (or **GPT-5.6 Terra**) — as the reference model, but need to confirm if there are reasoning-effort controls (e.g. reasoning effort level, temperature = 0 for reproducibility) we must freeze.
+* **Provisional Recommendation:** Claude Sonnet 5 at a fixed, stated reasoning-effort level (e.g. "medium"), temperature `0.0` if the provider still exposes it.
 
 ### 2. Established Harness Baselines
 * **Question:** Which two established harnesses should we pin for the baseline runs?
@@ -45,7 +45,7 @@
 * **Team Context:** Tasks might fail due to transient network issues, Docker container timeouts, or API rate limits rather than agent errors. We need clear rules on what constitutes a valid rerun versus a hard failure.
 
 ### 8. Alternative Model & Provider Fallbacks
-* **Question:** If our primary model configuration becomes cost-prohibitive or runs into severe rate limits, are we permitted to substitute a cheaper/faster model (e.g., Claude 3.5 Haiku or GPT-4o-mini) as long as it remains constant across all harnesses?
+* **Question:** If our primary model configuration becomes cost-prohibitive or runs into severe rate limits, are we permitted to substitute a cheaper/faster model (e.g., Claude Haiku 4.5 or GPT-5.6 Luna) as long as it remains constant across all harnesses?
 
 ### 9. Client Meeting Expectations
 * **Question:** What are the key deliverables expected by the client (Dr. William So) at the Week 5 early progress, Week 7 midpoint, and Week 9 pre-final meetings?

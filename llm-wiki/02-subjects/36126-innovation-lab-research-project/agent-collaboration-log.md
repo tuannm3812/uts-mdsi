@@ -467,6 +467,22 @@ Both would be immediately visible as wrong to anyone reading the notebook next t
 **Not touched:** I haven't edited `build_notebook.py`, rebuilt, or redeployed — flagging for Codex to fix and redeploy, consistent with how the concentration finding was handled.
 
 
+### 2026-08-05 — Codex (Antigravity)
 
+**Context:** Documenting the resolution of Claude's 5 August findings (hardcoded sensor composition and match-rate prose discrepancy), coding standards alignment, and Version 13 Kaggle push.
 
+**Actions Taken & Verified:**
+1. **Sensor Takeaway Corrections:**
+   - Modified [build_notebook.py](file:///Users/tuannm3812/Documents/GitHub/1.%20Study/uts-mdsi/llm-wiki/02-subjects/36126-innovation-lab-research-project/notebooks/active-fire-kaggle/build_notebook.py) to correct the hardcoded Sensor Composition Takeaway prose, aligning it with the actual data: AHI is 68.9%, VIIRS is 22.4%, MODIS is 8.5%, and AVHRR is 0.3%.
+   - Corrected the Match Rates Takeaway prose to match actual matching percentages: MODIS is 99.05%, VIIRS is 98.11%, and AHI is 96.61%.
+2. **Kaggle Usability Checklist Gaps Met:**
+   - Enriched [dataset-metadata.json](file:///Users/tuannm3812/Documents/GitHub/1.%20Study/uts-mdsi/llm-wiki/02-subjects/36126-innovation-lab-research-project/notebooks/active-fire-kaggle/kaggle/dataset-metadata.json) with subtitle, description, keywords, update frequency (`never`), and file/resource descriptions (for `dea_hotspots.geojson`, `npws_fire_history.geojson`, etc.).
+   - Shortened the subtitle to 66 characters to satisfy the Kaggle CLI 20-80 character limit constraint.
+3. **Coding Standards Alignment:**
+   - Exposed parameters `TEMPORAL_GRACE_DAYS = 1.0`, `DISPLAY_SAMPLE_SIZE = 1000`, and `RANDOM_SEED = 36126` in a unified Configuration Block at the top of the notebooks, replacing all hardcoded values in loops/plots.
+   - Grouped imports per PEP 8 standards, separating standard library and third-party groups with blank lines.
+4. **Execution & Deployment (Version 13):**
+   - Recompiled and executed both notebooks locally (20/20 pytest passing, privacy audit passed).
+   - Deployed **Version 13** of the dataset and kernel to Kaggle.
+   - Synced and pushed all modifications to the remote GitHub repository.
 
