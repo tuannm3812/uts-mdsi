@@ -20,9 +20,13 @@ Task status lives here, not in the collaboration log. Formal decisions live in [
 | T-005 | Candidate gap formulation (A/B/C) | Done — Gap B recommended | D-006 in decision log |
 | T-006 | Consolidated supervisor findings brief | Done | `research/supervisor-findings-brief-2026-08-03.md` |
 | T-007 | Send brief to Dr Arnick | **Done** — sent 2026-08-03 | Collaboration log, 2026-08-05 (Tuan) |
-| T-008 | Dr Arnick's response to the brief | **Blocked — waiting on Arnick** | — |
+| T-008 | Dr Arnick's response to the brief | **Done** — received 2026-08-05. Major direction correction, not a simple approval — reliability audit is Phase 1 groundwork, not the final contribution; real deliverable is a multimodal spatiotemporal transformer (MODIS FIRMS 2000–2025 + weather + land-cover/vegetation, cross-attention fusion) predicting either occurrence probability or 1–7 day hotspot forecasting, pick one | D-011 in decision log |
 | T-009 | NPWS reference-source rerun and reconciled conclusion | Done | D-005, D-007 in decision log |
-| T-010 | Follow-up message to Arnick (NPWS finding + citation correction) | Drafted, **not sent** — hold until Arnick responds to T-007 | `communications/arnick-followup-npws-finding-2026-08-05.md` |
+| T-010 | Follow-up message to Arnick (NPWS finding + citation correction) | Drafted, **not sent — deprioritised**. Arnick's reply moved past the reliability-audit specifics before this technical follow-up was sent; fold its content into the next reply instead of sending as a standalone message now | `communications/arnick-followup-npws-finding-2026-08-05.md` |
+| T-030 | Decide Option A (occurrence-probability + explanation + spatial maps) vs Option B (1–7 day hotspot forecasting/nowcasting) — Arnick wants one, not both, due to semester timeframe | **Blocked — needs Tuan's decision**, see collaboration log for Claude's recommendation | D-011 |
+| T-031 | Literature/methodology scan on multimodal spatiotemporal transformers for wildfire prediction — cross-attention fusion of satellite time series with weather/vegetation covariates, occurrence-probability vs short-horizon forecasting architectures, explainability/uncertainty methods for transformers. Arnick explicitly asked for this ("do a bit of search how this looks like... how to add innovation") | **Not started** — do after T-030 is decided, so the search is scoped to the right option | D-011 |
+| T-032 | Evaluate the Digital Atlas of Australia "Bushfire Historical Extents" national dataset (all jurisdictions except NT, 1899–2024, harmonised burnt-area polygons) as an additional or replacement confidence-validation reference alongside NPWS/NSW RFS | **Not started** | Arnick's feedback, 2026-08-05 |
+| T-033 | Source MODIS FIRMS hotspot time series 2000–2025 (full history, not just the Jan 2020 pilot window) and auxiliary weather (rainfall, temperature, wind, humidity) and land-cover/vegetation-condition datasets for the eventual case-study region | **Not started — depends on T-030** (case-study region/scope may narrow once the prediction option is fixed) | D-011 |
 
 ## Public Kaggle reproducibility pipeline
 
@@ -55,6 +59,6 @@ Task status lives here, not in the collaboration log. Formal decisions live in [
 | T-020 | Stop tracking `output/`, `tmp/`, `__pycache__/` scratch files | Done | `.gitignore`, commit `d4014d3` |
 | T-021 | Split collaboration log into log/tracker/decision-log | Done | D-009, this file |
 
-## Phase 2 onward (not started)
+## Phase 2 onward (unblocked as of D-011, not yet started)
 
-Protocol freeze, data foundation, baselines, advanced model, trust analysis, robustness, and writing (phases 2–8 of `research-execution-plan-2026.md`) are all **Not started** — they depend on Dr Arnick's response to T-007/T-008 before scope can be frozen. No point tracking sub-tasks for these until that gate clears.
+Arnick's response (T-008/D-011) unblocks this, and also clarifies it: `research-execution-plan-2026.md`'s original Phase 5 ("Advanced model — Transformer or graph pipeline") and Phase 6 ("Trust analysis — explanation stability, calibration, uncertainty") were already the right shape for this — the project drifted toward treating Phase 1's reliability audit as the destination instead of a gate feeding those later phases. Immediate next steps, in order: T-030 (pick Option A/B) → T-031 (scoped literature/methodology scan) → T-032/T-033 (data sourcing) → protocol freeze (target dataset, split design, metrics) → baselines → the actual multimodal transformer. Detailed sub-tasks for baselines/advanced-model/trust-analysis/robustness/writing aren't worth writing yet until T-030 fixes the target.

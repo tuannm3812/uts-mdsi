@@ -15,7 +15,8 @@ Shared, append-only log for open discussion between Tuan, Claude, and Codex whil
 
 ## Open questions
 
-- Dr Arnick's response to the 3 August brief — tracked as T-008 in `task-tracker.md`. Once it arrives, log the substance here first, then update the tracker/decision-log.
+- **T-030 — Option A (occurrence-probability + explanation + spatial maps) vs Option B (1–7 day hotspot forecasting) — Tuan's decision.** Claude's recommendation is B; see the 2026-08-05 entry for full reasoning. Needs a decision before T-031 (literature scan) or any data/pipeline work starts, per D-011.
+- File Description item on the Kaggle Usability panel — Codex applied the fix (T-029) but hasn't confirmed re-checking the live panel after Version 16. Low priority, just needs a glance.
 
 ## Entries
 
@@ -587,4 +588,30 @@ Everything above is committed locally; pushing to `origin/main` now so this is v
    - Verified that `pytest` passed (20/20 green) and the public audit is successful.
    - Deployed **Version 16** of the public dataset and kernel to Kaggle, applying the updated metadata fields to resolve the usability checklist gaps on the live page.
    - Synced and pushed all updates to the remote GitHub repository.
+
+### 2026-08-05 — Claude
+
+**Context:** Verified T-029. Checked the key rename and the `userSpecifiedSources` addition against the actual current `dataset-metadata.json` — both correct (`expectedUpdateFrequency` and a properly structured `userSpecifiedSources` array with name/description/url for both DEA and NPWS). Codex's entry doesn't explicitly confirm re-checking the live Usability panel screenshot after Version 16 deployed (the wording describes applying the fix, not confirming the result on the page) — worth Tuan or Codex glancing at the panel once more to close the loop on "File Description," the one item I couldn't explain from source.
+
+**Context (main item):** Dr Arnick replied to the 3 August brief. This is a real redirection, not a minor note — recording it in full and thinking through what it means.
+
+**What he actually said:** the reliability-auditing work is good ("nice job") but **is not the project** — it's a means, not the end. What he wants: a curated, confidence-filtered MODIS FIRMS hotspot time series (2000–2025), validated using NSW fire records, cross-sensor matching (VIIRS/Himawari), and independent burnt-area datasets (he links the Digital Atlas of Australia's national "Bushfire Historical Extents" layer). Once that dataset exists, fuse it with auxiliary weather (rainfall, temperature, wind, humidity) and land-cover/vegetation-condition data, and train a **multimodal spatiotemporal transformer** with cross-attention fusion across modalities. Prediction target — pick **one**, given semester constraints:
+- **(A)** Fire-occurrence probability with calibrated uncertainty, transparent factor explanation, and spatial probability maps for the case-study region.
+- **(B)** 1–7 day hotspot forecasting/nowcasting with confidence.
+
+He explicitly asked for a literature/methodology scan on how to build this and where the innovation angle is.
+
+**The good news: this week's work isn't wasted, it was just mis-scoped as the destination instead of a gate.** `research-execution-plan-2026.md`, written on 29 July before any of this started, already had Phase 5 "Advanced model — Transformer or graph pipeline" and Phase 6 "Trust analysis — explanation stability, calibration, uncertainty" as later phases. The reliability audit, the NPWS pivot, the concentration-confound finding, and the whole Kaggle pipeline are legitimate Phase 1/3 (Discovery/Data foundation) work — exactly the "check confidence before training" step Arnick describes. The project drifted into treating Phase 1 as the whole thesis over the course of the week; his reply corrects that, it doesn't invalidate the work.
+
+**Checked the Digital Atlas dataset he linked:** "Bushfire Historical Extents, Version 3.0" — a nationally harmonised burnt-area polygon dataset aggregated from state/territory agencies, covering all jurisdictions except NT, from the late 1800s through 2024. This is a genuinely independent, national-scale alternative or complement to NPWS/NSW RFS for the confidence-validation step — worth evaluating (T-032).
+
+**My recommendation on Option A vs B: (B), 1–7 day hotspot forecasting/nowcasting.** Reasoning, not a unilateral pick — this is Tuan's call:
+1. **Direct continuity with existing infrastructure.** Everything built this week (hotspot-to-event matching, temporal windows, sensor-aware buffering) is already oriented around hotspot-level time series, not region-level occurrence classification. B extends that; A would need a different data unit (spatial cell × time bin, with a non-trivial negative-class/non-fire-region design) built closer to from scratch. Arnick's own "cannot add more complexity" constraint favours whichever option reuses more of what already exists.
+2. **A concrete architectural comparator already exists in the literature we've already screened.** `TS-SatFire` (in `literature-matrix.csv`, `Khanna2024TSSatFire`) explicitly "combines active fire detection, daily monitoring, and next-day prediction in a satellite time-series dataset" — this is close to exactly Option B. That gives a real starting architecture and dataset-design template, not a blank page.
+3. **Cleaner evaluation design.** B's ground truth is the same reliability-audited hotspot dataset already being built — "did a hotspot appear here in the next N days" is directly checkable against DEA/FIRMS records. A's "did a fire occur" label requires a separate, more subjective definition (spatial unit, temporal binning, how to construct true negatives) that's exactly the kind of leakage/generalisation trap this project has already spent a week learning to avoid (event concentration, hold-out-event validation).
+4. **Closer to the originally supervisor-confirmed scope** from 29 July ("fire-hotspot detection and active-fire monitoring," fire-*spread* explicitly excluded) — occurrence/susceptibility prediction (Option A) was explicitly logged as *adjacent*, not primary, scope in `literature-search-protocol.md` back on 29 July, precisely because it's a large, already-crowded literature — finding genuine novelty there is harder.
+
+**Against B, in fairness to A:** Option A's "transparent explanation of factors" framing maps more directly onto explainability as the headline contribution, which may be an easier narrative for a non-technical audience/client than a forecasting skill metric. Spatial probability maps are also a naturally compelling deliverable. If Tuan or Arnick weight communicability of results over architectural continuity, A is defensible too — I don't think there's a wrong answer here, just a real tradeoff.
+
+**Not started yet, waiting on T-030:** the literature/methodology scan Arnick asked for (T-031) is scoped better once the option is fixed — transformer-for-forecasting and transformer-for-occurrence-probability are different enough literatures that searching before deciding risks wasted work either way.
 
