@@ -733,5 +733,15 @@ Tuan downloaded the three sources that were paywall-blocked last round (ScienceD
 
 **Noticed in passing, not fixed:** the existing manifest row for the Week 1 Phan et al. (2022) paper still uses the filename `11-manolakis-2022-...` — the citation text itself was corrected under T-003, but that filename wasn't. Cheap fix, noted in the scan document, not urgent.
 
+### 2026-08-06 — Claude
+
+**Context:** Tuan asked to merge the two 5 August communication files (direction-correction + Teams-meeting-request — always two consecutive Teams messages from Arnick, split into separate files for tracking reasons that no longer justified the duplication) and to turn Arnick's 5 August message into an actual plan, not just a recorded decision.
+
+**Merge:** combined into one file, `communications/arnick-message-2026-08-05-direction-correction.md`, as "Message 1" (direction correction) and "Message 2" (meeting request, sent immediately after). Deleted the standalone file and fixed the three places that pointed at it (T-039 evidence column, meeting-prep doc link, this repo's cross-references).
+
+**Analysis + plan:** added a new section to `research-execution-plan-2026.md`, "Arnick's 5 August direction — requirement breakdown and near-term plan," between the decision gates and the semester-phases table. Broke his message into 8 concrete requirements (reliability audit is groundwork only; FIRMS 2000–2025 time series; confidence-filter via NSW records/cross-sensor/burnt-area datasets, naming the Digital Atlas link specifically; fuse weather + land-cover/vegetation; multimodal transformer with cross-attention; pick one of A/B; do a literature/innovation pass; keep complexity down) and mapped each to what's already done (D-011, D-012, T-031) versus genuinely not started (T-032, T-033 — the data-foundation work, which is the actual biggest remaining gap, not the architecture, which the literature scan already speced out).
+
+**Sequenced it against the Week calendar**, contingent on Friday resolving the open questions that block it (region, horizon, data-source preference, Digital Atlas's role, compute, contribution framing): Week 3 → T-032 + start T-033; Week 4 → extend the confidence-filtering pipeline to full history, produce the versioned dataset (Phase 3 exit artefact); Week 5 → baselines before the transformer, per the existing risk control. Deliberately didn't plan past Week 5 — G3/G4/G5 aren't frozen yet, so detailing Phase 5+ now would be guessing.
+
 
 
