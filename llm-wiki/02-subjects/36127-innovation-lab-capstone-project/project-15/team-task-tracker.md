@@ -6,14 +6,14 @@
 |---|---:|---|---|
 | Week 1 | 29 Jul 2026 | Team and research setup | Team procedures, literature allocation, skills survey, mentor questions |
 | Week 2 | 5 Aug 2026 | Mentor and feasibility confirmation | Confirmed experimental contract, smoke test, cost/compute decision |
-| Week 3 | 12 Aug 2026 | Experimental design | Architecture, baseline protocol, frozen development subset |
+| Week 3 | 12 Aug 2026 | Experimental design | Architecture, baseline protocol, frozen development subset, **live leaderboard/Harbor-support recheck for the chosen baselines** |
 | Week 4 | 19 Aug 2026 | Baseline readiness | Reproducible established harness runs and custom skeleton |
 | Week 5 | 26 Aug 2026 | Early progress client meeting | Evidence package, demonstration, feedback and revised actions |
 | Week 6 | 2 Sep 2026 | Custom harness V1 | Minimal harness plus first controlled experiments |
 | Week 7 | 9 Sep 2026 | Midpoint client review | Baseline comparison, V1 results, failure analysis |
 | Week 8 | 16 Sep 2026 | Harness refinement | Context, recovery, verification, or tool ablations |
 | STUVAC | 23 Sep 2026 | Consolidation and contingency | Reproduced key results, draft methods/results, resolved technical debt |
-| Week 9 | 30 Sep 2026 | Pre-final client meeting | Final design and evaluation protocol frozen |
+| Week 9 | 30 Sep 2026 | Pre-final client meeting | Final design and evaluation protocol frozen, **final live-source recheck (leaderboard, model lineup, pricing) before freeze** |
 | Week 10 | 7 Oct 2026 | Final evaluation and analysis | Full results, statistics, report-ready figures and limitations |
 | Week 11 | 14 Oct 2026 | Final presentation | Rehearsed presentation, Q&A, backup demonstration |
 | Week 12 | 21 Oct 2026 | iLab Showcase and handover | Reproducible repository, final artifacts, retrospective |
@@ -31,18 +31,18 @@
 
 | ID | Week | Due | Workstream | Task | Primary | Reviewer | Priority | Status | Dependency | Deliverable/evidence |
 |---|---|---:|---|---|---|---|---|---|---|---|
-| P15-001 | 1 | 29 Jul | Governance | Create Slack structure, GitHub repository rules, issue labels, and review procedure | Daniel Alexander | Faisal Shoaib | High | Not started | None | Workspace links and procedure |
+| P15-001 | 1 | 29 Jul | Governance | Create Slack structure, GitHub repository rules, issue labels, and review procedure | Daniel Alexander | Faisal Shoaib | High | In review | None | GitHub: https://github.com/tuannm3812/ilab-project-15-terminal-bench-harness (private), labels + CONTRIBUTING.md set up 5 Aug by Tuan — branch protection blocked by GitHub free-tier limit on private repos, see repo. Slack still outstanding. Needs Daniel/Faisal review. |
 | P15-002 | 1 | 29 Jul | Governance | Run six-member skills, availability, hardware, and learning-goal survey | Mukesh Murugesan | Yash Raj Singh | High | Not started | None | Completed skills matrix |
-| P15-003 | 1 | 30 Jul | Research | Summarise Terminal-Bench benchmark contract and failure taxonomy | Manh Tuan Nguyen | Daniel Alexander | High | In progress | Literature review | One-page evidence note |
-| P15-004 | 1 | 30 Jul | Research | Summarise SWE-agent ACI design and ablations | Manu Sasikanth Oruvilakode | Mukesh Murugesan | High | In progress | Literature review | One-page evidence note |
-| P15-005 | 1 | 31 Jul | Research | Summarise OpenHands, Agentless, and OpenHands SDK implications | Faisal Shoaib | Manh Tuan Nguyen | High | In progress | Literature review | Comparison notes |
-| P15-006 | 1 | 31 Jul | Planning | Consolidate mentor questions, risks, terminology, and project assumptions | Yash Raj Singh | Manu Sasikanth Oruvilakode | High | In review | P15-003 to P15-005 | [first-mentor-agenda.md](first-mentor-agenda.md) |
+| P15-003 | 1 | 30 Jul | Research | Summarise Terminal-Bench benchmark contract and failure taxonomy | Daniel Alexander | Manu Sasikanth Oruvilakode | High | In progress | Literature review | One-page evidence note |
+| P15-004 | 1 | 30 Jul | Research | Summarise SWE-agent ACI design and ablations | Mukesh Murugesan | Faisal Shoaib | High | In progress | Literature review | One-page evidence note |
+| P15-005 | 1 | 31 Jul | Research | Three-way: OpenHands platform (Manh Tuan Nguyen, rev. Yash Raj Singh), Agentless (Manu Sasikanth Oruvilakode, rev. Daniel Alexander), OpenHands SDK (Faisal Shoaib, rev. Mukesh Murugesan) | Manh Tuan Nguyen / Manu Sasikanth Oruvilakode / Faisal Shoaib | Yash Raj Singh / Daniel Alexander / Mukesh Murugesan | High | In progress | Literature review | Comparison notes (one per person, see [harness-design-qa.md](harness-design-qa.md)-style per-person evidence) |
+| P15-006 | 1 | 31 Jul | Planning | Consolidate mentor questions, risks, terminology, and project assumptions | Yash Raj Singh | Manh Tuan Nguyen | High | In review | P15-003 to P15-005 | [week-02-mentor-agenda-2026-08-05.md](week-02-mentor-agenda-2026-08-05.md) |
 | P15-007 | 2 | 4 Aug | Infrastructure | Install Docker and Harbor on primary environment; record versions | Daniel Alexander | Manu Sasikanth Oruvilakode | Critical | Not started | P15-001 | Reproducible setup record |
 | P15-008 | 2 | 4 Aug | Infrastructure | Establish a second independent Harbor environment for reproducibility | Mukesh Murugesan | Faisal Shoaib | High | Not started | P15-001 | Second-machine verification |
 | P15-009 | 2 | 5 Aug | Benchmark | Run the official five-task oracle smoke test and archive results | Manh Tuan Nguyen | Yash Raj Singh | Critical | Not started | P15-007 | Harbor job output |
-| P15-010 | 2 | 5 Aug | Mentor | Lead mentor discussion on model, baselines, resources, subset, and success definition | Manu Sasikanth Oruvilakode | Daniel Alexander | Critical | Not started | P15-006 | Confirmed minutes/decisions |
-| P15-011 | 2 | 6 Aug | Cost/risk | Produce model/API/compute cost scenarios for development and full evaluation | Faisal Shoaib | Mukesh Murugesan | High | Not started | P15-010 | Cost model and recommendation |
-| P15-012 | 2 | 6 Aug | Documentation | Update project assumptions, risk register, and task tracker after mentor meeting | Yash Raj Singh | Manh Tuan Nguyen | High | Not started | P15-010 | Approved tracker update |
+| P15-010 | 2 | 5 Aug | Mentor | Lead mentor discussion on model, baselines, resources, subset, and success definition | Manu Sasikanth Oruvilakode | Daniel Alexander | Critical | Blocked | P15-006 | Meeting held 5 Aug; William Feng couldn't answer technical questions, deferred to William So "next week" — see meeting-and-decision-log.md |
+| P15-011 | 2 | 6 Aug | Cost/risk | Produce model/API/compute cost scenarios for development and full evaluation | Faisal Shoaib | Mukesh Murugesan | High | Blocked | P15-010 | Blocked on P15-010; partial input available at [cost-and-runtime-notes.md](cost-and-runtime-notes.md) |
+| P15-012 | 2 | 6 Aug | Documentation | Update project assumptions, risk register, and task tracker after mentor meeting | Yash Raj Singh | Manh Tuan Nguyen | High | Blocked | P15-010 | Blocked on P15-010 |
 | P15-013 | 3 | 10 Aug | Architecture | Define custom harness component boundaries and Harbor integration interface | Daniel Alexander | Faisal Shoaib | Critical | Not started | P15-010 | Architecture document/diagram |
 | P15-014 | 3 | 10 Aug | Baselines | Pin established harness A version and configuration | Mukesh Murugesan | Yash Raj Singh | Critical | Not started | P15-010 | Baseline A config |
 | P15-015 | 3 | 11 Aug | Baselines | Pin established harness B version and configuration | Manh Tuan Nguyen | Daniel Alexander | Critical | Not started | P15-010 | Baseline B config |
@@ -84,14 +84,14 @@
 
 | Member | Primary tasks | Count |
 |---|---|---:|
-| Daniel Alexander | P15-001, 007, 013, 019, 025, 031, 037, 043 | 8 |
-| Mukesh Murugesan | P15-002, 008, 014, 020, 026, 032, 038, 044 | 8 |
-| Manh Tuan Nguyen | P15-003, 009, 015, 021, 027, 033, 039, 045 | 8 |
-| Manu Sasikanth Oruvilakode | P15-004, 010, 016, 022, 028, 034, 040, 046 | 8 |
-| Faisal Shoaib | P15-005, 011, 017, 023, 029, 035, 041, 047 | 8 |
+| Daniel Alexander | P15-001, 003, 007, 013, 019, 025, 031, 037, 043 | 9 |
+| Mukesh Murugesan | P15-002, 004, 008, 014, 020, 026, 032, 038, 044 | 9 |
+| Manh Tuan Nguyen | P15-005 (share), 009, 015, 021, 027, 033, 039, 045 | 8 |
+| Manu Sasikanth Oruvilakode | P15-005 (share), 010, 016, 022, 028, 034, 040, 046 | 8 |
+| Faisal Shoaib | P15-005 (share), 011, 017, 023, 029, 035, 041, 047 | 8 |
 | Yash Raj Singh | P15-006, 012, 018, 024, 030, 036, 042, 048 | 8 |
 
-Task counts are an initial structural check only. Review difficulty and estimated hours weekly.
+Corrected 5 Aug 2026 to match the reading-allocation fix below P15-006. P15-005 is a three-way shared task (Manh Tuan Nguyen, Manu Sasikanth Oruvilakode, Faisal Shoaib each own one of its three papers) — counted once each, not fully duplicated. Task counts are an initial structural check only. Review difficulty and estimated hours weekly.
 
 ## Weekly workload review
 
@@ -118,3 +118,4 @@ Complete this table during the weekly team meeting.
 - [ ] Decisions were added to the meeting log.
 - [ ] Experiments were added to the experiment register.
 - [ ] Risks to the next client or assessment milestone were escalated.
+- [ ] Any leaderboard, harness-support, model, or pricing claim used this week was checked against a live source (not assumed from memory, an old document, or a brief's example wording). See [agent-collaboration-log.md](agent-collaboration-log.md), 5 Aug entries, for why this is here — two same-day incidents (stale model names, an unverified harness recommendation) both traced back to treating live/mutable state as if it were stable knowledge.

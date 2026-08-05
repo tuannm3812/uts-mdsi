@@ -9,6 +9,20 @@
 
 ---
 
+## Internal Team Meeting — Before the Mentor Call
+
+Purpose: align as a team while it's still just us, so the mentor call is a confirmation, not the first time these get discussed.
+
+1. ~~Group name — decide now.~~ **Resolved: iLab Project 15.**
+2. **Roster check.** Confirm out loud that Will's "Allocations file" roster matches all six of us — anyone should flag a discrepancy now, not mid-call.
+3. **Sanity-check the provisional recommendations.** Every question in this agenda has a *Provisional Recommendation* — these are proposals, not agreed team positions yet. Quick round: does anyone disagree with any of them (model choice, harness pair, trial counts, success definition, etc.) before we present them to Will as "our proposal"?
+4. **Assign who asks what.** 30 minutes, up to 14 questions — we won't get through all of them live (see the priority tiers below). Assign 1-2 questions per person from Tier 1/2 so it's not just Tuan talking the whole call — this also gives everyone visible participation evidence for the Individual Contribution Factor (kickoff requirements: 20% weight on "participation in meetings and team communication").
+5. **Confirm the ask order.** Agree we work top-down through Tier 1 first, and only move to Tier 2/3 if time remains — don't let discussion on Q1-2 eat the whole slot.
+6. **Real status check on P15-001–006.** These are still "Not started"/"In progress" in the tracker with no per-owner evidence yet. Quick round-robin: what does each person actually have done, even in draft form? This is the individual-work-first checkpoint — bring what you have, not what's finished.
+7. **Pick a note-taker for the mentor call**, responsible for filling in `meeting-and-decision-log.md`'s Decisions/Actions tables immediately afterward (Week 2 milestone exit evidence requires this).
+
+---
+
 ## Questions to Share with the Team (plain list)
 
 Just the questions, no internal notes/recommendations — copy-paste this section for teammates.
@@ -33,7 +47,7 @@ Just the questions, no internal notes/recommendations — copy-paste this sectio
 ## Before the Agenda — Two Housekeeping Items
 
 * **Roster check (Will asked for this explicitly):** His welcome message said he added members "based on the Allocations file" and to flag any discrepancy ASAP. Confirm at the top of the call that his roster matches: Manh Tuan Nguyen (leader), Daniel Alexander, Mukesh Murugesan, Manu Sasikanth Oruvilakode, Faisal Shoaib, Yash Raj Singh.
-* **Group name — still not chosen as of this draft.** His action list asked for team leader + group name + timeslot together; leader and slot are settled, name is the one outstanding item. Pick one before the call.
+* **Group name: resolved — iLab Project 15.** All three items from Will's action list (leader, name, slot) are now settled.
 
 ---
 
@@ -73,17 +87,17 @@ Consolidates the literature review's "Decisions requiring mentor or client confi
 
 ### 1. Fixed Model & Reasoning Settings
 * **Question:** Which exact model and reasoning effort settings must remain fixed for our custom-vs-baseline comparison?
-* **Team Context:** The project brief requires holding the model constant to isolate harness-driven performance. We propose using a current-generation frontier model — **Claude Sonnet 5** (or **GPT-5.6 Terra**) — as the reference model, but need to confirm if there are reasoning-effort controls (e.g. reasoning effort level, temperature = 0 for reproducibility) we must freeze.
-* **Provisional Recommendation:** Claude Sonnet 5 at a fixed, stated reasoning-effort level (e.g. "medium"), temperature `0.0` if the provider still exposes it.
+* **Team Context:** The project brief requires holding the model constant to isolate harness-driven performance. **Checked the live leaderboard again (5 Aug 2026, full snapshot at [leaderboard-snapshot-2026-08-05.md](leaderboard-snapshot-2026-08-05.md)): Fable 5 (Anthropic) is the top-scoring model on TB2.1**, not Sonnet 5 — 83.8% (Claude Code) and 80.4% (Terminus 2), both cheaper than GPT-5.5's comparable 83.1% ($552.67/$438.64 vs. $2,059.19). Same-harness evidence for why this matters: Claude Code alone spans 58.7% (GLM-5.1) to 83.8% (Fable 5) depending purely on the model — the harness comparison is only meaningful if the model is genuinely fixed and well-chosen.
+* **Provisional Recommendation:** **Fable 5**, not Sonnet 5 — best accuracy on the actual benchmark and cheaper than the next-best (GPT-5.5). Fixed, stated reasoning-effort level (leaderboard shows top entries at "high" or "xhigh"), temperature `0.0` if the provider still exposes it.
 
 ### 2. Established Harness Baselines
 * **Question:** Which two established harnesses should we pin for the baseline runs?
-* **Team Context:** The official brief suggests **Claude Code** and **OpenHands** as examples. We also noticed Project 16 mentions **Codex CLI**. Pinning these early is critical for tasks P15-014 and P15-015 in Week 3.
-* **Provisional Recommendation:** OpenHands and Claude Code (or Codex CLI if we coordinate with Team 15-2).
+* **Team Context:** The official brief suggests **Claude Code** and **OpenHands** as examples. We also noticed Project 16 mentions **Codex CLI**. Pinning these early is critical for tasks P15-014 and P15-015 in Week 3. **Checked the live leaderboard (tbench.ai/leaderboard/terminal-bench/2.1, 5 Aug 2026, 17 entries total) before this meeting: OpenHands does not appear on it at all** — 7 harnesses do appear, most frequently Claude Code (5 entries, top score 83.8%) and **Terminus 2** (5 entries, Harbor's own reference agent, 80.4% at $438.64), then Codex (3 entries, up to 83.1% but $2,059 at frontier settings), Gemini CLI, Cursor CLI, mini-SWE-agent. Small/young leaderboard (17 entries) so don't over-read rank gaps as significant — ties to Q11. **Also checked Harbor's own docs (harborframework.com/docs/agents): OpenHands is pre-integrated and built-in** (alongside Claude Code, Terminus-2, Copilot CLI, Codex CLI, Gemini CLI, Grok Build, Mini-SWE-Agent), so its absence from the leaderboard means "not yet submitted," not "unsupported" — setup effort is the same regardless of which we pick.
+* **Provisional Recommendation:** Propose **Claude Code + Terminus 2** as the default — both have public leaderboard evidence, and Terminus 2 is markedly cheaper than Codex at comparable accuracy. But since OpenHands is equally easy to set up (built into Harbor) and simply has no public data yet, it's worth explicitly asking Will whether he'd rather we generate one of the first public OpenHands-on-TB2.1 data points instead of duplicating an already-well-evidenced comparison — genuinely his call, not a closed decision on our side.
 
 ### 3. API Credits & Compute Budget
 * **Question:** Will the university or the industry partner (Synogize/Dr. William So) provide API keys/credits, or is there a specific MDSI/iLab compute environment allocated for our runs?
-* **Team Context:** Running 89 tasks on Terminal-Bench with high-tier models can easily cost $50–$150 per full run (plus repeated trials and development). We need a clear funding boundary to perform cost-scenarios in task P15-011.
+* **Team Context:** Real leaderboard data (not an estimate) shows full 89-task runs cost **$134–$2,059** depending on model/effort — our proposed Fable 5 config runs ~$440–$550 (see [cost-and-runtime-notes.md](cost-and-runtime-notes.md)). Unconfirmed whether that already includes the leaderboard's required 5 trials/task or just one — worth asking directly, since it changes dev-phase budget by up to 5×. Runtime has no public figure at all; P15-009's oracle smoke test is our own planned way to get a real number before committing to a full run.
 * **Provisional Recommendation:** Ask for a confirmed funded ceiling (iLab-provided credits or Synogize sponsorship) first; if none exists, propose an initial self-funded cap for the 20-task dev subset only, and defer committing to full-89-task or leaderboard spend until Q12 is answered.
 
 ### 4. Development Subset Selection

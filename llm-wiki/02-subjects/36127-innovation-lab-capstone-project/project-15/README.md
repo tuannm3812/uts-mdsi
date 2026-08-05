@@ -13,7 +13,8 @@ The team will compare two established agent harnesses with a custom harness whil
 - Client/brief author: **William So**, Synogize — do not conflate with the mentor
 - Team leader: **Manh Tuan Nguyen**
 - MS Teams timeslot: Wednesday **6:30-7:00pm** (Team iLab 15-1)
-- Group name: pending
+- Group name: **iLab Project 15**
+- GitHub: [ilab-project-15-terminal-bench-harness](https://github.com/tuannm3812/ilab-project-15-terminal-bench-harness) (private) — created 5 Aug 2026; collaborators not yet added, Tuan collecting GitHub usernames from the team
 - Work allocation: three pairs with rotating secondary responsibilities
 - Model: awaiting mentor/client confirmation
 - Established harnesses: awaiting mentor/client confirmation
@@ -23,17 +24,32 @@ The team will compare two established agent harnesses with a custom harness whil
 ## Project resources
 
 - [Official brief (verbatim)](official-brief-verbatim.md) — the authoritative Project 15 source text, extracted 4 Aug 2026
-- [Agent collaboration log](agent-collaboration-log.md) — open running discussion between Tuan, Claude, and Codex
+- [Agent collaboration log](agent-collaboration-log.md) — open running discussion between Tuan and whichever AI tools he's using (Claude, Codex, Antigravity so far)
 - [Detailed literature review](../research/project-15-terminal-bench-literature-review.md)
 - [PDF literature review](../research/project-15-terminal-bench-literature-review.pdf)
 - [Vietnamese literature review](../research/project-15-terminal-bench-literature-review-vi.md)
 - [Vietnamese PDF literature review](../research/project-15-terminal-bench-literature-review-vi.pdf)
 - [Team task tracker](team-task-tracker.md)
+- [Harness design Q&A](harness-design-qa.md) — input for P15-013, mapping teammate questions to the lit review's planned experiments
+- [Cost & runtime notes](cost-and-runtime-notes.md) — input for P15-011; real leaderboard cost data, and why runtime needs the P15-009 smoke test to answer
 - [Individual contribution log template](individual-contribution-log-template.md)
+- [Week 2 individual report guidance](week-02-individual-report-guidance.md) — what's actually true this week, corrected reading assignments, real evidence gap
 - [Experiment register](experiment-register.md)
 - [Meeting and decision log](meeting-and-decision-log.md)
 - [Capstone topic brief](../sources/capstone-topic-picker-2026.md)
 - [Kickoff requirements](../sources/36127-kickoff-requirements-spring-2026.md)
+
+### Terminal-Bench leaderboard snapshots
+
+Point-in-time captures, named `leaderboard-snapshot-<YYYY-MM-DD>.md` — take a fresh one before the Week 3 baseline freeze and Week 9 final-evaluation freeze per the live-source-recheck rule in `team-task-tracker.md`.
+
+- [5 Aug 2026](leaderboard-snapshot-2026-08-05.md) — full table + model-grouped analysis; surfaced that Fable 5, not Sonnet 5, is the top-scoring model
+
+### Weekly mentor-meeting agendas
+
+One file per weekly mentor catchup, named `week-<NN>-mentor-agenda-<YYYY-MM-DD>.md` (zero-padded week number first so files sort correctly past Week 9, date kept for provenance). Week number is the primary key because it's what the rest of this project's docs (task tracker, meeting log) organize around.
+
+- [Week 2 — 5 Aug 2026](week-02-mentor-agenda-2026-08-05.md)
 
 ## Workstreams
 

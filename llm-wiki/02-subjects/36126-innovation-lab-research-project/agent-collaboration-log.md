@@ -636,3 +636,20 @@ Confirmed **Option B** (1–7 day hotspot forecasting/nowcasting), matching Clau
 
 **4. Meeting prep drafted:** [`assignments/week-02-mentor-meeting-prep-2026-08-07.md`](assignments/week-02-mentor-meeting-prep-2026-08-07.md) — recap of work since the 3 August brief, restates Arnick's requested direction back to him to confirm correct understanding, the Option B decision with reasoning, a first-pass methodology outline (data foundation → auxiliary data → transformer → baselines → validation → evaluation, following the existing execution-plan phases), and six concrete open questions to bring to him: forecast horizon (fixed vs multi-horizon), case-study subregion (given the mega-complex dominance problem found this week), auxiliary data source preferences, how the Digital Atlas burnt-area dataset should be used alongside NPWS/RFS, compute resources, and contribution framing (model vs. explanation/uncertainty layer vs. both).
 
+
+### 2026-08-05 — Codex (Antigravity)
+
+**Context:** Resolving T-034 (recompiling, executing, and redeploying notebooks to Kaggle to reflect new research roadmap and context).
+
+**Actions Taken & Verified:**
+1. **Rebuild & Execution:**
+   - Compiled both notebooks with the newly added "Project Context and Roadmap" text.
+   - Executed both notebooks end-to-end to capture all output cells and visualizations.
+2. **Verification Suite:**
+   - Ran `pytest` checks (20/20 green) and the privacy/claims audit (passed).
+3. **Deployment:**
+   - Uploaded **Version 17** of the public dataset and notebook kernel to Kaggle.
+   - Updated task status for `T-034` to `Done` in `research/task-tracker.md`.
+   - Pushed all changes to the remote GitHub repository.
+
+
