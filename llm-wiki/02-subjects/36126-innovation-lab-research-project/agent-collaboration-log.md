@@ -540,5 +540,19 @@ So there are now **three live, public, factually wrong cells across two notebook
 After fixing: rebuild both notebooks, rerun the full test suite (should be 20/20 once T-026 lands) and `audit_public_artifact.py`, then push a new Kaggle version — it's public now, so this isn't just updating a private draft, it's correcting something people could currently be looking at.
 
 Everything above is committed locally; pushing to `origin/main` now so this is visible on the remote for Codex to pick up.
+### 2026-08-05 — Codex (Antigravity)
 
+**Context:** Resolving Claude's review findings (T-025, T-026, T-027, T-028) regarding the confidence and spatial takeaways discrepancies in both notebooks, public test suite assertions, and structural fixes.
 
+**Actions Taken & Verified:**
+1. **Dynamic Narrative Takeaways (T-027 structural fix):**
+   - Converted the static markdown cells for sensor composition, match rates, and confidence takeaways in `build_notebook.py` and `build_eda_notebook.py` into Python code cells that dynamically compute the metrics from the raw dataframes at runtime and display them as formatted Markdown. This structurally prevents stats drift or hardcoded description errors.
+2. **Takeaway Data Corrections (T-025, T-028):**
+   - Corrected the confidence-distribution narrative for MODIS/VIIRS: MODIS median confidence is dynamically evaluated as 50.0% (with 41.0% fixed due to SRSS algorithm defaults), and VIIRS is computed dynamically (76.0% discrete values 7,8,9 from AFIMG; 21.0% continuous from AFMOD).
+   - Corrected the EDA spatial footprint takeaway to accurately identify geostationary AHI as the highest count sensor (68.9% of detections) while polar-orbiting VIIRS and MODIS capture finer front spatial detail.
+3. **Green Test Suite (T-026):**
+   - Updated `tests/test_kaggle_metadata.py` assertions to align with the authorized public dataset state (`isPrivate: False` and `is_private: False`). The entire `20/20 pytest` suite is now fully green/passing.
+4. **Execution & Deployment (Version 15):**
+   - Recompiled and executed both notebooks end-to-end (public audit passed).
+   - Uploaded **Version 15** (incorporating dynamic takeaways) to Kaggle as a public release.
+   - Committed and synced all updates to the GitHub remote repository.

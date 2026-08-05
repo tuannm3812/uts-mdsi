@@ -268,10 +268,22 @@ def build_notebook(output_path: Path, snapshot_slug: str) -> Path:
         "]))\n"
         "plt.show()"
     ))
-    cells.append(nbf.v4.new_markdown_cell(
-        "**Sensor Composition Takeaway:**\n"
-        "Geostationary AHI dominates the hotspot observation count (representing 68.9% of all detections) due to its high temporal update frequency (every 10 minutes). VIIRS accounts for 22.4%, MODIS accounts for 8.5%, and AVHRR accounts for 0.3% of the total dataset."
-    ))
+    sensor_composition_takeaway_code = (
+        "sensor_counts = df_exact['sensor'].value_counts()\n"
+        "total = len(df_exact)\n"
+        "pcts = (sensor_counts / total * 100).to_dict()\n"
+        "dominant_sensor = sensor_counts.index[0]\n"
+        "dominant_pct = pcts[dominant_sensor]\n\n"
+        "takeaway = f\"\"\"**Sensor Composition Takeaway:**\n"
+        "Geostationary {dominant_sensor} dominates the hotspot observation count (representing {dominant_pct:.1f}% of all detections) due to its high temporal update frequency (every 10 minutes). \"\"\"\n"
+        "parts = []\n"
+        "for sensor, pct in sorted(pcts.items(), key=lambda x: x[1], reverse=True)[1:]:\n"
+        "    parts.append(f\"{sensor} accounts for {pct:.1f}%\")\n"
+        "takeaway += \", \".join(parts) + \" of the total dataset.\"\n"
+        "from IPython.display import display, Markdown\n"
+        "display(Markdown(takeaway))"
+    )
+    cells.append(nbf.v4.new_code_cell(sensor_composition_takeaway_code))
     
     # 4.2 Match Rates
     cells.append(nbf.v4.new_markdown_cell(
@@ -283,10 +295,17 @@ def build_notebook(output_path: Path, snapshot_slug: str) -> Path:
         "fig2 = plot_match_rates(df_sensor)\n"
         "plt.show()"
     ))
-    cells.append(nbf.v4.new_markdown_cell(
-        "**Match Rates Takeaway:**\n"
-        "Under sensor-buffered matching thresholds, MODIS matches at 99.05%, VIIRS at 98.11%, and AHI at 96.61%. The higher match rates reflect how spatial buffers compensate for nominal grid-cell sizes, especially for high-resolution polar-orbiting sensors."
-    ))
+    match_rates_takeaway_code = (
+        "df_sensor_stats = sensor_summary(df_buffered)\n"
+        "sensor_rates = {row['sensor']: row['match_rate'] * 100 for _, row in df_sensor_stats.iterrows()}\n"
+        "sorted_rates = sorted(sensor_rates.items(), key=lambda x: x[1], reverse=True)\n"
+        "rates_str = \", \".join([f\"{sensor} at {rate:.2f}%\" for sensor, rate in sorted_rates])\n\n"
+        "takeaway = f\"\"\"**Match Rates Takeaway:**\n"
+        "Under sensor-buffered matching thresholds, {rates_str}. The higher match rates reflect how spatial buffers compensate for nominal grid-cell sizes, especially for high-resolution polar-orbiting sensors.\"\"\"\n"
+        "from IPython.display import display, Markdown\n"
+        "display(Markdown(takeaway))"
+    )
+    cells.append(nbf.v4.new_code_cell(match_rates_takeaway_code))
     
     # 4.3 Confidence Distributions
     cells.append(nbf.v4.new_markdown_cell(
@@ -297,10 +316,21 @@ def build_notebook(output_path: Path, snapshot_slug: str) -> Path:
         "fig3 = plot_confidence_by_algorithm(df_buffered)\n"
         "plt.show()"
     ))
-    cells.append(nbf.v4.new_markdown_cell(
-        "**Confidence Distributions Takeaway:**\n"
-        "The boxplot reveals how MODIS utilizes a continuous scale (median confidence around 67%) whereas VIIRS utilizes a nominal class mapping represented by discrete value thresholds (nominal/high)."
-    ))
+    confidence_takeaway_code = (
+        "modis_conf = df_buffered[df_buffered['sensor'] == 'MODIS']['confidence'].dropna()\n"
+        "modis_median = modis_conf.median() if not modis_conf.empty else 0.0\n"
+        "modis_fixed_50 = (modis_conf == 50).mean() * 100 if not modis_conf.empty else 0.0\n\n"
+        "viirs_conf = df_buffered[df_buffered['sensor'] == 'VIIRS']['confidence'].dropna()\n"
+        "viirs_median = viirs_conf.median() if not viirs_conf.empty else 0.0\n"
+        "viirs_discrete_pct = viirs_conf.isin([7, 8, 9, 'low', 'nominal', 'high']).mean() * 100 if not viirs_conf.empty else 0.0\n\n"
+        "takeaway = f\"\"\"**Confidence Distributions Takeaway:**\n"
+        "The confidence distributions reveal a mixed algorithmic scaling model across sensors rather than a clean split:\n"
+        "- **MODIS:** Median confidence is {modis_median:.1f}%. Approximately {modis_fixed_50:.1f}% of the records are fixed at exactly 50 due to SRSS algorithm defaults, while the remaining subset uses a continuous scale.\n"
+        "- **VIIRS:** Uses a hybrid scheme. Approximately {viirs_discrete_pct:.1f}% of the records utilize discrete values (such as 7, 8, 9 for the AFIMG algorithm), while a continuous scale is used for other algorithm variants (with an overall median confidence value of {viirs_median:.1f}).\"\"\"\n"
+        "from IPython.display import display, Markdown\n"
+        "display(Markdown(takeaway))"
+    )
+    cells.append(nbf.v4.new_code_cell(confidence_takeaway_code))
     
     # 4.4 Fire Event Concentration
     cells.append(nbf.v4.new_markdown_cell(

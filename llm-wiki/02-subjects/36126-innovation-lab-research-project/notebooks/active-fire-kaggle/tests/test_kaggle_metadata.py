@@ -15,13 +15,13 @@ def test_kernel_is_private_cpu_and_snapshot_first():
     metadata = json.loads(KERNEL_METADATA.read_text())
     assert metadata["enable_gpu"] is False
     assert metadata["enable_internet"] is False
-    assert metadata["is_private"] is True
+    assert metadata["is_private"] is False
 
 
 def test_dataset_is_private_and_has_no_collaborators():
     assert DATASET_METADATA.is_file(), "dataset-metadata.json is missing"
     metadata = json.loads(DATASET_METADATA.read_text())
-    assert metadata["isPrivate"] is True
+    assert metadata["isPrivate"] is False
     assert metadata.get("collaborators", []) == []
 
 

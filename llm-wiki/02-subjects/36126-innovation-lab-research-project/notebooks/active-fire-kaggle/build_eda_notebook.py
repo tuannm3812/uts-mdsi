@@ -219,12 +219,20 @@ def build_eda_notebook(output_path: Path, snapshot_slug: str) -> Path:
     )
     cells.append(nbf.v4.new_code_cell(spatial_plot_code))
     
-    spatial_takeaway = (
-        "### Spatial Visual Interpretation:\n"
+    spatial_takeaway_code = (
+        "sensor_counts = df_hotspots['sensor'].value_counts()\n"
+        "total = len(df_hotspots)\n"
+        "pcts = (sensor_counts / total * 100).to_dict()\n"
+        "ahi_pct = pcts.get('AHI', 0.0)\n"
+        "viirs_pct = pcts.get('VIIRS', 0.0)\n"
+        "modis_pct = pcts.get('MODIS', 0.0)\n\n"
+        "takeaway = f\"\"\"### Spatial Visual Interpretation:\n"
         "- **High Density Regions:** The hotspots are heavily clustered within the outline of the two major mega-complexes.\n"
-        "- **Sensor Footprints:** VIIRS accounts for the highest density of detections due to its high nominal spatial resolution (375m pixels) compared to MODIS's larger footprint (1km pixels). AHI shows a wider, scattered spatial distribution due to its geostationary 2km resolution."
+        "- **Sensor Footprints:** Geostationary AHI represents the vast majority of detections by count ({ahi_pct:.1f}%) due to its high temporal frequency, though it exhibits a coarser spatial grid layout. Polar-orbiting VIIRS ({viirs_pct:.1f}%) and MODIS ({modis_pct:.1f}%) capture finer spatial detail, highlighting specific active front lines at higher resolutions.\"\"\"\n"
+        "from IPython.display import display, Markdown\n"
+        "display(Markdown(takeaway))"
     )
-    cells.append(nbf.v4.new_markdown_cell(spatial_takeaway))
+    cells.append(nbf.v4.new_code_cell(spatial_takeaway_code))
     
     # Attribute Distributions
     cells.append(nbf.v4.new_markdown_cell(
@@ -277,12 +285,20 @@ def build_eda_notebook(output_path: Path, snapshot_slug: str) -> Path:
     )
     cells.append(nbf.v4.new_code_cell(attr_plot_code))
     
-    attr_takeaway = (
-        "### Attribute Analysis Takeaways:\n"
+    attr_takeaway_code = (
+        "modis_conf = df_hotspots[df_hotspots['sensor'] == 'MODIS']['confidence'].dropna()\n"
+        "modis_median = modis_conf.median() if not modis_conf.empty else 0.0\n"
+        "modis_fixed_50 = (modis_conf == 50).mean() * 100 if not modis_conf.empty else 0.0\n\n"
+        "viirs_conf = df_hotspots[df_hotspots['sensor'] == 'VIIRS']['confidence'].dropna()\n"
+        "viirs_median = viirs_conf.median() if not viirs_conf.empty else 0.0\n"
+        "viirs_discrete_pct = viirs_conf.isin([7, 8, 9, 'low', 'nominal', 'high']).mean() * 100 if not viirs_conf.empty else 0.0\n\n"
+        "takeaway = f\"\"\"### Attribute Analysis Takeaways:\n"
         "- **FRP vs. Temperature:** Detections are highly clustered at lower power ranges, with a few high-temperature, high-power outliers representing active crown-fire fronts. VIIRS captures a broader range of low-power fires compared to MODIS.\n"
-        "- **Confidence Scales:** Different sensors use different confidence mappings. VIIRS uses discrete categories (e.g. low/nominal/high) mapped to numeric representations, whereas MODIS utilizes a continuous scale from 0 to 100%. This requires special handling in joint model frameworks."
+        "- **Confidence Scales:** Different sensors use different confidence mappings. MODIS median confidence is {modis_median:.1f}%, with {modis_fixed_50:.1f}% of records fixed at exactly 50 due to SRSS algorithm constraints. VIIRS is a hybrid scale where {viirs_discrete_pct:.1f}% of records use discrete confidence categories (such as 7, 8, 9 for the AFIMG algorithm), while a continuous scale is used for other algorithm variants (overall median confidence: {viirs_median:.1f}). This requires special handling in joint model frameworks.\"\"\"\n"
+        "from IPython.display import display, Markdown\n"
+        "display(Markdown(takeaway))"
     )
-    cells.append(nbf.v4.new_markdown_cell(attr_takeaway))
+    cells.append(nbf.v4.new_code_cell(attr_takeaway_code))
     
     # Invariants Validation
     cells.append(nbf.v4.new_markdown_cell(
