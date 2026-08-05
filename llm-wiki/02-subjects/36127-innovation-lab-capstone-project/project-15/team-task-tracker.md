@@ -36,7 +36,7 @@
 | P15-003 | 1 | 30 Jul | Research | Summarise Terminal-Bench benchmark contract and failure taxonomy | Manh Tuan Nguyen | Daniel Alexander | High | In progress | Literature review | One-page evidence note |
 | P15-004 | 1 | 30 Jul | Research | Summarise SWE-agent ACI design and ablations | Manu Sasikanth Oruvilakode | Mukesh Murugesan | High | In progress | Literature review | One-page evidence note |
 | P15-005 | 1 | 31 Jul | Research | Summarise OpenHands, Agentless, and OpenHands SDK implications | Faisal Shoaib | Manh Tuan Nguyen | High | In progress | Literature review | Comparison notes |
-| P15-006 | 1 | 31 Jul | Planning | Consolidate mentor questions, risks, terminology, and project assumptions | Yash Raj Singh | Manu Sasikanth Oruvilakode | High | Not started | P15-003 to P15-005 | First mentor agenda |
+| P15-006 | 1 | 31 Jul | Planning | Consolidate mentor questions, risks, terminology, and project assumptions | Yash Raj Singh | Manu Sasikanth Oruvilakode | High | In review | P15-003 to P15-005 | [first-mentor-agenda.md](first-mentor-agenda.md) |
 | P15-007 | 2 | 4 Aug | Infrastructure | Install Docker and Harbor on primary environment; record versions | Daniel Alexander | Manu Sasikanth Oruvilakode | Critical | Not started | P15-001 | Reproducible setup record |
 | P15-008 | 2 | 4 Aug | Infrastructure | Establish a second independent Harbor environment for reproducibility | Mukesh Murugesan | Faisal Shoaib | High | Not started | P15-001 | Second-machine verification |
 | P15-009 | 2 | 5 Aug | Benchmark | Run the official five-task oracle smoke test and archive results | Manh Tuan Nguyen | Yash Raj Singh | Critical | Not started | P15-007 | Harbor job output |

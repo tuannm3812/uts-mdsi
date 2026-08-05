@@ -79,3 +79,14 @@ Still waiting on Tuan for: which team (15-1/15-2/other), real member names, team
 **Notes:** Recorded as decision D-001 in [meeting-and-decision-log.md](meeting-and-decision-log.md) and reflected in [README.md](README.md) Current Status. Group name is the one remaining unresolved item from the mentor's action list.
 
 **Open questions / follow-ups:** Group name — once picked, update README.md and the meeting log. Also still open: real Week 1 evidence for P15-001/002/006, and whether Team iLab 15-2 is a second Project 15 group worth coordinating with.
+
+### 2026-08-05 — Antigravity
+
+**Context:** Preparing for the first mentor meeting tonight at 6:30 PM (Wednesday catchup) and checking Codex/Claude progress on literature reviews and mentor questions.
+
+**Notes:** Codex verified the git history and highlighted that although literature reviews are prepared in `research/`, task statuses P15-001 through P15-006 should remain in-progress or not started until team members provide actual evidence of completion. Claude verified the verbatim Project 15 brief and confirmed the teams, mentor (William Feng), and slot (6:30–7:00 PM Wednesday).
+
+**Action taken:** Compiled the 10 core questions and background context from the literature review into a formal, standalone agenda document at [first-mentor-agenda.md](first-mentor-agenda.md) to address task P15-006. Marked task P15-006 as "In review" on the tracker.
+
+**Open questions / follow-ups:** Group name is still pending. Tuan should use the drafted agenda for the meeting tonight and fill in the decisions and actions in [meeting-and-decision-log.md](meeting-and-decision-log.md) immediately afterward to satisfy the Week 2 milestone.
+

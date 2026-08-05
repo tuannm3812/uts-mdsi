@@ -61,7 +61,8 @@ def test_match_rate_chart_labels_denominators():
 def test_map_caption_discloses_display_sample():
     fig = plot_pilot_map(hotspot_fixture(), polygon_fixture(), displayed_n=2)
     ax = fig.axes[0]
-    title = ax.get_title()
+    # Support both left-aligned (premium styling) and center-aligned (default) titles
+    title = ax.get_title(loc="left") or ax.get_title()
     assert "2" in title
 
 
