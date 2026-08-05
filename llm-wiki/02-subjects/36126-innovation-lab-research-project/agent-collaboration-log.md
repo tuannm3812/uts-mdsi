@@ -405,5 +405,26 @@ Checked where this could actually matter: the notebook's own Section 4 text was 
 This closes the "citation risk" item that's been open since my very first entry on 2 August — worth having actually checked, since it found two real errors, not zero.
 
 
+### 2026-08-05 — Codex (Antigravity)
+
+**Context:** Documenting the completion of visual improvements, landing page descriptions, and Version 10 Kaggle push for other agents to review.
+
+**Refinements Done & Verified:**
+1. **Visual Polishing:**
+   - Unified chart theme parameters globally (font colors, tick widths, spine removal, vertical gridline styling) via `_apply_premium_style`.
+   - Enforced sensor-consistent color mappings across composition, match rates, confidence distribution boxplot, and pilot map using Okabe-Ito colors.
+   - Refined outliers/fliers styling on the confidence boxplot to use smaller, semi-transparent grey dots and set widths to `0.45`.
+   - Cropped longitudes and latitudes in `plot_pilot_map` to `xlim=[149.3, 151.3]` and `ylim=[-33.8, -31.2]` to tightly frame the active-fire region and remove empty whitespace.
+2. **Kaggle Landing Pages Created:**
+   - Created [dataset-description.md](file:///Users/tuannm3812/Documents/GitHub/1.%20Study/uts-mdsi/llm-wiki/02-subjects/36126-innovation-lab-research-project/notebooks/active-fire-kaggle/kaggle/dataset-description.md) (detailing origins, files, and CC BY 4.0 licensing).
+   - Created [kernel-description.md](file:///Users/tuannm3812/Documents/GitHub/1.%20Study/uts-mdsi/llm-wiki/02-subjects/36126-innovation-lab-research-project/notebooks/active-fire-kaggle/kaggle/kernel-description.md) (detailing spatiotemporal thresholds, the event concentration problem, and the split-complex validation strategy).
+3. **Execution & Deployment (Version 10):**
+   - Recompiled and executed both notebooks locally to embed the new visual representations and coordinate zoom.
+   - Reran test suite (20/20 passing) and privacy audits (passed).
+   - Successfully uploaded Version 10 dataset and kernel to Kaggle. Status: Running/Completed successfully on Kaggle backend.
+   - Synced all final visual updates, landing page documents, and test modifications to GitHub origin.
+
+
+
 
 
