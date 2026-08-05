@@ -2,19 +2,20 @@
 
 Shared, append-only log for open discussion between Tuan, Claude, and Codex while working on the 36126 Research Project (transparent fire-hotspot detection and active-fire monitoring, supervised by Dr Arnick Abdollahi). Use it to hand off context between tools, think out loud, flag questions, and record findings that aren't yet formal decisions.
 
+**Task status and formal decisions no longer live here** — see [research/task-tracker.md](research/task-tracker.md) for "what's done / what's left" and [research/decision-log.md](research/decision-log.md) for settled decisions with rationale. This file is for discussion, review requests, and handoffs only; read the entries below for history and context, but check the tracker first for current status.
+
 ## How to use this log
 
 - Append new entries at the bottom, in chronological order. Do not edit or delete past entries — correct forward instead.
 - Every entry needs a date/time, an author tag, and a short context line.
-- If an entry raises something unresolved, add it to **Open questions** below and remove it from there once it's answered (with a pointer to the entry that resolved it).
+- When a discussion here resolves into a settled decision or a task moving to Done, record it in `decision-log.md` or `task-tracker.md` — don't leave it only in this log where it's hard to find later.
+- If an entry raises something unresolved that isn't yet a tracked task, add it to **Open questions** below and remove it once it's answered (with a pointer to the entry that resolved it).
 - Keep entries conversational — this is a scratchpad for thinking together, not a polished deliverable.
 - Any of the three participants (Tuan, Claude, Codex) can read, append to, or respond in this file.
 
 ## Open questions
 
-- The 11 papers cited in the sent brief are now verified against Crossref/arXiv (2 citation errors found and fixed — see Claude's 5 August entry below). Three matrix rows not cited in the brief are still unverified: `Giglio2003MODIS`, `FireCluster2026`, `MTGFCI2026` — lower urgency since they haven't gone to Arnick, but check before citing them anywhere external.
-- Dr Arnick's response to the 3 August brief — not yet received as of 5 August. The brief itself is confirmed sent (see Tuan's 5 August entry below).
-- The NSW-RFS-vs-NPWS figure inconsistency between the sent brief and the private Kaggle notebook is now reconciled into one conclusion (see Claude's 5 August entry below) and a ready-to-send follow-up addendum has been prepared — send it once Arnick responds.
+- Dr Arnick's response to the 3 August brief — tracked as T-008 in `task-tracker.md`. Once it arrives, log the substance here first, then update the tracker/decision-log.
 
 ## Entries
 
@@ -423,6 +424,32 @@ This closes the "citation risk" item that's been open since my very first entry 
    - Reran test suite (20/20 passing) and privacy audits (passed).
    - Successfully uploaded Version 10 dataset and kernel to Kaggle. Status: Running/Completed successfully on Kaggle backend.
    - Synced all final visual updates, landing page documents, and test modifications to GitHub origin.
+
+### 2026-08-05 — Claude
+
+**Context:** Tuan asked me to review this round of Antigravity/Codex work and discuss. Independently verified the claims and read the two new public-facing files.
+
+**Verified, all accurate:**
+- `pytest tests` → 20 passed; `audit_public_artifact.py` → PASS on both notebooks + hash audit — matches the report exactly.
+- The "synced to GitHub origin" claim is real, not just asserted — `git fetch origin main` confirms `origin/main` is at `2bdc352`, matching local HEAD, and it includes `947cd72` (Codex committing my citation fixes and the Arnick follow-up draft from earlier today) as well as the Version 10 work. Good — nothing sitting uncommitted.
+- Read `kaggle/dataset-description.md` and `kaggle/kernel-description.md` (the public Kaggle listing text) end to end: no privacy leaks (no Arnick, no UTS subject code, no local paths), licence claims match the confirmed decision (CC BY 4.0 for both sources), and — notably — the kernel description *leads* with the event-concentration confound as a "Key Scientific Finding" rather than burying it. That's the right call for a public listing.
+- Spot-checked the new map crop (`xlim=[149.3, 151.3]`, `ylim=[-33.8, -31.2]`) against the actual pilot bounding box (`149.5–151.0°E, -33.7 to -32.3`) — the crop is strictly wider than the data extent in every direction, so it's just tighter framing, not clipped data.
+- Checked the new reproducibility-snapshot cell in `build_notebook.py` for leakage risk (e.g. `os.getcwd()`, environment dumps) — it only emits five numeric match-rate fields, nothing else.
+
+**No findings this round.** Nothing to fix, nothing blocking. Good, clean pass — the visual/documentation polish didn't reopen any of the privacy, claim-language, or reproducibility issues from earlier rounds.
+
+### 2026-08-05 — Claude
+
+**Context:** Tuan asked for help keeping the repo and this subject folder clean now that work spans multiple subjects and AI agents. Checked actual numbers before recommending anything rather than assuming.
+
+**Repo-wide cleanup:** `output/`, `tmp/`, and stray `__pycache__`/`.pyc` files were tracked in git (182 files) despite being scratch/build output — none of it source, all regenerable (kernel logs, page-by-page PDF renders, staged Kaggle geojson, compiled bytecode). Untracked all of it and added it to `.gitignore` (commit `d4014d3`). Files remain on disk, only git tracking changed. Checked whether forking 36126 into its own repo would help repo size first: it wouldn't — this subject folder is 1.6MB against a 3.7GB repo, and the actual bloat is in other subjects' large lecture/dataset folders (94693, 43008, 36106, etc., 200–700MB each), which is a separate, bigger concern out of scope for today.
+
+**Restructured this subject's tracking, mirroring 36127's already-working pattern:** this log had grown past 400 lines mixing open discussion, task status, and formal decisions — exactly why "what's remaining" required reading the whole thing instead of looking it up. Split into:
+- [research/task-tracker.md](research/task-tracker.md) — status table (Done/Blocked/Not started) for every task that's come up across the research phase and the Kaggle pipeline, cross-referenced with IDs (T-001 onward).
+- [research/decision-log.md](research/decision-log.md) — nine formal decisions extracted from this log's history (D-001 through D-009), each with rationale and evidence, so a settled call like "use NPWS, not NSW RFS" or "Gap B over Gap A/C" doesn't require re-reading the discussion that produced it.
+- [AGENTS.md](AGENTS.md) — new, mirrors 36127's subject-level agent instructions: tells any future Claude/Codex/Antigravity session to check the tracker and decision log before the collaboration log, states the citation-accuracy and privacy-boundary conventions this project has already had to learn the hard way, and reiterates the private-until-authorised Kaggle policy.
+
+This log's own header and Open Questions section now point to the tracker/decision-log and say so explicitly — going forward, status and decisions belong there, this file stays a discussion/handoff scratchpad the way it was originally meant to be.
 
 
 

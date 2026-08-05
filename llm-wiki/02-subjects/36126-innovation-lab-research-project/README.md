@@ -50,6 +50,8 @@ Source folder: `/Users/tuannm3812/Library/CloudStorage/GoogleDrive-tuannm3812@gm
 
 ## Curated Study Layer
 
+- [Task tracker](research/task-tracker.md) — what's done, blocked, or not started
+- [Decision log](research/decision-log.md) — settled decisions with rationale
 - [Agent collaboration log](agent-collaboration-log.md) — open running discussion between Tuan, Claude, and Codex
 - [Fire-Hotspot Reliability in NSW: Findings Update (sent to Dr Arnick 3 August, awaiting response)](research/supervisor-findings-brief-2026-08-03.md)
 - [Teams Message to Dr Arnick — 3 August (sent)](communications/teams-message-to-arnick-2026-08-03.md)

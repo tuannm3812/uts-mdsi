@@ -1,0 +1,23 @@
+# 36126 Research Project — Decision Log
+
+Formal decisions only — not discussion, not a proposal still being evaluated. Open discussion, review requests, and handoffs stay in [agent-collaboration-log.md](../agent-collaboration-log.md); task status stays in [task-tracker.md](task-tracker.md).
+
+## How to use this log
+
+- One row per decision, added when it's actually settled, not while it's being debated.
+- Link the collaboration-log entry or artifact that is the evidence for it.
+- Decisions are not edited after the fact. A changed decision gets a new row that references and supersedes the old one.
+
+## Decisions
+
+| ID | Date | Decision | Rationale | Evidence |
+|---|---|---|---|---|
+| D-001 | 2026-07-29 | Research scope confirmed: fire-hotspot detection and active-fire monitoring; fire-spread forecasting explicitly excluded | Dr Arnick narrowed the scope after the topic-scoping meeting | `assignments/2026-07-29-arnick-topic-meeting-summary.md` |
+| D-002 | 2026-08-03 | `supervisor-findings-brief-2026-08-03.md` is the single canonical document for external communication with Dr Arnick; the two earlier drafts (`preliminary-findings...`, `active-fire-materials-summary...`) are retained as history only | Two overlapping drafts with two different outreach messages risked confusing or duplicate communication | Collaboration log, 2026-08-03 (Codex) |
+| D-003 | 2026-08-03 | Public Kaggle notebook design approved: hybrid snapshot-default/live-refresh-optional, six major public sections, private upload first, no supervision content in the public artifact | Balances reproducibility with privacy; matches Tuan's stated requirements | `docs/superpowers/specs/2026-08-03-public-kaggle-active-fire-notebook-design.md`, resolved after Claude's design review |
+| D-004 | 2026-08-03 | Kaggle implementation plan (7 tasks) approved for execution | All 7 of Claude's plan-review findings accepted and folded in before build started | `docs/superpowers/plans/2026-08-03-public-kaggle-active-fire-notebook.md` |
+| D-005 | 2026-08-04 | **Licence Decision B**: NSW RFS Feature Service licence is unconfirmed (empty `licenseInfo`, no exact CC version) and cannot be redistributed publicly; NPWS Fire History (explicit CC BY 4.0) replaces it as the public-facing reference source, with a full pilot rerun | Direct check of the NSW ArcGIS item metadata found no authoritative licence; NPWS is explicitly and unambiguously licensed | `sources/data/nsw-fire-history-licence-decision.md` |
+| D-006 | 2026-08-03 | Gap B (reference-data and sensor-confidence reliability audit) recommended as the initial research contribution, over Gap A (multi-sensor model) and Gap C (label-efficient temporal adaptation) | Matches what the completed pilot data can actually support; Gap A retained as a conditional extension, Gap C set aside for the semester | `research/supervisor-findings-brief-2026-08-03.md` |
+| D-007 | 2026-08-05 | The 17.1% (NSW RFS) vs 97.12% (NPWS) match-rate figures are reconciled into one conclusion: neither reference granularity (narrow incident-level vs broad complex-level) currently supports point-in-time or event-level hotspot reliability testing in NSW — this extends, not contradicts, D-006 | Root-caused the discrepancy to reference-polygon scale, not sensor performance; both pilots argue the same direction from opposite sides | Collaboration log, 2026-08-05 (Claude) |
+| D-008 | ongoing since 2026-08-03 | Public Kaggle dataset/kernel visibility stays private until Tuan gives explicit authorisation to publish | Deliberate control point before anything research-related becomes public | Design spec §Publication state; reaffirmed collaboration log 2026-08-05 |
+| D-009 | 2026-08-05 | Split `agent-collaboration-log.md` into three files: the log (discussion/handoff only), `task-tracker.md` (status), and this decision log (formal decisions) | The log had grown past 400 lines mixing discussion, status, and decisions, making "what's left" hard to answer without reading the whole thing | Collaboration log, 2026-08-05 (Claude), at Tuan's request |
