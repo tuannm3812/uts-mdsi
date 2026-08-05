@@ -43,6 +43,11 @@ def build_notebook(output_path: Path, snapshot_slug: str) -> Path:
         f'# Execution Configuration\n'
         f'EXECUTION_MODE = "snapshot"  # Options: "snapshot", "live_refresh"\n'
         f'SNAPSHOT_SLUG = "{snapshot_slug}"\n\n'
+        f'# Spatiotemporal Matching Configurations\n'
+        f'TEMPORAL_GRACE_DAYS = 1.0  # Temporal window tolerance in days\n'
+        f'DISPLAY_SAMPLE_SIZE = 1000  # Number of hotspots to display on pilot map\n'
+        f'RANDOM_SEED = 36126        # Random seed for reproducibility\n\n'
+        f'# Standard Library Imports\n'
         f'import json\n'
         f'import hashlib\n'
         f'import os\n'
@@ -50,7 +55,8 @@ def build_notebook(output_path: Path, snapshot_slug: str) -> Path:
         f'from pathlib import Path\n'
         f'from datetime import datetime, timedelta, timezone\n'
         f'import math\n'
-        f'from typing import Dict, List, Tuple, Optional, Sequence, Iterable\n'
+        f'from typing import Dict, List, Tuple, Optional, Sequence, Iterable\n\n'
+        f'# Third-Party Library Imports\n'
         f'import pandas as pd\n'
         f'import numpy as np\n'
         f'import matplotlib.pyplot as plt\n'
@@ -201,13 +207,13 @@ def build_notebook(output_path: Path, snapshot_slug: str) -> Path:
         "prepared_features = prepare_features(features)\n\n"
         "normalized_hotspots = [normalize_hotspot(h) for h in dea_data['features']]\n\n"
         "print('Running exact matching...')\n"
-        "exact_classified = [classify_hotspot(h, prepared_features, grace_days=1, spatial_buffer_km=0.0) for h in normalized_hotspots]\n"
+        "exact_classified = [classify_hotspot(h, prepared_features, grace_days=TEMPORAL_GRACE_DAYS, spatial_buffer_km=0.0) for h in normalized_hotspots]\n"
         "df_exact = pd.DataFrame(exact_classified)\n\n"
         "print('Running sensor-buffered matching...')\n"
         "buffered_classified = []\n"
         "for h in normalized_hotspots:\n"
         "    accuracy_val = parse_accuracy_km(h.get('accuracy'))\n"
-        "    buffered_classified.append(classify_hotspot(h, prepared_features, grace_days=1, spatial_buffer_km=accuracy_val))\n"
+        "    buffered_classified.append(classify_hotspot(h, prepared_features, grace_days=TEMPORAL_GRACE_DAYS, spatial_buffer_km=accuracy_val))\n"
         "df_buffered = pd.DataFrame(buffered_classified)\n\n"
         "# Compute headline summary metrics\n"
         "headline = headline_summary(df_exact, df_buffered)\n"
@@ -317,7 +323,7 @@ def build_notebook(output_path: Path, snapshot_slug: str) -> Path:
         "We plot the map showing matched and unresolved hotspots overlaid on fire boundaries."
     ))
     cells.append(nbf.v4.new_code_cell(
-        "fig5 = plot_pilot_map(df_buffered, features, displayed_n=1000)\n"
+        "fig5 = plot_pilot_map(df_buffered, features, displayed_n=DISPLAY_SAMPLE_SIZE)\n"
         "plt.show()"
     ))
     cells.append(nbf.v4.new_markdown_cell(
