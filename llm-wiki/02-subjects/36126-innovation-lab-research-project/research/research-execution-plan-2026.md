@@ -46,6 +46,25 @@ A concise gap brief containing:
 - The proposed scope can be executed with public or supervisor-provided data.
 - Ethics and confidentiality risks remain low.
 
+## Week calendar
+
+Weeks run Wednesday–Tuesday, starting from the 29 July topic-scoping meeting. New dated files in this subject use a `week-NN-description-YYYY-MM-DD.md` prefix so files sort and group by week; existing files aren't being retroactively renamed, this applies going forward only.
+
+| Week | Dates | Notable |
+|---|---|---|
+| 1 | 29 Jul – 4 Aug 2026 | Topic scoping, first research sprint, gap brief |
+| 2 | 5 Aug – 11 Aug 2026 | Reliability pilot, NPWS pivot, Kaggle pipeline, Arnick's D-011 direction correction, Friday 7 Aug mentor meeting |
+| 3 | 12 Aug – 18 Aug 2026 | |
+| 4 | 19 Aug – 25 Aug 2026 | |
+| 5 | 26 Aug – 1 Sep 2026 | |
+| 6 | 2 Sep – 8 Sep 2026 | |
+| 7 | 9 Sep – 15 Sep 2026 | |
+| 8 | 16 Sep – 22 Sep 2026 | |
+| 9 | 23 Sep – 29 Sep 2026 | |
+| 10 | 30 Sep – 6 Oct 2026 | |
+| 11 | 7 Oct – 13 Oct 2026 | |
+| 12 | 14 Oct – 20 Oct 2026 | |
+
 ## Semester phases
 
 | Phase | Purpose | Exit artefact |

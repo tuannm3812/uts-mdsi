@@ -372,7 +372,9 @@ def build_notebook(output_path: Path, snapshot_slug: str) -> Path:
         "### Modeling Recommendations\n"
         "For downstream machine learning and active-fire modeling:\n"
         "1. **Validation Design:** Models evaluated on datasets dominated by mega-complexes will overfit to their specific temporal and spatial footprints. Validation frameworks must implement **split-complex cross-validation**, where entire large complexes (like Gospers Mountain) are held out during training to test generalization on smaller, independent fires.\n"
-        "2. **Buffer Attribution:** While spatial buffering increases the match rate to 97.12%, its role must not be overstated. Exact matching is already 77.25% because of the immense size of the target polygons; buffering only resolves minor edge-drift (accounting for a ~20% marginal increase)."
+        "2. **Buffer Attribution:** While spatial buffering increases the match rate to 97.12%, its role must not be overstated. Exact matching is already 77.25% because of the immense size of the target polygons; buffering only resolves minor edge-drift (accounting for a ~20% marginal increase).\n\n"
+        "### Project Context and Roadmap\n"
+        "This notebook is the data-quality foundation stage of a larger applied research project, not a standalone endpoint. The reliability findings above — particularly the event-concentration and reference-granularity confounds — directly inform the next stage: building a confidence-filtered, multi-decade active-fire hotspot dataset fused with auxiliary weather and vegetation/land-cover covariates, for short-horizon (1–7 day) hotspot forecasting using a multimodal spatiotemporal transformer with cross-modal attention fusion. This pilot is not a fire-prediction system; it establishes the reference-data reliability constraints that any downstream predictive model built on this data must account for."
     ))
     
     # Section 6 Markdown

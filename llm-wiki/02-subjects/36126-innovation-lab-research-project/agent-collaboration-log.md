@@ -15,8 +15,9 @@ Shared, append-only log for open discussion between Tuan, Claude, and Codex whil
 
 ## Open questions
 
-- **T-030 — Option A (occurrence-probability + explanation + spatial maps) vs Option B (1–7 day hotspot forecasting) — Tuan's decision.** Claude's recommendation is B; see the 2026-08-05 entry for full reasoning. Needs a decision before T-031 (literature scan) or any data/pipeline work starts, per D-011.
 - File Description item on the Kaggle Usability panel — Codex applied the fix (T-029) but hasn't confirmed re-checking the live panel after Version 16. Low priority, just needs a glance.
+- The six questions in `assignments/week-02-mentor-meeting-prep-2026-08-07.md` §4 — waiting on Friday's meeting for Arnick's answers (forecast horizon, case-study subregion, auxiliary data sources, burnt-area dataset role, compute, contribution framing).
+- The notebook direction-update note (T-034) needs Codex to execute + verify + redeploy — not urgent, no rush before Friday.
 
 ## Entries
 
@@ -614,4 +615,24 @@ He explicitly asked for a literature/methodology scan on how to build this and w
 **Against B, in fairness to A:** Option A's "transparent explanation of factors" framing maps more directly onto explainability as the headline contribution, which may be an easier narrative for a non-technical audience/client than a forecasting skill metric. Spatial probability maps are also a naturally compelling deliverable. If Tuan or Arnick weight communicability of results over architectural continuity, A is defensible too — I don't think there's a wrong answer here, just a real tradeoff.
 
 **Not started yet, waiting on T-030:** the literature/methodology scan Arnick asked for (T-031) is scoped better once the option is fixed — transformer-for-forecasting and transformer-for-occurrence-probability are different enough literatures that searching before deciding risks wasted work either way.
+
+### 2026-08-05 — Tuan
+
+**Context:** Deciding between Option A and B, and setting up for Friday.
+
+Confirmed **Option B** (1–7 day hotspot forecasting/nowcasting), matching Claude's recommendation. Also: Dr Arnick wants a meeting **Friday 7 August**, so this needs preparing carefully. Asked whether the Kaggle notebook should be updated to reflect the new direction, and suggested adding week numbers to filenames for easier management going forward.
+
+### 2026-08-05 — Claude
+
+**Context:** Acting on all three of Tuan's points above.
+
+**1. Option B confirmed — D-012 recorded**, resolving T-030 and decision gates G4 (monitoring definition → short-horizon forecasting) and partially G5 (model family → transformer) in `research-execution-plan-2026.md`. T-031 (literature scan) is now unblocked and scoped to forecasting architectures specifically, not occurrence-probability ones.
+
+**2. Week numbering established.** Added a **Week calendar** to `research-execution-plan-2026.md`: weeks run Wednesday–Tuesday from the 29 July topic meeting, so Week 1 = 29 Jul–4 Aug, Week 2 = 5–11 Aug (this week, Friday's meeting included). New dated files use a `week-NN-description-YYYY-MM-DD.md` prefix going forward — not retroactively renaming existing files, since that's a bigger, riskier operation with cross-link risk across the repo that isn't worth doing under time pressure before Friday. Say if you want the older files retrofitted too and I'll do it as a separate pass.
+
+**3. Kaggle notebook — light update only, not a rebuild.** Added a short "Project Context and Roadmap" note to both notebooks (end of Section 5 in the reliability-pilot notebook, end of the EDA takeaways) explaining this pilot is the data-quality foundation stage of a larger forecasting-focused project, so the public artifact reads as current rather than orphaned relative to the new direction — without claiming anything about the forecasting model that doesn't exist yet. Deliberately **not** rebuilding it into an actual forecasting pipeline before Friday: that needs T-031 (literature scan) and T-032/033 (data sourcing) done first, and Arnick himself asked for a methodology scan before building, not a rushed prototype. Regenerated both notebooks locally, reran tests (20/20) and the audit (clean) to confirm the addition doesn't break anything structurally.
+
+**Handoff to Codex:** the two build scripts (`build_notebook.py`, `build_eda_notebook.py`) have the new text but the local `.ipynb` files are only *generated*, not *executed* — no new output cells baked in yet. Please execute both from a clean state, confirm the new note renders correctly next to the existing content, run the full verification (tests, audit), and redeploy as a new Kaggle version when convenient — no rush before Friday, this is a content-accuracy update, not an urgent fix.
+
+**4. Meeting prep drafted:** [`assignments/week-02-mentor-meeting-prep-2026-08-07.md`](assignments/week-02-mentor-meeting-prep-2026-08-07.md) — recap of work since the 3 August brief, restates Arnick's requested direction back to him to confirm correct understanding, the Option B decision with reasoning, a first-pass methodology outline (data foundation → auxiliary data → transformer → baselines → validation → evaluation, following the existing execution-plan phases), and six concrete open questions to bring to him: forecast horizon (fixed vs multi-horizon), case-study subregion (given the mega-complex dominance problem found this week), auxiliary data source preferences, how the Digital Atlas burnt-area dataset should be used alongside NPWS/RFS, compute resources, and contribution framing (model vs. explanation/uncertainty layer vs. both).
 
