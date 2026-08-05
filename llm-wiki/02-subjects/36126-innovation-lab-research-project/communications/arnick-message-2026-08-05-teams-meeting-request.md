@@ -1,6 +1,6 @@
 # Dr Arnick — Meeting Request, 5 August 2026
 
-**Status:** Received from Dr Arnick, 2026-08-05. Recorded verbatim below, not paraphrased.
+**Status:** Received from Dr Arnick, 2026-08-05. Recorded verbatim below, not paraphrased. This is the closing line of the same email as [arnick-message-2026-08-05-direction-correction.md](arnick-message-2026-08-05-direction-correction.md) — kept as a separate file because it drove its own action item (T-039), not because it's a separate message.
 
 ## Verbatim message
 
