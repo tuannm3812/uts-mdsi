@@ -1,6 +1,8 @@
-# Week 2 Mentor Meeting Prep — Friday 7 August 2026
+# Week 2 Mentor Meeting Prep — Friday 7 August 2026, 12:00pm (Teams)
 
 **Purpose:** Confirm the redirected project scope with Dr Arnick, get his decisions on the open questions below, and leave with a frozen methodology to start building against.
+
+**Time confirmed by Arnick, 2026-08-05** ([verbatim](../communications/arnick-message-2026-08-05-teams-meeting-request.md)): Friday 7 August, 12pm, to discuss "your review and findings as well this one I shared" — i.e. the reliability-audit work below and (likely) the Bushfire Historical Extents dataset in open question 4.
 
 **Backing detail:** [`research/week-02-forecasting-literature-scan-2026-08-06.md`](../research/week-02-forecasting-literature-scan-2026-08-06.md) has the full evidence table and reasoning behind §3's methodology outline — bring it along in case Arnick wants the detail.
 
