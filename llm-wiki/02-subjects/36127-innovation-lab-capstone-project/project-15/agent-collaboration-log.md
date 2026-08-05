@@ -112,3 +112,29 @@ Minor fixes: added missing team-context line to Q6, fixed a stray-space typo in 
 
 **Open questions / follow-ups:** Group name (blocking, urgent — needed before tonight). Everything else from the Open Questions list above is unaffected by this entry.
 
+### 2026-08-05 — Claude
+
+**Context:** Tuan asked for a critical assessment of the existing 10 questions (add/remove anything?) plus a single consolidated, priority-ranked master list placed *before* the "Required Agenda & Questions" section in [first-mentor-agenda.md](first-mentor-agenda.md).
+
+**Assessment:** none of the original 10 should be removed — all trace cleanly to either the literature review's 12-item "Decisions requiring mentor or client confirmation" list or the kickoff requirements, and match what's actually in [official-brief-verbatim.md](official-brief-verbatim.md). But cross-checking against that 12-item source list surfaced 2 it dropped, plus 2 more from this log's own history that never made it into any agenda draft:
+
+- **Q11 (new) — statistical standard for "beat."** Lit review's item #12, silently folded into Q6 instead of asked separately. Distinct question: not *what kind of run counts* (Q6) but *how sure do we need to be the difference is real*, which determines how many repeated trials (Q7) are actually needed.
+- **Q12 (new) — is leaderboard submission mandatory or best-effort?** Lit review's item #8. Matters because official submission needs ≥445 runs (5 trials × 89 tasks), a real budget commitment distinct from development iteration cost.
+- **Q13 (new) — coordinate baseline runs with Team iLab 15-2.** Flagged in this log back on 2 Aug (Open Questions) but never operationalized into any agenda. Real potential budget saving given $50–150/run baselines, and Will already links the two teams (his welcome message tied 15-2 to a Codex CLI check-in).
+- **Q14 (new, low priority) — group-vs-individual assessment ambiguity.** From kickoff-requirements' own conflicting slides. Flagged as probably not Will's call — redirect to Ali Anaissi unless he happens to know.
+
+**Action taken:** Added a "Master Question List — All Sources, Priority-Ranked" section directly before "Required Agenda & Questions," tiered (0=housekeeping, 1=critical/live, 2=important/live-if-time, 3=async-followup-ok, 4=probably-wrong-person). Added full detail cards for Q11–14 matching the existing Q1–10 format (question / team context / recommendation).
+
+**Open questions / follow-ups:** Same as previous entry — group name still the only blocking item.
+
+### 2026-08-05 — Claude
+
+**Context:** Tuan asked for a plain, share-with-teammates version of just the 14 questions (no internal context/recommendations), then asked to verify every one of the 14 actually has both a Team Context and a Provisional Recommendation filled in.
+
+**Action taken:**
+1. Added a "Questions to Share with the Team (plain list)" section right after the header, before all internal-notes sections — flat numbered list, question text only, explicitly labelled as copy-paste-safe for teammates.
+2. Audited all 14 detail cards in "Required Agenda & Questions." **Missing recommendations found on Q3, Q4, Q5, Q6, Q7, Q9, Q10, Q12, Q13, Q14; Q8 was missing both fields entirely.** Filled in all of them with recommendations grounded in existing project artifacts (team-task-tracker.md milestones, the official brief, prior log entries) rather than generic filler — e.g. Q9 now points at the tracker's own milestone exit-evidence definitions instead of inventing new ones, Q6/Q11 were cross-referenced so the success-definition and statistical-standard recommendations agree with each other.
+3. Verified completeness with a scripted check (grep count per question block) — all 14 now show exactly 2 matches for "Team Context" + "Provisional Recommendation."
+
+**Open questions / follow-ups:** Group name still the only blocking item before tonight's call.
+
