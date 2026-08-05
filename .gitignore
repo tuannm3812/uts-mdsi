@@ -16,3 +16,10 @@ __MACOSX/
 # Obsidian local UI state; keep vault settings, not per-machine workspace state.
 llm-wiki/.obsidian/workspace*.json
 llm-wiki/.obsidian/cache
+
+# Scratch/build output — regenerable, not source. Keep locally, don't commit.
+/output/
+/tmp/
+.pytest_cache/
+__pycache__/
+*.pyc
