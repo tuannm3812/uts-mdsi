@@ -9,7 +9,19 @@
   ],
   "isPrivate": false,
   "collaborators": [],
-  "updateFrequency": "never",
+  "expectedUpdateFrequency": "never",
+  "userSpecifiedSources": [
+    {
+      "name": "Geoscience Australia DEA Hotspots",
+      "description": "Satellite hotspot detections from MODIS, VIIRS, and AHI sensors",
+      "url": "https://hotspots.dea.ga.gov.au/"
+    },
+    {
+      "name": "NSW NPWS Fire History",
+      "description": "Historical fire boundaries and prescribed burn records in NSW",
+      "url": "https://data.nsw.gov.au/data/dataset/npws-fire-history"
+    }
+  ],
   "keywords": [
     "earth science",
     "wildfires",
