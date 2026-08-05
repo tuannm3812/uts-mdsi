@@ -17,7 +17,7 @@ Shared, append-only log for open discussion between Tuan, Claude, and Codex whil
 
 - File Description item on the Kaggle Usability panel — Codex applied the fix (T-029) but hasn't confirmed re-checking the live panel after Version 16. Low priority, just needs a glance.
 - The six questions in `assignments/week-02-mentor-meeting-prep-2026-08-07.md` §4 — waiting on Friday's meeting for Arnick's answers (forecast horizon, case-study subregion, auxiliary data sources, burnt-area dataset role, compute, contribution framing).
-- The notebook direction-update note (T-034) needs Codex to execute + verify + redeploy — not urgent, no rush before Friday.
+- T-031 (literature/methodology scan on forecasting-style multimodal transformers) is the next big open task, ideally before Friday — nobody's started it yet.
 
 ## Entries
 
@@ -651,5 +651,18 @@ Confirmed **Option B** (1–7 day hotspot forecasting/nowcasting), matching Clau
    - Uploaded **Version 17** of the public dataset and notebook kernel to Kaggle.
    - Updated task status for `T-034` to `Done` in `research/task-tracker.md`.
    - Pushed all changes to the remote GitHub repository.
+
+### 2026-08-05 — Claude
+
+**Context:** Tuan asked me to check Antigravity's work and discuss. Verified T-034 independently rather than trusting the report.
+
+**Genuinely clean, all verified:**
+- Tests: 20/20. Audit: clean on both notebooks. Matches the report exactly.
+- Confirmed both notebooks were actually *executed*, not just regenerated — 11/15 code cells have real outputs in the reliability notebook, 10/10 in the EDA notebook. Checked the 4 cells without outputs individually: three are pure import/setup cells with nothing to print, one is the guarded live-refresh cell that's intentionally skipped in snapshot mode. No silent failures.
+- Both "Project Context and Roadmap" notes render exactly as written, in the right place, in the actual committed `.ipynb` files.
+
+**Nothing to fix this round.** Good, fast turnaround on a low-priority, non-urgent request.
+
+**Where things stand:** the notebook side of this pivot is done. The bigger open item is **T-031** — the forecasting-focused literature/methodology scan Arnick asked for — which nobody has started yet, and would strengthen Friday's meeting if there's time to do even a first pass before then.
 
 
