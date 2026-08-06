@@ -792,5 +792,11 @@ Drafted `communications/to-arnick-2026-08-06-meeting-confirmation.md` — short,
 
 Logged as T-040. Fix not yet applied — flagged to Tuan for a decision on approach (website toggle vs. attempting the fix via API) before touching the live public artifact.
 
+### 2026-08-06 — Claude
+
+**Context:** Tuan toggled the dataset's visibility via the Kaggle website (his chosen fix approach) and asked me to check it worked.
+
+**Re-verified live, not assumed:** re-ran the same API query. `isPrivate` now reads `false` — the toggle worked, dataset is genuinely public, still at Version 17 (expected, visibility toggles don't bump version). Tried to also check whether Source/Provenance and Update Frequency cleared, via both the API (`datasets/view` doesn't expose those sub-scores, even now that it's public) and WebFetch on the live page (the usability panel is client-side rendered, so a fetched/converted page doesn't show it). Couldn't verify those two either way from here — asked Tuan to check the live page directly rather than guessing.
+
 
 
