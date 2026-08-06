@@ -1,11 +1,17 @@
 """Build the exploratory EDA + feature-engineering notebook.
 
-Unlike notebooks/active-fire-kaggle/build_notebook.py, this is a private,
-exploratory data-science notebook -- cells import from analysis.py directly
-rather than embedding source as literal strings, since there's no public
-self-containment requirement here.
+Kaggle kernels only receive the notebook file itself -- no sibling .py files,
+no arbitrary local paths. The first version of this generator imported from
+analysis.py directly and assumed 'data/' was the working directory; both
+worked locally (nbconvert runs with this folder as cwd) and both failed on
+Kaggle (ModuleNotFoundError, then the same problem would have hit the data
+paths) -- see T-042. Fixed by embedding analysis.py's source as a literal
+code cell (same pattern notebooks/active-fire-kaggle/build_notebook.py uses,
+now understood firsthand rather than just copied) and by walking
+/kaggle/input to find the mounted dataset directory at runtime.
 """
 
+import json
 from pathlib import Path
 import nbformat as nbf
 
@@ -37,16 +43,34 @@ def build_notebook(output_path: Path) -> Path:
     cells.append(nbf.v4.new_markdown_cell("## 1. Setup"))
     cells.append(nbf.v4.new_code_cell(
         "import json\n"
+        "import os\n"
         "from pathlib import Path\n"
         "import matplotlib.pyplot as plt\n"
-        "import pandas as pd\n\n"
-        "from analysis import (\n"
-        "    load_hotspots, load_weather, load_landcover, daily_hotspot_counts,\n"
-        "    sensor_composition, confidence_summary, rolling_dryness_features,\n"
-        "    merge_hotspots_weather, landcover_class_distribution,\n"
-        ")\n\n"
-        "DATA_DIR = Path('data')\n"
-        "config = json.loads(Path('config.json').read_text())\n"
+        "import pandas as pd"
+    ))
+
+    analysis_source = (HERE / "analysis.py").read_text()
+    # Kaggle kernels don't receive sibling .py files -- embed analysis.py's
+    # source directly, same reason notebooks/active-fire-kaggle/ does this.
+    cells.append(nbf.v4.new_markdown_cell(
+        "### Analysis functions\n\nEmbedded from `analysis.py` (Kaggle kernels don't receive sibling files)."
+    ))
+    cells.append(nbf.v4.new_code_cell(analysis_source))
+
+    config = json.loads((HERE / "config.json").read_text())
+    cells.append(nbf.v4.new_code_cell(
+        "# Same config.json used to fetch this data locally, inlined for the same reason as above.\n"
+        f"config = {json.dumps(config, indent=4)}\n\n"
+        "# Find the mounted dataset directory on Kaggle, falling back to the local\n"
+        "# dev-time 'data/' folder when run outside Kaggle.\n"
+        "DATA_DIR = None\n"
+        "for root, dirs, files in os.walk('/kaggle/input'):\n"
+        "    if 'dea_hotspots_wide.geojson' in files:\n"
+        "        DATA_DIR = Path(root)\n"
+        "        break\n"
+        "if DATA_DIR is None:\n"
+        "    DATA_DIR = Path('data')\n"
+        "print(f'Using data directory: {DATA_DIR}')\n"
         "config"
     ))
 
@@ -199,6 +223,14 @@ def build_notebook(output_path: Path) -> Path:
     ))
 
     nb["cells"] = cells
+    # Kaggle's execution runner (papermill) requires a kernelspec in notebook
+    # metadata -- nbf.v4.new_notebook() leaves this empty. Missing it doesn't
+    # break local nbconvert execution (more lenient), only Kaggle's, which is
+    # exactly why this passed local checks but failed live (T-042).
+    nb["metadata"] = {
+        "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
+        "language_info": {"name": "python"},
+    }
     output_path.write_text(nbf.writes(nb))
     return output_path
 

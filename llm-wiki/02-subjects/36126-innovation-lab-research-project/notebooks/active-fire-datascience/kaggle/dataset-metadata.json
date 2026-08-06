@@ -49,10 +49,6 @@
     {
       "path": "landcover_sample.json",
       "description": "DEA Land Cover classification sampled at ~500 unique hotspot locations."
-    },
-    {
-      "path": "active_fire_data_exploration.ipynb",
-      "description": "EDA and feature-engineering exploration notebook."
     }
   ]
 }

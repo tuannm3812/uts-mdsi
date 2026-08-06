@@ -855,5 +855,19 @@ Logged as T-040. Fix not yet applied — flagged to Tuan for a decision on appro
 
 **Explicit gap left for next time, not attempted:** wind data (SILO doesn't have it — needs BOM or ERA5), land-cover is annual not sub-annual vegetation *condition*, and the 500-point land-cover sample isn't exhaustive. All three noted directly in the notebook's "Next steps" section rather than glossed over.
 
+### 2026-08-06 — Claude
+
+**Context:** Tuan reported the T-041 notebook failed on Kaggle, and separately asked why the notebooks need to be put inside the datasets at all — a question about the pipeline's own design, not just a bug report.
+
+**Checked live status, which I should have done the first time.** `kaggle kernels status` showed `KernelWorkerStatus.ERROR` — my earlier "verification" only checked local execution and the CLI's "upload successful" message, never the actual Kaggle-side run. Pulled the log (`kaggle kernels output`) to get the real traceback rather than guessing.
+
+**First error: `ValueError: No kernel name found in notebook and no override provided.`** `nbf.v4.new_notebook()` leaves `metadata.kernelspec` unset. Local `nbconvert` doesn't care; Kaggle's runner (papermill) requires it. Compared against the working public notebook's metadata to get the right values, fixed, regenerated, re-executed locally (still 0 errors, proving local success alone was never going to catch this), re-pushed.
+
+**Second error, after re-pushing: `ModuleNotFoundError: No module named 'analysis'`.** This is the actual answer to Tuan's design question. Kaggle kernels receive *only the notebook file* — no sibling `.py` files, and relative paths like `data/` or `config.json` don't exist on Kaggle's filesystem, only whatever's mounted under `/kaggle/input/`. My `analysis.py`-import design worked locally purely because `nbconvert` runs with this folder as its working directory — it was never going to work on Kaggle. This is *why* `notebooks/active-fire-kaggle/build_notebook.py` embeds all its source as literal code-cell strings instead of importing — a convention I'd copied structurally (the `.ipynb`-as-dataset-resource pattern) without understanding the reason for it, until this broke and forced the question.
+
+**Fixed properly, not worked around:** embedded `analysis.py`'s actual source as a literal cell (read at build time, not hand-copied — so it can't drift from the real file), inlined `config.json`'s content the same way, and added the same `/kaggle/input` directory-walk the public pipeline uses to find the mounted dataset at runtime instead of assuming a path. Also removed the notebook from the dataset's own `resources` list while at it — copying that from the public pipeline's structure was unnecessary duplication for a private, single-owner notebook; the notebook belongs only in the kernel.
+
+**Verified via Kaggle's own execution, not just a clean push.** Polled `kaggle kernels status` in a loop until `COMPLETE` (took 3 pushes total to get there — worth being upfront that this took genuine trial and error, not a one-shot fix), then downloaded the actual execution log: found the dataset via `/kaggle/input/datasets/tuannm3812/nsw-active-fire-datascience-exploration`, and the real printed numbers (133,286 records, identical sensor composition and correlation values) matched the local run exactly. Confirmed `isPrivate: true` still holds, version now 3.
+
 
 
