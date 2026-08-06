@@ -2,7 +2,7 @@
 
 Scope: this file applies to work under this subject folder only (`llm-wiki/02-subjects/36126-innovation-lab-research-project/`), not the rest of the `uts-mdsi` repo.
 
-Tuan is researching transparent fire-hotspot detection and active-fire monitoring in NSW, supervised by Dr Arnick Abdollahi. The current recommended direction is Gap B — a reference-data and sensor-confidence reliability audit — see `research/decision-log.md` D-006/D-007 for why.
+Tuan is researching transparent fire-hotspot detection and active-fire monitoring in NSW, supervised by Dr Arnick Abdollahi. The reliability/confidence-auditing work (Gap B, D-006/D-007) is **Phase 1 — a data-quality gate, not the destination** (Arnick's direction correction, D-011). The actual deliverable is a multimodal spatiotemporal transformer trained on a confidence-filtered MODIS FIRMS hotspot time series (2000–2025) fused with weather and land-cover/vegetation data, predicting **Option B: 1–7 day hotspot forecasting/nowcasting with confidence** (D-012). See `research/research-execution-plan-2026.md`'s "Arnick's 5 August direction" section for the current near-term sequencing.
 
 ## Start here, in this order
 

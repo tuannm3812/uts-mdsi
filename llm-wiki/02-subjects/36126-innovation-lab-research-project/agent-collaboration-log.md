@@ -753,5 +753,15 @@ Tuan downloaded the three sources that were paywall-blocked last round (ScienceD
 
 **Rewrote the meeting-prep doc's open-questions section** to pair every question with an actual recommendation instead of leaving it blank — horizon (multi-horizon 1–7 day), region (don't restrict to the Blue Mountains pilot footprint given the mega-complex dominance already found), auxiliary data (SILO + DEA Land Cover, both free and already-referenced), the Digital Atlas question (per T-032 above), compute (Kaggle free tier as default, ask about fallbacks), and contribution framing (recommend "reliability-aware forecasting" — split-complex validation and label-confidence propagation as contributions in their own right, not just scaffolding). Added a new "Analysis, workings, and findings" section summarising what's actually been verified (reliability pipeline results, literature scan, evaluation-inflation finding, T-032) versus what's honestly still not started (T-033, the data foundation) — so the meeting doesn't imply more progress than exists.
 
+### 2026-08-06 — Claude
+
+**Context:** Tuan asked for a broader pass — organize files/folders across the whole subject (not just `communications/`), and advice on what's next.
+
+**Cleaned up local junk:** `.DS_Store` and `.pytest_cache/` at several levels (subject root, `notebooks/`, `notebooks/active-fire-kaggle/`). All already gitignored and untracked — regenerable, not source — so this was pure disk tidiness, nothing to commit.
+
+**Restructured the root `README.md`'s "Curated Study Layer"** from one flat 28-item list into 5 labelled groups (status/process, current Week 2 sprint, Kaggle pipeline, Week 1 history, topic-selection/supervision-setup history) — no files moved, just made the index scannable and made clear what's current versus historical. Deliberately did **not** restructure `research/` or `sources/` into subfolders — both are flat but functional, and moving files would mean updating cross-references throughout the repo for a cosmetic gain only; the existing week-numbering convention already decided against retroactive reorganization of old files, and that reasoning extends here.
+
+**Fixed a real staleness bug in `AGENTS.md`:** its "Scope" paragraph still said the reliability audit (Gap B) was "the current recommended direction" — true as of D-006/D-007, but wrong since D-011 reframed it as Phase 1 groundwork only, with Option B forecasting as the actual destination. Since AGENTS.md is the first file a future agent session reads, this was a real risk of a future session re-deriving the wrong scope. Updated to state the current destination directly and point at the execution plan's sequencing section.
+
 
 
