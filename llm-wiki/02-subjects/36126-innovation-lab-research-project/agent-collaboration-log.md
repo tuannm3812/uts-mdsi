@@ -909,5 +909,21 @@ Logged as T-040. Fix not yet applied — flagged to Tuan for a decision on appro
 
 **Updated the two places that link to "the notebook" (singular)** — the meeting-prep doc's recap and open-question sections, and the drafted-but-unsent Arnick confirmation message — to link both notebooks now that the EDA one is independently viewable.
 
+### 2026-08-07 — Claude
+
+**Context:** Meeting day. Tuan asked to review all the prep docs, export everything (docs + both Kaggle notebooks) as PDF to Google Drive, and prepare a speaking script.
+
+**Wrote the speaking script** ([`assignments/week-02-meeting-presentation-script-2026-08-07.md`](../assignments/week-02-meeting-presentation-script-2026-08-07.md)) as actual talking points, not a rehash of the analysis doc — organised by meeting flow (open → recap → confirm the redirect → walk through the notebooks live, with which sections to point at → the six decisions, each framed as "here's our recommendation, does that work" rather than an open question → close), plus an "if he asks" section for likely follow-ups not otherwise covered (why NPWS over RFS, how confident in the 97.12% figure, what's actually done vs. not).
+
+**Built a PDF export pipeline from scratch, hit and fixed one real tooling problem along the way.** No pandoc/wkhtmltopdf/weasyprint installed, but Google Chrome was — used `markdown` (pip) to convert the 4 markdown docs to styled HTML, then Chrome's `--headless --print-to-pdf` for the actual conversion. For the notebooks, `python3 -m jupyter nbconvert --to html` failed with a missing-template error — traced it to `jupyter nbconvert` resolving a *different*, mismatched Homebrew Python 3.11 jupyter install via PATH dispatch instead of the Python 3.9 environment used all session; switched to `python3 -m nbconvert` (bypasses the PATH-based subcommand lookup, forces the current interpreter's own module) and it worked cleanly.
+
+**Verified both notebooks were current before exporting them** — checked cell-output counts and error counts directly rather than assuming they were still in the executed state from T-043/T-044 (0 errors, 10/10 and 11/15 cells with real outputs, both correct).
+
+**Found the actual Drive folder rather than guessing where to put files** — the subject's `README.md` frontmatter names a `Source folder` under Google Drive CloudStorage, confirmed it's actually mounted locally and writable, and matched the existing per-supervisor folder convention (`02 Supervision/Dr Arnick/01 Preparation/`) rather than inventing a new structure. Created a dated subfolder, `2026-08-07 Week 2 Meeting/`, and copied all 6 PDFs there with numbered filenames for a sensible reading order (prep doc → script → literature scan → Digital Atlas finding → EDA notebook → reliability notebook).
+
+**Verified the sync actually happened, not just that the local write succeeded** — local CloudStorage writes don't guarantee Drive has synced yet, so queried the Drive API directly (`list_recent_files`) and confirmed all 6 files plus the new folder are live on Drive with matching sizes, not just sitting on disk.
+
+**Not done, flagged for Tuan:** actually opening/reading through the exported PDFs end-to-end before the meeting — that's the "review" part of the request, and it's Tuan's own review to do, not something to fake completion of.
+
 
 

@@ -6,6 +6,8 @@
 
 **Backing detail:** [`research/week-02-forecasting-literature-scan-2026-08-06.md`](../research/week-02-forecasting-literature-scan-2026-08-06.md) has the full evidence table and reasoning behind §3's methodology outline — bring it along in case Arnick wants the detail.
 
+**Speaking notes:** [`week-02-meeting-presentation-script-2026-08-07.md`](week-02-meeting-presentation-script-2026-08-07.md) turns this doc into talking points organised by meeting flow. All materials (this doc, the script, the literature scan, the Digital Atlas evaluation, and both Kaggle notebooks) are exported as PDF in the Drive folder `02 Supervision/Dr Arnick/01 Preparation/2026-08-07 Week 2 Meeting/`.
+
 **Send the Kaggle notebook before the meeting (T-039), not just live in it.** Arnick has never actually been sent the link — the 3 August brief predates it going public (D-010, 5 Aug) — and the execution plan's own supervision-rhythm guidance says to send artefacts ahead so meeting time goes to decisions, not first reactions. Suggested Teams invite description:
 
 > Discussion of the redirected research direction (reliability audit as Phase 1, multimodal forecasting as the target) and next steps.
