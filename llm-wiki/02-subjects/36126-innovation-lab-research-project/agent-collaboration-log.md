@@ -763,5 +763,13 @@ Tuan downloaded the three sources that were paywall-blocked last round (ScienceD
 
 **Fixed a real staleness bug in `AGENTS.md`:** its "Scope" paragraph still said the reliability audit (Gap B) was "the current recommended direction" — true as of D-006/D-007, but wrong since D-011 reframed it as Phase 1 groundwork only, with Option B forecasting as the actual destination. Since AGENTS.md is the first file a future agent session reads, this was a real risk of a future session re-deriving the wrong scope. Updated to state the current destination directly and point at the execution plan's sequencing section.
 
+### 2026-08-06 — Claude
+
+**Context:** Tuan asked whether the Kaggle notebook needs to go to Arnick before the meeting.
+
+**Checked, rather than assuming:** grepped the 3 August brief and the drafted-but-unsent NPWS follow-up for any Kaggle link — neither mentions one, and for a real reason: the notebook only went public on 5 August (D-010), two days after the brief was sent. So Arnick has literally never been sent the link; the meeting-prep doc only had it as "show him" live in the meeting.
+
+**Recommended sending it before, not just live** — the execution plan's own supervision-rhythm section already says "send artefacts before meetings so supervision time is used for decisions," so this isn't a new judgment call, just following what was already written down. Suggested folding it into the Teams invite description (T-039) rather than a separate message, since Tuan has to send that invite anyway. Drafted the invite text (agenda + both Kaggle links) in the meeting-prep doc and noted the recommendation on T-039 in the tracker.
+
 
 

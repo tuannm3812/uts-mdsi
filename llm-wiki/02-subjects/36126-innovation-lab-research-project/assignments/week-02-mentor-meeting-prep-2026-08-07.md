@@ -6,6 +6,16 @@
 
 **Backing detail:** [`research/week-02-forecasting-literature-scan-2026-08-06.md`](../research/week-02-forecasting-literature-scan-2026-08-06.md) has the full evidence table and reasoning behind §3's methodology outline — bring it along in case Arnick wants the detail.
 
+**Send the Kaggle notebook before the meeting (T-039), not just live in it.** Arnick has never actually been sent the link — the 3 August brief predates it going public (D-010, 5 Aug) — and the execution plan's own supervision-rhythm guidance says to send artefacts ahead so meeting time goes to decisions, not first reactions. Suggested Teams invite description:
+
+> Discussion of the redirected research direction (reliability audit as Phase 1, multimodal forecasting as the target) and next steps.
+>
+> Reference material, happy for you to look before Friday if useful, otherwise I'll walk through it live:
+> - Public Kaggle dataset: https://www.kaggle.com/datasets/tuannm3812/nsw-active-fire-pilot-snapshot
+> - Public Kaggle notebook: https://www.kaggle.com/code/tuannm3812/nsw-active-fire-reliability-pilot
+>
+> Agenda: recap of the reliability-audit finding, confirming the forecasting direction (1–7 day hotspot prediction), and a few open questions on region, data sources, and compute.
+
 ## 1. Recap since the 3 August brief
 
 - Sent the consolidated findings brief (literature position + a public-data feasibility pilot on DEA Hotspots vs NSW fire-boundary references).
