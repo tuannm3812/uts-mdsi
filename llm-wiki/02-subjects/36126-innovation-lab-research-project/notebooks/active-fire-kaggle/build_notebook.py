@@ -251,7 +251,7 @@ def build_notebook(output_path: Path, snapshot_slug: str) -> Path:
         "## 4. Visual Analysis & Event Concentration\n\n"
         "### The Event Concentration Problem\n"
         "While the headline matching metrics show high overall alignment (77.25% exact, 97.12% buffered), a detailed inspection of the match distribution across individual fire events reveals a severe concentration pattern:\n\n"
-        "* **The Dominance of Two Mega-Complexes:** Out of the 14 fire events analyzed in this region, just two events—the **Kerry Ridge** complex (183,647 ha) and the **Gospers Mountain** complex (479,514 ha)—account for **97.85% of all matched hotspots** (with Kerry Ridge alone capturing 85.34% of exact matches and 84.97% of buffered matches).\n"
+        "* **The Dominance of Two Mega-Complexes:** Out of the 14 fire events analyzed in this region, just two events—the **Kerry Ridge** complex (183,647 ha) and the **Gospers Mountain** complex (479,514 ha)—account for **97.97% of all matched hotspots** (with Kerry Ridge alone capturing 85.34% of exact matches and 84.99% of buffered matches).\n"
         "* **Spatial Dominance:** The Gospers Mountain polygon alone covers approximately 4,795 km², representing roughly 21% of the entire 22,500 km² study bounding box.\n"
         "* **The \"Hold-out Event\" Caveat:** Because the statistical sample is almost entirely composed of hotspots from these two massive fire complexes, the reported reliability rates are highly sensitive to their specific characteristics. They **cannot be assumed to generalize** to other regions of New South Wales or to smaller, isolated fire incidents. Any operational performance metrics derived from this pilot are effectively evaluations of these two mega-fires."
     ))
@@ -344,7 +344,7 @@ def build_notebook(output_path: Path, snapshot_slug: str) -> Path:
     ))
     cells.append(nbf.v4.new_markdown_cell(
         "**Event Concentration Takeaway:**\n"
-        "The bar chart confirms the severe concentration of matched hotspots: **Kerry Ridge** accounts for over 16,000 matches, and **Gospers Mountain** accounts for over 2,400 matches. Together they account for 97.85% of matches, highlighting the spatial-temporal scale skew."
+        "The bar chart confirms the severe concentration of matched hotspots: **Kerry Ridge** accounts for over 16,000 matches, and **Gospers Mountain** accounts for over 2,400 matches. Together they account for 97.97% of matches, highlighting the spatial-temporal scale skew."
     ))
     
     # 4.5 Spatial Distribution Map

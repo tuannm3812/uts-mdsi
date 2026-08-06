@@ -128,8 +128,8 @@ def build_eda_notebook(output_path: Path, snapshot_slug: str) -> Path:
         "    fires_list.append({\n"
         "        'fire_id': props.get('FireNo') or str(props.get('OBJECTID')),\n"
         "        'fire_name': props.get('FireName') or 'Unnamed',\n"
-        "        'ignition_date': pd.to_datetime(props.get('StartDate')),\n"
-        "        'extinguish_date': pd.to_datetime(props.get('EndDate')),\n"
+        "        'ignition_date': pd.to_datetime(props.get('StartDate'), unit='ms'),\n"
+        "        'extinguish_date': pd.to_datetime(props.get('EndDate'), unit='ms'),\n"
         "        'area_ha': props.get('AreaHa'),\n"
         "        'perimeter_m': props.get('PerimeterM')\n"
         "    })\n"
@@ -175,7 +175,7 @@ def build_eda_notebook(output_path: Path, snapshot_slug: str) -> Path:
     
     takeaways_md = (
         "### Key EDA Takeaways:\n"
-        "1. **Severe Area Skewness:** The dataset is highly skewed. The two largest complexes—**Gospers Mountain** (479,514 ha) and **Kerry Ridge** (183,647 ha)—together account for over 660,000 hectares of burned area. The remaining 12 events are orders of magnitude smaller.\n"
+        "1. **Severe Area Skewness:** The dataset is highly skewed. The two largest complexes—**Gospers Mountain** (479,514 ha) and **Kerry Ridge** (183,647 ha)—together account for over 660,000 hectares of burned area. Of the remaining 12 events, five (Little L Complex, Three Mile, Grose Valley, Upper Turon Rd/Palmers Oaky, Meads Creek West) are still substantial (14,000-136,000 ha, same-to-one-order-of-magnitude smaller than Kerry Ridge), while the other seven drop sharply to under 210 ha each.\n"
         "2. **Temporal Dominance:** The active temporal duration of these complexes is extensive. Gospers Mountain, for example, has an active record spanning 107 days (25 Oct 2019 to 9 Feb 2020).\n"
         "3. **Implications for Matching:** Because of their immense spatial footprints and months-long active windows, these mega-complexes act as massive \"spatial-temporal sinks.\" A random or clustered hotspot within the study bounding box has an extremely high probability of intersecting these polygons by chance. Readers should anticipate that any subsequent matching analysis will be heavily dominated by these two events, requiring held-out validation strategies.\n\n"
         "**Project context:** this EDA and the companion reliability notebook are the data-quality foundation stage of a larger project building a confidence-filtered, multi-decade active-fire hotspot dataset for short-horizon forecasting with a multimodal spatiotemporal transformer. Neither notebook here is a fire-prediction system on its own."

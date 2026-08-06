@@ -869,5 +869,23 @@ Logged as T-040. Fix not yet applied — flagged to Tuan for a decision on appro
 
 **Verified via Kaggle's own execution, not just a clean push.** Polled `kaggle kernels status` in a loop until `COMPLETE` (took 3 pushes total to get there — worth being upfront that this took genuine trial and error, not a one-shot fix), then downloaded the actual execution log: found the dataset via `/kaggle/input/datasets/tuannm3812/nsw-active-fire-datascience-exploration`, and the real printed numbers (133,286 records, identical sensor composition and correlation values) matched the local run exactly. Confirmed `isPrivate: true` still holds, version now 3.
 
+### 2026-08-06 — Claude
+
+**Context:** Tuan asked for a full content audit of both public notebooks' markdown, cross-checked against real data, ahead of tomorrow's meeting. Given T-042's lesson from an hour earlier — passing local checks doesn't mean it's actually right — treated every quantitative claim as unverified until checked against the live-executed data, not just read the prose.
+
+**Read every markdown cell in both notebooks first**, then went cell-by-cell through the numbers they cite.
+
+**Found a real, visible bug:** the EDA notebook's `pd.to_datetime(props.get('StartDate'))` (build_eda_notebook.py) was missing `unit='ms'` — NPWS's `StartDate`/`EndDate` fields are epoch milliseconds, and without the unit hint pandas defaults to nanoseconds, producing a "Fire area statistics" table where every ignition date showed as `1970-01-01 00:26:xx`. Checked whether this was cosmetic or actually invalidated results, since it easily could have been the latter: `match_hotspots.py`'s `parse_datetime()` — the function that actually drives the reported 77.25%/97.12% match rates — already divides by 1000 correctly. So the core reliability-audit numbers already sent to Arnick were never affected, only this one EDA display table. Fixed the unit bug and confirmed the corrected dates make sense (Gospers Mountain: 2019-10-25 to 2020-02-09, 107 days, matching the "Key Takeaways" text's own claim).
+
+**Found an overstated claim while I was in there:** "the remaining 12 events are orders of magnitude smaller" than the top 2 — false for Little L Complex (136,286 ha), same order of magnitude as Kerry Ridge (183,647 ha). Rewrote to name which 5 of the 12 are still substantial (14,000–136,000 ha) vs. which 7 genuinely drop sharply (under 210 ha).
+
+**Independently recomputed the event-concentration numbers from raw data**, not just read them — wrote a standalone script using the actual `classify_hotspot`/`prepare_features` functions from `match_hotspots.py` against the real snapshot files, to check the hardcoded 97.85%/84.97% claims in cells 14/26. Total match counts matched exactly (15,334 exact / 19,277 buffered, confirming the reproduction was faithful), but the per-event breakdown had drifted slightly: actual current values are 97.97%/84.99%, not 97.85%/84.97% — same bug class as T-022/T-025/T-027/T-028 (hand-typed narrative not regenerated from computed values), just far smaller magnitude this time (~0.1 percentage point, not a qualitative error). Fixed both instances.
+
+**Verified rather than assumed the rest:** the 14.5% NSW RFS comparison figure checks out against the documented findings brief; Gospers Mountain's 4,795 km² is correct arithmetic from its hectare figure; the bbox-share estimate (~21%) is close to my own independent calculation (~22%) and already appropriately hedged with "approximately"/"roughly" rather than stated as precise.
+
+**Regenerated, re-executed, tested, audited, and pushed both notebooks** — 20/20 tests, clean audit. This time, learning directly from T-042 an hour earlier, **polled `kaggle kernels status` until it actually returned `COMPLETE`** rather than trusting the push confirmation — took about 2 minutes given the notebook's plot-heavy execution. Downloaded the log and confirmed the live numbers match exactly. Dataset now v19, kernel v20, both public, usability still 1.0.
+
+**Left alone, flagged not fixed:** `dataset-description.md`'s sensor list only names MODIS/VIIRS/AHI, omitting AVHRR (0.3% of records) — real but low-stakes, noted for later.
+
 
 
