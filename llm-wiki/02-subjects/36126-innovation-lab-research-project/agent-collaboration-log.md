@@ -777,5 +777,20 @@ Tuan downloaded the three sources that were paywall-blocked last round (ScienceD
 
 Drafted `communications/to-arnick-2026-08-06-meeting-confirmation.md` — short, same style as the 3 August message (direct, no fluff): confirms Friday 12pm, one line on the reframed direction (Phase 1 groundwork vs. the actual forecasting target), and the two Kaggle links. Added it to the communications index and updated T-039 to cover both the invite and this message. Not sent — Tuan needs to send it himself (no Teams access from this session).
 
+### 2026-08-06 — Claude
+
+**Context:** Tuan sent a new Usability-panel screenshot (identical to the one behind T-029: Source/Provenance ✗, Update Frequency ✗, File Description ✗) and asked whether the dataset is still private. Given T-029 was marked Done and multiple later "Version N pushed" claims since, checked the live Kaggle state directly via the API instead of trusting local files or prior log entries.
+
+**Found a real, current problem — not just a stale screenshot.** `kaggle.json` credentials were already present locally; queried `datasets/view` and `kernels/pull` directly:
+- **Dataset** (`nsw-active-fire-pilot-snapshot`): `isPrivate: true`, stuck at **Version 17**, last updated 2026-08-05T14:22 UTC. Contradicts D-010 (Tuan's public-release approval) and Codex's "Version 18" claim.
+- **Kernel/notebook** (`nsw-active-fire-reliability-pilot`): `isPrivate: false`, genuinely at **Version 18**. So the kernel half of Codex's claim is accurate; the dataset half isn't.
+- The T-029 usability fixes (`expectedUpdateFrequency`, `userSpecifiedSources`) are present and correct in the local `dataset-metadata.json` (confirmed by reading the file) but aren't reflected live — same pattern as the visibility field.
+
+**Root cause, not just a symptom:** read `upload_private.py` — for an existing dataset it calls `kaggle datasets version`, never `kaggle datasets create` or a dedicated metadata-update call. Searched and confirmed this is a documented Kaggle API limitation, not a bug in our script: `isPrivate` (and evidently some other metadata fields) in `dataset-metadata.json` isn't reliably applied by the `version` endpoint — see [Kaggle/kaggle-api#339](https://github.com/Kaggle/kaggle-api/issues/339). Every "Done"/"Version N pushed" claim since T-029 (mine and Codex's) checked tests, the privacy/claims audit, and notebook execution — all real, useful checks — but none of them checked the *live* Kaggle page, so this has been silently wrong since Version 16 and nobody caught it until Tuan's screenshot prompted a direct API check.
+
+**Live-breaking consequence:** the public notebook (v18, public) declares `dataset_sources: ["tuannm3812/nsw-active-fire-pilot-snapshot"]` — a dataset that's currently private. Any external viewer, including Arnick if the meeting-confirmation message drafted earlier today gets sent as-is, would hit a broken/inaccessible dataset link. **Recommending Tuan hold off sending that message until this is fixed.**
+
+Logged as T-040. Fix not yet applied — flagged to Tuan for a decision on approach (website toggle vs. attempting the fix via API) before touching the live public artifact.
+
 
 
