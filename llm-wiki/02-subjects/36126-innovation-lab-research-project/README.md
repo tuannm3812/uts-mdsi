@@ -70,6 +70,7 @@ Grouped by function, not by folder — see [AGENTS.md](AGENTS.md) for the recomm
 
 - [Active-Fire Pilot Pipeline](notebooks/active-fire-pilot/README.md)
 - Public dataset/notebook: linked from the meeting-prep doc and task tracker (T-011–T-029)
+- [Active-Fire Data Science Exploration (T-041, private)](notebooks/active-fire-datascience/README.md) — widened EDA + weather/land-cover + candidate features, prototyping ahead of T-033
 
 **Week 1 — literature review, pilot, and supervisor brief (history, feeds the current sprint)**
 

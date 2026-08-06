@@ -1,0 +1,15 @@
+{
+  "region_name": "Greater Blue Mountains (widened from the reliability-pilot bbox)",
+  "bbox_wgs84": [149.5, -33.7, 151.0, -32.3],
+  "start_utc": "2019-12-15T00:00:00Z",
+  "end_utc_exclusive": "2020-01-15T00:00:00Z",
+  "dea_layer": "public:hotspots",
+  "silo_grid_points": [
+    {"name": "centroid", "lat": -33.0, "lon": 150.25},
+    {"name": "north", "lat": -32.45, "lon": 150.25},
+    {"name": "south", "lat": -33.55, "lon": 150.25}
+  ],
+  "landcover_layer": "ga_ls_landcover",
+  "landcover_year": "2020-01-01",
+  "notes": "Exploratory/private notebook, not the public reproducibility pipeline. Window chosen to span the Dec 2019 activity surge into the original reliability-pilot's quieter Jan 2020 window (133k DEA hotspot records vs. the pilot's 19.8k for 14 days) -- checked live record counts before committing to this range."
+}

@@ -836,5 +836,24 @@ Logged as T-040. Fix not yet applied — flagged to Tuan for a decision on appro
 
 **Content readiness check:** the "Project Context and Roadmap" markdown cell (added under T-034) already explicitly ties the notebook to the forecasting pivot — confidence-filtered multi-decade dataset, weather/vegetation fusion, 1–7 day horizon, cross-attention transformer — so it reads as current context, not stale Phase-1-only framing, without needing an update. Combined with everything already verified this session (tests 20/20, audit clean, dead URL fixed, both notebooks genuinely executed), told Tuan no further content changes are needed — it's ready to send as-is.
 
+### 2026-08-06 — Claude
+
+**Context:** Tuan asked for another Kaggle notebook, private, "more like a data science project" — checking more datasets, EDA, features. Scoped this with him first (AskUserQuestion) rather than guessing: MODIS FIRMS + all three modalities, same NSW/Blue Mountains region as the existing pilot.
+
+**Checked real access before writing any pipeline code**, rather than assuming APIs work as documented:
+- **DEA Hotspots WFS** (already used in the pilot) — reused directly, just widened the date range.
+- **SILO** (Queensland Government gridded climate, 1889–present) — tested live, works with any plausible email as `username`, no real registration. **Confirmed SILO has no wind speed/direction** by checking their own variable list — this matters since wind is one of the four variables Arnick explicitly asked for; flagged as a gap rather than silently dropped or faked.
+- **DEA Land Cover** (Landsat, `ga_ls_landcover`) — found the WMS `GetFeatureInfo` endpoint via `GetCapabilities`, tested a live point query, confirmed it returns real level3/level4 classification with human-readable labels and per-year availability.
+
+**Picked the time window empirically, not arbitrarily** — queried live DEA Hotspots record counts for several candidate windows before committing (a full Nov 2019–Feb 2020 season came back 328k records, too large to iterate on quickly; a few narrower windows tested down to the final choice: 15 Dec 2019–15 Jan 2020, 133,286 records). Along the way found that December 2019 alone has 234,900 records in this bbox — the original reliability pilot's Jan 2020 window was actually the *quiet* tail end of the season, not the peak. Worth remembering next time someone asks whether the pilot's numbers are representative of the whole event.
+
+**Built a separate project folder** (`notebooks/active-fire-datascience/`), not layered into the existing public pipeline — three fetch scripts, an `analysis.py` with real (not hand-typed) EDA/feature functions, and `build_notebook.py` that imports from it directly rather than embedding source as literal strings (no public self-containment requirement here, so no need for that discipline). Sampled land cover at 500 unique hotspot locations (one WMS call per unique location; with 133k hotspots clustering heavily in space, exhaustive per-point querying would take hours for little extra coverage) — all 500 resolved cleanly.
+
+**Executed end-to-end and actually checked the output**, not just that it ran: 0 cell errors, 4 real embedded plots, no absolute-path or credential leakage (grepped for both). The correlation check came back honest, not cherry-picked — 7-day rolling rainfall correlates negatively with hotspot count as expected (-0.50), but "consecutive dry days" came back essentially flat (-0.03), which is worth remembering as a real, mildly counterintuitive finding rather than smoothing it into the narrative. Sensor composition also surfaced a sensor not seen in the original pilot's discussion: AVHRR, 1,221 records alongside the expected AHI/VIIRS/MODIS.
+
+**Uploaded privately, verified via API rather than trusting the CLI's success message** — both the new dataset (`nsw-active-fire-datascience-exploration`) and kernel (`nsw-active-fire-data-science-exploration`, auto-slugified from the title — Kaggle warned the id I'd set didn't match, fixed the metadata file to match what actually got created) confirmed `isPrivate: true` live. Also ran the `push_dataset_metadata_extras()` fix from T-040 against this new dataset too, since it's the same license/keyword-taxonomy quirks.
+
+**Explicit gap left for next time, not attempted:** wind data (SILO doesn't have it — needs BOM or ERA5), land-cover is annual not sub-annual vegetation *condition*, and the 500-point land-cover sample isn't exhaustive. All three noted directly in the notebook's "Next steps" section rather than glossed over.
+
 
 

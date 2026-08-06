@@ -9,6 +9,12 @@ llm-wiki/02-subjects/**/sources/raw/
 # archive location in notes, but do not commit third-party submission documents.
 llm-wiki/02-subjects/**/assignments/current-*/**/data/
 
+# Fetched source data for exploratory (private, non-reproducibility-pipeline)
+# notebooks -- regenerable via the fetch_*.py scripts in the same folder, and
+# includes a 100MB+ geojson that shouldn't go into git. Distinct from
+# notebooks/raw/ above, which is for imported course files.
+llm-wiki/02-subjects/**/notebooks/active-fire-datascience/data/
+
 # Local OS metadata.
 .DS_Store
 __MACOSX/

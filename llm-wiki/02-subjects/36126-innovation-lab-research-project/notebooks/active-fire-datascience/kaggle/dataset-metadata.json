@@ -1,0 +1,58 @@
+{
+  "title": "NSW Active-Fire Data Science Exploration (Private)",
+  "subtitle": "Widened hotspot/weather/land-cover exploration, private WIP",
+  "id": "tuannm3812/nsw-active-fire-datascience-exploration",
+  "licenses": [
+    {
+      "name": "CC-BY-4.0"
+    }
+  ],
+  "isPrivate": true,
+  "collaborators": [],
+  "expectedUpdateFrequency": "weekly",
+  "userSpecifiedSources": [
+    {
+      "name": "Geoscience Australia DEA Hotspots",
+      "description": "Satellite hotspot detections from MODIS, VIIRS, and AHI sensors",
+      "url": "https://hotspots.dea.ga.gov.au/"
+    },
+    {
+      "name": "SILO (Queensland Government, Long Paddock)",
+      "description": "Gridded/interpolated daily climate data, 1889-present",
+      "url": "https://www.longpaddock.qld.gov.au/silo/"
+    },
+    {
+      "name": "DEA Land Cover (Landsat)",
+      "description": "Annual land-cover classification, Geoscience Australia",
+      "url": "https://knowledge.dea.ga.gov.au/data/product/dea-land-cover-landsat/"
+    }
+  ],
+  "keywords": ["earth science", "australia"],
+  "description": "# NSW Active-Fire Data Science Exploration\n\n## Overview\nPrivate, work-in-progress exploration for the 36126 Innovation Lab research project, widening the original reliability-pilot's 14-day snapshot into a richer window (15 Dec 2019 - 15 Jan 2020, Greater Blue Mountains bbox) and bringing in weather (SILO) and land-cover (DEA Land Cover) data alongside the hotspots, to prototype auxiliary-data features for the eventual multimodal forecasting model.\n\n**Not the public reproducibility artifact.** This is scratch/exploration work, kept private. The reviewed, licensed, publicly reproducible pipeline is `nsw-active-fire-pilot-snapshot`.\n\n## Data Sources\n* **DEA Hotspots WFS:** Geoscience Australia, CC BY 4.0.\n* **SILO:** Queensland Government Long Paddock, gridded daily climate data.\n* **DEA Land Cover:** Geoscience Australia, annual Landsat-derived classification.",
+  "resources": [
+    {
+      "path": "dea_hotspots_wide.geojson",
+      "description": "Widened-window DEA hotspot detections (MODIS/VIIRS/AHI), 15 Dec 2019 - 15 Jan 2020, Greater Blue Mountains bbox."
+    },
+    {
+      "path": "silo_weather_centroid.csv",
+      "description": "SILO daily weather (rainfall, max/min temp, vapour pressure, humidity) at the bbox centroid."
+    },
+    {
+      "path": "silo_weather_north.csv",
+      "description": "SILO daily weather at the northern edge of the bbox."
+    },
+    {
+      "path": "silo_weather_south.csv",
+      "description": "SILO daily weather at the southern edge of the bbox."
+    },
+    {
+      "path": "landcover_sample.json",
+      "description": "DEA Land Cover classification sampled at ~500 unique hotspot locations."
+    },
+    {
+      "path": "active_fire_data_exploration.ipynb",
+      "description": "EDA and feature-engineering exploration notebook."
+    }
+  ]
+}
