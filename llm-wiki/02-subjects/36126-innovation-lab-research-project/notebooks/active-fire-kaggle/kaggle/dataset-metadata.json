@@ -29,31 +29,15 @@
     "geographic-information-systems",
     "australia"
   ],
-  "description": "# NSW Active-Fire Reliability Pilot Dataset\n\n## Overview\nThis dataset contains a spatiotemporal snapshot of satellite-derived active-fire active-monitoring hotspot observations and historical fire boundaries in New South Wales (NSW), Australia. It is compiled specifically to support **calibration and spatiotemporal reliability auditing** of satellite hotspot products during a fortnight of intense fire activity in January 2020 (specifically covering the Gospers Mountain and Greater Blue Mountains fire periods).\n\n## Data Sources & Licensing\nThis dataset is published under a Creative Commons Attribution 4.0 International License (CC BY 4.0).\n* **DEA Hotspots WFS:** Provided by Geoscience Australia under CC BY 4.0. Service URL: [DEA Hotspots Service](https://hotspots.dea.ga.gov.au/)\n* **NPWS Fire History:** Provided by NSW National Parks and Wildlife Service under Creative Commons Attribution. Dataset URL: [Data.NSW NPWS Record](https://data.nsw.gov.au/data/dataset/fire-history-wildfires-and-prescribed-burns-1e8b6)",
+  "description": "# NSW Active-Fire Reliability Pilot Dataset\n\n## Overview\nThis dataset contains a spatiotemporal snapshot of satellite-derived active-fire active-monitoring hotspot observations and historical fire boundaries in New South Wales (NSW), Australia. It is compiled specifically to support **calibration and spatiotemporal reliability auditing** of satellite hotspot products during a fortnight of intense fire activity in January 2020 (specifically covering the Gospers Mountain and Greater Blue Mountains fire periods).\n\n## Data Sources & Licensing\nThis dataset is published under a Creative Commons Attribution 4.0 International License (CC BY 4.0).\n* **DEA Hotspots WFS:** Provided by Geoscience Australia under CC BY 4.0. Service URL: [DEA Hotspots Service](https://hotspots.dea.ga.gov.au/)\n* **NPWS Fire History:** Provided by NSW National Parks and Wildlife Service under Creative Commons Attribution. Dataset URL: [Data.NSW NPWS Record](https://data.nsw.gov.au/data/dataset/fire-history-wildfires-and-prescribed-burns-1e8b6)\n\n## Analysis Notebooks\nThe EDA and reliability-matching analysis of this data are published as separate public Kaggle notebooks (kernels), not bundled into this dataset -- see [nsw-active-fire-eda](https://www.kaggle.com/code/tuannm3812/nsw-active-fire-eda) and [nsw-active-fire-reliability-pilot](https://www.kaggle.com/code/tuannm3812/nsw-active-fire-reliability-pilot). Both use this dataset as their source.",
   "resources": [
     {
       "path": "dea_hotspots.geojson",
-      "description": "Satellite-derived active-fire hotspots from MODIS, VIIRS, and AHI sensors in GeoJSON format."
+      "description": "Satellite-derived active-fire hotspots from MODIS, VIIRS, AHI, and AVHRR sensors in GeoJSON format."
     },
     {
       "path": "npws_fire_history.geojson",
       "description": "Historical fire boundaries managed by NSW National Parks and Wildlife Service in GeoJSON format."
-    },
-    {
-      "path": "1_active_fire_eda.ipynb",
-      "description": "Exploratory Data Analysis notebook mapping spatial and sensor composition."
-    },
-    {
-      "path": "2_active_fire_reliability_pilot.ipynb",
-      "description": "Spatiotemporal matching and reliability calibration pilot notebook."
-    },
-    {
-      "path": "executed_eda.ipynb",
-      "description": "Executed copy of the EDA notebook with embedded visual outputs."
-    },
-    {
-      "path": "executed.ipynb",
-      "description": "Executed copy of the spatiotemporal match pilot notebook with embedded visual outputs."
     },
     {
       "path": "snapshot-manifest.json",

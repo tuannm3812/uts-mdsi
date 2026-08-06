@@ -12,14 +12,15 @@
 >
 > Reference material, happy for you to look before Friday if useful, otherwise I'll walk through it live:
 > - Public Kaggle dataset: https://www.kaggle.com/datasets/tuannm3812/nsw-active-fire-pilot-snapshot
-> - Public Kaggle notebook: https://www.kaggle.com/code/tuannm3812/nsw-active-fire-reliability-pilot
+> - EDA notebook: https://www.kaggle.com/code/tuannm3812/nsw-active-fire-eda
+> - Reliability-matching notebook: https://www.kaggle.com/code/tuannm3812/nsw-active-fire-reliability-pilot
 >
 > Agenda: recap of the reliability-audit finding, confirming the forecasting direction (1–7 day hotspot prediction), and a few open questions on region, data sources, and compute.
 
 ## 1. Recap since the 3 August brief
 
 - Sent the consolidated findings brief (literature position + a public-data feasibility pilot on DEA Hotspots vs NSW fire-boundary references).
-- Extended the pilot to a licensed, redistributable reference (NPWS Fire History), and built it into a reproducible, publicly reviewable Kaggle notebook pair (EDA + reliability-matching pilot), now public: [dataset](https://www.kaggle.com/datasets/tuannm3812/nsw-active-fire-pilot-snapshot), [notebook](https://www.kaggle.com/code/tuannm3812/nsw-active-fire-reliability-pilot).
+- Extended the pilot to a licensed, redistributable reference (NPWS Fire History), and built it into a reproducible, publicly reviewable Kaggle pipeline — a dataset plus two separate notebooks: [dataset](https://www.kaggle.com/datasets/tuannm3812/nsw-active-fire-pilot-snapshot), [EDA notebook](https://www.kaggle.com/code/tuannm3812/nsw-active-fire-eda), [reliability-matching notebook](https://www.kaggle.com/code/tuannm3812/nsw-active-fire-reliability-pilot).
 - Key finding from that work: neither a narrow, incident-level fire reference (NSW RFS) nor a broad, whole-of-season complex-level reference (NPWS) currently supports clean point-in-time or event-level reliability testing of satellite hotspots — the narrow one under-covers true fire extent, the broad one over-matches because two mega-complexes (Kerry Ridge, Gospers Mountain) dominate the region and swallow ~98% of matches on their own.
 
 ## 2. What Arnick's reply changed

@@ -887,5 +887,27 @@ Logged as T-040. Fix not yet applied — flagged to Tuan for a decision on appro
 
 **Left alone, flagged not fixed:** `dataset-description.md`'s sensor list only names MODIS/VIIRS/AHI, omitting AVHRR (0.3% of records) — real but low-stakes, noted for later.
 
+### 2026-08-06 — Claude
+
+**Context:** Tuan asked why the pilot dataset needs re-versioning on every notebook edit, and why both notebooks live inside the dataset. Recognised this as the same design mistake already found and fixed in the private notebook an hour earlier (T-042) — just not yet applied to the public pipeline, since nobody had asked about it until now.
+
+**Confirmed the mechanism before proposing anything:** read `dataset-metadata.json`'s `resources` list — 4 of its 7 entries were notebook files (`1_active_fire_eda.ipynb`, `2_active_fire_reliability_pilot.ipynb`, `executed.ipynb`, `executed_eda.ipynb`), not data. `upload_private.py` uploads the whole staging directory as one atomic `kaggle datasets version` call, so any notebook text edit forces the entire dataset — including the unchanged 14MB `dea_hotspots.geojson` — to re-version. Separately confirmed only one kernel (`nsw-active-fire-reliability-pilot`) exists; the EDA notebook has never been independently viewable/runnable on Kaggle, only ever a static file bundled inside the dataset.
+
+**Checked whether `executed.ipynb`/`executed_eda.ipynb` were produced by any script before removing them** — grepped every `.py` file in the directory, found nothing creates them. They were manual, undocumented copies sitting in the staging directory, not a real reproducible pipeline step. Confirms removing them isn't losing anything the codebase actually maintains.
+
+**Presented the tradeoff and asked before touching the live public artifact's structure** (AskUserQuestion) — Tuan chose the full fix: decouple, and give the EDA notebook its own kernel too.
+
+**Implemented:**
+- `dataset-metadata.json`: resources trimmed to the 3 real data files only; description now points to both kernels instead of describing bundled notebook files. Also fixed the AVHRR omission flagged in the T-043 audit while already in this file.
+- New `kernel-metadata-eda.json` for a genuinely new public kernel, `nsw-active-fire-eda`.
+- `dataset-description.md` updated to match — links to both kernels instead of listing notebooks as dataset files.
+- `upload_private.py` rewritten: dataset staging no longer receives notebook copies at all (each notebook now stages into its own `_kernel_<name>/` directory with only its own `kernel-metadata.json`); two separate `kaggle kernels push` calls instead of one; `main()`'s failure check updated for the new nested `results["kernels"]` shape. 20/20 tests still pass (the existing mocked test only checks generic subprocess-call properties, not exact call count, so it needed no changes), audit still clean.
+
+**Caught a real leftover before it caused a silent bug:** the staging directory (`output/kaggle/active-fire-pilot/`) still had the *old* top-level notebook copies sitting in it from previous runs. Since `kaggle datasets version -p <dir>` uploads every file physically present regardless of what's listed in `resources`, those stale files would have kept getting swept into the dataset even after removing their `resources` entries. Deleted them before running the new pipeline.
+
+**Verified live, both kernels, not just the push confirmation** — direct lesson from T-042 an hour earlier. Ran the real pipeline: dataset upload correctly skipped both `_kernel_*` folders ("use --dir-mode to upload folders" — confirms the separation actually worked), uploaded only the 3 data files. Both kernel pushes succeeded (`nsw-active-fire-reliability-pilot` → version 21, `nsw-active-fire-eda` → version 1, genuinely new). Polled both kernels' status in parallel until both returned `COMPLETE` (EDA finished in ~15s, the reliability pilot took ~165s given its heavier plotting), downloaded both logs, confirmed both found the dataset via the correct `/kaggle/input/...` path and produced the same correct numbers as before (77.25%/97.12% match rates; 19,849 hotspots, 8 duplicates). Dataset confirmed live at version 20, public, usability still 1.0.
+
+**Updated the two places that link to "the notebook" (singular)** — the meeting-prep doc's recap and open-question sections, and the drafted-but-unsent Arnick confirmation message — to link both notebooks now that the EDA one is independently viewable.
+
 
 

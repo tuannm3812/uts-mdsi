@@ -125,63 +125,72 @@ def validate_private_metadata(dataset_path: Path, kernel_path: Path) -> None:
         raise ValueError("Kernel has internet enabled!")
 
 
+# Notebooks are pushed as their own kernels, not bundled into the dataset's
+# file list -- a notebook-text-only edit shouldn't force a re-version of the
+# (unchanged) underlying data, and Kaggle's own kernel Output tab already
+# gives a viewable, executed copy once a kernel runs, making a duplicate
+# "executed_*.ipynb" file inside the dataset redundant (see T-044). Each
+# entry here is (notebook filename, kernel-metadata filename).
+_KERNELS = [
+    ("2_active_fire_reliability_pilot.ipynb", "kernel-metadata.json"),
+    ("1_active_fire_eda.ipynb", "kernel-metadata-eda.json"),
+]
+
+
 def upload_private(credentials_path: Path, staging_dir: Path) -> dict:
     dataset_meta = KAG_DIR / "kaggle" / "dataset-metadata.json"
-    kernel_meta = KAG_DIR / "kaggle" / "kernel-metadata.json"
-    
-    validate_private_metadata(dataset_meta, kernel_meta)
-    
+
     if not staging_dir.is_dir():
         raise NotADirectoryError(f"Staging directory missing: {staging_dir}")
-        
-    # Copy dataset-metadata.json into staging directory so Kaggle CLI can read it
+
+    # Dataset staging: package_snapshot.py has already populated staging_dir
+    # with the real data files (geojson x2 + manifest) -- just drop in the
+    # metadata alongside them. No notebooks here.
     shutil.copy2(dataset_meta, staging_dir / "dataset-metadata.json")
-    
-    # Copy kernel-metadata.json into staging directory, along with the notebook itself
-    shutil.copy2(kernel_meta, staging_dir / "kernel-metadata.json")
-    
-    # Copy the notebooks
-    notebook_src2 = KAG_DIR / "2_active_fire_reliability_pilot.ipynb"
-    if not notebook_src2.is_file():
-        raise FileNotFoundError(f"Notebook missing: {notebook_src2}")
-    shutil.copy2(notebook_src2, staging_dir / "2_active_fire_reliability_pilot.ipynb")
-    
-    notebook_src1 = KAG_DIR / "1_active_fire_eda.ipynb"
-    if not notebook_src1.is_file():
-        raise FileNotFoundError(f"Notebook missing: {notebook_src1}")
-    shutil.copy2(notebook_src1, staging_dir / "1_active_fire_eda.ipynb")
-    
+
+    kernel_dirs = []
+    for notebook_name, kernel_meta_name in _KERNELS:
+        kernel_meta_path = KAG_DIR / "kaggle" / kernel_meta_name
+        validate_private_metadata(dataset_meta, kernel_meta_path)
+
+        notebook_src = KAG_DIR / notebook_name
+        if not notebook_src.is_file():
+            raise FileNotFoundError(f"Notebook missing: {notebook_src}")
+
+        kernel_dir = staging_dir / f"_kernel_{notebook_name.rsplit('.', 1)[0]}"
+        kernel_dir.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(kernel_meta_path, kernel_dir / "kernel-metadata.json")
+        shutil.copy2(notebook_src, kernel_dir / notebook_name)
+        kernel_dirs.append((notebook_name, kernel_dir))
+
     results = {}
-    
+
     # Use temporary directory for credentials if provided
     with tempfile.TemporaryDirectory() as temp_dir:
         env = os.environ.copy()
-        
+
         if credentials_path.is_file():
             # Validate credentials structure
             creds = json.loads(credentials_path.read_text())
             if not creds.get("username") or not creds.get("key"):
                 raise ValueError("Credentials file must contain 'username' and 'key'")
             results["username"] = creds["username"]
-            
+
             # Write to temporary kaggle.json
             temp_creds_file = Path(temp_dir) / "kaggle.json"
             temp_creds_file.write_text(json.dumps(creds))
             os.chmod(temp_creds_file, 0o600)
-            
+
             # Set KAGGLE_CONFIG_DIR
             env["KAGGLE_CONFIG_DIR"] = temp_dir
             print(f"Temporary credentials set up for user: {creds['username']}")
         else:
             print("No --credentials path provided. Using default system/environment Kaggle configuration.")
-            
-        # 1. Dataset upload
+
+        # 1. Dataset upload (data files only, staging_dir itself -- no notebooks)
         print("Staging dataset creation/version...")
-        # Run kaggle datasets create/version
-        # First, try to check if dataset exists or just create/version it
-        # We can run `kaggle datasets status <dataset_slug>`
         dataset_id = json.loads(dataset_meta.read_text())["id"]
-        
+
         # Check if the dataset already exists
         check_dataset = subprocess.run(
             ["kaggle", "datasets", "status", dataset_id],
@@ -189,14 +198,14 @@ def upload_private(credentials_path: Path, staging_dir: Path) -> dict:
             text=True,
             env=env
         )
-        
+
         if "NotFound" in check_dataset.stderr or check_dataset.returncode != 0:
             print("Dataset not found. Creating new dataset...")
             cmd = ["kaggle", "datasets", "create", "-p", str(staging_dir)]
         else:
             print("Dataset exists. Creating new version...")
             cmd = ["kaggle", "datasets", "version", "-p", str(staging_dir), "-m", "Version updated by automated pipeline"]
-            
+
         dataset_run = subprocess.run(cmd, capture_output=True, text=True, env=env)
         if dataset_run.returncode != 0:
             results["dataset_status"] = "failed"
@@ -224,24 +233,24 @@ def upload_private(credentials_path: Path, staging_dir: Path) -> dict:
             else:
                 print(f"[WARNING] Dataset metadata extras failed (non-fatal): {extras_result.get('errors')}")
 
-        # 2. Kernel push
-        print("Pushing notebook kernel...")
-        # Copy dataset metadata to staging is not needed for kernel push if it runs in staging
-        kernel_run = subprocess.run(
-            ["kaggle", "kernels", "push", "-p", str(staging_dir)],
-            capture_output=True,
-            text=True,
-            env=env
-        )
-        if kernel_run.returncode != 0:
-            results["kernel_status"] = "failed"
-            results["kernel_error"] = kernel_run.stderr
-            print(f"[ERROR] Kernel push failed: {kernel_run.stderr}")
-        else:
-            results["kernel_status"] = "success"
-            results["kernel_output"] = kernel_run.stdout
-            print(f"[SUCCESS] Kernel push complete: {kernel_run.stdout.strip()}")
-            
+        # 2. Kernel pushes -- one per notebook, each in its own directory so
+        # neither kernel picks up the other's notebook or the dataset files.
+        results["kernels"] = {}
+        for notebook_name, kernel_dir in kernel_dirs:
+            print(f"Pushing kernel for {notebook_name}...")
+            kernel_run = subprocess.run(
+                ["kaggle", "kernels", "push", "-p", str(kernel_dir)],
+                capture_output=True,
+                text=True,
+                env=env
+            )
+            if kernel_run.returncode != 0:
+                results["kernels"][notebook_name] = {"status": "failed", "error": kernel_run.stderr}
+                print(f"[ERROR] Kernel push failed for {notebook_name}: {kernel_run.stderr}")
+            else:
+                results["kernels"][notebook_name] = {"status": "success", "output": kernel_run.stdout}
+                print(f"[SUCCESS] Kernel push complete for {notebook_name}: {kernel_run.stdout.strip()}")
+
     return results
 
 
@@ -258,7 +267,8 @@ def main() -> None:
     try:
         results = upload_private(credentials_path, staging_dir)
         print("Upload processing completed.")
-        if results.get("dataset_status") == "failed" or results.get("kernel_status") == "failed":
+        kernel_failed = any(k["status"] == "failed" for k in results.get("kernels", {}).values())
+        if results.get("dataset_status") == "failed" or kernel_failed:
             sys.exit(1)
         sys.exit(0)
     except Exception as e:

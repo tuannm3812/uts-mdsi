@@ -9,9 +9,14 @@ This dataset is published under a Creative Commons Attribution 4.0 International
 * **NPWS Fire History:** Provided by NSW National Parks and Wildlife Service under Creative Commons Attribution. Dataset URL: [Data.NSW NPWS Record](https://data.nsw.gov.au/data/dataset/fire-history-wildfires-and-prescribed-burns-1e8b6)
 
 ## Files
-1. **`dea_hotspots.geojson`**: A point layer containing satellite hotspot observations. Properties include acquisition timestamps, coordinates, sensor names (MODIS, VIIRS, AHI), processing algorithms, and confidence metrics.
+1. **`dea_hotspots.geojson`**: A point layer containing satellite hotspot observations. Properties include acquisition timestamps, coordinates, sensor names (MODIS, VIIRS, AHI, AVHRR), processing algorithms, and confidence metrics.
 2. **`npws_fire_history.geojson`**: A polygon boundary layer containing fire complexes managed by the NSW National Parks and Wildlife Service. Properties include fire names, starting/ignition dates, end/extinguishment dates, and fire type classifications (e.g. bushfire vs. prescribed burn).
 3. **`snapshot-manifest.json`**: Explicit provenance metadata, including SHA-256 checksums and dataset origins, ensuring reproducibility.
+
+## Analysis Notebooks
+The EDA and reliability-matching analysis of this data are published as separate public notebooks (kernels) rather than bundled into this dataset, so the dataset only needs a new version when the underlying data changes, not every time analysis text changes:
+- [NSW Active-Fire EDA](https://www.kaggle.com/code/tuannm3812/nsw-active-fire-eda)
+- [NSW Active-Fire Reliability Pilot](https://www.kaggle.com/code/tuannm3812/nsw-active-fire-reliability-pilot)
 
 ## Intended Use
 This snapshot is designed for educational and academic research. It provides a benchmark for testing spatiotemporal matching algorithms and analyzing the challenges of event-level validation when target reference boundaries are represented as consolidated, whole-of-season fire complexes.
