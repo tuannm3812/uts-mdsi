@@ -798,5 +798,21 @@ Logged as T-040. Fix not yet applied — flagged to Tuan for a decision on appro
 
 **Re-verified live, not assumed:** re-ran the same API query. `isPrivate` now reads `false` — the toggle worked, dataset is genuinely public, still at Version 17 (expected, visibility toggles don't bump version). Tried to also check whether Source/Provenance and Update Frequency cleared, via both the API (`datasets/view` doesn't expose those sub-scores, even now that it's public) and WebFetch on the live page (the usability panel is client-side rendered, so a fetched/converted page doesn't show it). Couldn't verify those two either way from here — asked Tuan to check the live page directly rather than guessing.
 
+### 2026-08-06 — Claude
+
+**Context:** Tuan sent the live Pending Actions panel — Usability 7.50/10, "Add file information," "Specify provenance," and "Specify update frequency" all still pending, confirming the T-029 fixes never actually landed live. Asked whether to fix it via API or have Tuan do it manually on the website; Tuan chose API.
+
+**Root-caused precisely, not just diagnosed generically:** installed the `kaggle` pip package (already present, just not on PATH) and read its actual source. `dataset_metadata_update()` — the method behind `kaggle datasets metadata --update` — only maps `title/subtitle/description/isPrivate/licenses/keywords/collaborators/data` from `dataset-metadata.json`; it never reads `expectedUpdateFrequency` or `userSpecifiedSources` at all, even though the underlying `DatasetSettings` SDK object supports both (`expected_update_frequency`, `user_specified_sources`). So this wasn't just "kaggle datasets version doesn't push metadata" — the *dedicated* metadata-update path in the installed library version is itself missing two fields.
+
+**Fixed by going one layer below the CLI wrapper:** wrote a script calling `kaggle.api.build_kaggle_client().datasets.dataset_api_client.update_dataset_metadata()` directly with a fully-populated `DatasetSettings`, including the two dropped fields and a properly-mapped `data` (per-file description) list built from `dataset-metadata.json`'s `resources` array (`path`→`name`, `description`→`description` — the SDK's field names don't match ours).
+
+**Two live validation surprises, resolved by checking rather than guessing:**
+- First attempt failed: "invalid license." Downloaded the dataset's actual live-stored metadata (`kaggle datasets metadata <dataset> -p .`, non-update mode) and found Kaggle stores the license as `"Attribution 4.0 International (CC BY 4.0)"` internally, not the short `"CC-BY-4.0"` slug our file uses for the `create`/`version` path. Used the canonical string instead.
+- Second attempt failed: "invalid keywords" — 3 of our 5 local keywords (`wildfires`, `remote-sensing`, `geographic-information-systems`) aren't recognised Kaggle tags. Kept only the 2 that are (`earth science`, `australia`) rather than guessing at replacements.
+
+**Verified live, not just "no errors returned":** re-downloaded the dataset's metadata after the update — `expectedUpdateFrequency: "never"` and `userSpecifiedSources` (the full provenance string) both confirmed present server-side. File-description landing couldn't be independently confirmed — no live endpoint exposes per-file descriptions to check from here — so asked Tuan to confirm via the Usability panel directly.
+
+**Made it durable, per what I told Tuan I'd do if the API attempt worked:** added `push_dataset_metadata_extras()` to `upload_private.py`, called automatically after every future successful dataset version push, using the same direct-SDK approach (with the license/keyword quirks hardcoded and commented, since those are platform validation constraints specific to this dataset, not something to guess generically). Wrapped in try/except so a failure here can't break the main upload — caught this the hard way when the existing `test_upload_private_mocked` test failed (it mocks `shutil.copy2`, so the staging directory's `dataset-metadata.json` never actually exists in the test, and my first version let that exception propagate uncaught). Fixed, reran: 20/20 tests pass, audit still clean on both notebooks.
+
 
 
