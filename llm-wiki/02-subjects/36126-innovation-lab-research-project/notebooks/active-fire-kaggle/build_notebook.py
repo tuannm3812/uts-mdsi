@@ -383,7 +383,7 @@ def build_notebook(output_path: Path, snapshot_slug: str) -> Path:
         "To reproduce this analysis, check the local configuration and confirmed data sources:\n\n"
         "### Confirmed Public-Source Attributions:\n"
         "- **DEA Hotspots WFS:** Provided by Geoscience Australia under CC BY 4.0. URL: [DEA Hotspots Service](https://hotspots.dea.ga.gov.au/)\n"
-        "- **NPWS Fire History:** Provided by NSW National Parks and Wildlife Service under Creative Commons Attribution. URL: [Data.NSW NPWS Record](https://data.nsw.gov.au/data/dataset/npws-fire-history)\n\n"
+        "- **NPWS Fire History:** Provided by NSW National Parks and Wildlife Service under Creative Commons Attribution. URL: [Data.NSW NPWS Record](https://data.nsw.gov.au/data/dataset/fire-history-wildfires-and-prescribed-burns-1e8b6)\n\n"
         "### Snapshot Provenance Checksums:\n"
         "- `dea_hotspots.geojson` (SHA-256): `e3fef8c1c9b4a81b07482eca2209885dc0b9c5f08fc5c6ddf310ad39313655d3`\n"
         "- `npws_fire_history.geojson` (SHA-256): `990507571b2b028c0d5687a7ba4351adb0b7e60ced1a53eddf9eb30e91f92dd5`"

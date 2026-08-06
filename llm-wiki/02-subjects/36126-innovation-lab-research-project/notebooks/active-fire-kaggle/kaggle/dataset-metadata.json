@@ -19,7 +19,7 @@
     {
       "name": "NSW NPWS Fire History",
       "description": "Historical fire boundaries and prescribed burn records in NSW",
-      "url": "https://data.nsw.gov.au/data/dataset/npws-fire-history"
+      "url": "https://data.nsw.gov.au/data/dataset/fire-history-wildfires-and-prescribed-burns-1e8b6"
     }
   ],
   "keywords": [
@@ -29,7 +29,7 @@
     "geographic-information-systems",
     "australia"
   ],
-  "description": "# NSW Active-Fire Reliability Pilot Dataset\n\n## Overview\nThis dataset contains a spatiotemporal snapshot of satellite-derived active-fire active-monitoring hotspot observations and historical fire boundaries in New South Wales (NSW), Australia. It is compiled specifically to support **calibration and spatiotemporal reliability auditing** of satellite hotspot products during a fortnight of intense fire activity in January 2020 (specifically covering the Gospers Mountain and Greater Blue Mountains fire periods).\n\n## Data Sources & Licensing\nThis dataset is published under a Creative Commons Attribution 4.0 International License (CC BY 4.0).\n* **DEA Hotspots WFS:** Provided by Geoscience Australia under CC BY 4.0. Service URL: [DEA Hotspots Service](https://hotspots.dea.ga.gov.au/)\n* **NPWS Fire History:** Provided by NSW National Parks and Wildlife Service under Creative Commons Attribution. Dataset URL: [Data.NSW NPWS Record](https://data.nsw.gov.au/data/dataset/npws-fire-history)",
+  "description": "# NSW Active-Fire Reliability Pilot Dataset\n\n## Overview\nThis dataset contains a spatiotemporal snapshot of satellite-derived active-fire active-monitoring hotspot observations and historical fire boundaries in New South Wales (NSW), Australia. It is compiled specifically to support **calibration and spatiotemporal reliability auditing** of satellite hotspot products during a fortnight of intense fire activity in January 2020 (specifically covering the Gospers Mountain and Greater Blue Mountains fire periods).\n\n## Data Sources & Licensing\nThis dataset is published under a Creative Commons Attribution 4.0 International License (CC BY 4.0).\n* **DEA Hotspots WFS:** Provided by Geoscience Australia under CC BY 4.0. Service URL: [DEA Hotspots Service](https://hotspots.dea.ga.gov.au/)\n* **NPWS Fire History:** Provided by NSW National Parks and Wildlife Service under Creative Commons Attribution. Dataset URL: [Data.NSW NPWS Record](https://data.nsw.gov.au/data/dataset/fire-history-wildfires-and-prescribed-burns-1e8b6)",
   "resources": [
     {
       "path": "dea_hotspots.geojson",

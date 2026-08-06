@@ -15,7 +15,7 @@
 
 - **Source:** Data.NSW National Parks and Wildlife Service (NPWS) Fire History Dataset.
 - **Stated License:** Explicitly licensed under Creative Commons Attribution (CC BY 4.0), allowing redistribution with proper attribution.
-- **URL Checked:** [NPWS Fire History on Data.NSW](https://data.nsw.gov.au/data/dataset/npws-fire-history)
+- **URL Checked:** [NPWS Fire History on Data.NSW](https://data.nsw.gov.au/data/dataset/fire-history-wildfires-and-prescribed-burns-1e8b6)
 
 ---
 

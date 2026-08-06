@@ -6,7 +6,7 @@ This dataset contains a spatiotemporal snapshot of satellite-derived active-fire
 ## Data Sources & Licensing
 This dataset is published under a Creative Commons Attribution 4.0 International License (CC BY 4.0).
 * **DEA Hotspots WFS:** Provided by Geoscience Australia under CC BY 4.0. Service URL: [DEA Hotspots Service](https://hotspots.dea.ga.gov.au/)
-* **NPWS Fire History:** Provided by NSW National Parks and Wildlife Service under Creative Commons Attribution. Dataset URL: [Data.NSW NPWS Record](https://data.nsw.gov.au/data/dataset/npws-fire-history)
+* **NPWS Fire History:** Provided by NSW National Parks and Wildlife Service under Creative Commons Attribution. Dataset URL: [Data.NSW NPWS Record](https://data.nsw.gov.au/data/dataset/fire-history-wildfires-and-prescribed-burns-1e8b6)
 
 ## Files
 1. **`dea_hotspots.geojson`**: A point layer containing satellite hotspot observations. Properties include acquisition timestamps, coordinates, sensor names (MODIS, VIIRS, AHI), processing algorithms, and confidence metrics.
