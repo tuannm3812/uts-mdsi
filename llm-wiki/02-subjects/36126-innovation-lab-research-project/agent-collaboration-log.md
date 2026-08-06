@@ -771,5 +771,11 @@ Tuan downloaded the three sources that were paywall-blocked last round (ScienceD
 
 **Recommended sending it before, not just live** — the execution plan's own supervision-rhythm section already says "send artefacts before meetings so supervision time is used for decisions," so this isn't a new judgment call, just following what was already written down. Suggested folding it into the Teams invite description (T-039) rather than a separate message, since Tuan has to send that invite anyway. Drafted the invite text (agenda + both Kaggle links) in the meeting-prep doc and noted the recommendation on T-039 in the tracker.
 
+### 2026-08-06 — Claude
+
+**Context:** Tuan wants an actual Teams message to send confirming tomorrow's meeting, separate from the calendar invite itself.
+
+Drafted `communications/to-arnick-2026-08-06-meeting-confirmation.md` — short, same style as the 3 August message (direct, no fluff): confirms Friday 12pm, one line on the reframed direction (Phase 1 groundwork vs. the actual forecasting target), and the two Kaggle links. Added it to the communications index and updated T-039 to cover both the invite and this message. Not sent — Tuan needs to send it himself (no Teams access from this session).
+
 
 

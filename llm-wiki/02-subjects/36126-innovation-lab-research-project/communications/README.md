@@ -8,5 +8,6 @@ Direct messages with the supervisor, in chronological order. Naming convention: 
 | 2026-08-03 | To Arnick | [to-arnick-2026-08-03-findings-brief-summary.md](to-arnick-2026-08-03-findings-brief-summary.md) | Sent |
 | 2026-08-05 | To Arnick | [to-arnick-2026-08-05-npws-followup-drafted.md](to-arnick-2026-08-05-npws-followup-drafted.md) | Drafted, **not sent — deprioritised** (see T-010) |
 | 2026-08-05 | From Arnick | [from-arnick-2026-08-05-direction-correction.md](from-arnick-2026-08-05-direction-correction.md) | Received — source for D-011/D-012, T-008, T-039 |
+| 2026-08-06 | To Arnick | [to-arnick-2026-08-06-meeting-confirmation.md](to-arnick-2026-08-06-meeting-confirmation.md) | Drafted, **not sent — needs Tuan** (see T-039) |
 
 Formal decisions drawn from these live in [decision-log.md](../research/decision-log.md); task status in [task-tracker.md](../research/task-tracker.md); open discussion in [agent-collaboration-log.md](../agent-collaboration-log.md).
