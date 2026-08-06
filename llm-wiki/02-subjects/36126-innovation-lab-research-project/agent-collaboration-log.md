@@ -828,5 +828,13 @@ Logged as T-040. Fix not yet applied — flagged to Tuan for a decision on appro
 
 **Still open, need Tuan directly:** per-file descriptions and Collection Methodology/Citations — both drafted, both require manual entry via the website since the API doesn't expose them.
 
+### 2026-08-06 — Claude
+
+**Context:** Tuan pasted the file descriptions and Collection Methodology manually, then asked whether the notebook needs any more work before sending to Arnick.
+
+**Confirmed live rather than assuming:** usability rating is now **1.0 (100%)** via direct API check, `isPrivate: false`, Version 18. T-040 fully closed.
+
+**Content readiness check:** the "Project Context and Roadmap" markdown cell (added under T-034) already explicitly ties the notebook to the forecasting pivot — confidence-filtered multi-decade dataset, weather/vegetation fusion, 1–7 day horizon, cross-attention transformer — so it reads as current context, not stale Phase-1-only framing, without needing an update. Combined with everything already verified this session (tests 20/20, audit clean, dead URL fixed, both notebooks genuinely executed), told Tuan no further content changes are needed — it's ready to send as-is.
+
 
 
