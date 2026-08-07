@@ -945,5 +945,13 @@ Logged as T-040. Fix not yet applied — flagged to Tuan for a decision on appro
 
 **Regenerated and re-synced** the updated script and new checklist to the Drive folder, confirmed via the Drive API that file sizes matched the newly generated files exactly (one file initially showed a stale `modifiedTime` in the first API check — re-queried a few seconds later and confirmed the sync had caught up, rather than assuming the first check was authoritative).
 
+### 2026-08-07 — Claude
+
+**Context:** Tuan asked for a Vietnamese version of the presentation script, in markdown.
+
+**Translated with the actual meeting language in mind** — the meeting itself is in English, so this isn't a replacement for the English script, it's a prep/rehearsal aid. Kept Arnick's verbatim quotes in English (translating a direct quote would misrepresent what he actually said) with a Vietnamese gloss underneath for comprehension; translated Tuan's own talking points into natural Vietnamese with an English original still visible above each one, so either language is ready to read from in the moment. Kept technical terms and proper nouns in English throughout (MODIS, FIRMS, Kaggle, VIIRS, SILO, DEA Land Cover, transformer, cross-attention, dataset/notebook names) — standard practice in Vietnamese technical writing, and matches the existing bilingual convention already in this repo (`active-fire-literature-review-vi-2026-07-30.md`).
+
+Linked from the meeting-prep doc and README. Not exported to PDF/Drive — Tuan only asked for the markdown this time.
+
 
 

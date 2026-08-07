@@ -63,7 +63,7 @@ Grouped by function, not by folder — see [AGENTS.md](AGENTS.md) for the recomm
 **Current sprint — Week 2 (forecasting pivot, Friday 7 Aug meeting)**
 
 - [Week 2 Mentor Meeting Prep — Friday 7 August](assignments/week-02-mentor-meeting-prep-2026-08-07.md) — recap, confirmed direction, questions with our recommendation, analysis backing it
-- [Week 2 Meeting Presentation Script](assignments/week-02-meeting-presentation-script-2026-08-07.md) — speaking notes with Arnick's own words quoted before each ask; PDF exports of this and the other prep docs are in Google Drive under `02 Supervision/Dr Arnick/01 Preparation/2026-08-07 Week 2 Meeting/`
+- [Week 2 Meeting Presentation Script](assignments/week-02-meeting-presentation-script-2026-08-07.md) — speaking notes with Arnick's own words quoted before each ask ([tiếng Việt](assignments/week-02-meeting-presentation-script-2026-08-07-vi.md)); PDF exports of this and the other prep docs are in Google Drive under `02 Supervision/Dr Arnick/01 Preparation/2026-08-07 Week 2 Meeting/`
 - [Week 2 Decision Checklist](assignments/week-02-decision-checklist-2026-08-07.md) — tickable options for each of the 7 decisions, for marking live during the call
 - [Arnick Message Traceability](research/arnick-message-traceability-2026-08-07.md) — every clause of his 5 August message mapped to an action; surfaced one gap (cross-sensor matching) not previously flagged
 - [Forecasting Literature and Methodology Scan (T-031)](research/week-02-forecasting-literature-scan-2026-08-06.md) — evidence table, recurring patterns, and the innovation angle for Option B
