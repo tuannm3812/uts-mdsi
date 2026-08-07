@@ -78,7 +78,7 @@ Source: [`communications/from-arnick-2026-08-05-direction-correction.md`](../com
 | 3 | Confidence-filter it via NSW fire records, cross-sensor matching (VIIRS/Himawari), or burnt-area datasets (named the Digital Atlas link explicitly) | Method already exists (reliability-audit pipeline, T-004/T-009) but only covers a Jan 2020 pilot window against 2 references — needs extending to full history + the named Digital Atlas reference | T-032 (Digital Atlas), T-033 (full-history extension) |
 | 4 | Fuse in auxiliary weather (rainfall, temperature, wind, humidity) and land-cover/vegetation-condition data, per hotspot location/record | Sources not yet chosen (SILO/BOM, DEA Land Cover are candidates) — open question for Friday | T-033 |
 | 5 | Multimodal spatiotemporal transformer, cross-attention fusion across MODIS/weather/vegetation branches | Architecture template already worked out from literature (TS-SatFire task framing, FireSenseNet's cross-attention gate design) | T-031 (done, first pass), design section below |
-| 6 | Pick **one** prediction target: (A) occurrence probability + explanation + spatial maps, or (B) 1–7 day forecasting/nowcasting | **Resolved — Option B** | D-012 |
+| 6 | Pick **one** prediction target: (A) occurrence probability + explanation + spatial maps, or (B) 1–7 day forecasting/nowcasting | **Resolved — Option B, then superseded 2026-08-07 — see the D-013 update below** | D-012, D-013 |
 | 7 | "check work pipeline... how to add innovation... how each process can be done" | First pass done; full-text verification in progress; formal Scopus/WoS pass still owed | T-031, T-038 |
 | 8 | "cannot add more complexity" — explicit scope constraint | Governs every choice below: no extra modalities beyond weather + land cover/vegetation, no pursuing both A and B, no architecture beyond what's needed to fuse three branches | Applies throughout |
 
@@ -93,6 +93,20 @@ Ordered against the [Week calendar](#week-calendar) above, and against `Recommen
 5. **Week 6 onward:** Phase 5 (transformer + cross-attention build) using the design already specified in the literature scan; not detailed further here until Phase 3/4 are actually done — premature to plan further given G3/G4/G5 aren't all frozen yet.
 
 This isn't a new decision — it's D-011/D-012 turned into a sequence, so "what's next" doesn't require re-deriving it from the raw message each time.
+
+## D-013 update (7 August) — Option A pivot, pending full confirmation
+
+Source: [`communications/from-arnick-2026-08-07-meeting-transcript-and-followup.md`](../communications/from-arnick-2026-08-07-meeting-transcript-and-followup.md). **This is based on partial evidence** — the meeting transcript Tuan provided has a ~40 minute gap covering roughly where the 7 prepared decisions would have been discussed live. T-048 (get the full transcript) is open; treat everything below as the working reading, not fully locked, until that's checked.
+
+What changed from the plan above:
+
+- **Prediction target flips to Option A** (occurrence probability + uncertainty + transparent explanation), not Option B (1–7 day forecasting). Arnick's post-meeting message names his own 2023 paper (Abdollahi & Pradhan, XAI for wildfire susceptibility) as "the first methodology," which matches Option A's framing, not Option B's.
+- **Data foundation may not need T-033 (full 2000–2025 FIRMS history) as an immediate prerequisite.** His phrasing — "based your 2019-20 hotspot records you found at initial reliability auditing" — reads as building on the *existing*, already-reliability-audited pilot data, not waiting on the multi-decade sourcing effort. T-051 tracks reassessing this once T-048 confirms it.
+- **Model approach shifts from a from-scratch multimodal transformer to fine-tuning an existing geospatial foundation model** — he named AlphaEarth/Satellite Embedding V1 and Prithvi-EO-2.0 specifically (T-050). This also potentially simplifies the auxiliary-data-fusion problem, since AlphaEarth's embeddings already integrate climate/vegetation/elevation data into one representation — possibly reducing how much separate weather/land-cover sourcing (requirement 4 above) is still needed as raw inputs versus superseded by the embedding approach. Not yet resolved either way.
+- **Land cover and the Digital Atlas dataset are both still active** — confirmed live in the transcript ("update the access to side of data and then land cover for DA... we'll check what other data set we can use or share the links from DA"). Arnick will share specific Digital Atlas links himself — its role isn't settled as "supplementary only" the way the pre-meeting recommendation had it.
+- **The reliability audit (Phase 1) may become its own journal contribution**, separate from or alongside the main forecasting/prediction work — "I believe this work would be good and we can even try journal."
+
+**Practical effect on the near-term plan above:** Weeks 3–5 as sequenced (T-032/T-033 → confidence-filtering extension → baselines) assumed Option B and the full FIRMS history as a hard prerequisite. If T-048/T-051 confirm the Option A + existing-pilot-data reading, that sequence likely compresses — baselines and a first foundation-model fine-tuning pass could start sooner, using the already-audited 2019–20 data, with T-033's full history becoming a later-phase robustness/generalisation step rather than a blocking one. Not rewriting the week-by-week plan until T-048 closes the loop.
 
 ## Semester phases
 

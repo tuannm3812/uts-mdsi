@@ -953,5 +953,17 @@ Logged as T-040. Fix not yet applied — flagged to Tuan for a decision on appro
 
 Linked from the meeting-prep doc and README. Not exported to PDF/Drive — Tuan only asked for the markdown this time.
 
+### 2026-08-07 — Claude
+
+**Context:** Tuan pasted the Week 2 meeting transcript and Arnick's post-meeting Teams message. Read it carefully rather than assuming the 7 prepared decisions all got resolved as planned — and found the transcript has a real gap.
+
+**Noticed the transcript was incomplete before drawing any conclusions from it.** The pasted excerpt covers roughly 0:00–10:07 (Tuan's opening recap) then jumps to 51:38–54:40 (closing exchange) — a ~40-minute gap exactly where the 7 decisions would most likely have been discussed live. Recorded this explicitly in the communications file rather than silently treating the visible portion as the whole meeting.
+
+**Verified the referenced materials before treating them as a signal, not just relayed them.** Fetched the paper DOI via Crossref: confirmed it's Arnick's own 2023 paper (Abdollahi & Pradhan, XAI for wildfire susceptibility prediction, *Science of the Total Environment*) — not a random reference. Checked AlphaEarth/Satellite Embedding V1 and Prithvi-EO-2.0 are both real, current models. Caught one small thing: the arXiv link pasted under the "Prithvi-EO-2.0" heading is actually a different, genuine Feb 2026 paper about an embedding-retrieval tool — a copy-paste mismatch on Arnick's end, same pattern as the stray paragraph caught in his 5 August message. Not worth raising with him, both links are useful regardless.
+
+**This adds up to a real, evidence-backed redirection signal — but flagged it and asked before acting on it,** rather than unilaterally rewriting the decision log from a paper reference and a few lines of transcript. Asked Tuan two things: whether he can get the full transcript, and whether to treat this as Option A now confirmed over Option B. He confirmed both — will get the full transcript, and yes to Option A.
+
+**Recorded D-013** (supersedes D-012): Option A confirmed, explicitly caveated as based on partial evidence pending the full transcript (T-048). Also flagged two secondary implications that follow from his phrasing but aren't independently confirmed: the existing 2019–20 reliability-audited data may be the actual starting point rather than needing the full FIRMS 2000–2025 history first (T-051), and the model approach shifts from a from-scratch transformer to fine-tuning an existing geospatial foundation model (T-050). Updated `research-execution-plan-2026.md` with a new "D-013 update" section (left the original 5 August breakdown intact as historical record, per the decision-log's own "don't edit past decisions" convention) and `AGENTS.md`'s scope paragraph, both carrying the same pending-confirmation caveat rather than presenting this as fully locked.
+
 
 
