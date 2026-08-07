@@ -6,7 +6,7 @@
 
 **Backing detail:** [`research/week-02-forecasting-literature-scan-2026-08-06.md`](../research/week-02-forecasting-literature-scan-2026-08-06.md) has the full evidence table and reasoning behind §3's methodology outline — bring it along in case Arnick wants the detail.
 
-**Speaking notes:** [`week-02-meeting-presentation-script-2026-08-07.md`](week-02-meeting-presentation-script-2026-08-07.md) turns this doc into talking points organised by meeting flow. All materials (this doc, the script, the literature scan, the Digital Atlas evaluation, and both Kaggle notebooks) are exported as PDF in the Drive folder `02 Supervision/Dr Arnick/01 Preparation/2026-08-07 Week 2 Meeting/`.
+**Speaking notes:** [`week-02-meeting-presentation-script-2026-08-07.md`](week-02-meeting-presentation-script-2026-08-07.md) turns this doc into talking points organised by meeting flow, with his own words quoted before each ask. **Live tick-sheet:** [`week-02-decision-checklist-2026-08-07.md`](week-02-decision-checklist-2026-08-07.md) — one page per decision with concrete options to mark as he answers. All materials (this doc, the script, the checklist, the literature scan, the Digital Atlas evaluation, the traceability check, and both Kaggle notebooks) are exported as PDF in the Drive folder `02 Supervision/Dr Arnick/01 Preparation/2026-08-07 Week 2 Meeting/`.
 
 **Traceability check:** [`research/arnick-message-traceability-2026-08-07.md`](../research/arnick-message-traceability-2026-08-07.md) maps every clause of his 5 August message to an action, to make sure nothing got missed. It surfaced one real gap not caught before — see open question 7 below.
 

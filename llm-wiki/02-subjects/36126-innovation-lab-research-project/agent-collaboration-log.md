@@ -935,5 +935,15 @@ Logged as T-040. Fix not yet applied — flagged to Tuan for a decision on appro
 
 **Folded the gap into the live meeting materials rather than just noting it** — added as open question/decision 7 in the meeting-prep doc and the presentation script, renumbered "six decisions" to "seven" throughout, and added a T-033 scope note so it's tracked as planned work rather than sitting as an implicit gap. Regenerated and re-synced the 2 affected PDFs plus the new traceability PDF to the Drive folder, verified via the Drive API again (matching file sizes, not just trusting the copy).
 
+### 2026-08-07 — Claude
+
+**Context:** Tuan asked to weave Arnick's actual quoted words into the script, and to get a tickable list of options for each of the 7 decisions to mark live during the call.
+
+**Quoted his real words, not paraphrases** — went back to both source messages (5 Aug direction-correction, 29 Jul scope-clarification) and pulled the exact clause behind each of the 7 decisions into the script as a labelled "His words" block before Tuan's talking point. Compute (5.5) has no matching quote from him — left that honestly marked as genuinely open rather than inventing one.
+
+**Built the tickable checklist and caught two real rendering bugs by actually reading the output, not just generating it.** First pass: the ☐ options collapsed into one run-on paragraph — Markdown treats consecutive non-blank lines without a list marker as a single paragraph, so each checkbox option needs its own `- ` bullet, not just a line break. Second: the blank-line fill (`_______`) mostly vanished — a run of underscores is Markdown's own emphasis/bold syntax, so it was being silently consumed as formatting rather than rendered as visible blanks. Fixed by using dot-leaders (`..........`) instead, which Markdown doesn't intercept. Verified both fixes by reading the actual rendered PDF pages, not just checking the conversion command exited cleanly.
+
+**Regenerated and re-synced** the updated script and new checklist to the Drive folder, confirmed via the Drive API that file sizes matched the newly generated files exactly (one file initially showed a stale `modifiedTime` in the first API check — re-queried a few seconds later and confirmed the sync had caught up, rather than assuming the first check was authoritative).
+
 
 
