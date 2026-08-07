@@ -2,7 +2,13 @@
 
 Scope: this file applies to work under this subject folder only (`llm-wiki/02-subjects/36126-innovation-lab-research-project/`), not the rest of the `uts-mdsi` repo.
 
-Tuan is researching transparent fire-hotspot detection and active-fire monitoring in NSW, supervised by Dr Arnick Abdollahi. The reliability/confidence-auditing work (Gap B, D-006/D-007) is **Phase 1 — a data-quality gate, not the destination** (Arnick's direction correction, D-011). The actual deliverable predicts **Option A: fire-occurrence probability with uncertainty and transparent factor explanation** (D-013, 2026-08-07, supersedes D-012's earlier Option B pick) — likely built on the existing 2019–20 reliability-audited pilot data rather than requiring the full 2000–2025 FIRMS history first, and likely via **fine-tuning an existing geospatial foundation model** (AlphaEarth/Satellite Embedding V1, Prithvi-EO-2.0) rather than a from-scratch transformer. **D-013 is based on partial evidence** — the Week 2 meeting transcript has a ~40min gap covering where this would have been discussed live; T-048 (get the full transcript) is still open. Don't treat D-013 as fully locked until that's checked. See `research/research-execution-plan-2026.md`'s "Arnick's direction" section for sequencing.
+Tuan is researching transparent fire-hotspot detection and active-fire monitoring in NSW, supervised by Dr Arnick Abdollahi. The reliability/confidence-auditing work (Gap B, D-006/D-007) is **Phase 1 — a data-quality gate, not the destination** (Arnick's direction correction, D-011). The actual deliverable predicts **fire-occurrence probability with uncertainty and transparent factor explanation** (D-014, 2026-08-07, confirmed live via the full Week 2 meeting transcript — supersedes D-012's earlier 1-7-day-forecasting pick), specifically:
+- A **non-time-series, multimodal ML/DL model** (not a transformer — Arnick explicitly ruled out time-series modelling given only 2 years of audited data, T-033's full 2000-2025 FIRMS history is downgraded to optional/stretch, not a prerequisite).
+- Built on the **existing ~15,000-record 2019-20 reliability-audited pilot data** (NSW Black Summer), **kept** as the case study — do not widen to all of NSW or a different subregion, that recommendation was explicitly reversed live.
+- Via **fine-tuning an existing geospatial foundation model** (AlphaEarth/Satellite Embedding V1, Prithvi-EO-2.0) plus a genuine custom fusion mechanism (attention or similar), with baseline-model comparisons.
+- Feeding toward an actual paper — Arnick outlined a full paper structure live, with journal submission as a stated possibility.
+
+See `research/research-execution-plan-2026.md`'s "D-014 update" section for the full breakdown and near-term task sequence (T-049 through T-055).
 
 ## Start here, in this order
 

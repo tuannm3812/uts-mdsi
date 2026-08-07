@@ -1,110 +1,115 @@
-# Dr Arnick — Meeting Transcript Excerpt and Post-Meeting Message, 7 August 2026
+# Dr Arnick — Meeting Transcript (Full) and Post-Meeting Messages, 7 August 2026
 
-**Status:** Received from Tuan, 7 August 2026 (Teams meeting transcript excerpt, pasted by Tuan) plus Arnick's post-meeting Teams message (sent immediately after the call, includes a paper reference and links). Recorded verbatim below.
+**Status:** Full transcript now available (Tuan downloaded `Research Update.vtt`/`.docx` from Teams, 2026-08-07) — supersedes the earlier partial version of this file, which only had the opening (0:00–10:07) and closing (51:38–54:40) with a ~40-minute gap. Two rounds of post-meeting Teams messages also recorded below. This is the source for D-014.
 
-**Important caveat:** the transcript excerpt Tuan pasted covers roughly **0:00–10:07** (Tuan's opening recap) and then jumps to **51:38–54:40** (closing exchange). **The ~40 minutes in between — where the actual walkthrough of the 7 prepared decisions most likely happened — is not included in what was pasted.** Do not assume any of the 7 decisions were resolved as planned based on this excerpt alone; only what's explicitly visible below and in the post-meeting message is confirmed.
+## Transcript — organised by topic (verbatim exchanges, connection/small-talk filler trimmed)
 
-## Transcript — opening (0:07:55–0:10:07)
+### Opening recap (7:55–11:17)
+Tuan recaps the reliability pilot: NSW RFS ~17% match rate, NPWS ~97%, explained by Kerry Ridge/Gospers Mountain dominating ~98% of NPWS matches. Restates his understanding of the 5 August redirect back to Arnick (MODIS FIRMS 2000-25, confidence-filtered, fused with weather/land-cover, multimodal transformer, one prediction output — occurrence probability or 1-7 day forecast).
 
-> Manh Tuan Nguyen (7:55): So I think, yeah, so actually I still have some questions for you based on what I have done for this week and also about your feedback. So.
->
-> Manh Tuan Nguyen (8:10): Yes, so actually I have pushed my findings into the Kaggle notebook and also...
->
-> Manh Tuan Nguyen (8:22): Ohh, wait me a second, I will check my...
->
-> Manh Tuan Nguyen (8:25): My point, okay, yes, so...
->
-> Manh Tuan Nguyen (8:29): Yeah, so I have some some question for you to to seek for your decisions, so I can start doing next week, and yes, for for those for the kernel loop, I can share my my screen right now, but...
->
-> Manh Tuan Nguyen (8:49): For the findings, actually, right now I use the...
->
-> Manh Tuan Nguyen (8:55): I have do the two data set from the New South Wales IRS [RFS] and also the NPWS, so all of so we have so.
->
-> Manh Tuan Nguyen (9:12): So, we have so far the and and and SFWRFS, we only match around 17% of the hotspot with the sensor bufferings, but for the NPWS, those the areas are more broader, so we match.
->
-> Manh Tuan Nguyen (9:32): 97%. So, for this one, there's not a real jumps between the sensor improvement for the for between the both data set.
->
-> Manh Tuan Nguyen (9:44): is mostly because there are two mega complex in Kerry Ridge and Gospel Mountains that account for 98% of every match in the NPWS. So I think there's no problem with the data set right now.
->
-> Manh Tuan Nguyen (10:07): So, so right now, so you, I want to make sure that I understood your replies correctly before I I move to anything else. So, you you said that the the right the reliability audit?
+> Arnick Abdollahi (11:17): "Yeah, but let's, yeah, we'll discuss that. Yeah, that's the first thing that you did that was like a great effort. Amazing. Thank you for that."
 
-**[~40 minutes not captured in what was pasted]**
+### Notebook walkthrough (11:44–22:38)
+Arnick reviews the Kaggle notebook live — DEA hotspot schema, NPWS fire-boundary schema (14 entries: fire ID, ignition date, area, perimeter), how the confidence matching was done. Confirms methodology understanding, asks Tuan to add a reference for the matching formula/methodology used.
 
-## Transcript — closing (0:51:38–0:54:40)
+### The core redirection — why not time series (23:13–37:35)
 
-> Arnick Abdollahi (51:38): The results discussion.
+> Arnick Abdollahi: "If you want to build a... machine learning, because this is for, I think, for like a specific fire, right? Like a 2019 and 20, right? That's 2 years. Not like a time series, right? Is that correct, or?"
 >
-> Arnick Abdollahi (51:46): And conclusion at the end, I think something reference.
+> Manh Tuan Nguyen: "Yes, we only match the incident... from like 2019 and 20, not the other years."
 >
-> Arnick Abdollahi (51:54): This kind of things, so it's really actually a...
+> Arnick Abdollahi: "One thing, because this is for this year only, you can put your focus on this year, because... that this year actually we had like a big fire, right? And then you can build your methodology around... that situation and that kind of scenario, right? For example, what would be your understanding and impact of your research for 2019 and 2020 bushfire? That is like a called Black Summer, right? Instead of just moving to like other fires in different years or something, you can select this as a study because it's like a reference, right? Because it was like a big fire happened for Australia and it's evident. So you can do research on that, right, and build your methodology, whatever we want to do for next step, you can do on these types of fire, and then see what we can actually understand from that fire, or what we can add to that kind of right, what kind of insight we can have..."
 >
-> Arnick Abdollahi (52:02): Research paper kind of things that you need to follow.
+> Arnick Abdollahi: "You selected here, this is a very good foundation that you actually find this kind of matching and reliability auditing and then you extract that like a hottest spot with this high level of confidence. What is the confidence in here? ... Total hot spot, you have like 15,000... like a sample record, right? This is your final record, right? Then you can actually use these as your data set, like because you have 15,000 record and it's good enough for training the model, isn't it?"
 >
-> Arnick Abdollahi (52:09): But I believe this work would be good and we can even try journal, see what would be there.
+> Manh Tuan Nguyen: "Yep, the time series prediction, right? With the horizon."
 >
-> Manh Tuan Nguyen (52:14): Yeah.
->
-> Arnick Abdollahi (52:17): Final outcomes.
->
-> Arnick Abdollahi (52:24): So, I'm good.
->
-> Manh Tuan Nguyen (52:27): Yeah, I think good, I think.
->
-> Manh Tuan Nguyen (52:30): Yeah.
->
-> Arnick Abdollahi (52:34): Okay, you update the access to side of data and then land cover for DA, and also we'll check that what other data set we can use or share the links from DA. You can add to your data set.
->
-> Manh Tuan Nguyen (52:45): Yeah, yeah.
->
-> Arnick Abdollahi (52:50): Also, just remember to do a bit of search on the models, how to add more innovation into the model.
->
-> Manh Tuan Nguyen (53:01): Yeah, okay, I understand. I will share you. Yeah, I will look at the data set and will share you the findings later.
->
-> Arnick Abdollahi (53:10): Always.
->
-> Arnick Abdollahi (53:14): If you have any question or something, just, yeah.
->
-> Manh Tuan Nguyen (53:18): I think that's good for me now.
->
-> Manh Tuan Nguyen (53:21): Okay.
->
-> Manh Tuan Nguyen (53:23): Okay, thank you. Yeah, thank you so much.
->
-> Arnick Abdollahi (53:25): Got it.
->
-> Manh Tuan Nguyen (53:26): Okay, thank you. Have a good day.
->
-> [53:27–54:40: casual conversation — Tuan's location, capstone subject (36127, custom agent harness project), no research-direction content]
->
-> Arnick Abdollahi (54:39): Yeah, bye, bye.
->
-> Manh Tuan Nguyen (54:40): Bye bye.
+> Arnick Abdollahi: "But the problem here is that you cannot apply that, because you have like a limited time frame, like just two years. For time series prediction, at least you must have like maybe 20, 30 years of data. So imagine that for weather. Weather prediction, so we usually use like maybe 40-50 year data. Long historical data set, we cannot build like a time series model for just one year, two years data, so that's why you have to shift your time series prediction to something else, like the goal of the project change if you want to use this data set. So, but if you want to go to time series data set, then you need to use like another set of data set that has like a time series. For example, different area, maybe 10 years, 20 years of the data you have to have, right? And then do that prediction analysis. So, but both types are OK, are fine, but which one you are most interested to do, and you think?"
 
-## Post-meeting Teams message (sent immediately after)
+Tuan raises the region-concentration concern:
 
-> This is one of my paper (long time ago) on similar thing I discussed for the first methodology on fire occurrence probability prediction if you want to work on it based your 2019-20 hotspot records you found at initial reliability auditing. But you need to put more innovation into your models and develop new ML/DL architecture.
+> Manh Tuan Nguyen: "...if we focus only on New South Wales regions, there's only two big [fires]. So they maybe the models will be a bit overfit because that's two big fires. If we choose another regions, do you have any preference? Or any direction for choosing another regions, or do we have any reliable data set right now?"
 >
-> If we would have good results and methodology, you can write also the similar paper for a good journal.
->
-> https://doi.org/10.1016/j.scitotenv.2023.163004 you can also add this Embedding dataset a unified data representation to your dataset as auxiliary data.
->
-> AlphaEarth Foundations helps map our planet in unprecedented detail
->
-> Satellite Embedding V1 For model, you can work on Fondation models, it would be very interesting to pitch and fine-tune these models to the fire applicaitin and occurecne predction, and see how they will work.
->
-> GitHub - Jack-bo1220/Awesome-Remote-Sensing-Foundation-Models
-> Prithvi-EO-2.0: A Versatile Multi-Temporal Foundation Model for...
-> https://arxiv.org/html/2602.23678v1
->
-> Lost of models in GitHub, which you can choose those most well known for time series embeddings and earth observation applications, then see how we can bring it to fire research.
+> Arnick Abdollahi: "Yeah, there are like a hottest spot data set, as I mentioned, for example, MODIS had like a time series hottest spot and active fire that you can use for it is global data set. But it need to be checked at how much actually reliable that hot spot are, because that sensor pick up every hot spot, and that does not mean that 100% is fire, right? ... If you want, but it's OK, we can do some kind of stuff there if you want to do time series analysis."
 
-## Notes
+Arnick then walks through what a genuine time-series path would need (a longer-history global hotspot dataset, e.g. via Google Earth Engine, "from 2000 to this current date") and what it would enable (a proper multimodal spatiotemporal transformer with cross-attention) — but immediately contrasts it with the small-data path:
 
-- **Not yet reconciled against the 7 prepared decisions** — the visible transcript doesn't confirm or deny most of them (horizon, region, compute, cross-sensor matching). Only two get any visible signal: land cover (confirmed to add) and the Digital Atlas dataset (Arnick says he'll share specific links from DA himself, not settled as "supplementary only").
-- **Possible major redirection, not yet confirmed:** "fire occurrence probability prediction... based [on] your 2019-20 hotspot records you found at initial reliability auditing" reads as Option A (occurrence probability), built on the *existing* reliability-audited pilot data — not necessarily requiring the full 2000–2025 FIRMS history (T-033) as an immediate prerequisite, and not explicitly Option B (1–7 day forecasting, D-012's internal pick). This needs direct clarification with Tuan before treating D-012 as still current.
-- **Model direction shifted toward foundation models**, not necessarily a from-scratch multimodal transformer: AlphaEarth/Satellite Embedding V1, Prithvi-EO-2.0, and a general pointer to "Awesome-Remote-Sensing-Foundation-Models" — fine-tuning an existing pretrained model rather than building cross-attention fusion from scratch.
-- **The referenced paper is confirmed to be Arnick's own prior work** (checked via Crossref): Abdollahi, A. & Pradhan, B. (2023), "Explainable artificial intelligence (XAI) for interpreting the contributing factors feed into the wildfire susceptibility prediction model," *Science of the Total Environment*. It's a wildfire susceptibility/occurrence paper using **explainable AI** — this matches Option A's original description ("transparent explanation of factors") far more closely than Option B. Strong signal, not yet confirmed with Tuan, that this points at Option A rather than the internally-chosen Option B (D-012).
-- **Google's Satellite Embedding V1 (AlphaEarth Foundations)** — confirmed via web search: a Google/DeepMind model producing a 64-channel embedding per 10m pixel, integrating optical, radar, elevation, and climate data into one unified representation, annual coverage 2018–2024. Could substantially simplify the auxiliary-data-fusion problem (partially overlaps with the separately-planned weather/land-cover sourcing).
-- **Prithvi-EO-2.0** — confirmed real (arXiv 2412.02732, NASA/IBM), a 300M/600M-parameter multi-temporal geospatial foundation model trained on Landsat/Sentinel-2, outperforms 6 other geospatial foundation models on benchmark tasks.
-- **The second arXiv link Arnick pasted under the "Prithvi-EO-2.0" heading doesn't actually match** — `arxiv.org/abs/2602.23678` is a different, genuine, more recent (Feb 2026) paper, "Any Model, Any Place, Any Time: Get Remote Sensing Foundation Model Embeddings On Demand" (a tool for retrieving embeddings from multiple remote-sensing foundation models on demand) — still relevant, but not actually Prithvi-EO-2.0 itself. Likely a copy-paste mismatch on his end (same pattern as the stray paragraph found in his 5 August message) — not urgent to correct with him, both links are genuinely useful regardless.
-- **Reliability audit may itself be journal-worthy** — "I believe this work would be good and we can even try journal" — a possible parallel/independent publication track for the Phase 1 work, separate from the forecasting model.
+> Arnick Abdollahi: "But for this data, because we don't have that time series... we cannot go to time series models, like transformer or whatever, but still we can have the multimodal. For example, multimodal deep learning model, because you would have like a different modality, for example, weather modality, land cover modality, or I don't know, whatever other you have, and then you can build on top of that to see how they work."
+
+**The decision:**
+
+> Arnick Abdollahi (36:44): "But if we want to move to that time series kind of thing, then the direction a little bit will be shifted... yeah, and then actually it makes sense to shift to that. We can work on this data set and move forward because we have limited time."
+>
+> Manh Tuan Nguyen: "I think I will try first, and... right now, so I think, okay, about the direction, I think that's fine."
+
+(Tuan briefly floats doing both — "I can do both at the same time" — Arnick doesn't push back on this but doesn't commit resources to it either; the concrete, agreed-on primary path is the small-data multimodal model below.)
+
+### Compute (37:36–38:45)
+
+> Manh Tuan Nguyen: "...when I training models, actually now I still use [K]aggle. They offer 30 hours with GPU. I think that's okay. Should we have in the future if there's I need more GPU, can I use another? Compute Engine from [S]chool or something else. What do you think?"
+>
+> Arnick Abdollahi: "For this answer, I think it should be fine. Because you have just 15,000 records... maybe you don't need [all of them]... like 1000 or 5000 or something you need based on your region. You can just select those high level confidence of the hottest spot records... and then try to train your model and that should be enough. Even in a normal laptop it works because your region is not too [big/heavy]."
+
+### Innovation / model mechanism (39:00–44:41)
+
+> Manh Tuan Nguyen: "...we have a really tight time frame, so... what the innovation can we do for this project? I still wonder if you have suggested any idea."
+>
+> Arnick Abdollahi: "You need to put your innovation into the model... that actually developing a new model, for example... maybe when you develop a model, you can add like [a] mechanism within the model that could help to better predict the probability of fire. Know what I mean? Like attention mechanism or... sensor kind of mechanism or like a modality kind of mechanism into the system, into the model."
+>
+> Manh Tuan Nguyen: "Yeah, I understand. I think this one I will... do some research about that and I would do some experiment."
+>
+> Arnick Abdollahi: "No, I can suggest you to go with this because you have the data set ready. You just need to add your auxiliary data here, like weather or land cover or whatever, and then build your model and do a bit of analysis to see that how you can actually do the probability of the fire. And then, uh, we can discuss next. For the model, also, I'll search to see what kind of other innovation we can add to the model, and I'll share something new."
+
+### Auxiliary data — sources and feature engineering (35:04–35:59, 45:00–48:52)
+
+> Manh Tuan Nguyen: "...for the auxiliary data source, so actually now I have [SILO] to track the weather data, [it's] free and it can match with the full firms window we have right now... For silo, we don't have wind, and for the [land] cover, we can use the DA's land cover. They have the data set matched to the DA's hotspot."
+>
+> Arnick Abdollahi: "Yeah, you can use the silo or you can use the [other] data... In DA, if you check, you have land cover and also you have... different data set on fuel, for example, the moisture content — moisture, you can use that as well. I'll share some data set that you can use from there."
+
+Arnick then gives concrete feature-engineering guidance on temporal aggregation of weather data:
+
+> Arnick Abdollahi: "For the data set that you get, for example, for weather data... you need to check that you get [the] data set for the same date at fire, [or] a little bit of time before, for example, maybe three months, two months, three months, or six months back... you need to check the range of these fire dates, right, to see how the interval [is] distributed... maybe monthly data, or 10 days aggregation... see which one actually affects the prediction [most]. That's for the weather. For land cover, we usually don't have [frequent updates], because land cover is not something that is changed [often], and you may have like a just one year [of] data — just feed that to the model, that's okay. But for better, you can do a bit of engineering, like different aggregation, monthly, 10 days, maybe 15 days, and see which one actually affects the prediction [most]."
+>
+> Arnick Abdollahi: "...you have fired at this month, right? ... you can get the weather data at month [minus] 1, [minus] 3, [minus] 2, [minus] 6 months before, because the fire is not something that happened quickly. The condition of the weather has to be in that situation for a long time — two months, three months — of the hot weather, then it leads to fire. So that's why you need to have that lag."
+>
+> Arnick Abdollahi: "Wow, this is very cool... you can add this also into your paper."
+
+### The paper/journal framing (48:54–52:26)
+
+> Arnick Abdollahi: "...these are very good findings for the first [stage] that you did, right, and you can add to do your paper as well... For this work, if we actually do very good kind of stuff, I can also try like publishing the work in journal instead of [a lesser venue]... you can just check [a template paper] and see how you can actually format your paper. So, like abstract, then introduction and background, because this is the template... [then] related work — what actually kind of work has been done already and what are the limitation of those work and what actually you will bring as a new contribution, right, and new innovation to address those kind of limitations... and the research gaps that you find, the research problem/questions... the methodology that you have... the results, discussion, and conclusion at the end... this kind of things, so it's really actually a research paper kind of thing that you need to follow. But I believe this work would be good and we can even try journal, see what would be there. Final outcomes. So, I'm good."
+
+### Close (52:34–53:18)
+
+> Arnick Abdollahi: "Okay, you update the access to [the] side of data and then land cover for DA, and also we'll check that what other data set we can use or share the links from DA. You can add to your data set. Also, just remember to do a bit of search on the models, how to add more innovation into the model."
+>
+> Manh Tuan Nguyen: "Yeah, okay, I understand. I will share you... I will look at the data set and will share you the findings later."
+
+[53:27–54:41: casual conversation — Tuan's location, capstone subject, no research-direction content.]
+
+## Post-meeting message 1 (sent immediately after — full content recorded previously)
+
+Shared his own 2023 paper (Abdollahi & Pradhan, XAI wildfire susceptibility, *Science of the Total Environment* — confirmed via Crossref), AlphaEarth/Satellite Embedding V1, Prithvi-EO-2.0, and the "Awesome-Remote-Sensing-Foundation-Models" GitHub list. Full text preserved in the prior version of this record (git history).
+
+## Post-meeting message 2 (later same day)
+
+> "If you use those embedding datasets with foundation models, this would be good and new. Also, you can do comparisons with some baseline models if needed. That's it. It would be enough for your research! 🙂"
+>
+> [Image: a 4-panel expected-output mockup — "Occurrence Probability Map", "Driver Attribution Map", "Uncertainty / Confidence Surface", and an "Ablation Comparison Table" button]
+>
+> "outputs can be like this (image) These datasets also good to add to the analysis
+>
+> DEA Fuel Moisture Content: https://www.ga.gov.au/scientific-topics/dea/dea-data-and-products/dea-fuel-moisture-content
+>
+> DEA Fractional Cover: https://www.ga.gov.au/scientific-topics/dea/dea-data-and-products/dea-fractional-cover"
+
+## What this confirms, superseding the earlier partial-transcript reading
+
+- **Option A confirmed, and more specifically than assumed:** not just "occurrence probability," but explicitly a **non-time-series, multimodal ML/DL model** — ruled out a spatiotemporal transformer for the current data on the grounds that 2 years (2019-20) is nowhere near enough for time-series modelling (Arnick's own benchmark: weather prediction typically uses 40-50 years of data).
+- **Data: confirmed to reuse the existing ~15,000-record reliability-audited 2019-20 pilot data.** T-033 (full FIRMS 2000-2025 history) is **not needed for the primary, agreed path** — only relevant if pursuing the optional/unfunded "stretch" time-series track, which was discussed but not committed to given "limited time."
+- **Region: reversed from the pre-meeting recommendation.** Arnick explicitly wants to **keep the NSW Black Summer 2019-20 event as the defining case study**, not widen to all of NSW or pick a different subregion — framing the mega-complex concentration not as a flaw to route around but as the actual reference event the whole paper should be built around ("it was like a big fire happened for Australia and it's evident").
+- **Compute confirmed sufficient:** Kaggle free tier, no need to escalate — the dataset is small enough (Arnick even suggested subsampling to 1,000-5,000 records if useful).
+- **Innovation direction confirmed and made concrete:** add a genuine architectural mechanism to the model itself — attention, or a "sensor kind of mechanism" / "modality kind of mechanism" for fusing weather/land-cover/other modalities — not just picking an existing architecture off the shelf. The post-meeting messages extend this to fine-tuning an existing geospatial foundation model (AlphaEarth, Prithvi-EO-2.0) plus baseline-model comparisons.
+- **New auxiliary datasets confirmed:** DEA Fuel Moisture Content (named live in the transcript, "moisture content... I'll share some data set"), DEA Fractional Cover (in the follow-up message).
+- **New concrete feature-engineering guidance:** weather variables need a lag/aggregation window before each fire date (not same-day) — test multiple aggregation windows (10-day, 15-day, monthly) over a multi-month lookback (2-6 months) and see which correlates best with fire occurrence.
+- **The whole project (Phase 1 audit + Phase 2 occurrence model) is explicitly framed as heading toward an actual paper, potentially journal submission** — Arnick walked through a full paper structure (abstract → intro/background → related work/gaps → methodology → results/discussion → conclusion → references).
+- **Not addressed at all in the full transcript:** cross-sensor matching (VIIRS/Himawari agreement) — the gap found in the earlier traceability check (T-046) remains genuinely open; it just never came up in this meeting.

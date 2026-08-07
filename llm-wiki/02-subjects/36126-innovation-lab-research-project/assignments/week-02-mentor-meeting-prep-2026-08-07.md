@@ -1,5 +1,7 @@
 # Week 2 Mentor Meeting Prep — Friday 7 August 2026, 12:00pm (Teams)
 
+**Outcome (D-014):** the meeting happened — see [`communications/from-arnick-2026-08-07-meeting-transcript-and-followup.md`](../communications/from-arnick-2026-08-07-meeting-transcript-and-followup.md) for the full transcript and what got decided. Kept as historical record below (what was prepared, not what happened) — **two of the recommendations below were reversed live:** the case-study region stays NSW Black Summer 2019-20 (not widened), and the model is a non-time-series multimodal ML/DL model on the existing pilot data (not the transformer/full-FIRMS-history plan). Don't build against this document — build against D-014 and the task-tracker's T-049 through T-055.
+
 **Purpose:** Confirm the redirected project scope with Dr Arnick, get his decisions on the open questions below, and leave with a frozen methodology to start building against.
 
 **Time confirmed by Arnick, 2026-08-05** ([verbatim](../communications/from-arnick-2026-08-05-direction-correction.md)): Friday 7 August, 12pm, to discuss "your review and findings as well this one I shared" — i.e. the reliability-audit work below and (likely) the Bushfire Historical Extents dataset in open question 4.
