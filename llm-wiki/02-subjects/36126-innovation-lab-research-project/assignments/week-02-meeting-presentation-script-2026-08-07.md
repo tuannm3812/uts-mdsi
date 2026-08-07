@@ -2,13 +2,13 @@
 
 Talking points, not a script to read verbatim — say it in your own words. Built from [`week-02-mentor-meeting-prep-2026-08-07.md`](week-02-mentor-meeting-prep-2026-08-07.md); full evidence and reasoning are there and in the linked backing docs if he wants to go deeper than these notes.
 
-**Target length:** 30–45 minutes. Six decisions needed by the end (Section 4 below) — that's the actual goal of the meeting, everything else is context to get there efficiently.
+**Target length:** 30–45 minutes. Seven decisions needed by the end (Section 4 below) — that's the actual goal of the meeting, everything else is context to get there efficiently.
 
 ---
 
 ## 0. Open (30 seconds)
 
-> "Thanks for making time. Quick structure for today: I'll recap what's changed since the 3 August brief, confirm I understood your redirect correctly, show you the public notebooks quickly, then I've got six things I'd like your decision on so I can start building next week. Should take 30–40 minutes."
+> "Thanks for making time. Quick structure for today: I'll recap what's changed since the 3 August brief, confirm I understood your redirect correctly, show you the public notebooks quickly, then I've got seven things I'd like your decision on so I can start building next week. Should take 30–40 minutes."
 
 ---
 
@@ -48,7 +48,7 @@ Open both links (already sent ahead via Teams):
 
 ---
 
-## 4. The six decisions (20–25 minutes — the core of the meeting)
+## 4. The seven decisions (20–25 minutes — the core of the meeting)
 
 Frame each one as "here's what we'd recommend, does that work or would you adjust it" — not an open question. Faster to resolve, and shows the thinking isn't starting from zero.
 
@@ -70,7 +70,10 @@ Frame each one as "here's what we'd recommend, does that work or would you adjus
 > "We'll default to Kaggle's free tier for prototyping and baselines. If the full 2000-to-2025 multimodal training run turns out to need more than that, is there UTS compute or cloud credits available as a fallback? Better to know now than to hit the wall mid-semester."
 
 ### 4.6 Contribution framing
-> "Last one — how should we frame the actual contribution? Our recommendation is 'reliability-aware forecasting' — not just building a transformer, but specifically propagating the label-confidence work from Phase 1 into the model's own uncertainty estimate, plus the split-complex validation discipline, which is now backed by three independent findings in the literature, not just our own pilot. We think that's a real methodological contribution in its own right, not just scaffolding. Does that framing work for how you want the semester allocated — model iteration versus the trust/explanation side?"
+> "Next — how should we frame the actual contribution? Our recommendation is 'reliability-aware forecasting' — not just building a transformer, but specifically propagating the label-confidence work from Phase 1 into the model's own uncertainty estimate, plus the split-complex validation discipline, which is now backed by three independent findings in the literature, not just our own pilot. We think that's a real methodological contribution in its own right, not just scaffolding. Does that framing work for how you want the semester allocated — model iteration versus the trust/explanation side?"
+
+### 4.7 Cross-sensor matching — a gap we found going back through your message
+> "One more thing, going back through your message carefully — you mentioned cross-sensor matching with VIIRS or Himawari as one of three confidence-filtering methods. We've done the other two — NSW fire-record matching and the Digital Atlas check — but cross-sensor agreement itself, checking whether MODIS and VIIRS actually agree with each other at the same place and time, hasn't been done as its own step yet. We'd fold it into the data-foundation work as an explicit task rather than leave it implicit. Wanted to flag it directly rather than let it quietly slip."
 
 ---
 

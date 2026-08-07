@@ -925,5 +925,15 @@ Logged as T-040. Fix not yet applied — flagged to Tuan for a decision on appro
 
 **Not done, flagged for Tuan:** actually opening/reading through the exported PDFs end-to-end before the meeting — that's the "review" part of the request, and it's Tuan's own review to do, not something to fake completion of.
 
+### 2026-08-07 — Claude
+
+**Context:** Tuan asked for a traceability check — quote which parts of Arnick's message correspond to which actions, so nothing gets missed.
+
+**Went through the verbatim message clause by clause**, not just the 8-item paraphrase already in `research-execution-plan-2026.md` — that summary was accurate but coarser than what Tuan asked for here. Wrote [`research/arnick-message-traceability-2026-08-07.md`](../research/arnick-message-traceability-2026-08-07.md), a table mapping each quoted fragment to the specific action taken and its status.
+
+**This actually found something, not just organised what was already known.** Arnick's line "corss-sesnor matching and validation like with other sensor like VIIRS or Himawari" names a third confidence-filtering method alongside NSW fire records (done) and the Digital Atlas check (done, T-032) — but cross-sensor *agreement* itself was never implemented as its own step. Checked the decision log and task tracker directly rather than assuming: everything built so far validates hotspots against fire-boundary references, broken down by which sensor detected them — that's not the same as checking whether MODIS and VIIRS/Himawari agree with each other independent of any boundary reference, which is what his sentence actually asks for.
+
+**Folded the gap into the live meeting materials rather than just noting it** — added as open question/decision 7 in the meeting-prep doc and the presentation script, renumbered "six decisions" to "seven" throughout, and added a T-033 scope note so it's tracked as planned work rather than sitting as an implicit gap. Regenerated and re-synced the 2 affected PDFs plus the new traceability PDF to the Drive folder, verified via the Drive API again (matching file sizes, not just trusting the copy).
+
 
 
